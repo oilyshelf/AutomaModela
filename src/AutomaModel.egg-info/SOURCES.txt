@@ -1,0 +1,12 @@
+README.md
+pyproject.toml
+setup.cfg
+setup.py
+src/AutomaModel.egg-info/PKG-INFO
+src/AutomaModel.egg-info/SOURCES.txt
+src/AutomaModel.egg-info/dependency_links.txt
+src/AutomaModel.egg-info/not-zip-safe
+src/AutomaModel.egg-info/requires.txt
+src/AutomaModel.egg-info/top_level.txt
+src/nodes/__init__.py
+src/nodes/node.py
