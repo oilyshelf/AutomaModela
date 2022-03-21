@@ -1,4 +1,4 @@
-from nodes.node import Node
+from BPMN.node import Node
 import pytest
 
 
