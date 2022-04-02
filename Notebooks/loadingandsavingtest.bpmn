@@ -3,7 +3,7 @@
     <bpmn:startEvent id="StartEvent_1">
       <bpmn:outgoing>Flow_0co79r2</bpmn:outgoing>
     </bpmn:startEvent>
-    <bpmn:task id="Activity_1cos1pv" name="LoadExcel(&quot;sample.xlsx&quot;)">
+    <bpmn:task id="Activity_1cos1pv" name="loadExcel(&quot;sample.xlsx&quot;)">
       <bpmn:incoming>Flow_0co79r2</bpmn:incoming>
       <bpmn:outgoing>Flow_1g1d2hz</bpmn:outgoing>
     </bpmn:task>
