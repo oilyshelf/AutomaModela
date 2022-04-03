@@ -1,17 +1,35 @@
-from dataclasses import dataclass, field
-from multiprocessing import context
-import string
-from typing import List
+from uuid import uuid4
+from .TransformationStrategy import TransformationStrategy
 from pandas import DataFrame
-from .TransfomationsStratagies import _TokenStrategy
+from time import time, strftime, gmtime
 
 
-@dataclass(frozen=True)
 class Token():
-    id: int
-    df: DataFrame
-    context: str
-    taken_paths: int = 1
 
-    def transform(strategy: _TokenStrategy) -> None:
-        pass
+    def __init__(self, context: str):
+        self.data = DataFrame()
+        self.taken_paths = 1
+        self.id = str(uuid4())
+        self.cur_time = time()
+        self.context: str = f"{strftime('%d-%m-%Y %H:%M:%S', gmtime())} : {context}"
+
+    def add_context(self, element: str) -> None:
+        t = time()
+        def time_it(x, y): return round((x-y)/60, 3)
+        self.context = f"{self.context}--{time_it(t,self.cur_time)}-->{strftime('%d-%m-%Y %H:%M:%S', gmtime())} : {element}"
+        self.cur_time = t
+
+    def __repr__(self):
+        return f"Token:{self.id}\nPath taken:{self.context}\nData:{self.data.head()}"
+
+    def __deepcopy__(self, memo):
+        copied = Token(self.context)
+        copied.data = self.data.copy()
+        return copied
+
+    def transform(self, strategy: TransformationStrategy):
+        self.data = strategy.transform(self.data)
+
+
+t = Token("test")
+print(t)
