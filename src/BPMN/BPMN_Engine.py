@@ -30,8 +30,8 @@ class BPMNEngine():
                 for element in next_step["elements"]:
                     self.add(element)
             elif next_step["operation"] == "repush":
-                print(f"{cur} was repushed with prio: {prio+1}")
-                heapq.heappush(self.elements, (prio+1, cur))
+                print(f"{cur} was repushed with prio: {prio + 1}")
+                heapq.heappush(self.elements, (prio + 1, cur))
             elif next_step["operation"] == "end":
                 if len(self.elements) == 0:
                     print("Process ended")

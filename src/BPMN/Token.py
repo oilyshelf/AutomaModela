@@ -15,7 +15,7 @@ class Token():
 
     def add_context(self, element: str) -> None:
         t = time()
-        def time_it(x, y): return round((x-y)/60, 3)
+        time_it = (lambda x, y: round((x - y) / 60, 3))
         self.context = f"{self.context}--{time_it(t,self.cur_time)}-->{strftime('%d-%m-%Y %H:%M:%S', gmtime())} : {element}"
         self.cur_time = t
 
