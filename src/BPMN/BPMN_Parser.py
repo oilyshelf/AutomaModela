@@ -1,5 +1,4 @@
 import xmltodict
-from typing import OrderedDict
 from collections import OrderedDict
 
 
@@ -55,7 +54,7 @@ class BPMNParser():
             assert type(task.get("bpmn:incoming", None)) == str, "Tasks needs exactly one incoming flow"
             out = task.get("bpmn:outgoing", None)
             assert type(out) == str, "Task needs exactly one outgoing flow"
-            process["bpmn:task"][i]["bpmn:outgoing"] = self._transform_outgoing(out, process)
+            process["bpmn:task"]["bpmn:outgoing"] = self._transform_outgoing(out, process)
         elif type(task) != list:
             return process
         else:

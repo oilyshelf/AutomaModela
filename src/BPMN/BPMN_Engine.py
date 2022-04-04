@@ -1,4 +1,3 @@
-import imp
 from BPMN import ExclusiveGateway, InclusiveGateway, ParallelGateway
 from BPMN.BPMN_Parser import BPMNParser
 import heapq  # priorityque lol
@@ -11,20 +10,20 @@ from BPMN.Endevent import EndEvent
 
 
 class BPMNEngine():
-    def __init__(self,file_name:str):
+    def __init__(self, file_name: str):
         self.parser = BPMNParser()
         self.strat_fact = BAF()
         self.process = self.parser.load(file_name)
-        self.elements = []
+        self.elements: List[BPMNComponent] = []
         self.find_start()
-    
+
     def find_start(self):
         start = self.process.get("bpmn:startEvent")
-        heapq.heappush(self.elements, (1,StartEvent(start)))
-        
+        heapq.heappush(self.elements, (1, StartEvent(start)))
+
     def run(self):
         while self.elements:
-            prio,cur = heapq.heappop(self.elements)
+            prio, cur = heapq.heappop(self.elements)
             print(prio, cur)
             next_step = cur.execute()
             if next_step["operation"] == "add":
@@ -38,8 +37,9 @@ class BPMNEngine():
                     print("Process ended")
             else:
                 pass
+
     def add(self, next_element):
-        #check if element is already in queue
+        # check if element is already in queue
         for prio, el in self.elements:
             if el.id == next_element["id"]:
                 el_type = type(el)
@@ -49,17 +49,14 @@ class BPMNEngine():
         element = self.parser.find_element(self.process, next_element["id"])
         # print(element)
         if element["type"] == "bpmn:task":
-            heapq.heappush(self.elements,(1,Task(element["information"], next_element["token"], self.strat_fact)))
+            heapq.heappush(self.elements, (1, Task(element["information"], next_element["token"], self.strat_fact)))
         elif element["type"] == "bpmn:exclusiveGateway":
-            heapq.heappush(self.elements, (5,ExclusiveGateway(element["information"], next_element["token"])))
+            heapq.heappush(self.elements, (5, ExclusiveGateway(element["information"], next_element["token"])))
         elif element["type"] == "bpmn:parallelGateway":
-            heapq.heappush(self.elements, (5,ParallelGateway(element["information"], next_element["token"])))
+            heapq.heappush(self.elements, (5, ParallelGateway(element["information"], next_element["token"])))
         elif element["type"] == "bpmn:inclusiveGateway":
-            heapq.heappush(self.elements, (5,InclusiveGateway(element["information"], next_element["token"])))
+            heapq.heappush(self.elements, (5, InclusiveGateway(element["information"], next_element["token"])))
         elif element["type"] == "bpmn:endEvent":
-            heapq.heappush(self.elements, (10,EndEvent(element["information"], next_element["token"])))
+            heapq.heappush(self.elements, (10, EndEvent(element["information"], next_element["token"])))
         else:
             pass
-        
-        
-        

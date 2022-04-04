@@ -8,7 +8,7 @@ class StartEvent(BPMNComponent):
         token = Token(str(self))
         target = self.outgoing
         print(token)
-        assert target["@targetRef"] != None, "missing refernce!!"
+        assert target["@targetRef"] is not None, "missing refernce!!"
         return {
             "operation": "add",
             "elements": [{"id": target["@targetRef"], "token":token}]

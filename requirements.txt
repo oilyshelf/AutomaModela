@@ -1,4 +1,2 @@
 pandas==1.4.1
-pytest==7.1.1
-setuptools==58.0.4
 xmltodict==0.12.0
