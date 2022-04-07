@@ -1,7 +1,7 @@
 import copy
 from typing import OrderedDict
 from BPMN import Token
-
+from BPMN.logger import logger
 from BPMN.BPMN_Component import BPMNComponent
 
 
@@ -15,7 +15,7 @@ class InclusiveGateway(BPMNComponent):
     def execute(self):
         for token in self.token:
             token.add_context(str(self))
-            print(token)
+            logger.info(token)
         if self.opening:
             tba = [{"id": el["@targetRef"], "token":copy.deepcopy(self.token[0])} for el in self.outgoing if el["@id"] == self.default]
             for key, obj in enumerate(tba):
