@@ -2,6 +2,7 @@ from typing import OrderedDict
 from BPMN.BPMN_Component import BPMNComponent
 from BPMN.StrategyFactory import BAF
 from BPMN.Token import Token
+from BPMN.logger import logger
 
 
 class Task(BPMNComponent):
@@ -13,7 +14,7 @@ class Task(BPMNComponent):
 
     def execute(self):
         self.token.add_context(str(self))
-        print(self.token)
+        logger.info(self.token)
         self.token.transform(self.factory.get_strategy(self.name))
         target = self.outgoing
         return {

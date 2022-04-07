@@ -1,6 +1,7 @@
 from typing import OrderedDict
 from BPMN import Token
 from BPMN.BPMN_Component import BPMNComponent
+from BPMN.logger import logger
 
 
 class ExclusiveGateway(BPMNComponent):
@@ -13,7 +14,7 @@ class ExclusiveGateway(BPMNComponent):
     def execute(self):
         for token in self.token:
             token.add_context(str(self))
-            print(token)
+            logger.info(token)
         if self.opening:
             for el in self.outgoing:
                 if el.get("@id", None) == self.default:

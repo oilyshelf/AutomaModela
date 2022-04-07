@@ -8,6 +8,9 @@ class TransformationStrategy():
     def transform(self, df: pd.DataFrame) -> pd.DataFrame:
         pass
 
+    def __str__(self) -> str:
+        return f"{self.__class__.__name__}"
+
 
 class DoNothingStrategy(TransformationStrategy):
     def transform(self, df: pd.DataFrame) -> pd.DataFrame:

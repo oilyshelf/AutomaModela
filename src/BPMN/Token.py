@@ -2,6 +2,7 @@ from uuid import uuid4
 from .TransformationStrategy import TransformationStrategy
 from pandas import DataFrame
 from time import time, strftime, gmtime
+from BPMN.logger import logger
 
 
 class Token():
@@ -28,8 +29,5 @@ class Token():
         return copied
 
     def transform(self, strategy: TransformationStrategy):
+        logger.info(f"Token {self.id} is executing {str(strategy)}")
         self.data = strategy.transform(self.data)
-
-
-t = Token("test")
-print(t)

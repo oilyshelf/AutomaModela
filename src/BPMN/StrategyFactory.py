@@ -1,5 +1,6 @@
 from .Functionparser import FunctionParser
 from .TransformationStrategy import TransformationStrategy, DoNothingStrategy, LoadExcelStrategy, SaveExcelStrategy
+from BPMN.logger import logger
 
 
 class BAF():
@@ -8,7 +9,7 @@ class BAF():
 
     def get_strategy(self, function_string: str) -> TransformationStrategy | None:
         function_def = self.parser.parse(function_string)
-        print(function_def)
+        logger.info(f'parsed function string : {function_def}')
         match function_def:
             case {"name": "doNothing", "parameters": None}:
                 return DoNothingStrategy()

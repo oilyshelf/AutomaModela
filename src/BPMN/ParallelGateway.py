@@ -2,6 +2,7 @@ import copy
 from typing import OrderedDict
 from BPMN import Token
 from BPMN.BPMN_Component import BPMNComponent
+from BPMN.logger import logger
 
 
 class ParallelGateway(BPMNComponent):
@@ -13,12 +14,12 @@ class ParallelGateway(BPMNComponent):
     def execute(self):
         for token in self.token:
             token.add_context(str(self))
-            print(token)
+            logger.info(token)
         if self.opening:
             new_paths = len(self.outgoing)
             tba = [{"id": el["@targetRef"], "token":copy.deepcopy(self.token[0])} for el in self.outgoing]
             for key, obj in enumerate(tba):
-                # print(key, obj)
+                # logger.info(key, obj)
                 tba[key]["token"].taken_paths = new_paths
             return {"operation": "add", "elements": tba}
         else:

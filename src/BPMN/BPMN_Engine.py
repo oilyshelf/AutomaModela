@@ -7,12 +7,18 @@ from BPMN.StrategyFactory import BAF
 from BPMN.StartEvent import StartEvent
 from BPMN.Task import Task
 from BPMN.Endevent import EndEvent
+from BPMN.logger import logger
 
 
 class BPMNEngine():
-    def __init__(self, file_name: str):
-        self.parser = BPMNParser()
-        self.strat_fact = BAF()
+    def __init__(self, file_name: str, strategy_factory=None):
+        try:
+            self.parser = BPMNParser()
+        except AssertionError as e:
+            logger.error(f"Parsing of Process {file_name} failed due to {e.with_traceback}")
+
+        self.name = file_name
+        self.strat_fact = BAF() if strategy_factory is None else strategy_factory
         self.process = self.parser.load(file_name)
         self.elements: List[BPMNComponent] = []
         self.find_start()
@@ -20,21 +26,23 @@ class BPMNEngine():
     def find_start(self):
         start = self.process.get("bpmn:startEvent")
         heapq.heappush(self.elements, (1, StartEvent(start)))
+        logger.info("Found startevent and added it to the queue")
 
     def run(self):
+        logger.info(f"starting process from {self.name}")
         while self.elements:
             prio, cur = heapq.heappop(self.elements)
-            print(prio, cur)
+            logger.info(f"Next Element in queue is {cur} with the priority of {prio}")
             next_step = cur.execute()
             if next_step["operation"] == "add":
                 for element in next_step["elements"]:
                     self.add(element)
             elif next_step["operation"] == "repush":
-                print(f"{cur} was repushed with prio: {prio + 1}")
+                logger.info(f"{cur} was repushed with prio: {prio + 1}")
                 heapq.heappush(self.elements, (prio + 1, cur))
             elif next_step["operation"] == "end":
                 if len(self.elements) == 0:
-                    print("Process ended")
+                    logger.info(f"Process ended successfully no more elements in the queue")
             else:
                 pass
 
@@ -45,9 +53,10 @@ class BPMNEngine():
                 el_type = type(el)
                 if el_type == ParallelGateway or el_type == ExclusiveGateway or el_type == InclusiveGateway:
                     el.token.append(next_element["token"])
+                    logger.info(f"{str(el)} already in queue token added to it")
                 return
         element = self.parser.find_element(self.process, next_element["id"])
-        # print(element)
+        # logger.info(element)
         if element["type"] == "bpmn:task":
             heapq.heappush(self.elements, (1, Task(element["information"], next_element["token"], self.strat_fact)))
         elif element["type"] == "bpmn:exclusiveGateway":
@@ -59,4 +68,6 @@ class BPMNEngine():
         elif element["type"] == "bpmn:endEvent":
             heapq.heappush(self.elements, (10, EndEvent(element["information"], next_element["token"])))
         else:
-            pass
+            logger.warning(f'{element["type"]} is unknown no element created')
+            return
+        logger.info(f"Element of type {element['type']} : {element['information']} created and added to the queue")

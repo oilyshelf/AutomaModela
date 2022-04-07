@@ -1,5 +1,6 @@
 import xmltodict
 from collections import OrderedDict
+from BPMN.logger import logger
 
 
 class BPMNParser():
@@ -10,14 +11,18 @@ class BPMNParser():
         return process
 
     def load(self, file_name: str) -> OrderedDict:
+        logger.info(f"started parsing file:{file_name}")
         process = self.simple_load(file_name)
+        logger.info(f"Parsing completed starting with checks")
         needed_checks = [self._check_start, self._check_end, self._check_task,
                          self._check_exclusiveGateways, self._check_inclusiveGateways, self._check_parallelGateways]
         for check in needed_checks:
             process = check(process)
+        logger.info(f"checking complete {file_name} was sucessfully parsed")
         return process
 
     def _transform_outgoing(self, outgoing, process):
+        logger.debug(f"Transforming outgoing flows :{outgoing}")
         if type(outgoing) == str:
             flow = self.find_flow(process, outgoing)
             return {"@id": outgoing, "@name": flow.get("@name", "no_name"), "@targetRef": flow.get("@targetRef", None)}
@@ -28,15 +33,18 @@ class BPMNParser():
         return outgoing
 
     def _check_start(self, process: OrderedDict) -> OrderedDict:
+        logger.info(f"Checking startevent")
         start = process.get("bpmn:startEvent", None)
         assert type(start) == OrderedDict, "No Start Event found or multiple startevents"
         assert start.get("bpmn:incoming", None) is None, "startEvent can't have incoming flows"
         outgoing = start.get("bpmn:outgoing", None)
         assert type(outgoing) == str, "Start Event has mulitple Outgoing events or isn't connected"
         process["bpmn:startEvent"]["bpmn:outgoing"] = self._transform_outgoing(outgoing, process)
+        logger.info(f"Checking startevent finished sucessfully")
         return process
 
     def _check_end(self, process):
+        logger.info(f"Checking endevent/s")
         end = process.get("bpmn:endEvent", None)
         assert end is not None, "Process needs an EndEvent!"
         if type(end) == OrderedDict:
@@ -45,9 +53,11 @@ class BPMNParser():
             assert (el.get("bpmn:outgoing", None)) is None, "EndEvents cant have outgoing flows"
             inc = el.get("bpmn:incoming", None)
             assert type(inc) == str, "EndEvents cant have multiple incoming flows please use a closing Gate"
+        logger.info(f"Checking Endevent/s finished sucessfully")
         return process
 
     def _check_task(self, process: OrderedDict) -> OrderedDict:
+        logger.info(f"Checking task/s")
         task = process.get("bpmn:task", None)
         if task is not None and type(task) == OrderedDict:
             assert type(task.get("@name", None)) is not None, "Task needs Name/Operation to be used in any meaningful way lol"
@@ -64,11 +74,14 @@ class BPMNParser():
                 out = t.get("bpmn:outgoing", None)
                 assert type(out) == str, "Task needs exactly one outgoing flow"
                 process["bpmn:task"][i]["bpmn:outgoing"] = self._transform_outgoing(out, process)
+        logger.info(f"Checking task/s finished successfully")
         return process
 
     def _check_Gateways(self, process: OrderedDict, gate_type: str, default_op: str, check: bool) -> OrderedDict:
+        logger.info(f"Checking {gate_type}/s")
         gateways = process.get(gate_type, None)
         if gateways is None:
+            logger.info(f"no {gate_type} found checking successfully")
             return process
         elif type(gateways) == list:
             for key, gateway in enumerate(gateways):
@@ -112,7 +125,7 @@ class BPMNParser():
                     default = gateways.get("@default", None)
                     for o in out:
                         assert o.get("@name") != "no_name" or o.get("@id") == default, "Opening Gate needs all outgoing flows to have an Condition or be a default Flow"
-
+        logger.info(f"Checking {gate_type}/s finished successfully")
         return process
 
     def _check_exclusiveGateways(self, process):

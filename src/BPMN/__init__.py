@@ -1,5 +1,5 @@
 __all__ = ["BPMNComponent", "BPMNEngine", "BPMNParser", "EndEvent", "ExclusiveGateway",
-           "FunctionParser", "InclusiveGateway", "ParallelGateway", "StartEvent", "BAF", "Task", "Token"]
+           "FunctionParser", "InclusiveGateway", "ParallelGateway", "StartEvent", "BAF", "Task", "Token", "logger"]
 
 
 from .BPMN_Component import BPMNComponent
@@ -14,3 +14,5 @@ from .StartEvent import StartEvent
 from .StrategyFactory import BAF
 from .Task import Task
 from .Token import Token
+
+from .logger import logger
