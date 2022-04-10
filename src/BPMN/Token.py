@@ -21,7 +21,7 @@ class Token():
         self.cur_time = t
 
     def __repr__(self):
-        return f"Token:{self.id}\nPath taken:{self.context}\nData:{self.data.head()}"
+        return f"Token:{self.id}\nPath taken:{self.context}\nData:{self.data.head()}\n{self.data.info()}"
 
     def __deepcopy__(self, memo):
         copied = Token(self.context)

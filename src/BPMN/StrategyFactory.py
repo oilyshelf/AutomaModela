@@ -1,5 +1,5 @@
 from .Functionparser import FunctionParser
-from .TransformationStrategy import TransformationStrategy, DoNothingStrategy, LoadExcelStrategy, SaveExcelStrategy
+from .TransformationStrategy import TransformationStrategy, DoNothingStrategy, LoadExcelStrategy, SaveExcelStrategy, dotStrategy, evalStrategy
 from BPMN.logger import logger
 
 
@@ -18,7 +18,9 @@ class BAF():
             case {"name": "saveExcel", "parameters": [{"parameter": x, "type": "str"}]}:
                 return SaveExcelStrategy(x)
             case {"name": "dotOperation", "parameters": [{"parameter": x, "type": "code"}]}:
-                return SaveExcelStrategy(x)
+                return dotStrategy(x)
+            case {"name": "eval", "parameters": [{"parameter": x, "type": "code"}]}:
+                return evalStrategy(x)
 
             case _:
                 return None

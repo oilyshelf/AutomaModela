@@ -41,5 +41,15 @@ class dotStrategy(TransformationStrategy):
         self.func_string = func_string
 
     def transform(self, df: pd.DataFrame) -> pd.DataFrame:
-        exec_string = f'df = df{self.func_string}'
-        exec(exec_string, globals())
+        exec_string = f'edf = df{self.func_string}'
+        loc = {}
+        exec(exec_string, locals(), loc)
+        return loc["edf"]
+
+
+class evalStrategy(TransformationStrategy):
+    def __init__(self, eval_string: str):
+        self.eval_string = eval_string
+
+    def transform(self, df: pd.DataFrame) -> pd.DataFrame:
+        return df.eval(self.eval_string)

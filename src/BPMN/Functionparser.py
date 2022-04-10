@@ -9,6 +9,7 @@ class FunctionParser():
         self.regex_string = re.compile(r'("[\w\d\s.?!,]*")+')
         self.regex_int = re.compile(r"(\d*)")
         self.regex_float = re.compile(r'(\d*\.\d*)')
+        self.regex_eval = re.compile(r"(.*=.*)")
 
     def determine_par_type(self, parameter: str) -> dict:
         if self.regex_string.fullmatch(parameter) is not None:
@@ -35,6 +36,11 @@ class FunctionParser():
         elif string.startswith("."):
             return{
                 "name": "dotOperation",
+                "parameters": [{"parameter": string, "type": "code"}]
+            }
+        elif m := self.regex_eval.fullmatch(string):
+            return{
+                "name": "eval",
                 "parameters": [{"parameter": string, "type": "code"}]
             }
         else:
