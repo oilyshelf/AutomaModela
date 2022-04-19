@@ -20,8 +20,8 @@ class FunctionParser():
         elif self.regex_int.fullmatch(parameter) is not None:
             return {"parameter": int(parameter), "type": "int", "string": parameter}
         elif self.regex_opt.fullmatch(parameter) is not None:
-            parts = [s.strip() for s in  parameter.split("=")]
-            return {**self.determine_par_type(parts[-1]), "optional":True, "opt_name":parts[0]}
+            parts = [s.strip() for s in parameter.split("=")]
+            return {**self.determine_par_type(parts[-1]), "optional": True, "opt_name": parts[0]}
         else:
             return {"parameter": None, "type": "not supported Datatype", "string": parameter}
 
@@ -49,8 +49,8 @@ class FunctionParser():
             }
         else:
             return None
-    
-    def optional_mapper(self, list_of:List[dict])->dict:
+
+    def optional_mapper(self, list_of: List[dict]) -> dict:
         res = {}
         for entry in list_of:
             if entry.get("optional", False):

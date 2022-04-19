@@ -11,7 +11,7 @@ from BPMN.logger import logger
 
 
 class BPMNEngine():
-    def __init__(self, file_name: str,parser= None, strategy_factory=None):
+    def __init__(self, file_name: str, parser=None, strategy_factory=None):
         self.parser = BPMNParser() if parser is None else parser
         self.name = file_name
         try:

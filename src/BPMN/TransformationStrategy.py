@@ -57,8 +57,8 @@ class evalStrategy(TransformationStrategy):
         self.eval_string = eval_string
 
     def transform(self, df: pd.DataFrame) -> pd.DataFrame:
-        engines = [{}, {"engine":"python"}]
-        for engine in  engines:
+        engines = [{}, {"engine": "python"}]
+        for engine in engines:
             try:
                 df = df.eval(self.eval_string, **engine)
                 return df
@@ -66,18 +66,18 @@ class evalStrategy(TransformationStrategy):
                 logger.warning(f"{engine} didn't work on eval {self.eval_string} trying next engine")
         return df
 
+
 class FilterStrategy(TransformationStrategy):
 
-    def __init__(self, query:str):
+    def __init__(self, query: str):
         self.query = query
 
-    def transform(self,df:pd.DataFrame)->pd.DataFrame:
-        engines = [{"engine":"numexpr"}, {"engine":"python"}]
+    def transform(self, df: pd.DataFrame) -> pd.DataFrame:
+        engines = [{"engine": "numexpr"}, {"engine": "python"}]
         for e in engines:
             try:
-                df = df.query(self.query,**e)
+                df = df.query(self.query, **e)
                 return df
             except Exception:
                 logger.warning(f"{e} didn't work on quering {self.eval_string} trying next engine")
         return pd.DataFrame(columns=df.columns)
-        

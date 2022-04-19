@@ -13,12 +13,12 @@ class TSF():
         match function_def:
             case {"name": "doNothing", "parameters": None}:
                 return DoNothingStrategy()
-            case {"name":"loadExcel", "parameters":[{"parameter":x, "type":"str"},*rest]}:
+            case {"name": "loadExcel", "parameters": [{"parameter": x, "type": "str"}, *rest]}:
                 opt_par = self.parser.optional_mapper(rest)
                 return LoadExcelStrategy(x, **opt_par)
-            case {"name":"saveExcel", "parameters":[{"parameter":x, "type":"str"}, *rest]}:
+            case {"name": "saveExcel", "parameters": [{"parameter": x, "type": "str"}, *rest]}:
                 opt_par = self.parser.optional_mapper(rest)
-                return SaveExcelStrategy(x,**opt_par)
+                return SaveExcelStrategy(x, **opt_par)
             case {"name": "dotOperation", "parameters": [{"parameter": x, "type": "code"}]}:
                 return dotStrategy(x)
             case {"name": "eval", "parameters": [{"parameter": x, "type": "code"}]}:
