@@ -3,7 +3,7 @@ from BPMN.BPMN_Parser import BPMNParser
 import heapq  # priorityque lol
 from typing import List
 from BPMN.BPMN_Component import BPMNComponent
-from BPMN.StrategyFactory import BAF
+from BPMN.StrategyFactory import TSF
 from BPMN.StartEvent import StartEvent
 from BPMN.Task import Task
 from BPMN.Endevent import EndEvent
@@ -11,15 +11,15 @@ from BPMN.logger import logger
 
 
 class BPMNEngine():
-    def __init__(self, file_name: str, strategy_factory=None):
+    def __init__(self, file_name: str,parser= None, strategy_factory=None):
+        self.parser = BPMNParser() if parser is None else parser
+        self.name = file_name
         try:
-            self.parser = BPMNParser()
+            self.process = self.parser.load(file_name)
         except AssertionError as e:
             logger.error(f"Parsing of Process {file_name} failed due to {e.with_traceback}")
 
-        self.name = file_name
-        self.strat_fact = BAF() if strategy_factory is None else strategy_factory
-        self.process = self.parser.load(file_name)
+        self.strat_fact = TSF() if strategy_factory is None else strategy_factory
         self.elements: List[BPMNComponent] = []
         self.find_start()
 

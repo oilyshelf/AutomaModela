@@ -1,13 +1,13 @@
 from typing import OrderedDict
 from BPMN.BPMN_Component import BPMNComponent
-from BPMN.StrategyFactory import BAF
+from BPMN.StrategyFactory import TSF
 from BPMN.Token import Token
 from BPMN.logger import logger
 
 
 class Task(BPMNComponent):
 
-    def __init__(self, process_definition: OrderedDict, token: Token, factory: BAF):
+    def __init__(self, process_definition: OrderedDict, token: Token, factory: TSF):
         self.token = token
         self.factory = factory
         super().__init__(process_definition)

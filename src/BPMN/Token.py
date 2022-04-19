@@ -1,8 +1,11 @@
+from __future__ import annotations
 from uuid import uuid4
-from .TransformationStrategy import TransformationStrategy
+from BPMN.TransformationStrategy import TransformationStrategy
+from BPMN.CombineStrategy import CombineStrategy
 from pandas import DataFrame
 from time import time, strftime, gmtime
 from BPMN.logger import logger
+
 
 
 class Token():
@@ -23,11 +26,28 @@ class Token():
     def __repr__(self):
         return f"Token:{self.id}\nPath taken:{self.context}\nData:{self.data.head()}\n{self.data.info()}"
 
-    def __deepcopy__(self, memo):
+    def __deepcopy__(self, memo)->Token:
         copied = Token(self.context)
         copied.data = self.data.copy()
         return copied
 
-    def transform(self, strategy: TransformationStrategy):
+    def transform(self, strategy: TransformationStrategy)->None:
         logger.info(f"Token {self.id} is executing {str(strategy)}")
         self.data = strategy.transform(self.data)
+
+    def query(self, query_string:str)->bool:
+        engines = [{"engine":"numexpr"}, {"engine":"python"}]
+        for e in engines:
+            try:
+                self.data = self.data.query(query_string,**e)
+                # print(df.head(), f"this engine was useed {e}")
+                return self.data.empty
+            except Exception:
+                print(f"{e} didn't work to quering {query_string} trying next engine")
+        return False
+
+    def combine(self, other:Token, strategy:CombineStrategy)->None:
+        logger.info(f"Token {self.id} is executing {str(strategy)}")
+        self.data = strategy.combine(self.data, other.data)
+
+
