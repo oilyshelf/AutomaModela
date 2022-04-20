@@ -34,6 +34,7 @@ class TSF():
 class CSF():
     
     def __init__(self) -> None:
+        #(left |right |outer |) for the diffrent types
         self.regex_equi = re.compile(r'(join on)(.+)(==)(.+)')
         self.regex_theta = re.compile(r"(join on)(.+)(!=|>=|<=|<|>)(.+)")
         self.regex_singlexol = re.compile(r"(join on)([\w\s\d]+[^=!><])")
