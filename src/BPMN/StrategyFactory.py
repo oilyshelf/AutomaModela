@@ -1,6 +1,9 @@
+from BPMN.CombineStrategy import ConcatStrategy, CombineStrategy
 from .Functionparser import FunctionParser
 from .TransformationStrategy import TransformationStrategy, DoNothingStrategy, LoadExcelStrategy, SaveExcelStrategy, dotStrategy, evalStrategy
 from BPMN.logger import logger
+import re
+
 
 
 class TSF():
@@ -26,3 +29,36 @@ class TSF():
 
             case _:
                 return None
+
+
+class CSF():
+    
+    def __init__(self) -> None:
+        self.regex_equi = re.compile(r'(join on)(.+)(==)(.+)')
+        self.regex_theta = re.compile(r"(join on)(.+)(!=|>=|<=|<|>)(.+)")
+        self.regex_singlexol = re.compile(r"(join on)([\w\s\d]+[^=!><])")
+
+    def get_strategy(self, gateway_string:str) -> CombineStrategy|None:
+        
+        match gateway_string:
+            case "join":
+                return "naturaljoinstrategy"
+            case "concat":
+                return ConcatStrategy()
+            case "intersect":
+                return "intersectstrategy"
+            case "difference":
+                "difStrat"
+            case "cross":
+                return "crossStrat"
+            case _:
+
+                if x := self.regex_equi.fullmatch(gateway_string) is not None:
+                    return "EquiStrat"
+                elif x := self.regex_theta.fullmatch(gateway_string) is not None:
+                    return "thetaStrat"
+                elif x := self.regex_singlexol.fullmatch(gateway_string) is not None:
+                    return "SimpleJoinStrat"
+                else:
+                    return None
+

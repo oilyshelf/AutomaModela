@@ -23,7 +23,7 @@ class Token():
         self.cur_time = t
 
     def __repr__(self):
-        return f"Token:{self.id}\nPath taken:{self.context}\nData:{self.data.head()}\n{self.data.info()}"
+        return f"Token:{self.id}\nPath taken:{self.context}\nData:{self.data.head()}\n"
 
     def __deepcopy__(self, memo) -> Token:
         copied = Token(self.context)
@@ -38,11 +38,10 @@ class Token():
         engines = [{"engine": "numexpr"}, {"engine": "python"}]
         for e in engines:
             try:
-                self.data = self.data.query(query_string, **e)
+                return self.data.query(query_string, **e).empty
                 # print(df.head(), f"this engine was useed {e}")
-                return self.data.empty
             except Exception:
-                print(f"{e} didn't work to quering {query_string} trying next engine")
+                logger.info(f"{e} didn't work to quering {query_string} trying next engine")
         return False
 
     def combine(self, other: Token, strategy: CombineStrategy) -> None:

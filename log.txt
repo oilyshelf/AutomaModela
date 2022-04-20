@@ -1087,3 +1087,1810 @@ Data:   Column1  Column2  Column3    A    B
 4      0.6      0.8      0.6  1.8  3.6
 None
 2022-04-19 17:43:18,139 - BPMN.logger - BPMN_Engine.py - INFO - Process ended successfully no more elements in the queue
+2022-04-20 13:18:53,371 - BPMN.logger - BPMN_Parser.py - INFO - started parsing file:inkltest.bpmn
+2022-04-20 13:18:53,375 - BPMN.logger - BPMN_Parser.py - INFO - Parsing completed starting with checks
+2022-04-20 13:18:53,375 - BPMN.logger - BPMN_Parser.py - INFO - Checking startevent
+2022-04-20 13:18:53,376 - BPMN.logger - BPMN_Parser.py - DEBUG - Transforming outgoing flows :Flow_0sz71nl
+2022-04-20 13:18:53,376 - BPMN.logger - BPMN_Parser.py - INFO - Checking startevent finished sucessfully
+2022-04-20 13:18:53,376 - BPMN.logger - BPMN_Parser.py - INFO - Checking endevent/s
+2022-04-20 13:18:53,376 - BPMN.logger - BPMN_Parser.py - INFO - Checking Endevent/s finished sucessfully
+2022-04-20 13:18:53,377 - BPMN.logger - BPMN_Parser.py - INFO - Checking task/s
+2022-04-20 13:18:53,377 - BPMN.logger - BPMN_Parser.py - DEBUG - Transforming outgoing flows :Flow_1i1xefj
+2022-04-20 13:18:53,377 - BPMN.logger - BPMN_Parser.py - DEBUG - Transforming outgoing flows :Flow_1xu7i9f
+2022-04-20 13:18:53,377 - BPMN.logger - BPMN_Parser.py - DEBUG - Transforming outgoing flows :Flow_188wp25
+2022-04-20 13:18:53,377 - BPMN.logger - BPMN_Parser.py - DEBUG - Transforming outgoing flows :Flow_08zaqhs
+2022-04-20 13:18:53,377 - BPMN.logger - BPMN_Parser.py - DEBUG - Transforming outgoing flows :Flow_0q477rq
+2022-04-20 13:18:53,377 - BPMN.logger - BPMN_Parser.py - INFO - Checking task/s finished successfully
+2022-04-20 13:18:53,377 - BPMN.logger - BPMN_Parser.py - INFO - Checking bpmn:exclusiveGateway/s
+2022-04-20 13:18:53,378 - BPMN.logger - BPMN_Parser.py - INFO - no bpmn:exclusiveGateway found checking successfully
+2022-04-20 13:18:53,378 - BPMN.logger - BPMN_Parser.py - INFO - Checking bpmn:inclusiveGateway/s
+2022-04-20 13:18:53,379 - BPMN.logger - BPMN_Parser.py - DEBUG - Transforming outgoing flows :['Flow_17cerxv', 'Flow_08uffka', 'Flow_0zztvg0']
+2022-04-20 13:18:53,379 - BPMN.logger - BPMN_Parser.py - DEBUG - Transforming outgoing flows :Flow_086x82t
+2022-04-20 13:18:53,379 - BPMN.logger - BPMN_Parser.py - INFO - Checking bpmn:inclusiveGateway/s finished successfully
+2022-04-20 13:18:53,379 - BPMN.logger - BPMN_Parser.py - INFO - Checking bpmn:parallelGateway/s
+2022-04-20 13:18:53,380 - BPMN.logger - BPMN_Parser.py - INFO - no bpmn:parallelGateway found checking successfully
+2022-04-20 13:18:53,380 - BPMN.logger - BPMN_Parser.py - INFO - checking complete inkltest.bpmn was sucessfully parsed
+2022-04-20 13:18:53,382 - BPMN.logger - BPMN_Engine.py - INFO - Found startevent and added it to the queue
+2022-04-20 13:18:53,383 - BPMN.logger - BPMN_Engine.py - INFO - starting process from inkltest.bpmn
+2022-04-20 13:18:53,383 - BPMN.logger - BPMN_Engine.py - INFO - Next Element in queue is StartEvent: StartEvent_1 with the priority of 1
+2022-04-20 13:18:53,384 - BPMN.logger - StartEvent.py - INFO - Token:ea6ce54b-94cf-4326-ab31-5c9caff98df9
+Path taken:20-04-2022 11:18:53 : StartEvent: StartEvent_1
+Data:Empty DataFrame
+Columns: []
+Index: []
+None
+2022-04-20 13:18:53,393 - BPMN.logger - BPMN_Engine.py - INFO - Element of type bpmn:task : OrderedDict([('@id', 'Activity_11dvq8c'), ('@name', 'loadExcel("beispiel.xlsx"; sheetname = "Tabelle1")'), ('bpmn:incoming', 'Flow_0sz71nl'), ('bpmn:outgoing', {'@id': 'Flow_1i1xefj', '@name': 'no_name', '@targetRef': 'Activity_0l7vq3x'})]) created and added to the queue
+2022-04-20 13:18:53,394 - BPMN.logger - BPMN_Engine.py - INFO - Next Element in queue is Task: Activity_11dvq8c(loadExcel("beispiel.xlsx"; sheetname = "Tabelle1")) with the priority of 1
+2022-04-20 13:18:53,395 - BPMN.logger - Task.py - INFO - Token:ea6ce54b-94cf-4326-ab31-5c9caff98df9
+Path taken:20-04-2022 11:18:53 : StartEvent: StartEvent_1--0.0-->20-04-2022 11:18:53 : Task: Activity_11dvq8c(loadExcel("beispiel.xlsx"; sheetname = "Tabelle1"))
+Data:Empty DataFrame
+Columns: []
+Index: []
+None
+2022-04-20 13:18:53,400 - BPMN.logger - StrategyFactory.py - INFO - parsed function string : {'name': 'loadExcel', 'parameters': [{'parameter': 'beispiel.xlsx', 'type': 'str', 'string': '"beispiel.xlsx"'}, {'parameter': 'Tabelle1', 'type': 'str', 'string': '"Tabelle1"', 'optional': True, 'opt_name': 'sheetname'}]}
+2022-04-20 13:18:53,401 - BPMN.logger - Token.py - INFO - Token ea6ce54b-94cf-4326-ab31-5c9caff98df9 is executing LoadExcelStrategy
+2022-04-20 13:18:53,839 - BPMN.logger - BPMN_Engine.py - INFO - Element of type bpmn:task : OrderedDict([('@id', 'Activity_0l7vq3x'), ('@name', 'Kostenstelle = "unknown"'), ('bpmn:incoming', 'Flow_1i1xefj'), ('bpmn:outgoing', {'@id': 'Flow_08zaqhs', '@name': 'no_name', '@targetRef': 'Gateway_0md6k1f'})]) created and added to the queue
+2022-04-20 13:18:53,839 - BPMN.logger - BPMN_Engine.py - INFO - Next Element in queue is Task: Activity_0l7vq3x(Kostenstelle = "unknown") with the priority of 1
+2022-04-20 13:18:53,840 - BPMN.logger - Task.py - INFO - Token:ea6ce54b-94cf-4326-ab31-5c9caff98df9
+Path taken:20-04-2022 11:18:53 : StartEvent: StartEvent_1--0.0-->20-04-2022 11:18:53 : Task: Activity_11dvq8c(loadExcel("beispiel.xlsx"; sheetname = "Tabelle1"))--0.007-->20-04-2022 11:18:53 : Task: Activity_0l7vq3x(Kostenstelle = "unknown")
+Data:   Belegnummer Belegdatum Lieferant Profitcenter
+0            1     05.Jan         A           P1
+1            2     06.Jan         B           P3
+2            3     07.Jan         A           P1
+3            5     09.Jan         B           P2
+4            6     10.Jan         A           P3
+None
+2022-04-20 13:18:53,885 - BPMN.logger - StrategyFactory.py - INFO - parsed function string : {'name': 'eval', 'parameters': [{'parameter': 'Kostenstelle = "unknown"', 'type': 'code'}]}
+2022-04-20 13:18:53,885 - BPMN.logger - Token.py - INFO - Token ea6ce54b-94cf-4326-ab31-5c9caff98df9 is executing evalStrategy
+2022-04-20 13:18:53,894 - BPMN.logger - TransformationStrategy.py - WARNING - {} didn't work on eval Kostenstelle = "unknown" trying next engine
+2022-04-20 13:24:35,168 - BPMN.logger - BPMN_Parser.py - INFO - started parsing file:inkltest.bpmn
+2022-04-20 13:24:35,171 - BPMN.logger - BPMN_Parser.py - INFO - Parsing completed starting with checks
+2022-04-20 13:24:35,172 - BPMN.logger - BPMN_Parser.py - INFO - Checking startevent
+2022-04-20 13:24:35,172 - BPMN.logger - BPMN_Parser.py - DEBUG - Transforming outgoing flows :Flow_0sz71nl
+2022-04-20 13:24:35,173 - BPMN.logger - BPMN_Parser.py - INFO - Checking startevent finished sucessfully
+2022-04-20 13:24:35,173 - BPMN.logger - BPMN_Parser.py - INFO - Checking endevent/s
+2022-04-20 13:24:35,173 - BPMN.logger - BPMN_Parser.py - INFO - Checking Endevent/s finished sucessfully
+2022-04-20 13:24:35,174 - BPMN.logger - BPMN_Parser.py - INFO - Checking task/s
+2022-04-20 13:24:35,174 - BPMN.logger - BPMN_Parser.py - DEBUG - Transforming outgoing flows :Flow_1i1xefj
+2022-04-20 13:24:35,174 - BPMN.logger - BPMN_Parser.py - DEBUG - Transforming outgoing flows :Flow_1xu7i9f
+2022-04-20 13:24:35,175 - BPMN.logger - BPMN_Parser.py - DEBUG - Transforming outgoing flows :Flow_188wp25
+2022-04-20 13:24:35,175 - BPMN.logger - BPMN_Parser.py - DEBUG - Transforming outgoing flows :Flow_08zaqhs
+2022-04-20 13:24:35,175 - BPMN.logger - BPMN_Parser.py - DEBUG - Transforming outgoing flows :Flow_0q477rq
+2022-04-20 13:24:35,175 - BPMN.logger - BPMN_Parser.py - INFO - Checking task/s finished successfully
+2022-04-20 13:24:35,176 - BPMN.logger - BPMN_Parser.py - INFO - Checking bpmn:exclusiveGateway/s
+2022-04-20 13:24:35,177 - BPMN.logger - BPMN_Parser.py - INFO - no bpmn:exclusiveGateway found checking successfully
+2022-04-20 13:24:35,177 - BPMN.logger - BPMN_Parser.py - INFO - Checking bpmn:inclusiveGateway/s
+2022-04-20 13:24:35,178 - BPMN.logger - BPMN_Parser.py - DEBUG - Transforming outgoing flows :['Flow_17cerxv', 'Flow_08uffka', 'Flow_0zztvg0']
+2022-04-20 13:24:35,178 - BPMN.logger - BPMN_Parser.py - DEBUG - Transforming outgoing flows :Flow_086x82t
+2022-04-20 13:24:35,178 - BPMN.logger - BPMN_Parser.py - INFO - Checking bpmn:inclusiveGateway/s finished successfully
+2022-04-20 13:24:35,179 - BPMN.logger - BPMN_Parser.py - INFO - Checking bpmn:parallelGateway/s
+2022-04-20 13:24:35,179 - BPMN.logger - BPMN_Parser.py - INFO - no bpmn:parallelGateway found checking successfully
+2022-04-20 13:24:35,181 - BPMN.logger - BPMN_Parser.py - INFO - checking complete inkltest.bpmn was sucessfully parsed
+2022-04-20 13:24:35,184 - BPMN.logger - BPMN_Engine.py - INFO - Found startevent and added it to the queue
+2022-04-20 13:24:35,184 - BPMN.logger - BPMN_Engine.py - INFO - starting process from inkltest.bpmn
+2022-04-20 13:24:35,185 - BPMN.logger - BPMN_Engine.py - INFO - Next Element in queue is StartEvent: StartEvent_1 with the priority of 1
+2022-04-20 13:24:35,186 - BPMN.logger - StartEvent.py - INFO - Token:409460f5-1071-4f44-bb11-605095970ba0
+Path taken:20-04-2022 11:24:35 : StartEvent: StartEvent_1
+Data:Empty DataFrame
+Columns: []
+Index: []
+None
+2022-04-20 13:24:35,196 - BPMN.logger - BPMN_Engine.py - INFO - Element of type bpmn:task : OrderedDict([('@id', 'Activity_11dvq8c'), ('@name', 'loadExcel("beispiel.xlsx"; sheetname = "Tabelle1")'), ('bpmn:incoming', 'Flow_0sz71nl'), ('bpmn:outgoing', {'@id': 'Flow_1i1xefj', '@name': 'no_name', '@targetRef': 'Activity_0l7vq3x'})]) created and added to the queue
+2022-04-20 13:24:35,197 - BPMN.logger - BPMN_Engine.py - INFO - Next Element in queue is Task: Activity_11dvq8c(loadExcel("beispiel.xlsx"; sheetname = "Tabelle1")) with the priority of 1
+2022-04-20 13:24:35,198 - BPMN.logger - Task.py - INFO - Token:409460f5-1071-4f44-bb11-605095970ba0
+Path taken:20-04-2022 11:24:35 : StartEvent: StartEvent_1--0.0-->20-04-2022 11:24:35 : Task: Activity_11dvq8c(loadExcel("beispiel.xlsx"; sheetname = "Tabelle1"))
+Data:Empty DataFrame
+Columns: []
+Index: []
+None
+2022-04-20 13:24:35,204 - BPMN.logger - StrategyFactory.py - INFO - parsed function string : {'name': 'loadExcel', 'parameters': [{'parameter': 'beispiel.xlsx', 'type': 'str', 'string': '"beispiel.xlsx"'}, {'parameter': 'Tabelle1', 'type': 'str', 'string': '"Tabelle1"', 'optional': True, 'opt_name': 'sheetname'}]}
+2022-04-20 13:24:35,205 - BPMN.logger - Token.py - INFO - Token 409460f5-1071-4f44-bb11-605095970ba0 is executing LoadExcelStrategy
+2022-04-20 13:24:35,585 - BPMN.logger - BPMN_Engine.py - INFO - Element of type bpmn:task : OrderedDict([('@id', 'Activity_0l7vq3x'), ('@name', 'Kostenstelle = "unknown"'), ('bpmn:incoming', 'Flow_1i1xefj'), ('bpmn:outgoing', {'@id': 'Flow_08zaqhs', '@name': 'no_name', '@targetRef': 'Gateway_0md6k1f'})]) created and added to the queue
+2022-04-20 13:24:35,586 - BPMN.logger - BPMN_Engine.py - INFO - Next Element in queue is Task: Activity_0l7vq3x(Kostenstelle = "unknown") with the priority of 1
+2022-04-20 13:24:35,587 - BPMN.logger - Task.py - INFO - Token:409460f5-1071-4f44-bb11-605095970ba0
+Path taken:20-04-2022 11:24:35 : StartEvent: StartEvent_1--0.0-->20-04-2022 11:24:35 : Task: Activity_11dvq8c(loadExcel("beispiel.xlsx"; sheetname = "Tabelle1"))--0.006-->20-04-2022 11:24:35 : Task: Activity_0l7vq3x(Kostenstelle = "unknown")
+Data:   Belegnummer Belegdatum Lieferant Profitcenter
+0            1     05.Jan         A           P1
+1            2     06.Jan         B           P3
+2            3     07.Jan         A           P1
+3            5     09.Jan         B           P2
+4            6     10.Jan         A           P3
+None
+2022-04-20 13:24:35,624 - BPMN.logger - StrategyFactory.py - INFO - parsed function string : {'name': 'eval', 'parameters': [{'parameter': 'Kostenstelle = "unknown"', 'type': 'code'}]}
+2022-04-20 13:24:35,625 - BPMN.logger - Token.py - INFO - Token 409460f5-1071-4f44-bb11-605095970ba0 is executing evalStrategy
+2022-04-20 13:24:35,633 - BPMN.logger - TransformationStrategy.py - WARNING - {} didn't work on eval Kostenstelle = "unknown" trying next engine
+2022-04-20 13:26:23,010 - BPMN.logger - BPMN_Parser.py - INFO - started parsing file:inkltest.bpmn
+2022-04-20 13:26:23,013 - BPMN.logger - BPMN_Parser.py - INFO - Parsing completed starting with checks
+2022-04-20 13:26:23,014 - BPMN.logger - BPMN_Parser.py - INFO - Checking startevent
+2022-04-20 13:26:23,014 - BPMN.logger - BPMN_Parser.py - DEBUG - Transforming outgoing flows :Flow_0sz71nl
+2022-04-20 13:26:23,015 - BPMN.logger - BPMN_Parser.py - INFO - Checking startevent finished sucessfully
+2022-04-20 13:26:23,015 - BPMN.logger - BPMN_Parser.py - INFO - Checking endevent/s
+2022-04-20 13:26:23,015 - BPMN.logger - BPMN_Parser.py - INFO - Checking Endevent/s finished sucessfully
+2022-04-20 13:26:23,016 - BPMN.logger - BPMN_Parser.py - INFO - Checking task/s
+2022-04-20 13:26:23,016 - BPMN.logger - BPMN_Parser.py - DEBUG - Transforming outgoing flows :Flow_1i1xefj
+2022-04-20 13:26:23,016 - BPMN.logger - BPMN_Parser.py - DEBUG - Transforming outgoing flows :Flow_1xu7i9f
+2022-04-20 13:26:23,016 - BPMN.logger - BPMN_Parser.py - DEBUG - Transforming outgoing flows :Flow_188wp25
+2022-04-20 13:26:23,016 - BPMN.logger - BPMN_Parser.py - DEBUG - Transforming outgoing flows :Flow_08zaqhs
+2022-04-20 13:26:23,016 - BPMN.logger - BPMN_Parser.py - DEBUG - Transforming outgoing flows :Flow_0q477rq
+2022-04-20 13:26:23,017 - BPMN.logger - BPMN_Parser.py - INFO - Checking task/s finished successfully
+2022-04-20 13:26:23,017 - BPMN.logger - BPMN_Parser.py - INFO - Checking bpmn:exclusiveGateway/s
+2022-04-20 13:26:23,017 - BPMN.logger - BPMN_Parser.py - INFO - no bpmn:exclusiveGateway found checking successfully
+2022-04-20 13:26:23,018 - BPMN.logger - BPMN_Parser.py - INFO - Checking bpmn:inclusiveGateway/s
+2022-04-20 13:26:23,018 - BPMN.logger - BPMN_Parser.py - DEBUG - Transforming outgoing flows :['Flow_17cerxv', 'Flow_08uffka', 'Flow_0zztvg0']
+2022-04-20 13:26:23,018 - BPMN.logger - BPMN_Parser.py - DEBUG - Transforming outgoing flows :Flow_086x82t
+2022-04-20 13:26:23,018 - BPMN.logger - BPMN_Parser.py - INFO - Checking bpmn:inclusiveGateway/s finished successfully
+2022-04-20 13:26:23,019 - BPMN.logger - BPMN_Parser.py - INFO - Checking bpmn:parallelGateway/s
+2022-04-20 13:26:23,019 - BPMN.logger - BPMN_Parser.py - INFO - no bpmn:parallelGateway found checking successfully
+2022-04-20 13:26:23,019 - BPMN.logger - BPMN_Parser.py - INFO - checking complete inkltest.bpmn was sucessfully parsed
+2022-04-20 13:26:23,021 - BPMN.logger - BPMN_Engine.py - INFO - Found startevent and added it to the queue
+2022-04-20 13:26:23,021 - BPMN.logger - BPMN_Engine.py - INFO - starting process from inkltest.bpmn
+2022-04-20 13:26:23,021 - BPMN.logger - BPMN_Engine.py - INFO - Next Element in queue is StartEvent: StartEvent_1 with the priority of 1
+2022-04-20 13:26:23,022 - BPMN.logger - StartEvent.py - INFO - Token:e9966040-dc95-4fd0-9a1d-a1d1c6807f81
+Path taken:20-04-2022 11:26:23 : StartEvent: StartEvent_1
+Data:Empty DataFrame
+Columns: []
+Index: []
+None
+2022-04-20 13:26:23,027 - BPMN.logger - BPMN_Engine.py - INFO - Element of type bpmn:task : OrderedDict([('@id', 'Activity_11dvq8c'), ('@name', 'loadExcel("beispiel.xlsx"; sheetname = "Tabelle1")'), ('bpmn:incoming', 'Flow_0sz71nl'), ('bpmn:outgoing', {'@id': 'Flow_1i1xefj', '@name': 'no_name', '@targetRef': 'Activity_0l7vq3x'})]) created and added to the queue
+2022-04-20 13:26:23,028 - BPMN.logger - BPMN_Engine.py - INFO - Next Element in queue is Task: Activity_11dvq8c(loadExcel("beispiel.xlsx"; sheetname = "Tabelle1")) with the priority of 1
+2022-04-20 13:26:23,029 - BPMN.logger - Task.py - INFO - Token:e9966040-dc95-4fd0-9a1d-a1d1c6807f81
+Path taken:20-04-2022 11:26:23 : StartEvent: StartEvent_1--0.0-->20-04-2022 11:26:23 : Task: Activity_11dvq8c(loadExcel("beispiel.xlsx"; sheetname = "Tabelle1"))
+Data:Empty DataFrame
+Columns: []
+Index: []
+None
+2022-04-20 13:26:23,032 - BPMN.logger - StrategyFactory.py - INFO - parsed function string : {'name': 'loadExcel', 'parameters': [{'parameter': 'beispiel.xlsx', 'type': 'str', 'string': '"beispiel.xlsx"'}, {'parameter': 'Tabelle1', 'type': 'str', 'string': '"Tabelle1"', 'optional': True, 'opt_name': 'sheetname'}]}
+2022-04-20 13:26:23,033 - BPMN.logger - Token.py - INFO - Token e9966040-dc95-4fd0-9a1d-a1d1c6807f81 is executing LoadExcelStrategy
+2022-04-20 13:26:23,330 - BPMN.logger - BPMN_Engine.py - INFO - Element of type bpmn:task : OrderedDict([('@id', 'Activity_0l7vq3x'), ('@name', 'Kostenstelle = "unknown"'), ('bpmn:incoming', 'Flow_1i1xefj'), ('bpmn:outgoing', {'@id': 'Flow_08zaqhs', '@name': 'no_name', '@targetRef': 'Gateway_0md6k1f'})]) created and added to the queue
+2022-04-20 13:26:23,331 - BPMN.logger - BPMN_Engine.py - INFO - Next Element in queue is Task: Activity_0l7vq3x(Kostenstelle = "unknown") with the priority of 1
+2022-04-20 13:26:23,331 - BPMN.logger - Task.py - INFO - Token:e9966040-dc95-4fd0-9a1d-a1d1c6807f81
+Path taken:20-04-2022 11:26:23 : StartEvent: StartEvent_1--0.0-->20-04-2022 11:26:23 : Task: Activity_11dvq8c(loadExcel("beispiel.xlsx"; sheetname = "Tabelle1"))--0.005-->20-04-2022 11:26:23 : Task: Activity_0l7vq3x(Kostenstelle = "unknown")
+Data:   Belegnummer Belegdatum Lieferant Profitcenter
+0            1     05.Jan         A           P1
+1            2     06.Jan         B           P3
+2            3     07.Jan         A           P1
+3            5     09.Jan         B           P2
+4            6     10.Jan         A           P3
+None
+2022-04-20 13:26:23,363 - BPMN.logger - StrategyFactory.py - INFO - parsed function string : {'name': 'eval', 'parameters': [{'parameter': 'Kostenstelle = "unknown"', 'type': 'code'}]}
+2022-04-20 13:26:23,364 - BPMN.logger - Token.py - INFO - Token e9966040-dc95-4fd0-9a1d-a1d1c6807f81 is executing evalStrategy
+2022-04-20 13:26:23,372 - BPMN.logger - TransformationStrategy.py - WARNING - {} didn't work on eval Kostenstelle = "unknown" trying next engine
+2022-04-20 13:26:23,382 - BPMN.logger - TransformationStrategy.py - INFO - eval success with    Belegnummer Belegdatum Lieferant Profitcenter Kostenstelle
+0            1     05.Jan         A           P1      unknown
+1            2     06.Jan         B           P3      unknown
+2            3     07.Jan         A           P1      unknown
+3            5     09.Jan         B           P2      unknown
+4            6     10.Jan         A           P3      unknown
+2022-04-20 13:28:57,007 - BPMN.logger - BPMN_Parser.py - INFO - started parsing file:inkltest.bpmn
+2022-04-20 13:28:57,009 - BPMN.logger - BPMN_Parser.py - INFO - Parsing completed starting with checks
+2022-04-20 13:28:57,010 - BPMN.logger - BPMN_Parser.py - INFO - Checking startevent
+2022-04-20 13:28:57,010 - BPMN.logger - BPMN_Parser.py - DEBUG - Transforming outgoing flows :Flow_0sz71nl
+2022-04-20 13:28:57,010 - BPMN.logger - BPMN_Parser.py - INFO - Checking startevent finished sucessfully
+2022-04-20 13:28:57,011 - BPMN.logger - BPMN_Parser.py - INFO - Checking endevent/s
+2022-04-20 13:28:57,011 - BPMN.logger - BPMN_Parser.py - INFO - Checking Endevent/s finished sucessfully
+2022-04-20 13:28:57,012 - BPMN.logger - BPMN_Parser.py - INFO - Checking task/s
+2022-04-20 13:28:57,012 - BPMN.logger - BPMN_Parser.py - DEBUG - Transforming outgoing flows :Flow_1i1xefj
+2022-04-20 13:28:57,012 - BPMN.logger - BPMN_Parser.py - DEBUG - Transforming outgoing flows :Flow_1xu7i9f
+2022-04-20 13:28:57,013 - BPMN.logger - BPMN_Parser.py - DEBUG - Transforming outgoing flows :Flow_188wp25
+2022-04-20 13:28:57,013 - BPMN.logger - BPMN_Parser.py - DEBUG - Transforming outgoing flows :Flow_08zaqhs
+2022-04-20 13:28:57,013 - BPMN.logger - BPMN_Parser.py - DEBUG - Transforming outgoing flows :Flow_0q477rq
+2022-04-20 13:28:57,013 - BPMN.logger - BPMN_Parser.py - INFO - Checking task/s finished successfully
+2022-04-20 13:28:57,013 - BPMN.logger - BPMN_Parser.py - INFO - Checking bpmn:exclusiveGateway/s
+2022-04-20 13:28:57,013 - BPMN.logger - BPMN_Parser.py - INFO - no bpmn:exclusiveGateway found checking successfully
+2022-04-20 13:28:57,014 - BPMN.logger - BPMN_Parser.py - INFO - Checking bpmn:inclusiveGateway/s
+2022-04-20 13:28:57,014 - BPMN.logger - BPMN_Parser.py - DEBUG - Transforming outgoing flows :['Flow_17cerxv', 'Flow_08uffka', 'Flow_0zztvg0']
+2022-04-20 13:28:57,015 - BPMN.logger - BPMN_Parser.py - DEBUG - Transforming outgoing flows :Flow_086x82t
+2022-04-20 13:28:57,015 - BPMN.logger - BPMN_Parser.py - INFO - Checking bpmn:inclusiveGateway/s finished successfully
+2022-04-20 13:28:57,015 - BPMN.logger - BPMN_Parser.py - INFO - Checking bpmn:parallelGateway/s
+2022-04-20 13:28:57,016 - BPMN.logger - BPMN_Parser.py - INFO - no bpmn:parallelGateway found checking successfully
+2022-04-20 13:28:57,016 - BPMN.logger - BPMN_Parser.py - INFO - checking complete inkltest.bpmn was sucessfully parsed
+2022-04-20 13:28:57,019 - BPMN.logger - BPMN_Engine.py - INFO - Found startevent and added it to the queue
+2022-04-20 13:28:57,019 - BPMN.logger - BPMN_Engine.py - INFO - starting process from inkltest.bpmn
+2022-04-20 13:28:57,020 - BPMN.logger - BPMN_Engine.py - INFO - Next Element in queue is StartEvent: StartEvent_1 with the priority of 1
+2022-04-20 13:28:57,021 - BPMN.logger - StartEvent.py - INFO - Token:d03ea095-6db4-44b7-bb4b-8115c9ecfbe0
+Path taken:20-04-2022 11:28:57 : StartEvent: StartEvent_1
+Data:Empty DataFrame
+Columns: []
+Index: []
+None
+2022-04-20 13:29:23,016 - BPMN.logger - BPMN_Parser.py - INFO - started parsing file:inkltest.bpmn
+2022-04-20 13:29:23,018 - BPMN.logger - BPMN_Parser.py - INFO - Parsing completed starting with checks
+2022-04-20 13:29:23,018 - BPMN.logger - BPMN_Parser.py - INFO - Checking startevent
+2022-04-20 13:29:23,019 - BPMN.logger - BPMN_Parser.py - DEBUG - Transforming outgoing flows :Flow_0sz71nl
+2022-04-20 13:29:23,019 - BPMN.logger - BPMN_Parser.py - INFO - Checking startevent finished sucessfully
+2022-04-20 13:29:23,019 - BPMN.logger - BPMN_Parser.py - INFO - Checking endevent/s
+2022-04-20 13:29:23,020 - BPMN.logger - BPMN_Parser.py - INFO - Checking Endevent/s finished sucessfully
+2022-04-20 13:29:23,020 - BPMN.logger - BPMN_Parser.py - INFO - Checking task/s
+2022-04-20 13:29:23,021 - BPMN.logger - BPMN_Parser.py - DEBUG - Transforming outgoing flows :Flow_1i1xefj
+2022-04-20 13:29:23,021 - BPMN.logger - BPMN_Parser.py - DEBUG - Transforming outgoing flows :Flow_1xu7i9f
+2022-04-20 13:29:23,021 - BPMN.logger - BPMN_Parser.py - DEBUG - Transforming outgoing flows :Flow_188wp25
+2022-04-20 13:29:23,021 - BPMN.logger - BPMN_Parser.py - DEBUG - Transforming outgoing flows :Flow_08zaqhs
+2022-04-20 13:29:23,021 - BPMN.logger - BPMN_Parser.py - DEBUG - Transforming outgoing flows :Flow_0q477rq
+2022-04-20 13:29:23,021 - BPMN.logger - BPMN_Parser.py - INFO - Checking task/s finished successfully
+2022-04-20 13:29:23,022 - BPMN.logger - BPMN_Parser.py - INFO - Checking bpmn:exclusiveGateway/s
+2022-04-20 13:29:23,022 - BPMN.logger - BPMN_Parser.py - INFO - no bpmn:exclusiveGateway found checking successfully
+2022-04-20 13:29:23,022 - BPMN.logger - BPMN_Parser.py - INFO - Checking bpmn:inclusiveGateway/s
+2022-04-20 13:29:23,022 - BPMN.logger - BPMN_Parser.py - DEBUG - Transforming outgoing flows :['Flow_17cerxv', 'Flow_08uffka', 'Flow_0zztvg0']
+2022-04-20 13:29:23,023 - BPMN.logger - BPMN_Parser.py - DEBUG - Transforming outgoing flows :Flow_086x82t
+2022-04-20 13:29:23,023 - BPMN.logger - BPMN_Parser.py - INFO - Checking bpmn:inclusiveGateway/s finished successfully
+2022-04-20 13:29:23,023 - BPMN.logger - BPMN_Parser.py - INFO - Checking bpmn:parallelGateway/s
+2022-04-20 13:29:23,023 - BPMN.logger - BPMN_Parser.py - INFO - no bpmn:parallelGateway found checking successfully
+2022-04-20 13:29:23,024 - BPMN.logger - BPMN_Parser.py - INFO - checking complete inkltest.bpmn was sucessfully parsed
+2022-04-20 13:29:23,025 - BPMN.logger - BPMN_Engine.py - INFO - Found startevent and added it to the queue
+2022-04-20 13:29:23,026 - BPMN.logger - BPMN_Engine.py - INFO - starting process from inkltest.bpmn
+2022-04-20 13:29:23,026 - BPMN.logger - BPMN_Engine.py - INFO - Next Element in queue is StartEvent: StartEvent_1 with the priority of 1
+2022-04-20 13:29:23,027 - BPMN.logger - StartEvent.py - INFO - Token:063815f2-9c83-408c-a711-4872753042cc
+Path taken:20-04-2022 11:29:23 : StartEvent: StartEvent_1
+Data:Empty DataFrame
+Columns: []
+Index: []
+None
+2022-04-20 13:29:23,032 - BPMN.logger - BPMN_Engine.py - INFO - Element of type bpmn:task : OrderedDict([('@id', 'Activity_11dvq8c'), ('@name', 'loadExcel("beispiel.xlsx"; sheetname = "Tabelle1")'), ('bpmn:incoming', 'Flow_0sz71nl'), ('bpmn:outgoing', {'@id': 'Flow_1i1xefj', '@name': 'no_name', '@targetRef': 'Activity_0l7vq3x'})]) created and added to the queue
+2022-04-20 13:29:23,033 - BPMN.logger - BPMN_Engine.py - INFO - Next Element in queue is Task: Activity_11dvq8c(loadExcel("beispiel.xlsx"; sheetname = "Tabelle1")) with the priority of 1
+2022-04-20 13:29:23,033 - BPMN.logger - Task.py - INFO - Token:063815f2-9c83-408c-a711-4872753042cc
+Path taken:20-04-2022 11:29:23 : StartEvent: StartEvent_1--0.0-->20-04-2022 11:29:23 : Task: Activity_11dvq8c(loadExcel("beispiel.xlsx"; sheetname = "Tabelle1"))
+Data:Empty DataFrame
+Columns: []
+Index: []
+None
+2022-04-20 13:29:23,037 - BPMN.logger - StrategyFactory.py - INFO - parsed function string : {'name': 'loadExcel', 'parameters': [{'parameter': 'beispiel.xlsx', 'type': 'str', 'string': '"beispiel.xlsx"'}, {'parameter': 'Tabelle1', 'type': 'str', 'string': '"Tabelle1"', 'optional': True, 'opt_name': 'sheetname'}]}
+2022-04-20 13:29:23,038 - BPMN.logger - Token.py - INFO - Token 063815f2-9c83-408c-a711-4872753042cc is executing LoadExcelStrategy
+2022-04-20 13:29:23,384 - BPMN.logger - BPMN_Engine.py - INFO - Element of type bpmn:task : OrderedDict([('@id', 'Activity_0l7vq3x'), ('@name', 'Kostenstelle = "unknown"'), ('bpmn:incoming', 'Flow_1i1xefj'), ('bpmn:outgoing', {'@id': 'Flow_08zaqhs', '@name': 'no_name', '@targetRef': 'Gateway_0md6k1f'})]) created and added to the queue
+2022-04-20 13:29:23,385 - BPMN.logger - BPMN_Engine.py - INFO - Next Element in queue is Task: Activity_0l7vq3x(Kostenstelle = "unknown") with the priority of 1
+2022-04-20 13:29:23,385 - BPMN.logger - Task.py - INFO - Token:063815f2-9c83-408c-a711-4872753042cc
+Path taken:20-04-2022 11:29:23 : StartEvent: StartEvent_1--0.0-->20-04-2022 11:29:23 : Task: Activity_11dvq8c(loadExcel("beispiel.xlsx"; sheetname = "Tabelle1"))--0.006-->20-04-2022 11:29:23 : Task: Activity_0l7vq3x(Kostenstelle = "unknown")
+Data:   Belegnummer Belegdatum Lieferant Profitcenter
+0            1     05.Jan         A           P1
+1            2     06.Jan         B           P3
+2            3     07.Jan         A           P1
+3            5     09.Jan         B           P2
+4            6     10.Jan         A           P3
+None
+2022-04-20 13:29:23,423 - BPMN.logger - StrategyFactory.py - INFO - parsed function string : {'name': 'eval', 'parameters': [{'parameter': 'Kostenstelle = "unknown"', 'type': 'code'}]}
+2022-04-20 13:29:23,423 - BPMN.logger - Token.py - INFO - Token 063815f2-9c83-408c-a711-4872753042cc is executing evalStrategy
+2022-04-20 13:29:23,433 - BPMN.logger - TransformationStrategy.py - WARNING - {} didn't work on eval Kostenstelle = "unknown" trying next engine
+2022-04-20 13:29:23,442 - BPMN.logger - TransformationStrategy.py - INFO - eval success with    Belegnummer Belegdatum Lieferant Profitcenter Kostenstelle
+0            1     05.Jan         A           P1      unknown
+1            2     06.Jan         B           P3      unknown
+2            3     07.Jan         A           P1      unknown
+3            5     09.Jan         B           P2      unknown
+4            6     10.Jan         A           P3      unknown
+2022-04-20 13:32:21,260 - BPMN.logger - BPMN_Parser.py - INFO - started parsing file:inkltest.bpmn
+2022-04-20 13:32:21,272 - BPMN.logger - BPMN_Parser.py - INFO - Parsing completed starting with checks
+2022-04-20 13:32:21,273 - BPMN.logger - BPMN_Parser.py - INFO - Checking startevent
+2022-04-20 13:32:21,273 - BPMN.logger - BPMN_Parser.py - DEBUG - Transforming outgoing flows :Flow_0sz71nl
+2022-04-20 13:32:21,274 - BPMN.logger - BPMN_Parser.py - INFO - Checking startevent finished sucessfully
+2022-04-20 13:32:21,274 - BPMN.logger - BPMN_Parser.py - INFO - Checking endevent/s
+2022-04-20 13:32:21,274 - BPMN.logger - BPMN_Parser.py - INFO - Checking Endevent/s finished sucessfully
+2022-04-20 13:32:21,275 - BPMN.logger - BPMN_Parser.py - INFO - Checking task/s
+2022-04-20 13:32:21,276 - BPMN.logger - BPMN_Parser.py - DEBUG - Transforming outgoing flows :Flow_1i1xefj
+2022-04-20 13:32:21,276 - BPMN.logger - BPMN_Parser.py - DEBUG - Transforming outgoing flows :Flow_1xu7i9f
+2022-04-20 13:32:21,276 - BPMN.logger - BPMN_Parser.py - DEBUG - Transforming outgoing flows :Flow_188wp25
+2022-04-20 13:32:21,277 - BPMN.logger - BPMN_Parser.py - DEBUG - Transforming outgoing flows :Flow_08zaqhs
+2022-04-20 13:32:21,277 - BPMN.logger - BPMN_Parser.py - DEBUG - Transforming outgoing flows :Flow_0q477rq
+2022-04-20 13:32:21,277 - BPMN.logger - BPMN_Parser.py - INFO - Checking task/s finished successfully
+2022-04-20 13:32:21,277 - BPMN.logger - BPMN_Parser.py - INFO - Checking bpmn:exclusiveGateway/s
+2022-04-20 13:32:21,278 - BPMN.logger - BPMN_Parser.py - INFO - no bpmn:exclusiveGateway found checking successfully
+2022-04-20 13:32:21,278 - BPMN.logger - BPMN_Parser.py - INFO - Checking bpmn:inclusiveGateway/s
+2022-04-20 13:32:21,278 - BPMN.logger - BPMN_Parser.py - DEBUG - Transforming outgoing flows :['Flow_17cerxv', 'Flow_08uffka', 'Flow_0zztvg0']
+2022-04-20 13:32:21,279 - BPMN.logger - BPMN_Parser.py - DEBUG - Transforming outgoing flows :Flow_086x82t
+2022-04-20 13:32:21,279 - BPMN.logger - BPMN_Parser.py - INFO - Checking bpmn:inclusiveGateway/s finished successfully
+2022-04-20 13:32:21,279 - BPMN.logger - BPMN_Parser.py - INFO - Checking bpmn:parallelGateway/s
+2022-04-20 13:32:21,280 - BPMN.logger - BPMN_Parser.py - INFO - no bpmn:parallelGateway found checking successfully
+2022-04-20 13:32:21,280 - BPMN.logger - BPMN_Parser.py - INFO - checking complete inkltest.bpmn was sucessfully parsed
+2022-04-20 13:32:21,283 - BPMN.logger - BPMN_Engine.py - INFO - Found startevent and added it to the queue
+2022-04-20 13:32:21,283 - BPMN.logger - BPMN_Engine.py - INFO - starting process from inkltest.bpmn
+2022-04-20 13:32:21,284 - BPMN.logger - BPMN_Engine.py - INFO - Next Element in queue is StartEvent: StartEvent_1 with the priority of 1
+2022-04-20 13:32:21,285 - BPMN.logger - StartEvent.py - INFO - Token:3c992dee-d868-4d0b-948b-507d403f028d
+Path taken:20-04-2022 11:32:21 : StartEvent: StartEvent_1
+Data:Empty DataFrame
+Columns: []
+Index: []
+None
+2022-04-20 13:32:21,291 - BPMN.logger - BPMN_Engine.py - INFO - Element of type bpmn:task : OrderedDict([('@id', 'Activity_11dvq8c'), ('@name', 'loadExcel("beispiel.xlsx"; sheetname = "Tabelle1")'), ('bpmn:incoming', 'Flow_0sz71nl'), ('bpmn:outgoing', {'@id': 'Flow_1i1xefj', '@name': 'no_name', '@targetRef': 'Activity_0l7vq3x'})]) created and added to the queue
+2022-04-20 13:32:21,292 - BPMN.logger - BPMN_Engine.py - INFO - Next Element in queue is Task: Activity_11dvq8c(loadExcel("beispiel.xlsx"; sheetname = "Tabelle1")) with the priority of 1
+2022-04-20 13:32:21,293 - BPMN.logger - Task.py - INFO - Token:3c992dee-d868-4d0b-948b-507d403f028d
+Path taken:20-04-2022 11:32:21 : StartEvent: StartEvent_1--0.0-->20-04-2022 11:32:21 : Task: Activity_11dvq8c(loadExcel("beispiel.xlsx"; sheetname = "Tabelle1"))
+Data:Empty DataFrame
+Columns: []
+Index: []
+None
+2022-04-20 13:32:21,297 - BPMN.logger - StrategyFactory.py - INFO - parsed function string : {'name': 'loadExcel', 'parameters': [{'parameter': 'beispiel.xlsx', 'type': 'str', 'string': '"beispiel.xlsx"'}, {'parameter': 'Tabelle1', 'type': 'str', 'string': '"Tabelle1"', 'optional': True, 'opt_name': 'sheetname'}]}
+2022-04-20 13:32:21,298 - BPMN.logger - Token.py - INFO - Token 3c992dee-d868-4d0b-948b-507d403f028d is executing LoadExcelStrategy
+2022-04-20 13:32:21,715 - BPMN.logger - BPMN_Engine.py - INFO - Element of type bpmn:task : OrderedDict([('@id', 'Activity_0l7vq3x'), ('@name', 'Kostenstelle = "unknown"'), ('bpmn:incoming', 'Flow_1i1xefj'), ('bpmn:outgoing', {'@id': 'Flow_08zaqhs', '@name': 'no_name', '@targetRef': 'Gateway_0md6k1f'})]) created and added to the queue
+2022-04-20 13:32:21,716 - BPMN.logger - BPMN_Engine.py - INFO - Next Element in queue is Task: Activity_0l7vq3x(Kostenstelle = "unknown") with the priority of 1
+2022-04-20 13:32:21,717 - BPMN.logger - Task.py - INFO - Token:3c992dee-d868-4d0b-948b-507d403f028d
+Path taken:20-04-2022 11:32:21 : StartEvent: StartEvent_1--0.0-->20-04-2022 11:32:21 : Task: Activity_11dvq8c(loadExcel("beispiel.xlsx"; sheetname = "Tabelle1"))--0.007-->20-04-2022 11:32:21 : Task: Activity_0l7vq3x(Kostenstelle = "unknown")
+Data:   Belegnummer Belegdatum Lieferant Profitcenter
+0            1     05.Jan         A           P1
+1            2     06.Jan         B           P3
+2            3     07.Jan         A           P1
+3            5     09.Jan         B           P2
+4            6     10.Jan         A           P3
+None
+2022-04-20 13:32:21,755 - BPMN.logger - StrategyFactory.py - INFO - parsed function string : {'name': 'eval', 'parameters': [{'parameter': 'Kostenstelle = "unknown"', 'type': 'code'}]}
+2022-04-20 13:32:21,756 - BPMN.logger - Token.py - INFO - Token 3c992dee-d868-4d0b-948b-507d403f028d is executing evalStrategy
+2022-04-20 13:32:21,763 - BPMN.logger - TransformationStrategy.py - WARNING - {} didn't work on eval Kostenstelle = "unknown" trying next engine
+2022-04-20 13:32:21,772 - BPMN.logger - TransformationStrategy.py - INFO - eval success with    Belegnummer Belegdatum Lieferant Profitcenter Kostenstelle
+0            1     05.Jan         A           P1      unknown
+1            2     06.Jan         B           P3      unknown
+2            3     07.Jan         A           P1      unknown
+3            5     09.Jan         B           P2      unknown
+4            6     10.Jan         A           P3      unknown
+2022-04-20 13:32:21,789 - BPMN.logger - BPMN_Engine.py - DEBUG - {'id': 'Gateway_0md6k1f', 'token': Token:3c992dee-d868-4d0b-948b-507d403f028d
+Path taken:20-04-2022 11:32:21 : StartEvent: StartEvent_1--0.0-->20-04-2022 11:32:21 : Task: Activity_11dvq8c(loadExcel("beispiel.xlsx"; sheetname = "Tabelle1"))--0.007-->20-04-2022 11:32:21 : Task: Activity_0l7vq3x(Kostenstelle = "unknown")
+Data:   Belegnummer Belegdatum Lieferant Profitcenter Kostenstelle
+0            1     05.Jan         A           P1      unknown
+1            2     06.Jan         B           P3      unknown
+2            3     07.Jan         A           P1      unknown
+3            5     09.Jan         B           P2      unknown
+4            6     10.Jan         A           P3      unknown
+None}
+2022-04-20 13:36:31,426 - BPMN.logger - BPMN_Parser.py - INFO - started parsing file:inkltest.bpmn
+2022-04-20 13:36:31,429 - BPMN.logger - BPMN_Parser.py - INFO - Parsing completed starting with checks
+2022-04-20 13:36:31,429 - BPMN.logger - BPMN_Parser.py - INFO - Checking startevent
+2022-04-20 13:36:31,430 - BPMN.logger - BPMN_Parser.py - DEBUG - Transforming outgoing flows :Flow_0sz71nl
+2022-04-20 13:36:31,430 - BPMN.logger - BPMN_Parser.py - INFO - Checking startevent finished sucessfully
+2022-04-20 13:36:31,431 - BPMN.logger - BPMN_Parser.py - INFO - Checking endevent/s
+2022-04-20 13:36:31,432 - BPMN.logger - BPMN_Parser.py - INFO - Checking Endevent/s finished sucessfully
+2022-04-20 13:36:31,432 - BPMN.logger - BPMN_Parser.py - INFO - Checking task/s
+2022-04-20 13:36:31,432 - BPMN.logger - BPMN_Parser.py - DEBUG - Transforming outgoing flows :Flow_1i1xefj
+2022-04-20 13:36:31,433 - BPMN.logger - BPMN_Parser.py - DEBUG - Transforming outgoing flows :Flow_1xu7i9f
+2022-04-20 13:36:31,433 - BPMN.logger - BPMN_Parser.py - DEBUG - Transforming outgoing flows :Flow_188wp25
+2022-04-20 13:36:31,433 - BPMN.logger - BPMN_Parser.py - DEBUG - Transforming outgoing flows :Flow_08zaqhs
+2022-04-20 13:36:31,433 - BPMN.logger - BPMN_Parser.py - DEBUG - Transforming outgoing flows :Flow_0q477rq
+2022-04-20 13:36:31,433 - BPMN.logger - BPMN_Parser.py - INFO - Checking task/s finished successfully
+2022-04-20 13:36:31,434 - BPMN.logger - BPMN_Parser.py - INFO - Checking bpmn:exclusiveGateway/s
+2022-04-20 13:36:31,434 - BPMN.logger - BPMN_Parser.py - INFO - no bpmn:exclusiveGateway found checking successfully
+2022-04-20 13:36:31,435 - BPMN.logger - BPMN_Parser.py - INFO - Checking bpmn:inclusiveGateway/s
+2022-04-20 13:36:31,435 - BPMN.logger - BPMN_Parser.py - DEBUG - Transforming outgoing flows :['Flow_17cerxv', 'Flow_08uffka', 'Flow_0zztvg0']
+2022-04-20 13:36:31,435 - BPMN.logger - BPMN_Parser.py - DEBUG - Transforming outgoing flows :Flow_086x82t
+2022-04-20 13:36:31,436 - BPMN.logger - BPMN_Parser.py - INFO - Checking bpmn:inclusiveGateway/s finished successfully
+2022-04-20 13:36:31,436 - BPMN.logger - BPMN_Parser.py - INFO - Checking bpmn:parallelGateway/s
+2022-04-20 13:36:31,436 - BPMN.logger - BPMN_Parser.py - INFO - no bpmn:parallelGateway found checking successfully
+2022-04-20 13:36:31,437 - BPMN.logger - BPMN_Parser.py - INFO - checking complete inkltest.bpmn was sucessfully parsed
+2022-04-20 13:36:31,438 - BPMN.logger - BPMN_Engine.py - INFO - Found startevent and added it to the queue
+2022-04-20 13:36:31,439 - BPMN.logger - BPMN_Engine.py - INFO - starting process from inkltest.bpmn
+2022-04-20 13:36:31,439 - BPMN.logger - BPMN_Engine.py - INFO - Next Element in queue is StartEvent: StartEvent_1 with the priority of 1
+2022-04-20 13:36:31,440 - BPMN.logger - StartEvent.py - INFO - Token:7c696c00-b675-4287-9066-0a3c85264515
+Path taken:20-04-2022 11:36:31 : StartEvent: StartEvent_1
+Data:Empty DataFrame
+Columns: []
+Index: []
+None
+2022-04-20 13:36:31,445 - BPMN.logger - BPMN_Engine.py - INFO - Element of type bpmn:task : OrderedDict([('@id', 'Activity_11dvq8c'), ('@name', 'loadExcel("beispiel.xlsx"; sheetname = "Tabelle1")'), ('bpmn:incoming', 'Flow_0sz71nl'), ('bpmn:outgoing', {'@id': 'Flow_1i1xefj', '@name': 'no_name', '@targetRef': 'Activity_0l7vq3x'})]) created and added to the queue
+2022-04-20 13:36:31,446 - BPMN.logger - BPMN_Engine.py - INFO - Next Element in queue is Task: Activity_11dvq8c(loadExcel("beispiel.xlsx"; sheetname = "Tabelle1")) with the priority of 1
+2022-04-20 13:36:31,446 - BPMN.logger - Task.py - INFO - Token:7c696c00-b675-4287-9066-0a3c85264515
+Path taken:20-04-2022 11:36:31 : StartEvent: StartEvent_1--0.0-->20-04-2022 11:36:31 : Task: Activity_11dvq8c(loadExcel("beispiel.xlsx"; sheetname = "Tabelle1"))
+Data:Empty DataFrame
+Columns: []
+Index: []
+None
+2022-04-20 13:36:31,452 - BPMN.logger - StrategyFactory.py - INFO - parsed function string : {'name': 'loadExcel', 'parameters': [{'parameter': 'beispiel.xlsx', 'type': 'str', 'string': '"beispiel.xlsx"'}, {'parameter': 'Tabelle1', 'type': 'str', 'string': '"Tabelle1"', 'optional': True, 'opt_name': 'sheetname'}]}
+2022-04-20 13:36:31,452 - BPMN.logger - Token.py - INFO - Token 7c696c00-b675-4287-9066-0a3c85264515 is executing LoadExcelStrategy
+2022-04-20 13:36:32,059 - BPMN.logger - BPMN_Engine.py - INFO - Element of type bpmn:task : OrderedDict([('@id', 'Activity_0l7vq3x'), ('@name', 'Kostenstelle = "unknown"'), ('bpmn:incoming', 'Flow_1i1xefj'), ('bpmn:outgoing', {'@id': 'Flow_08zaqhs', '@name': 'no_name', '@targetRef': 'Gateway_0md6k1f'})]) created and added to the queue
+2022-04-20 13:36:32,060 - BPMN.logger - BPMN_Engine.py - INFO - Next Element in queue is Task: Activity_0l7vq3x(Kostenstelle = "unknown") with the priority of 1
+2022-04-20 13:36:32,060 - BPMN.logger - Task.py - INFO - Token:7c696c00-b675-4287-9066-0a3c85264515
+Path taken:20-04-2022 11:36:31 : StartEvent: StartEvent_1--0.0-->20-04-2022 11:36:31 : Task: Activity_11dvq8c(loadExcel("beispiel.xlsx"; sheetname = "Tabelle1"))--0.01-->20-04-2022 11:36:32 : Task: Activity_0l7vq3x(Kostenstelle = "unknown")
+Data:   Belegnummer Belegdatum Lieferant Profitcenter
+0            1     05.Jan         A           P1
+1            2     06.Jan         B           P3
+2            3     07.Jan         A           P1
+3            5     09.Jan         B           P2
+4            6     10.Jan         A           P3
+None
+2022-04-20 13:36:32,129 - BPMN.logger - StrategyFactory.py - INFO - parsed function string : {'name': 'eval', 'parameters': [{'parameter': 'Kostenstelle = "unknown"', 'type': 'code'}]}
+2022-04-20 13:36:32,131 - BPMN.logger - Token.py - INFO - Token 7c696c00-b675-4287-9066-0a3c85264515 is executing evalStrategy
+2022-04-20 13:36:32,149 - BPMN.logger - TransformationStrategy.py - WARNING - {} didn't work on eval Kostenstelle = "unknown" trying next engine
+2022-04-20 13:36:32,179 - BPMN.logger - TransformationStrategy.py - INFO - eval success with    Belegnummer Belegdatum Lieferant Profitcenter Kostenstelle
+0            1     05.Jan         A           P1      unknown
+1            2     06.Jan         B           P3      unknown
+2            3     07.Jan         A           P1      unknown
+3            5     09.Jan         B           P2      unknown
+4            6     10.Jan         A           P3      unknown
+2022-04-20 13:36:32,221 - BPMN.logger - BPMN_Engine.py - DEBUG - test lol {'id': 'Gateway_0md6k1f', 'token': Token:7c696c00-b675-4287-9066-0a3c85264515
+Path taken:20-04-2022 11:36:31 : StartEvent: StartEvent_1--0.0-->20-04-2022 11:36:31 : Task: Activity_11dvq8c(loadExcel("beispiel.xlsx"; sheetname = "Tabelle1"))--0.01-->20-04-2022 11:36:32 : Task: Activity_0l7vq3x(Kostenstelle = "unknown")
+Data:   Belegnummer Belegdatum Lieferant Profitcenter Kostenstelle
+0            1     05.Jan         A           P1      unknown
+1            2     06.Jan         B           P3      unknown
+2            3     07.Jan         A           P1      unknown
+3            5     09.Jan         B           P2      unknown
+4            6     10.Jan         A           P3      unknown
+None}
+2022-04-20 13:40:27,495 - BPMN.logger - BPMN_Parser.py - INFO - started parsing file:inkltest.bpmn
+2022-04-20 13:40:27,497 - BPMN.logger - BPMN_Parser.py - INFO - Parsing completed starting with checks
+2022-04-20 13:40:27,497 - BPMN.logger - BPMN_Parser.py - INFO - Checking startevent
+2022-04-20 13:40:27,498 - BPMN.logger - BPMN_Parser.py - DEBUG - Transforming outgoing flows :Flow_0sz71nl
+2022-04-20 13:40:27,498 - BPMN.logger - BPMN_Parser.py - INFO - Checking startevent finished sucessfully
+2022-04-20 13:40:27,498 - BPMN.logger - BPMN_Parser.py - INFO - Checking endevent/s
+2022-04-20 13:40:27,499 - BPMN.logger - BPMN_Parser.py - INFO - Checking Endevent/s finished sucessfully
+2022-04-20 13:40:27,499 - BPMN.logger - BPMN_Parser.py - INFO - Checking task/s
+2022-04-20 13:40:27,499 - BPMN.logger - BPMN_Parser.py - DEBUG - Transforming outgoing flows :Flow_1i1xefj
+2022-04-20 13:40:27,499 - BPMN.logger - BPMN_Parser.py - DEBUG - Transforming outgoing flows :Flow_1xu7i9f
+2022-04-20 13:40:27,500 - BPMN.logger - BPMN_Parser.py - DEBUG - Transforming outgoing flows :Flow_188wp25
+2022-04-20 13:40:27,500 - BPMN.logger - BPMN_Parser.py - DEBUG - Transforming outgoing flows :Flow_08zaqhs
+2022-04-20 13:40:27,500 - BPMN.logger - BPMN_Parser.py - DEBUG - Transforming outgoing flows :Flow_0q477rq
+2022-04-20 13:40:27,500 - BPMN.logger - BPMN_Parser.py - INFO - Checking task/s finished successfully
+2022-04-20 13:40:27,500 - BPMN.logger - BPMN_Parser.py - INFO - Checking bpmn:exclusiveGateway/s
+2022-04-20 13:40:27,501 - BPMN.logger - BPMN_Parser.py - INFO - no bpmn:exclusiveGateway found checking successfully
+2022-04-20 13:40:27,501 - BPMN.logger - BPMN_Parser.py - INFO - Checking bpmn:inclusiveGateway/s
+2022-04-20 13:40:27,502 - BPMN.logger - BPMN_Parser.py - DEBUG - Transforming outgoing flows :['Flow_17cerxv', 'Flow_08uffka', 'Flow_0zztvg0']
+2022-04-20 13:40:27,502 - BPMN.logger - BPMN_Parser.py - DEBUG - Transforming outgoing flows :Flow_086x82t
+2022-04-20 13:40:27,502 - BPMN.logger - BPMN_Parser.py - INFO - Checking bpmn:inclusiveGateway/s finished successfully
+2022-04-20 13:40:27,502 - BPMN.logger - BPMN_Parser.py - INFO - Checking bpmn:parallelGateway/s
+2022-04-20 13:40:27,503 - BPMN.logger - BPMN_Parser.py - INFO - no bpmn:parallelGateway found checking successfully
+2022-04-20 13:40:27,503 - BPMN.logger - BPMN_Parser.py - INFO - checking complete inkltest.bpmn was sucessfully parsed
+2022-04-20 13:40:27,506 - BPMN.logger - BPMN_Engine.py - INFO - Found startevent and added it to the queue
+2022-04-20 13:40:27,507 - BPMN.logger - BPMN_Engine.py - INFO - starting process from inkltest.bpmn
+2022-04-20 13:40:27,507 - BPMN.logger - BPMN_Engine.py - INFO - Next Element in queue is StartEvent: StartEvent_1 with the priority of 1
+2022-04-20 13:40:27,508 - BPMN.logger - StartEvent.py - INFO - Token:3d179127-3db9-4ef7-a578-ba5809968bf6
+Path taken:20-04-2022 11:40:27 : StartEvent: StartEvent_1
+Data:Empty DataFrame
+Columns: []
+Index: []
+None
+2022-04-20 13:40:27,516 - BPMN.logger - BPMN_Engine.py - INFO - Element of type bpmn:task : OrderedDict([('@id', 'Activity_11dvq8c'), ('@name', 'loadExcel("beispiel.xlsx"; sheetname = "Tabelle1")'), ('bpmn:incoming', 'Flow_0sz71nl'), ('bpmn:outgoing', {'@id': 'Flow_1i1xefj', '@name': 'no_name', '@targetRef': 'Activity_0l7vq3x'})]) created and added to the queue
+2022-04-20 13:40:27,516 - BPMN.logger - BPMN_Engine.py - INFO - Next Element in queue is Task: Activity_11dvq8c(loadExcel("beispiel.xlsx"; sheetname = "Tabelle1")) with the priority of 1
+2022-04-20 13:40:27,517 - BPMN.logger - Task.py - INFO - Token:3d179127-3db9-4ef7-a578-ba5809968bf6
+Path taken:20-04-2022 11:40:27 : StartEvent: StartEvent_1--0.0-->20-04-2022 11:40:27 : Task: Activity_11dvq8c(loadExcel("beispiel.xlsx"; sheetname = "Tabelle1"))
+Data:Empty DataFrame
+Columns: []
+Index: []
+None
+2022-04-20 13:40:27,521 - BPMN.logger - StrategyFactory.py - INFO - parsed function string : {'name': 'loadExcel', 'parameters': [{'parameter': 'beispiel.xlsx', 'type': 'str', 'string': '"beispiel.xlsx"'}, {'parameter': 'Tabelle1', 'type': 'str', 'string': '"Tabelle1"', 'optional': True, 'opt_name': 'sheetname'}]}
+2022-04-20 13:40:27,521 - BPMN.logger - Token.py - INFO - Token 3d179127-3db9-4ef7-a578-ba5809968bf6 is executing LoadExcelStrategy
+2022-04-20 13:40:27,898 - BPMN.logger - BPMN_Engine.py - INFO - Element of type bpmn:task : OrderedDict([('@id', 'Activity_0l7vq3x'), ('@name', 'Kostenstelle = "unknown"'), ('bpmn:incoming', 'Flow_1i1xefj'), ('bpmn:outgoing', {'@id': 'Flow_08zaqhs', '@name': 'no_name', '@targetRef': 'Gateway_0md6k1f'})]) created and added to the queue
+2022-04-20 13:40:27,899 - BPMN.logger - BPMN_Engine.py - INFO - Next Element in queue is Task: Activity_0l7vq3x(Kostenstelle = "unknown") with the priority of 1
+2022-04-20 13:40:27,899 - BPMN.logger - Task.py - INFO - Token:3d179127-3db9-4ef7-a578-ba5809968bf6
+Path taken:20-04-2022 11:40:27 : StartEvent: StartEvent_1--0.0-->20-04-2022 11:40:27 : Task: Activity_11dvq8c(loadExcel("beispiel.xlsx"; sheetname = "Tabelle1"))--0.006-->20-04-2022 11:40:27 : Task: Activity_0l7vq3x(Kostenstelle = "unknown")
+Data:   Belegnummer Belegdatum Lieferant Profitcenter
+0            1     05.Jan         A           P1
+1            2     06.Jan         B           P3
+2            3     07.Jan         A           P1
+3            5     09.Jan         B           P2
+4            6     10.Jan         A           P3
+None
+2022-04-20 13:40:27,935 - BPMN.logger - StrategyFactory.py - INFO - parsed function string : {'name': 'eval', 'parameters': [{'parameter': 'Kostenstelle = "unknown"', 'type': 'code'}]}
+2022-04-20 13:40:27,935 - BPMN.logger - Token.py - INFO - Token 3d179127-3db9-4ef7-a578-ba5809968bf6 is executing evalStrategy
+2022-04-20 13:40:27,951 - BPMN.logger - TransformationStrategy.py - WARNING - {} didn't work on eval Kostenstelle = "unknown" trying next engine
+2022-04-20 13:40:27,973 - BPMN.logger - BPMN_Engine.py - DEBUG - test lol {'id': 'Gateway_0md6k1f', 'token': Token:3d179127-3db9-4ef7-a578-ba5809968bf6
+Path taken:20-04-2022 11:40:27 : StartEvent: StartEvent_1--0.0-->20-04-2022 11:40:27 : Task: Activity_11dvq8c(loadExcel("beispiel.xlsx"; sheetname = "Tabelle1"))--0.006-->20-04-2022 11:40:27 : Task: Activity_0l7vq3x(Kostenstelle = "unknown")
+Data:   Belegnummer Belegdatum Lieferant Profitcenter Kostenstelle
+0            1     05.Jan         A           P1      unknown
+1            2     06.Jan         B           P3      unknown
+2            3     07.Jan         A           P1      unknown
+3            5     09.Jan         B           P2      unknown
+4            6     10.Jan         A           P3      unknown
+None}
+2022-04-20 13:57:34,019 - BPMN.logger - BPMN_Parser.py - INFO - started parsing file:inkltest.bpmn
+2022-04-20 13:57:34,023 - BPMN.logger - BPMN_Parser.py - INFO - Parsing completed starting with checks
+2022-04-20 13:57:34,023 - BPMN.logger - BPMN_Parser.py - INFO - Checking startevent
+2022-04-20 13:57:34,024 - BPMN.logger - BPMN_Parser.py - DEBUG - Transforming outgoing flows :Flow_0sz71nl
+2022-04-20 13:57:34,024 - BPMN.logger - BPMN_Parser.py - INFO - Checking startevent finished sucessfully
+2022-04-20 13:57:34,024 - BPMN.logger - BPMN_Parser.py - INFO - Checking endevent/s
+2022-04-20 13:57:34,025 - BPMN.logger - BPMN_Parser.py - INFO - Checking Endevent/s finished sucessfully
+2022-04-20 13:57:34,025 - BPMN.logger - BPMN_Parser.py - INFO - Checking task/s
+2022-04-20 13:57:34,026 - BPMN.logger - BPMN_Parser.py - DEBUG - Transforming outgoing flows :Flow_1i1xefj
+2022-04-20 13:57:34,026 - BPMN.logger - BPMN_Parser.py - DEBUG - Transforming outgoing flows :Flow_1xu7i9f
+2022-04-20 13:57:34,026 - BPMN.logger - BPMN_Parser.py - DEBUG - Transforming outgoing flows :Flow_188wp25
+2022-04-20 13:57:34,026 - BPMN.logger - BPMN_Parser.py - DEBUG - Transforming outgoing flows :Flow_08zaqhs
+2022-04-20 13:57:34,026 - BPMN.logger - BPMN_Parser.py - DEBUG - Transforming outgoing flows :Flow_0q477rq
+2022-04-20 13:57:34,026 - BPMN.logger - BPMN_Parser.py - INFO - Checking task/s finished successfully
+2022-04-20 13:57:34,027 - BPMN.logger - BPMN_Parser.py - INFO - Checking bpmn:exclusiveGateway/s
+2022-04-20 13:57:34,027 - BPMN.logger - BPMN_Parser.py - INFO - no bpmn:exclusiveGateway found checking successfully
+2022-04-20 13:57:34,028 - BPMN.logger - BPMN_Parser.py - INFO - Checking bpmn:inclusiveGateway/s
+2022-04-20 13:57:34,028 - BPMN.logger - BPMN_Parser.py - DEBUG - Transforming outgoing flows :['Flow_17cerxv', 'Flow_08uffka', 'Flow_0zztvg0']
+2022-04-20 13:57:34,028 - BPMN.logger - BPMN_Parser.py - DEBUG - Transforming outgoing flows :Flow_086x82t
+2022-04-20 13:57:34,028 - BPMN.logger - BPMN_Parser.py - INFO - Checking bpmn:inclusiveGateway/s finished successfully
+2022-04-20 13:57:34,029 - BPMN.logger - BPMN_Parser.py - INFO - Checking bpmn:parallelGateway/s
+2022-04-20 13:57:34,029 - BPMN.logger - BPMN_Parser.py - INFO - no bpmn:parallelGateway found checking successfully
+2022-04-20 13:57:34,029 - BPMN.logger - BPMN_Parser.py - INFO - checking complete inkltest.bpmn was sucessfully parsed
+2022-04-20 13:57:34,032 - BPMN.logger - BPMN_Engine.py - INFO - Found startevent and added it to the queue
+2022-04-20 13:57:34,033 - BPMN.logger - BPMN_Engine.py - INFO - starting process from inkltest.bpmn
+2022-04-20 13:57:34,033 - BPMN.logger - BPMN_Engine.py - INFO - Next Element in queue is StartEvent: StartEvent_1 with the priority of 1
+2022-04-20 13:57:34,034 - BPMN.logger - StartEvent.py - INFO - Token:54a6d447-46f1-43af-8289-520d78be5db0
+Path taken:20-04-2022 11:57:34 : StartEvent: StartEvent_1
+Data:Empty DataFrame
+Columns: []
+Index: []
+None
+2022-04-20 13:57:34,044 - BPMN.logger - BPMN_Engine.py - INFO - {'operation': 'add', 'elements': [{'id': 'Activity_11dvq8c', 'token': Token:54a6d447-46f1-43af-8289-520d78be5db0
+Path taken:20-04-2022 11:57:34 : StartEvent: StartEvent_1
+Data:Empty DataFrame
+Columns: []
+Index: []
+None}]}
+2022-04-20 13:57:34,046 - BPMN.logger - BPMN_Engine.py - INFO - Element of type bpmn:task : OrderedDict([('@id', 'Activity_11dvq8c'), ('@name', 'loadExcel("beispiel.xlsx"; sheetname = "Tabelle1")'), ('bpmn:incoming', 'Flow_0sz71nl'), ('bpmn:outgoing', {'@id': 'Flow_1i1xefj', '@name': 'no_name', '@targetRef': 'Activity_0l7vq3x'})]) created and added to the queue
+2022-04-20 13:57:34,046 - BPMN.logger - BPMN_Engine.py - INFO - Next Element in queue is Task: Activity_11dvq8c(loadExcel("beispiel.xlsx"; sheetname = "Tabelle1")) with the priority of 1
+2022-04-20 13:57:34,047 - BPMN.logger - Task.py - INFO - Token:54a6d447-46f1-43af-8289-520d78be5db0
+Path taken:20-04-2022 11:57:34 : StartEvent: StartEvent_1--0.0-->20-04-2022 11:57:34 : Task: Activity_11dvq8c(loadExcel("beispiel.xlsx"; sheetname = "Tabelle1"))
+Data:Empty DataFrame
+Columns: []
+Index: []
+None
+2022-04-20 13:57:34,050 - BPMN.logger - StrategyFactory.py - INFO - parsed function string : {'name': 'loadExcel', 'parameters': [{'parameter': 'beispiel.xlsx', 'type': 'str', 'string': '"beispiel.xlsx"'}, {'parameter': 'Tabelle1', 'type': 'str', 'string': '"Tabelle1"', 'optional': True, 'opt_name': 'sheetname'}]}
+2022-04-20 13:57:34,051 - BPMN.logger - Token.py - INFO - Token 54a6d447-46f1-43af-8289-520d78be5db0 is executing LoadExcelStrategy
+2022-04-20 13:57:34,451 - BPMN.logger - BPMN_Engine.py - INFO - {'operation': 'add', 'elements': [{'id': 'Activity_0l7vq3x', 'token': Token:54a6d447-46f1-43af-8289-520d78be5db0
+Path taken:20-04-2022 11:57:34 : StartEvent: StartEvent_1--0.0-->20-04-2022 11:57:34 : Task: Activity_11dvq8c(loadExcel("beispiel.xlsx"; sheetname = "Tabelle1"))
+Data:   Belegnummer Belegdatum Lieferant Profitcenter
+0            1     05.Jan         A           P1
+1            2     06.Jan         B           P3
+2            3     07.Jan         A           P1
+3            5     09.Jan         B           P2
+4            6     10.Jan         A           P3
+None}]}
+2022-04-20 13:57:34,452 - BPMN.logger - BPMN_Engine.py - INFO - Element of type bpmn:task : OrderedDict([('@id', 'Activity_0l7vq3x'), ('@name', 'Kostenstelle = "unknown"'), ('bpmn:incoming', 'Flow_1i1xefj'), ('bpmn:outgoing', {'@id': 'Flow_08zaqhs', '@name': 'no_name', '@targetRef': 'Gateway_0md6k1f'})]) created and added to the queue
+2022-04-20 13:57:34,453 - BPMN.logger - BPMN_Engine.py - INFO - Next Element in queue is Task: Activity_0l7vq3x(Kostenstelle = "unknown") with the priority of 1
+2022-04-20 13:57:34,453 - BPMN.logger - Task.py - INFO - Token:54a6d447-46f1-43af-8289-520d78be5db0
+Path taken:20-04-2022 11:57:34 : StartEvent: StartEvent_1--0.0-->20-04-2022 11:57:34 : Task: Activity_11dvq8c(loadExcel("beispiel.xlsx"; sheetname = "Tabelle1"))--0.007-->20-04-2022 11:57:34 : Task: Activity_0l7vq3x(Kostenstelle = "unknown")
+Data:   Belegnummer Belegdatum Lieferant Profitcenter
+0            1     05.Jan         A           P1
+1            2     06.Jan         B           P3
+2            3     07.Jan         A           P1
+3            5     09.Jan         B           P2
+4            6     10.Jan         A           P3
+None
+2022-04-20 13:57:34,491 - BPMN.logger - StrategyFactory.py - INFO - parsed function string : {'name': 'eval', 'parameters': [{'parameter': 'Kostenstelle = "unknown"', 'type': 'code'}]}
+2022-04-20 13:57:34,493 - BPMN.logger - Token.py - INFO - Token 54a6d447-46f1-43af-8289-520d78be5db0 is executing evalStrategy
+2022-04-20 13:57:34,498 - BPMN.logger - TransformationStrategy.py - WARNING - {} didn't work on eval Kostenstelle = "unknown" trying next engine
+2022-04-20 13:57:34,521 - BPMN.logger - BPMN_Engine.py - INFO - {'operation': 'add', 'elements': [{'id': 'Gateway_0md6k1f', 'token': Token:54a6d447-46f1-43af-8289-520d78be5db0
+Path taken:20-04-2022 11:57:34 : StartEvent: StartEvent_1--0.0-->20-04-2022 11:57:34 : Task: Activity_11dvq8c(loadExcel("beispiel.xlsx"; sheetname = "Tabelle1"))--0.007-->20-04-2022 11:57:34 : Task: Activity_0l7vq3x(Kostenstelle = "unknown")
+Data:   Belegnummer Belegdatum Lieferant Profitcenter Kostenstelle
+0            1     05.Jan         A           P1      unknown
+1            2     06.Jan         B           P3      unknown
+2            3     07.Jan         A           P1      unknown
+3            5     09.Jan         B           P2      unknown
+4            6     10.Jan         A           P3      unknown
+None}]}
+2022-04-20 13:57:34,524 - BPMN.logger - BPMN_Engine.py - DEBUG - test lol
+2022-04-20 14:04:27,395 - BPMN.logger - BPMN_Parser.py - INFO - started parsing file:inkltest.bpmn
+2022-04-20 14:04:27,397 - BPMN.logger - BPMN_Parser.py - INFO - Parsing completed starting with checks
+2022-04-20 14:04:27,398 - BPMN.logger - BPMN_Parser.py - INFO - Checking startevent
+2022-04-20 14:04:27,398 - BPMN.logger - BPMN_Parser.py - DEBUG - Transforming outgoing flows :Flow_0sz71nl
+2022-04-20 14:04:27,398 - BPMN.logger - BPMN_Parser.py - INFO - Checking startevent finished sucessfully
+2022-04-20 14:04:27,399 - BPMN.logger - BPMN_Parser.py - INFO - Checking endevent/s
+2022-04-20 14:04:27,399 - BPMN.logger - BPMN_Parser.py - INFO - Checking Endevent/s finished sucessfully
+2022-04-20 14:04:27,399 - BPMN.logger - BPMN_Parser.py - INFO - Checking task/s
+2022-04-20 14:04:27,400 - BPMN.logger - BPMN_Parser.py - DEBUG - Transforming outgoing flows :Flow_1i1xefj
+2022-04-20 14:04:27,400 - BPMN.logger - BPMN_Parser.py - DEBUG - Transforming outgoing flows :Flow_1xu7i9f
+2022-04-20 14:04:27,400 - BPMN.logger - BPMN_Parser.py - DEBUG - Transforming outgoing flows :Flow_188wp25
+2022-04-20 14:04:27,401 - BPMN.logger - BPMN_Parser.py - DEBUG - Transforming outgoing flows :Flow_08zaqhs
+2022-04-20 14:04:27,401 - BPMN.logger - BPMN_Parser.py - DEBUG - Transforming outgoing flows :Flow_0q477rq
+2022-04-20 14:04:27,401 - BPMN.logger - BPMN_Parser.py - INFO - Checking task/s finished successfully
+2022-04-20 14:04:27,401 - BPMN.logger - BPMN_Parser.py - INFO - Checking bpmn:exclusiveGateway/s
+2022-04-20 14:04:27,402 - BPMN.logger - BPMN_Parser.py - INFO - no bpmn:exclusiveGateway found checking successfully
+2022-04-20 14:04:27,402 - BPMN.logger - BPMN_Parser.py - INFO - Checking bpmn:inclusiveGateway/s
+2022-04-20 14:04:27,402 - BPMN.logger - BPMN_Parser.py - DEBUG - Transforming outgoing flows :['Flow_17cerxv', 'Flow_08uffka', 'Flow_0zztvg0']
+2022-04-20 14:04:27,403 - BPMN.logger - BPMN_Parser.py - DEBUG - Transforming outgoing flows :Flow_086x82t
+2022-04-20 14:04:27,403 - BPMN.logger - BPMN_Parser.py - INFO - Checking bpmn:inclusiveGateway/s finished successfully
+2022-04-20 14:04:27,403 - BPMN.logger - BPMN_Parser.py - INFO - Checking bpmn:parallelGateway/s
+2022-04-20 14:04:27,403 - BPMN.logger - BPMN_Parser.py - INFO - no bpmn:parallelGateway found checking successfully
+2022-04-20 14:04:27,404 - BPMN.logger - BPMN_Parser.py - INFO - checking complete inkltest.bpmn was sucessfully parsed
+2022-04-20 14:04:27,406 - BPMN.logger - BPMN_Engine.py - INFO - Found startevent and added it to the queue
+2022-04-20 14:04:27,406 - BPMN.logger - BPMN_Engine.py - INFO - starting process from inkltest.bpmn
+2022-04-20 14:04:27,407 - BPMN.logger - BPMN_Engine.py - INFO - Next Element in queue is StartEvent: StartEvent_1 with the priority of 1
+2022-04-20 14:04:27,408 - BPMN.logger - StartEvent.py - INFO - Token:f7adc435-a0e9-4e9c-bf7e-9ef4585ac7ad
+Path taken:20-04-2022 12:04:27 : StartEvent: StartEvent_1
+Data:Empty DataFrame
+Columns: []
+Index: []
+None
+2022-04-20 14:04:27,413 - BPMN.logger - BPMN_Engine.py - INFO -  Hi test{'id': 'Activity_11dvq8c', 'token': Token:f7adc435-a0e9-4e9c-bf7e-9ef4585ac7ad
+Path taken:20-04-2022 12:04:27 : StartEvent: StartEvent_1
+Data:Empty DataFrame
+Columns: []
+Index: []
+None}
+2022-04-20 14:04:27,414 - BPMN.logger - BPMN_Engine.py - INFO - Element of type bpmn:task : OrderedDict([('@id', 'Activity_11dvq8c'), ('@name', 'loadExcel("beispiel.xlsx"; sheetname = "Tabelle1")'), ('bpmn:incoming', 'Flow_0sz71nl'), ('bpmn:outgoing', {'@id': 'Flow_1i1xefj', '@name': 'no_name', '@targetRef': 'Activity_0l7vq3x'})]) created and added to the queue
+2022-04-20 14:04:27,415 - BPMN.logger - BPMN_Engine.py - INFO - Next Element in queue is Task: Activity_11dvq8c(loadExcel("beispiel.xlsx"; sheetname = "Tabelle1")) with the priority of 1
+2022-04-20 14:04:27,416 - BPMN.logger - Task.py - INFO - Token:f7adc435-a0e9-4e9c-bf7e-9ef4585ac7ad
+Path taken:20-04-2022 12:04:27 : StartEvent: StartEvent_1--0.0-->20-04-2022 12:04:27 : Task: Activity_11dvq8c(loadExcel("beispiel.xlsx"; sheetname = "Tabelle1"))
+Data:Empty DataFrame
+Columns: []
+Index: []
+None
+2022-04-20 14:04:27,423 - BPMN.logger - StrategyFactory.py - INFO - parsed function string : {'name': 'loadExcel', 'parameters': [{'parameter': 'beispiel.xlsx', 'type': 'str', 'string': '"beispiel.xlsx"'}, {'parameter': 'Tabelle1', 'type': 'str', 'string': '"Tabelle1"', 'optional': True, 'opt_name': 'sheetname'}]}
+2022-04-20 14:04:27,425 - BPMN.logger - Token.py - INFO - Token f7adc435-a0e9-4e9c-bf7e-9ef4585ac7ad is executing LoadExcelStrategy
+2022-04-20 14:04:27,972 - BPMN.logger - BPMN_Engine.py - INFO -  Hi test{'id': 'Activity_0l7vq3x', 'token': Token:f7adc435-a0e9-4e9c-bf7e-9ef4585ac7ad
+Path taken:20-04-2022 12:04:27 : StartEvent: StartEvent_1--0.0-->20-04-2022 12:04:27 : Task: Activity_11dvq8c(loadExcel("beispiel.xlsx"; sheetname = "Tabelle1"))
+Data:   Belegnummer Belegdatum Lieferant Profitcenter
+0            1     05.Jan         A           P1
+1            2     06.Jan         B           P3
+2            3     07.Jan         A           P1
+3            5     09.Jan         B           P2
+4            6     10.Jan         A           P3
+None}
+2022-04-20 14:04:27,974 - BPMN.logger - BPMN_Engine.py - INFO - Element of type bpmn:task : OrderedDict([('@id', 'Activity_0l7vq3x'), ('@name', 'Kostenstelle = "unknown"'), ('bpmn:incoming', 'Flow_1i1xefj'), ('bpmn:outgoing', {'@id': 'Flow_08zaqhs', '@name': 'no_name', '@targetRef': 'Gateway_0md6k1f'})]) created and added to the queue
+2022-04-20 14:04:27,975 - BPMN.logger - BPMN_Engine.py - INFO - Next Element in queue is Task: Activity_0l7vq3x(Kostenstelle = "unknown") with the priority of 1
+2022-04-20 14:04:27,976 - BPMN.logger - Task.py - INFO - Token:f7adc435-a0e9-4e9c-bf7e-9ef4585ac7ad
+Path taken:20-04-2022 12:04:27 : StartEvent: StartEvent_1--0.0-->20-04-2022 12:04:27 : Task: Activity_11dvq8c(loadExcel("beispiel.xlsx"; sheetname = "Tabelle1"))--0.009-->20-04-2022 12:04:27 : Task: Activity_0l7vq3x(Kostenstelle = "unknown")
+Data:   Belegnummer Belegdatum Lieferant Profitcenter
+0            1     05.Jan         A           P1
+1            2     06.Jan         B           P3
+2            3     07.Jan         A           P1
+3            5     09.Jan         B           P2
+4            6     10.Jan         A           P3
+None
+2022-04-20 14:04:28,030 - BPMN.logger - StrategyFactory.py - INFO - parsed function string : {'name': 'eval', 'parameters': [{'parameter': 'Kostenstelle = "unknown"', 'type': 'code'}]}
+2022-04-20 14:04:28,034 - BPMN.logger - Token.py - INFO - Token f7adc435-a0e9-4e9c-bf7e-9ef4585ac7ad is executing evalStrategy
+2022-04-20 14:04:28,050 - BPMN.logger - TransformationStrategy.py - WARNING - {} didn't work on eval Kostenstelle = "unknown" trying next engine
+2022-04-20 14:04:28,088 - BPMN.logger - BPMN_Engine.py - INFO -  Hi test{'id': 'Gateway_0md6k1f', 'token': Token:f7adc435-a0e9-4e9c-bf7e-9ef4585ac7ad
+Path taken:20-04-2022 12:04:27 : StartEvent: StartEvent_1--0.0-->20-04-2022 12:04:27 : Task: Activity_11dvq8c(loadExcel("beispiel.xlsx"; sheetname = "Tabelle1"))--0.009-->20-04-2022 12:04:27 : Task: Activity_0l7vq3x(Kostenstelle = "unknown")
+Data:   Belegnummer Belegdatum Lieferant Profitcenter Kostenstelle
+0            1     05.Jan         A           P1      unknown
+1            2     06.Jan         B           P3      unknown
+2            3     07.Jan         A           P1      unknown
+3            5     09.Jan         B           P2      unknown
+4            6     10.Jan         A           P3      unknown
+None}
+2022-04-20 14:04:28,091 - BPMN.logger - BPMN_Engine.py - DEBUG - test lol
+2022-04-20 14:09:20,487 - BPMN.logger - BPMN_Parser.py - INFO - started parsing file:inkltest.bpmn
+2022-04-20 14:09:20,491 - BPMN.logger - BPMN_Parser.py - INFO - Parsing completed starting with checks
+2022-04-20 14:09:20,491 - BPMN.logger - BPMN_Parser.py - INFO - Checking startevent
+2022-04-20 14:09:20,492 - BPMN.logger - BPMN_Parser.py - DEBUG - Transforming outgoing flows :Flow_0sz71nl
+2022-04-20 14:09:20,492 - BPMN.logger - BPMN_Parser.py - INFO - Checking startevent finished sucessfully
+2022-04-20 14:09:20,492 - BPMN.logger - BPMN_Parser.py - INFO - Checking endevent/s
+2022-04-20 14:09:20,492 - BPMN.logger - BPMN_Parser.py - INFO - Checking Endevent/s finished sucessfully
+2022-04-20 14:09:20,493 - BPMN.logger - BPMN_Parser.py - INFO - Checking task/s
+2022-04-20 14:09:20,493 - BPMN.logger - BPMN_Parser.py - DEBUG - Transforming outgoing flows :Flow_1i1xefj
+2022-04-20 14:09:20,494 - BPMN.logger - BPMN_Parser.py - DEBUG - Transforming outgoing flows :Flow_1xu7i9f
+2022-04-20 14:09:20,494 - BPMN.logger - BPMN_Parser.py - DEBUG - Transforming outgoing flows :Flow_188wp25
+2022-04-20 14:09:20,494 - BPMN.logger - BPMN_Parser.py - DEBUG - Transforming outgoing flows :Flow_08zaqhs
+2022-04-20 14:09:20,494 - BPMN.logger - BPMN_Parser.py - DEBUG - Transforming outgoing flows :Flow_0q477rq
+2022-04-20 14:09:20,494 - BPMN.logger - BPMN_Parser.py - INFO - Checking task/s finished successfully
+2022-04-20 14:09:20,494 - BPMN.logger - BPMN_Parser.py - INFO - Checking bpmn:exclusiveGateway/s
+2022-04-20 14:09:20,495 - BPMN.logger - BPMN_Parser.py - INFO - no bpmn:exclusiveGateway found checking successfully
+2022-04-20 14:09:20,495 - BPMN.logger - BPMN_Parser.py - INFO - Checking bpmn:inclusiveGateway/s
+2022-04-20 14:09:20,495 - BPMN.logger - BPMN_Parser.py - DEBUG - Transforming outgoing flows :['Flow_17cerxv', 'Flow_08uffka', 'Flow_0zztvg0']
+2022-04-20 14:09:20,495 - BPMN.logger - BPMN_Parser.py - DEBUG - Transforming outgoing flows :Flow_086x82t
+2022-04-20 14:09:20,496 - BPMN.logger - BPMN_Parser.py - INFO - Checking bpmn:inclusiveGateway/s finished successfully
+2022-04-20 14:09:20,496 - BPMN.logger - BPMN_Parser.py - INFO - Checking bpmn:parallelGateway/s
+2022-04-20 14:09:20,496 - BPMN.logger - BPMN_Parser.py - INFO - no bpmn:parallelGateway found checking successfully
+2022-04-20 14:09:20,497 - BPMN.logger - BPMN_Parser.py - INFO - checking complete inkltest.bpmn was sucessfully parsed
+2022-04-20 14:09:20,498 - BPMN.logger - BPMN_Engine.py - INFO - Found startevent and added it to the queue
+2022-04-20 14:09:20,499 - BPMN.logger - BPMN_Engine.py - INFO - starting process from inkltest.bpmn
+2022-04-20 14:09:20,499 - BPMN.logger - BPMN_Engine.py - INFO - Next Element in queue is StartEvent: StartEvent_1 with the priority of 1
+2022-04-20 14:09:20,501 - BPMN.logger - StartEvent.py - INFO - Token:b2afe043-10fb-41d9-9442-cdb82cd5ea87
+Path taken:20-04-2022 12:09:20 : StartEvent: StartEvent_1
+Data:Empty DataFrame
+Columns: []
+Index: []
+None
+2022-04-20 14:09:20,510 - BPMN.logger - BPMN_Engine.py - INFO -  Hi test{'id': 'Activity_11dvq8c', 'token': Token:b2afe043-10fb-41d9-9442-cdb82cd5ea87
+Path taken:20-04-2022 12:09:20 : StartEvent: StartEvent_1
+Data:Empty DataFrame
+Columns: []
+Index: []
+None}
+2022-04-20 14:09:20,512 - BPMN.logger - BPMN_Engine.py - INFO - {'type': 'bpmn:task', 'information': OrderedDict([('@id', 'Activity_11dvq8c'), ('@name', 'loadExcel("beispiel.xlsx"; sheetname = "Tabelle1")'), ('bpmn:incoming', 'Flow_0sz71nl'), ('bpmn:outgoing', {'@id': 'Flow_1i1xefj', '@name': 'no_name', '@targetRef': 'Activity_0l7vq3x'})])}
+2022-04-20 14:09:20,513 - BPMN.logger - BPMN_Engine.py - INFO - Element of type bpmn:task : OrderedDict([('@id', 'Activity_11dvq8c'), ('@name', 'loadExcel("beispiel.xlsx"; sheetname = "Tabelle1")'), ('bpmn:incoming', 'Flow_0sz71nl'), ('bpmn:outgoing', {'@id': 'Flow_1i1xefj', '@name': 'no_name', '@targetRef': 'Activity_0l7vq3x'})]) created and added to the queue
+2022-04-20 14:09:20,513 - BPMN.logger - BPMN_Engine.py - INFO - Next Element in queue is Task: Activity_11dvq8c(loadExcel("beispiel.xlsx"; sheetname = "Tabelle1")) with the priority of 1
+2022-04-20 14:09:20,514 - BPMN.logger - Task.py - INFO - Token:b2afe043-10fb-41d9-9442-cdb82cd5ea87
+Path taken:20-04-2022 12:09:20 : StartEvent: StartEvent_1--0.0-->20-04-2022 12:09:20 : Task: Activity_11dvq8c(loadExcel("beispiel.xlsx"; sheetname = "Tabelle1"))
+Data:Empty DataFrame
+Columns: []
+Index: []
+None
+2022-04-20 14:09:20,518 - BPMN.logger - StrategyFactory.py - INFO - parsed function string : {'name': 'loadExcel', 'parameters': [{'parameter': 'beispiel.xlsx', 'type': 'str', 'string': '"beispiel.xlsx"'}, {'parameter': 'Tabelle1', 'type': 'str', 'string': '"Tabelle1"', 'optional': True, 'opt_name': 'sheetname'}]}
+2022-04-20 14:09:20,519 - BPMN.logger - Token.py - INFO - Token b2afe043-10fb-41d9-9442-cdb82cd5ea87 is executing LoadExcelStrategy
+2022-04-20 14:09:20,933 - BPMN.logger - BPMN_Engine.py - INFO -  Hi test{'id': 'Activity_0l7vq3x', 'token': Token:b2afe043-10fb-41d9-9442-cdb82cd5ea87
+Path taken:20-04-2022 12:09:20 : StartEvent: StartEvent_1--0.0-->20-04-2022 12:09:20 : Task: Activity_11dvq8c(loadExcel("beispiel.xlsx"; sheetname = "Tabelle1"))
+Data:   Belegnummer Belegdatum Lieferant Profitcenter
+0            1     05.Jan         A           P1
+1            2     06.Jan         B           P3
+2            3     07.Jan         A           P1
+3            5     09.Jan         B           P2
+4            6     10.Jan         A           P3
+None}
+2022-04-20 14:09:20,935 - BPMN.logger - BPMN_Engine.py - INFO - {'type': 'bpmn:task', 'information': OrderedDict([('@id', 'Activity_0l7vq3x'), ('@name', 'Kostenstelle = "unknown"'), ('bpmn:incoming', 'Flow_1i1xefj'), ('bpmn:outgoing', {'@id': 'Flow_08zaqhs', '@name': 'no_name', '@targetRef': 'Gateway_0md6k1f'})])}
+2022-04-20 14:09:20,936 - BPMN.logger - BPMN_Engine.py - INFO - Element of type bpmn:task : OrderedDict([('@id', 'Activity_0l7vq3x'), ('@name', 'Kostenstelle = "unknown"'), ('bpmn:incoming', 'Flow_1i1xefj'), ('bpmn:outgoing', {'@id': 'Flow_08zaqhs', '@name': 'no_name', '@targetRef': 'Gateway_0md6k1f'})]) created and added to the queue
+2022-04-20 14:09:20,937 - BPMN.logger - BPMN_Engine.py - INFO - Next Element in queue is Task: Activity_0l7vq3x(Kostenstelle = "unknown") with the priority of 1
+2022-04-20 14:09:20,937 - BPMN.logger - Task.py - INFO - Token:b2afe043-10fb-41d9-9442-cdb82cd5ea87
+Path taken:20-04-2022 12:09:20 : StartEvent: StartEvent_1--0.0-->20-04-2022 12:09:20 : Task: Activity_11dvq8c(loadExcel("beispiel.xlsx"; sheetname = "Tabelle1"))--0.007-->20-04-2022 12:09:20 : Task: Activity_0l7vq3x(Kostenstelle = "unknown")
+Data:   Belegnummer Belegdatum Lieferant Profitcenter
+0            1     05.Jan         A           P1
+1            2     06.Jan         B           P3
+2            3     07.Jan         A           P1
+3            5     09.Jan         B           P2
+4            6     10.Jan         A           P3
+None
+2022-04-20 14:09:20,977 - BPMN.logger - StrategyFactory.py - INFO - parsed function string : {'name': 'eval', 'parameters': [{'parameter': 'Kostenstelle = "unknown"', 'type': 'code'}]}
+2022-04-20 14:09:20,977 - BPMN.logger - Token.py - INFO - Token b2afe043-10fb-41d9-9442-cdb82cd5ea87 is executing evalStrategy
+2022-04-20 14:09:20,989 - BPMN.logger - TransformationStrategy.py - WARNING - {} didn't work on eval Kostenstelle = "unknown" trying next engine
+2022-04-20 14:09:21,008 - BPMN.logger - BPMN_Engine.py - INFO -  Hi test{'id': 'Gateway_0md6k1f', 'token': Token:b2afe043-10fb-41d9-9442-cdb82cd5ea87
+Path taken:20-04-2022 12:09:20 : StartEvent: StartEvent_1--0.0-->20-04-2022 12:09:20 : Task: Activity_11dvq8c(loadExcel("beispiel.xlsx"; sheetname = "Tabelle1"))--0.007-->20-04-2022 12:09:20 : Task: Activity_0l7vq3x(Kostenstelle = "unknown")
+Data:   Belegnummer Belegdatum Lieferant Profitcenter Kostenstelle
+0            1     05.Jan         A           P1      unknown
+1            2     06.Jan         B           P3      unknown
+2            3     07.Jan         A           P1      unknown
+3            5     09.Jan         B           P2      unknown
+4            6     10.Jan         A           P3      unknown
+None}
+2022-04-20 14:09:21,010 - BPMN.logger - BPMN_Engine.py - INFO - {'type': 'bpmn:inclusiveGateway', 'information': OrderedDict([('@id', 'Gateway_0md6k1f'), ('bpmn:incoming', 'Flow_08zaqhs'), ('bpmn:outgoing', [{'@id': 'Flow_17cerxv', '@name': 'Profitcenter == "P1"', '@targetRef': 'Activity_0ayr9uj'}, {'@id': 'Flow_08uffka', '@name': 'Profitcenter == "P2"', '@targetRef': 'Activity_0rbm5kl'}, {'@id': 'Flow_0zztvg0', '@name': 'Profitcenter != "P1" and Profitcenter != "P2"', '@targetRef': 'Gateway_1g1v4b2'}]), ('@opening', True)])}
+2022-04-20 14:09:21,011 - BPMN.logger - BPMN_Engine.py - DEBUG - test lol
+2022-04-20 14:10:08,362 - BPMN.logger - BPMN_Parser.py - INFO - started parsing file:inkltest.bpmn
+2022-04-20 14:10:08,366 - BPMN.logger - BPMN_Parser.py - INFO - Parsing completed starting with checks
+2022-04-20 14:10:08,367 - BPMN.logger - BPMN_Parser.py - INFO - Checking startevent
+2022-04-20 14:10:08,368 - BPMN.logger - BPMN_Parser.py - DEBUG - Transforming outgoing flows :Flow_0sz71nl
+2022-04-20 14:10:08,368 - BPMN.logger - BPMN_Parser.py - INFO - Checking startevent finished sucessfully
+2022-04-20 14:10:08,368 - BPMN.logger - BPMN_Parser.py - INFO - Checking endevent/s
+2022-04-20 14:10:08,369 - BPMN.logger - BPMN_Parser.py - INFO - Checking Endevent/s finished sucessfully
+2022-04-20 14:10:08,369 - BPMN.logger - BPMN_Parser.py - INFO - Checking task/s
+2022-04-20 14:10:08,370 - BPMN.logger - BPMN_Parser.py - DEBUG - Transforming outgoing flows :Flow_1i1xefj
+2022-04-20 14:10:08,370 - BPMN.logger - BPMN_Parser.py - DEBUG - Transforming outgoing flows :Flow_1xu7i9f
+2022-04-20 14:10:08,370 - BPMN.logger - BPMN_Parser.py - DEBUG - Transforming outgoing flows :Flow_188wp25
+2022-04-20 14:10:08,370 - BPMN.logger - BPMN_Parser.py - DEBUG - Transforming outgoing flows :Flow_08zaqhs
+2022-04-20 14:10:08,370 - BPMN.logger - BPMN_Parser.py - DEBUG - Transforming outgoing flows :Flow_0q477rq
+2022-04-20 14:10:08,370 - BPMN.logger - BPMN_Parser.py - INFO - Checking task/s finished successfully
+2022-04-20 14:10:08,371 - BPMN.logger - BPMN_Parser.py - INFO - Checking bpmn:exclusiveGateway/s
+2022-04-20 14:10:08,372 - BPMN.logger - BPMN_Parser.py - INFO - no bpmn:exclusiveGateway found checking successfully
+2022-04-20 14:10:08,372 - BPMN.logger - BPMN_Parser.py - INFO - Checking bpmn:inclusiveGateway/s
+2022-04-20 14:10:08,373 - BPMN.logger - BPMN_Parser.py - DEBUG - Transforming outgoing flows :['Flow_17cerxv', 'Flow_08uffka', 'Flow_0zztvg0']
+2022-04-20 14:10:08,373 - BPMN.logger - BPMN_Parser.py - DEBUG - Transforming outgoing flows :Flow_086x82t
+2022-04-20 14:10:08,373 - BPMN.logger - BPMN_Parser.py - INFO - Checking bpmn:inclusiveGateway/s finished successfully
+2022-04-20 14:10:08,373 - BPMN.logger - BPMN_Parser.py - INFO - Checking bpmn:parallelGateway/s
+2022-04-20 14:10:08,374 - BPMN.logger - BPMN_Parser.py - INFO - no bpmn:parallelGateway found checking successfully
+2022-04-20 14:10:08,374 - BPMN.logger - BPMN_Parser.py - INFO - checking complete inkltest.bpmn was sucessfully parsed
+2022-04-20 14:10:08,376 - BPMN.logger - BPMN_Engine.py - INFO - Found startevent and added it to the queue
+2022-04-20 14:10:08,377 - BPMN.logger - BPMN_Engine.py - INFO - starting process from inkltest.bpmn
+2022-04-20 14:10:08,377 - BPMN.logger - BPMN_Engine.py - INFO - Next Element in queue is StartEvent: StartEvent_1 with the priority of 1
+2022-04-20 14:10:08,378 - BPMN.logger - StartEvent.py - INFO - Token:c9bb3843-0e9b-449b-a3e5-40b617833618
+Path taken:20-04-2022 12:10:08 : StartEvent: StartEvent_1
+Data:Empty DataFrame
+Columns: []
+Index: []
+None
+2022-04-20 14:10:08,387 - BPMN.logger - BPMN_Engine.py - INFO -  Hi test{'id': 'Activity_11dvq8c', 'token': Token:c9bb3843-0e9b-449b-a3e5-40b617833618
+Path taken:20-04-2022 12:10:08 : StartEvent: StartEvent_1
+Data:Empty DataFrame
+Columns: []
+Index: []
+None}
+2022-04-20 14:10:08,389 - BPMN.logger - BPMN_Engine.py - INFO - {'type': 'bpmn:task', 'information': OrderedDict([('@id', 'Activity_11dvq8c'), ('@name', 'loadExcel("beispiel.xlsx"; sheetname = "Tabelle1")'), ('bpmn:incoming', 'Flow_0sz71nl'), ('bpmn:outgoing', {'@id': 'Flow_1i1xefj', '@name': 'no_name', '@targetRef': 'Activity_0l7vq3x'})])}
+2022-04-20 14:10:08,390 - BPMN.logger - BPMN_Engine.py - INFO - Element of type bpmn:task : OrderedDict([('@id', 'Activity_11dvq8c'), ('@name', 'loadExcel("beispiel.xlsx"; sheetname = "Tabelle1")'), ('bpmn:incoming', 'Flow_0sz71nl'), ('bpmn:outgoing', {'@id': 'Flow_1i1xefj', '@name': 'no_name', '@targetRef': 'Activity_0l7vq3x'})]) created and added to the queue
+2022-04-20 14:10:08,391 - BPMN.logger - BPMN_Engine.py - INFO - Next Element in queue is Task: Activity_11dvq8c(loadExcel("beispiel.xlsx"; sheetname = "Tabelle1")) with the priority of 1
+2022-04-20 14:10:08,391 - BPMN.logger - Task.py - INFO - Token:c9bb3843-0e9b-449b-a3e5-40b617833618
+Path taken:20-04-2022 12:10:08 : StartEvent: StartEvent_1--0.0-->20-04-2022 12:10:08 : Task: Activity_11dvq8c(loadExcel("beispiel.xlsx"; sheetname = "Tabelle1"))
+Data:Empty DataFrame
+Columns: []
+Index: []
+None
+2022-04-20 14:10:08,396 - BPMN.logger - StrategyFactory.py - INFO - parsed function string : {'name': 'loadExcel', 'parameters': [{'parameter': 'beispiel.xlsx', 'type': 'str', 'string': '"beispiel.xlsx"'}, {'parameter': 'Tabelle1', 'type': 'str', 'string': '"Tabelle1"', 'optional': True, 'opt_name': 'sheetname'}]}
+2022-04-20 14:10:08,398 - BPMN.logger - Token.py - INFO - Token c9bb3843-0e9b-449b-a3e5-40b617833618 is executing LoadExcelStrategy
+2022-04-20 14:10:08,798 - BPMN.logger - BPMN_Engine.py - INFO -  Hi test{'id': 'Activity_0l7vq3x', 'token': Token:c9bb3843-0e9b-449b-a3e5-40b617833618
+Path taken:20-04-2022 12:10:08 : StartEvent: StartEvent_1--0.0-->20-04-2022 12:10:08 : Task: Activity_11dvq8c(loadExcel("beispiel.xlsx"; sheetname = "Tabelle1"))
+Data:   Belegnummer Belegdatum Lieferant Profitcenter
+0            1     05.Jan         A           P1
+1            2     06.Jan         B           P3
+2            3     07.Jan         A           P1
+3            5     09.Jan         B           P2
+4            6     10.Jan         A           P3
+None}
+2022-04-20 14:10:08,800 - BPMN.logger - BPMN_Engine.py - INFO - {'type': 'bpmn:task', 'information': OrderedDict([('@id', 'Activity_0l7vq3x'), ('@name', 'Kostenstelle = "unknown"'), ('bpmn:incoming', 'Flow_1i1xefj'), ('bpmn:outgoing', {'@id': 'Flow_08zaqhs', '@name': 'no_name', '@targetRef': 'Gateway_0md6k1f'})])}
+2022-04-20 14:10:08,801 - BPMN.logger - BPMN_Engine.py - INFO - Element of type bpmn:task : OrderedDict([('@id', 'Activity_0l7vq3x'), ('@name', 'Kostenstelle = "unknown"'), ('bpmn:incoming', 'Flow_1i1xefj'), ('bpmn:outgoing', {'@id': 'Flow_08zaqhs', '@name': 'no_name', '@targetRef': 'Gateway_0md6k1f'})]) created and added to the queue
+2022-04-20 14:10:08,802 - BPMN.logger - BPMN_Engine.py - INFO - Next Element in queue is Task: Activity_0l7vq3x(Kostenstelle = "unknown") with the priority of 1
+2022-04-20 14:10:08,803 - BPMN.logger - Task.py - INFO - Token:c9bb3843-0e9b-449b-a3e5-40b617833618
+Path taken:20-04-2022 12:10:08 : StartEvent: StartEvent_1--0.0-->20-04-2022 12:10:08 : Task: Activity_11dvq8c(loadExcel("beispiel.xlsx"; sheetname = "Tabelle1"))--0.007-->20-04-2022 12:10:08 : Task: Activity_0l7vq3x(Kostenstelle = "unknown")
+Data:   Belegnummer Belegdatum Lieferant Profitcenter
+0            1     05.Jan         A           P1
+1            2     06.Jan         B           P3
+2            3     07.Jan         A           P1
+3            5     09.Jan         B           P2
+4            6     10.Jan         A           P3
+None
+2022-04-20 14:10:08,832 - BPMN.logger - StrategyFactory.py - INFO - parsed function string : {'name': 'eval', 'parameters': [{'parameter': 'Kostenstelle = "unknown"', 'type': 'code'}]}
+2022-04-20 14:10:08,833 - BPMN.logger - Token.py - INFO - Token c9bb3843-0e9b-449b-a3e5-40b617833618 is executing evalStrategy
+2022-04-20 14:10:08,843 - BPMN.logger - TransformationStrategy.py - WARNING - {} didn't work on eval Kostenstelle = "unknown" trying next engine
+2022-04-20 14:10:08,860 - BPMN.logger - BPMN_Engine.py - INFO -  Hi test{'id': 'Gateway_0md6k1f', 'token': Token:c9bb3843-0e9b-449b-a3e5-40b617833618
+Path taken:20-04-2022 12:10:08 : StartEvent: StartEvent_1--0.0-->20-04-2022 12:10:08 : Task: Activity_11dvq8c(loadExcel("beispiel.xlsx"; sheetname = "Tabelle1"))--0.007-->20-04-2022 12:10:08 : Task: Activity_0l7vq3x(Kostenstelle = "unknown")
+Data:   Belegnummer Belegdatum Lieferant Profitcenter Kostenstelle
+0            1     05.Jan         A           P1      unknown
+1            2     06.Jan         B           P3      unknown
+2            3     07.Jan         A           P1      unknown
+3            5     09.Jan         B           P2      unknown
+4            6     10.Jan         A           P3      unknown
+None}
+2022-04-20 14:10:08,863 - BPMN.logger - BPMN_Engine.py - INFO - {'type': 'bpmn:inclusiveGateway', 'information': OrderedDict([('@id', 'Gateway_0md6k1f'), ('bpmn:incoming', 'Flow_08zaqhs'), ('bpmn:outgoing', [{'@id': 'Flow_17cerxv', '@name': 'Profitcenter == "P1"', '@targetRef': 'Activity_0ayr9uj'}, {'@id': 'Flow_08uffka', '@name': 'Profitcenter == "P2"', '@targetRef': 'Activity_0rbm5kl'}, {'@id': 'Flow_0zztvg0', '@name': 'Profitcenter != "P1" and Profitcenter != "P2"', '@targetRef': 'Gateway_1g1v4b2'}]), ('@opening', True)])}
+2022-04-20 14:10:08,864 - BPMN.logger - BPMN_Engine.py - INFO - test lol
+2022-04-20 14:10:41,182 - BPMN.logger - BPMN_Parser.py - INFO - started parsing file:inkltest.bpmn
+2022-04-20 14:10:41,185 - BPMN.logger - BPMN_Parser.py - INFO - Parsing completed starting with checks
+2022-04-20 14:10:41,185 - BPMN.logger - BPMN_Parser.py - INFO - Checking startevent
+2022-04-20 14:10:41,185 - BPMN.logger - BPMN_Parser.py - DEBUG - Transforming outgoing flows :Flow_0sz71nl
+2022-04-20 14:10:41,186 - BPMN.logger - BPMN_Parser.py - INFO - Checking startevent finished sucessfully
+2022-04-20 14:10:41,186 - BPMN.logger - BPMN_Parser.py - INFO - Checking endevent/s
+2022-04-20 14:10:41,187 - BPMN.logger - BPMN_Parser.py - INFO - Checking Endevent/s finished sucessfully
+2022-04-20 14:10:41,187 - BPMN.logger - BPMN_Parser.py - INFO - Checking task/s
+2022-04-20 14:10:41,187 - BPMN.logger - BPMN_Parser.py - DEBUG - Transforming outgoing flows :Flow_1i1xefj
+2022-04-20 14:10:41,188 - BPMN.logger - BPMN_Parser.py - DEBUG - Transforming outgoing flows :Flow_1xu7i9f
+2022-04-20 14:10:41,188 - BPMN.logger - BPMN_Parser.py - DEBUG - Transforming outgoing flows :Flow_188wp25
+2022-04-20 14:10:41,188 - BPMN.logger - BPMN_Parser.py - DEBUG - Transforming outgoing flows :Flow_08zaqhs
+2022-04-20 14:10:41,188 - BPMN.logger - BPMN_Parser.py - DEBUG - Transforming outgoing flows :Flow_0q477rq
+2022-04-20 14:10:41,188 - BPMN.logger - BPMN_Parser.py - INFO - Checking task/s finished successfully
+2022-04-20 14:10:41,188 - BPMN.logger - BPMN_Parser.py - INFO - Checking bpmn:exclusiveGateway/s
+2022-04-20 14:10:41,189 - BPMN.logger - BPMN_Parser.py - INFO - no bpmn:exclusiveGateway found checking successfully
+2022-04-20 14:10:41,189 - BPMN.logger - BPMN_Parser.py - INFO - Checking bpmn:inclusiveGateway/s
+2022-04-20 14:10:41,190 - BPMN.logger - BPMN_Parser.py - DEBUG - Transforming outgoing flows :['Flow_17cerxv', 'Flow_08uffka', 'Flow_0zztvg0']
+2022-04-20 14:10:41,190 - BPMN.logger - BPMN_Parser.py - DEBUG - Transforming outgoing flows :Flow_086x82t
+2022-04-20 14:10:41,190 - BPMN.logger - BPMN_Parser.py - INFO - Checking bpmn:inclusiveGateway/s finished successfully
+2022-04-20 14:10:41,191 - BPMN.logger - BPMN_Parser.py - INFO - Checking bpmn:parallelGateway/s
+2022-04-20 14:10:41,191 - BPMN.logger - BPMN_Parser.py - INFO - no bpmn:parallelGateway found checking successfully
+2022-04-20 14:10:41,192 - BPMN.logger - BPMN_Parser.py - INFO - checking complete inkltest.bpmn was sucessfully parsed
+2022-04-20 14:10:41,194 - BPMN.logger - BPMN_Engine.py - INFO - Found startevent and added it to the queue
+2022-04-20 14:10:41,194 - BPMN.logger - BPMN_Engine.py - INFO - starting process from inkltest.bpmn
+2022-04-20 14:10:41,195 - BPMN.logger - BPMN_Engine.py - INFO - Next Element in queue is StartEvent: StartEvent_1 with the priority of 1
+2022-04-20 14:10:41,196 - BPMN.logger - StartEvent.py - INFO - Token:9af0ff62-b04c-4b6b-8301-b2113af220e4
+Path taken:20-04-2022 12:10:41 : StartEvent: StartEvent_1
+Data:Empty DataFrame
+Columns: []
+Index: []
+None
+2022-04-20 14:10:41,203 - BPMN.logger - BPMN_Engine.py - INFO -  Hi test{'id': 'Activity_11dvq8c', 'token': Token:9af0ff62-b04c-4b6b-8301-b2113af220e4
+Path taken:20-04-2022 12:10:41 : StartEvent: StartEvent_1
+Data:Empty DataFrame
+Columns: []
+Index: []
+None}
+2022-04-20 14:10:41,205 - BPMN.logger - BPMN_Engine.py - INFO - {'type': 'bpmn:task', 'information': OrderedDict([('@id', 'Activity_11dvq8c'), ('@name', 'loadExcel("beispiel.xlsx"; sheetname = "Tabelle1")'), ('bpmn:incoming', 'Flow_0sz71nl'), ('bpmn:outgoing', {'@id': 'Flow_1i1xefj', '@name': 'no_name', '@targetRef': 'Activity_0l7vq3x'})])}
+2022-04-20 14:10:41,206 - BPMN.logger - BPMN_Engine.py - INFO - Element of type bpmn:task : OrderedDict([('@id', 'Activity_11dvq8c'), ('@name', 'loadExcel("beispiel.xlsx"; sheetname = "Tabelle1")'), ('bpmn:incoming', 'Flow_0sz71nl'), ('bpmn:outgoing', {'@id': 'Flow_1i1xefj', '@name': 'no_name', '@targetRef': 'Activity_0l7vq3x'})]) created and added to the queue
+2022-04-20 14:10:41,208 - BPMN.logger - BPMN_Engine.py - INFO - Next Element in queue is Task: Activity_11dvq8c(loadExcel("beispiel.xlsx"; sheetname = "Tabelle1")) with the priority of 1
+2022-04-20 14:10:41,209 - BPMN.logger - Task.py - INFO - Token:9af0ff62-b04c-4b6b-8301-b2113af220e4
+Path taken:20-04-2022 12:10:41 : StartEvent: StartEvent_1--0.0-->20-04-2022 12:10:41 : Task: Activity_11dvq8c(loadExcel("beispiel.xlsx"; sheetname = "Tabelle1"))
+Data:Empty DataFrame
+Columns: []
+Index: []
+None
+2022-04-20 14:10:41,216 - BPMN.logger - StrategyFactory.py - INFO - parsed function string : {'name': 'loadExcel', 'parameters': [{'parameter': 'beispiel.xlsx', 'type': 'str', 'string': '"beispiel.xlsx"'}, {'parameter': 'Tabelle1', 'type': 'str', 'string': '"Tabelle1"', 'optional': True, 'opt_name': 'sheetname'}]}
+2022-04-20 14:10:41,217 - BPMN.logger - Token.py - INFO - Token 9af0ff62-b04c-4b6b-8301-b2113af220e4 is executing LoadExcelStrategy
+2022-04-20 14:10:41,605 - BPMN.logger - BPMN_Engine.py - INFO -  Hi test{'id': 'Activity_0l7vq3x', 'token': Token:9af0ff62-b04c-4b6b-8301-b2113af220e4
+Path taken:20-04-2022 12:10:41 : StartEvent: StartEvent_1--0.0-->20-04-2022 12:10:41 : Task: Activity_11dvq8c(loadExcel("beispiel.xlsx"; sheetname = "Tabelle1"))
+Data:   Belegnummer Belegdatum Lieferant Profitcenter
+0            1     05.Jan         A           P1
+1            2     06.Jan         B           P3
+2            3     07.Jan         A           P1
+3            5     09.Jan         B           P2
+4            6     10.Jan         A           P3
+None}
+2022-04-20 14:10:41,607 - BPMN.logger - BPMN_Engine.py - INFO - {'type': 'bpmn:task', 'information': OrderedDict([('@id', 'Activity_0l7vq3x'), ('@name', 'Kostenstelle = "unknown"'), ('bpmn:incoming', 'Flow_1i1xefj'), ('bpmn:outgoing', {'@id': 'Flow_08zaqhs', '@name': 'no_name', '@targetRef': 'Gateway_0md6k1f'})])}
+2022-04-20 14:10:41,610 - BPMN.logger - BPMN_Engine.py - INFO - Element of type bpmn:task : OrderedDict([('@id', 'Activity_0l7vq3x'), ('@name', 'Kostenstelle = "unknown"'), ('bpmn:incoming', 'Flow_1i1xefj'), ('bpmn:outgoing', {'@id': 'Flow_08zaqhs', '@name': 'no_name', '@targetRef': 'Gateway_0md6k1f'})]) created and added to the queue
+2022-04-20 14:10:41,611 - BPMN.logger - BPMN_Engine.py - INFO - Next Element in queue is Task: Activity_0l7vq3x(Kostenstelle = "unknown") with the priority of 1
+2022-04-20 14:10:41,612 - BPMN.logger - Task.py - INFO - Token:9af0ff62-b04c-4b6b-8301-b2113af220e4
+Path taken:20-04-2022 12:10:41 : StartEvent: StartEvent_1--0.0-->20-04-2022 12:10:41 : Task: Activity_11dvq8c(loadExcel("beispiel.xlsx"; sheetname = "Tabelle1"))--0.007-->20-04-2022 12:10:41 : Task: Activity_0l7vq3x(Kostenstelle = "unknown")
+Data:   Belegnummer Belegdatum Lieferant Profitcenter
+0            1     05.Jan         A           P1
+1            2     06.Jan         B           P3
+2            3     07.Jan         A           P1
+3            5     09.Jan         B           P2
+4            6     10.Jan         A           P3
+None
+2022-04-20 14:10:41,649 - BPMN.logger - StrategyFactory.py - INFO - parsed function string : {'name': 'eval', 'parameters': [{'parameter': 'Kostenstelle = "unknown"', 'type': 'code'}]}
+2022-04-20 14:10:41,649 - BPMN.logger - Token.py - INFO - Token 9af0ff62-b04c-4b6b-8301-b2113af220e4 is executing evalStrategy
+2022-04-20 14:10:41,657 - BPMN.logger - TransformationStrategy.py - WARNING - {} didn't work on eval Kostenstelle = "unknown" trying next engine
+2022-04-20 14:10:41,673 - BPMN.logger - BPMN_Engine.py - INFO -  Hi test{'id': 'Gateway_0md6k1f', 'token': Token:9af0ff62-b04c-4b6b-8301-b2113af220e4
+Path taken:20-04-2022 12:10:41 : StartEvent: StartEvent_1--0.0-->20-04-2022 12:10:41 : Task: Activity_11dvq8c(loadExcel("beispiel.xlsx"; sheetname = "Tabelle1"))--0.007-->20-04-2022 12:10:41 : Task: Activity_0l7vq3x(Kostenstelle = "unknown")
+Data:   Belegnummer Belegdatum Lieferant Profitcenter Kostenstelle
+0            1     05.Jan         A           P1      unknown
+1            2     06.Jan         B           P3      unknown
+2            3     07.Jan         A           P1      unknown
+3            5     09.Jan         B           P2      unknown
+4            6     10.Jan         A           P3      unknown
+None}
+2022-04-20 14:10:41,675 - BPMN.logger - BPMN_Engine.py - INFO - {'type': 'bpmn:inclusiveGateway', 'information': OrderedDict([('@id', 'Gateway_0md6k1f'), ('bpmn:incoming', 'Flow_08zaqhs'), ('bpmn:outgoing', [{'@id': 'Flow_17cerxv', '@name': 'Profitcenter == "P1"', '@targetRef': 'Activity_0ayr9uj'}, {'@id': 'Flow_08uffka', '@name': 'Profitcenter == "P2"', '@targetRef': 'Activity_0rbm5kl'}, {'@id': 'Flow_0zztvg0', '@name': 'Profitcenter != "P1" and Profitcenter != "P2"', '@targetRef': 'Gateway_1g1v4b2'}]), ('@opening', True)])}
+2022-04-20 14:10:41,676 - BPMN.logger - BPMN_Engine.py - INFO - test lol
+2022-04-20 14:15:47,506 - BPMN.logger - BPMN_Parser.py - INFO - started parsing file:inkltest.bpmn
+2022-04-20 14:15:47,508 - BPMN.logger - BPMN_Parser.py - INFO - Parsing completed starting with checks
+2022-04-20 14:15:47,509 - BPMN.logger - BPMN_Parser.py - INFO - Checking startevent
+2022-04-20 14:15:47,509 - BPMN.logger - BPMN_Parser.py - DEBUG - Transforming outgoing flows :Flow_0sz71nl
+2022-04-20 14:15:47,509 - BPMN.logger - BPMN_Parser.py - INFO - Checking startevent finished sucessfully
+2022-04-20 14:15:47,510 - BPMN.logger - BPMN_Parser.py - INFO - Checking endevent/s
+2022-04-20 14:15:47,510 - BPMN.logger - BPMN_Parser.py - INFO - Checking Endevent/s finished sucessfully
+2022-04-20 14:15:47,511 - BPMN.logger - BPMN_Parser.py - INFO - Checking task/s
+2022-04-20 14:15:47,511 - BPMN.logger - BPMN_Parser.py - DEBUG - Transforming outgoing flows :Flow_1i1xefj
+2022-04-20 14:15:47,511 - BPMN.logger - BPMN_Parser.py - DEBUG - Transforming outgoing flows :Flow_1xu7i9f
+2022-04-20 14:15:47,512 - BPMN.logger - BPMN_Parser.py - DEBUG - Transforming outgoing flows :Flow_188wp25
+2022-04-20 14:15:47,512 - BPMN.logger - BPMN_Parser.py - DEBUG - Transforming outgoing flows :Flow_08zaqhs
+2022-04-20 14:15:47,512 - BPMN.logger - BPMN_Parser.py - DEBUG - Transforming outgoing flows :Flow_0q477rq
+2022-04-20 14:15:47,512 - BPMN.logger - BPMN_Parser.py - INFO - Checking task/s finished successfully
+2022-04-20 14:15:47,512 - BPMN.logger - BPMN_Parser.py - INFO - Checking bpmn:exclusiveGateway/s
+2022-04-20 14:15:47,513 - BPMN.logger - BPMN_Parser.py - INFO - no bpmn:exclusiveGateway found checking successfully
+2022-04-20 14:15:47,513 - BPMN.logger - BPMN_Parser.py - INFO - Checking bpmn:inclusiveGateway/s
+2022-04-20 14:15:47,513 - BPMN.logger - BPMN_Parser.py - DEBUG - Transforming outgoing flows :['Flow_17cerxv', 'Flow_08uffka', 'Flow_0zztvg0']
+2022-04-20 14:15:47,514 - BPMN.logger - BPMN_Parser.py - DEBUG - Transforming outgoing flows :Flow_086x82t
+2022-04-20 14:15:47,514 - BPMN.logger - BPMN_Parser.py - INFO - Checking bpmn:inclusiveGateway/s finished successfully
+2022-04-20 14:15:47,514 - BPMN.logger - BPMN_Parser.py - INFO - Checking bpmn:parallelGateway/s
+2022-04-20 14:15:47,515 - BPMN.logger - BPMN_Parser.py - INFO - no bpmn:parallelGateway found checking successfully
+2022-04-20 14:15:47,515 - BPMN.logger - BPMN_Parser.py - INFO - checking complete inkltest.bpmn was sucessfully parsed
+2022-04-20 14:15:47,518 - BPMN.logger - BPMN_Engine.py - INFO - Found startevent and added it to the queue
+2022-04-20 14:15:47,520 - BPMN.logger - BPMN_Engine.py - INFO - starting process from inkltest.bpmn
+2022-04-20 14:15:47,521 - BPMN.logger - BPMN_Engine.py - INFO - Next Element in queue is StartEvent: StartEvent_1 with the priority of 1
+2022-04-20 14:15:47,522 - BPMN.logger - StartEvent.py - INFO - Token:ff8926aa-91bf-401e-a0f3-ed43fd04df15
+Path taken:20-04-2022 12:15:47 : StartEvent: StartEvent_1
+Data:Empty DataFrame
+Columns: []
+Index: []
+None
+2022-04-20 14:15:47,531 - BPMN.logger - BPMN_Engine.py - INFO -  Hi test{'id': 'Activity_11dvq8c', 'token': Token:ff8926aa-91bf-401e-a0f3-ed43fd04df15
+Path taken:20-04-2022 12:15:47 : StartEvent: StartEvent_1
+Data:Empty DataFrame
+Columns: []
+Index: []
+None}
+2022-04-20 14:15:47,532 - BPMN.logger - BPMN_Engine.py - INFO - {'type': 'bpmn:task', 'information': OrderedDict([('@id', 'Activity_11dvq8c'), ('@name', 'loadExcel("beispiel.xlsx"; sheetname = "Tabelle1")'), ('bpmn:incoming', 'Flow_0sz71nl'), ('bpmn:outgoing', {'@id': 'Flow_1i1xefj', '@name': 'no_name', '@targetRef': 'Activity_0l7vq3x'})])}
+2022-04-20 14:15:47,533 - BPMN.logger - BPMN_Engine.py - INFO - Element of type bpmn:task : OrderedDict([('@id', 'Activity_11dvq8c'), ('@name', 'loadExcel("beispiel.xlsx"; sheetname = "Tabelle1")'), ('bpmn:incoming', 'Flow_0sz71nl'), ('bpmn:outgoing', {'@id': 'Flow_1i1xefj', '@name': 'no_name', '@targetRef': 'Activity_0l7vq3x'})]) created and added to the queue
+2022-04-20 14:15:47,533 - BPMN.logger - BPMN_Engine.py - INFO - Next Element in queue is Task: Activity_11dvq8c(loadExcel("beispiel.xlsx"; sheetname = "Tabelle1")) with the priority of 1
+2022-04-20 14:15:47,534 - BPMN.logger - Task.py - INFO - Token:ff8926aa-91bf-401e-a0f3-ed43fd04df15
+Path taken:20-04-2022 12:15:47 : StartEvent: StartEvent_1--0.0-->20-04-2022 12:15:47 : Task: Activity_11dvq8c(loadExcel("beispiel.xlsx"; sheetname = "Tabelle1"))
+Data:Empty DataFrame
+Columns: []
+Index: []
+None
+2022-04-20 14:15:47,538 - BPMN.logger - StrategyFactory.py - INFO - parsed function string : {'name': 'loadExcel', 'parameters': [{'parameter': 'beispiel.xlsx', 'type': 'str', 'string': '"beispiel.xlsx"'}, {'parameter': 'Tabelle1', 'type': 'str', 'string': '"Tabelle1"', 'optional': True, 'opt_name': 'sheetname'}]}
+2022-04-20 14:15:47,541 - BPMN.logger - Token.py - INFO - Token ff8926aa-91bf-401e-a0f3-ed43fd04df15 is executing LoadExcelStrategy
+2022-04-20 14:15:47,970 - BPMN.logger - BPMN_Engine.py - INFO -  Hi test{'id': 'Activity_0l7vq3x', 'token': Token:ff8926aa-91bf-401e-a0f3-ed43fd04df15
+Path taken:20-04-2022 12:15:47 : StartEvent: StartEvent_1--0.0-->20-04-2022 12:15:47 : Task: Activity_11dvq8c(loadExcel("beispiel.xlsx"; sheetname = "Tabelle1"))
+Data:   Belegnummer Belegdatum Lieferant Profitcenter
+0            1     05.Jan         A           P1
+1            2     06.Jan         B           P3
+2            3     07.Jan         A           P1
+3            5     09.Jan         B           P2
+4            6     10.Jan         A           P3
+None}
+2022-04-20 14:15:47,972 - BPMN.logger - BPMN_Engine.py - INFO - {'type': 'bpmn:task', 'information': OrderedDict([('@id', 'Activity_0l7vq3x'), ('@name', 'Kostenstelle = "unknown"'), ('bpmn:incoming', 'Flow_1i1xefj'), ('bpmn:outgoing', {'@id': 'Flow_08zaqhs', '@name': 'no_name', '@targetRef': 'Gateway_0md6k1f'})])}
+2022-04-20 14:15:47,973 - BPMN.logger - BPMN_Engine.py - INFO - Element of type bpmn:task : OrderedDict([('@id', 'Activity_0l7vq3x'), ('@name', 'Kostenstelle = "unknown"'), ('bpmn:incoming', 'Flow_1i1xefj'), ('bpmn:outgoing', {'@id': 'Flow_08zaqhs', '@name': 'no_name', '@targetRef': 'Gateway_0md6k1f'})]) created and added to the queue
+2022-04-20 14:15:47,973 - BPMN.logger - BPMN_Engine.py - INFO - Next Element in queue is Task: Activity_0l7vq3x(Kostenstelle = "unknown") with the priority of 1
+2022-04-20 14:15:47,974 - BPMN.logger - Task.py - INFO - Token:ff8926aa-91bf-401e-a0f3-ed43fd04df15
+Path taken:20-04-2022 12:15:47 : StartEvent: StartEvent_1--0.0-->20-04-2022 12:15:47 : Task: Activity_11dvq8c(loadExcel("beispiel.xlsx"; sheetname = "Tabelle1"))--0.007-->20-04-2022 12:15:47 : Task: Activity_0l7vq3x(Kostenstelle = "unknown")
+Data:   Belegnummer Belegdatum Lieferant Profitcenter
+0            1     05.Jan         A           P1
+1            2     06.Jan         B           P3
+2            3     07.Jan         A           P1
+3            5     09.Jan         B           P2
+4            6     10.Jan         A           P3
+None
+2022-04-20 14:15:48,016 - BPMN.logger - StrategyFactory.py - INFO - parsed function string : {'name': 'eval', 'parameters': [{'parameter': 'Kostenstelle = "unknown"', 'type': 'code'}]}
+2022-04-20 14:15:48,017 - BPMN.logger - Token.py - INFO - Token ff8926aa-91bf-401e-a0f3-ed43fd04df15 is executing evalStrategy
+2022-04-20 14:15:48,027 - BPMN.logger - TransformationStrategy.py - WARNING - {} didn't work on eval Kostenstelle = "unknown" trying next engine
+2022-04-20 14:15:48,044 - BPMN.logger - BPMN_Engine.py - INFO -  Hi test{'id': 'Gateway_0md6k1f', 'token': Token:ff8926aa-91bf-401e-a0f3-ed43fd04df15
+Path taken:20-04-2022 12:15:47 : StartEvent: StartEvent_1--0.0-->20-04-2022 12:15:47 : Task: Activity_11dvq8c(loadExcel("beispiel.xlsx"; sheetname = "Tabelle1"))--0.007-->20-04-2022 12:15:47 : Task: Activity_0l7vq3x(Kostenstelle = "unknown")
+Data:   Belegnummer Belegdatum Lieferant Profitcenter Kostenstelle
+0            1     05.Jan         A           P1      unknown
+1            2     06.Jan         B           P3      unknown
+2            3     07.Jan         A           P1      unknown
+3            5     09.Jan         B           P2      unknown
+4            6     10.Jan         A           P3      unknown
+None}
+2022-04-20 14:15:48,046 - BPMN.logger - BPMN_Engine.py - INFO - {'type': 'bpmn:inclusiveGateway', 'information': OrderedDict([('@id', 'Gateway_0md6k1f'), ('bpmn:incoming', 'Flow_08zaqhs'), ('bpmn:outgoing', [{'@id': 'Flow_17cerxv', '@name': 'Profitcenter == "P1"', '@targetRef': 'Activity_0ayr9uj'}, {'@id': 'Flow_08uffka', '@name': 'Profitcenter == "P2"', '@targetRef': 'Activity_0rbm5kl'}, {'@id': 'Flow_0zztvg0', '@name': 'Profitcenter != "P1" and Profitcenter != "P2"', '@targetRef': 'Gateway_1g1v4b2'}]), ('@opening', True)])}
+2022-04-20 14:15:48,047 - BPMN.logger - BPMN_Engine.py - INFO - test lol
+2022-04-20 14:15:48,047 - BPMN.logger - BPMN_Engine.py - INFO - Element of type bpmn:inclusiveGateway : OrderedDict([('@id', 'Gateway_0md6k1f'), ('bpmn:incoming', 'Flow_08zaqhs'), ('bpmn:outgoing', [{'@id': 'Flow_17cerxv', '@name': 'Profitcenter == "P1"', '@targetRef': 'Activity_0ayr9uj'}, {'@id': 'Flow_08uffka', '@name': 'Profitcenter == "P2"', '@targetRef': 'Activity_0rbm5kl'}, {'@id': 'Flow_0zztvg0', '@name': 'Profitcenter != "P1" and Profitcenter != "P2"', '@targetRef': 'Gateway_1g1v4b2'}]), ('@opening', True)]) created and added to the queue
+2022-04-20 14:15:48,048 - BPMN.logger - BPMN_Engine.py - INFO - Next Element in queue is InclusiveGateway: Gateway_0md6k1f with the priority of 5
+2022-04-20 14:15:48,049 - BPMN.logger - InclusiveGateway.py - INFO - Token:ff8926aa-91bf-401e-a0f3-ed43fd04df15
+Path taken:20-04-2022 12:15:47 : StartEvent: StartEvent_1--0.0-->20-04-2022 12:15:47 : Task: Activity_11dvq8c(loadExcel("beispiel.xlsx"; sheetname = "Tabelle1"))--0.007-->20-04-2022 12:15:47 : Task: Activity_0l7vq3x(Kostenstelle = "unknown")--0.001-->20-04-2022 12:15:48 : InclusiveGateway: Gateway_0md6k1f
+Data:   Belegnummer Belegdatum Lieferant Profitcenter Kostenstelle
+0            1     05.Jan         A           P1      unknown
+1            2     06.Jan         B           P3      unknown
+2            3     07.Jan         A           P1      unknown
+3            5     09.Jan         B           P2      unknown
+4            6     10.Jan         A           P3      unknown
+None
+2022-04-20 14:19:51,411 - BPMN.logger - BPMN_Parser.py - INFO - started parsing file:inkltest.bpmn
+2022-04-20 14:19:51,414 - BPMN.logger - BPMN_Parser.py - INFO - Parsing completed starting with checks
+2022-04-20 14:19:51,414 - BPMN.logger - BPMN_Parser.py - INFO - Checking startevent
+2022-04-20 14:19:51,415 - BPMN.logger - BPMN_Parser.py - DEBUG - Transforming outgoing flows :Flow_0sz71nl
+2022-04-20 14:19:51,415 - BPMN.logger - BPMN_Parser.py - INFO - Checking startevent finished sucessfully
+2022-04-20 14:19:51,415 - BPMN.logger - BPMN_Parser.py - INFO - Checking endevent/s
+2022-04-20 14:19:51,416 - BPMN.logger - BPMN_Parser.py - INFO - Checking Endevent/s finished sucessfully
+2022-04-20 14:19:51,416 - BPMN.logger - BPMN_Parser.py - INFO - Checking task/s
+2022-04-20 14:19:51,416 - BPMN.logger - BPMN_Parser.py - DEBUG - Transforming outgoing flows :Flow_1i1xefj
+2022-04-20 14:19:51,416 - BPMN.logger - BPMN_Parser.py - DEBUG - Transforming outgoing flows :Flow_1xu7i9f
+2022-04-20 14:19:51,417 - BPMN.logger - BPMN_Parser.py - DEBUG - Transforming outgoing flows :Flow_188wp25
+2022-04-20 14:19:51,417 - BPMN.logger - BPMN_Parser.py - DEBUG - Transforming outgoing flows :Flow_08zaqhs
+2022-04-20 14:19:51,417 - BPMN.logger - BPMN_Parser.py - DEBUG - Transforming outgoing flows :Flow_0q477rq
+2022-04-20 14:19:51,417 - BPMN.logger - BPMN_Parser.py - INFO - Checking task/s finished successfully
+2022-04-20 14:19:51,417 - BPMN.logger - BPMN_Parser.py - INFO - Checking bpmn:exclusiveGateway/s
+2022-04-20 14:19:51,418 - BPMN.logger - BPMN_Parser.py - INFO - no bpmn:exclusiveGateway found checking successfully
+2022-04-20 14:19:51,418 - BPMN.logger - BPMN_Parser.py - INFO - Checking bpmn:inclusiveGateway/s
+2022-04-20 14:19:51,418 - BPMN.logger - BPMN_Parser.py - DEBUG - Transforming outgoing flows :['Flow_17cerxv', 'Flow_08uffka', 'Flow_0zztvg0']
+2022-04-20 14:19:51,419 - BPMN.logger - BPMN_Parser.py - DEBUG - Transforming outgoing flows :Flow_086x82t
+2022-04-20 14:19:51,419 - BPMN.logger - BPMN_Parser.py - INFO - Checking bpmn:inclusiveGateway/s finished successfully
+2022-04-20 14:19:51,419 - BPMN.logger - BPMN_Parser.py - INFO - Checking bpmn:parallelGateway/s
+2022-04-20 14:19:51,419 - BPMN.logger - BPMN_Parser.py - INFO - no bpmn:parallelGateway found checking successfully
+2022-04-20 14:19:51,420 - BPMN.logger - BPMN_Parser.py - INFO - checking complete inkltest.bpmn was sucessfully parsed
+2022-04-20 14:19:51,422 - BPMN.logger - BPMN_Engine.py - INFO - Found startevent and added it to the queue
+2022-04-20 14:19:51,422 - BPMN.logger - BPMN_Engine.py - INFO - starting process from inkltest.bpmn
+2022-04-20 14:19:51,423 - BPMN.logger - BPMN_Engine.py - INFO - Next Element in queue is StartEvent: StartEvent_1 with the priority of 1
+2022-04-20 14:19:51,424 - BPMN.logger - StartEvent.py - INFO - Token:bbb5560e-466a-4cef-89c6-9908b5f13f5c
+Path taken:20-04-2022 12:19:51 : StartEvent: StartEvent_1
+Data:Empty DataFrame
+Columns: []
+Index: []
+None
+2022-04-20 14:19:51,431 - BPMN.logger - BPMN_Engine.py - INFO -  Hi test{'id': 'Activity_11dvq8c', 'token': Token:bbb5560e-466a-4cef-89c6-9908b5f13f5c
+Path taken:20-04-2022 12:19:51 : StartEvent: StartEvent_1
+Data:Empty DataFrame
+Columns: []
+Index: []
+None}
+2022-04-20 14:19:51,432 - BPMN.logger - BPMN_Engine.py - INFO - {'type': 'bpmn:task', 'information': OrderedDict([('@id', 'Activity_11dvq8c'), ('@name', 'loadExcel("beispiel.xlsx"; sheetname = "Tabelle1")'), ('bpmn:incoming', 'Flow_0sz71nl'), ('bpmn:outgoing', {'@id': 'Flow_1i1xefj', '@name': 'no_name', '@targetRef': 'Activity_0l7vq3x'})])}
+2022-04-20 14:19:51,433 - BPMN.logger - BPMN_Engine.py - INFO - Element of type bpmn:task : OrderedDict([('@id', 'Activity_11dvq8c'), ('@name', 'loadExcel("beispiel.xlsx"; sheetname = "Tabelle1")'), ('bpmn:incoming', 'Flow_0sz71nl'), ('bpmn:outgoing', {'@id': 'Flow_1i1xefj', '@name': 'no_name', '@targetRef': 'Activity_0l7vq3x'})]) created and added to the queue
+2022-04-20 14:19:51,433 - BPMN.logger - BPMN_Engine.py - INFO - Next Element in queue is Task: Activity_11dvq8c(loadExcel("beispiel.xlsx"; sheetname = "Tabelle1")) with the priority of 1
+2022-04-20 14:19:51,434 - BPMN.logger - Task.py - INFO - Token:bbb5560e-466a-4cef-89c6-9908b5f13f5c
+Path taken:20-04-2022 12:19:51 : StartEvent: StartEvent_1--0.0-->20-04-2022 12:19:51 : Task: Activity_11dvq8c(loadExcel("beispiel.xlsx"; sheetname = "Tabelle1"))
+Data:Empty DataFrame
+Columns: []
+Index: []
+None
+2022-04-20 14:19:51,437 - BPMN.logger - StrategyFactory.py - INFO - parsed function string : {'name': 'loadExcel', 'parameters': [{'parameter': 'beispiel.xlsx', 'type': 'str', 'string': '"beispiel.xlsx"'}, {'parameter': 'Tabelle1', 'type': 'str', 'string': '"Tabelle1"', 'optional': True, 'opt_name': 'sheetname'}]}
+2022-04-20 14:19:51,438 - BPMN.logger - Token.py - INFO - Token bbb5560e-466a-4cef-89c6-9908b5f13f5c is executing LoadExcelStrategy
+2022-04-20 14:19:51,852 - BPMN.logger - BPMN_Engine.py - INFO -  Hi test{'id': 'Activity_0l7vq3x', 'token': Token:bbb5560e-466a-4cef-89c6-9908b5f13f5c
+Path taken:20-04-2022 12:19:51 : StartEvent: StartEvent_1--0.0-->20-04-2022 12:19:51 : Task: Activity_11dvq8c(loadExcel("beispiel.xlsx"; sheetname = "Tabelle1"))
+Data:   Belegnummer Belegdatum Lieferant Profitcenter
+0            1     05.Jan         A           P1
+1            2     06.Jan         B           P3
+2            3     07.Jan         A           P1
+3            5     09.Jan         B           P2
+4            6     10.Jan         A           P3
+None}
+2022-04-20 14:19:51,855 - BPMN.logger - BPMN_Engine.py - INFO - {'type': 'bpmn:task', 'information': OrderedDict([('@id', 'Activity_0l7vq3x'), ('@name', 'Kostenstelle = "unknown"'), ('bpmn:incoming', 'Flow_1i1xefj'), ('bpmn:outgoing', {'@id': 'Flow_08zaqhs', '@name': 'no_name', '@targetRef': 'Gateway_0md6k1f'})])}
+2022-04-20 14:19:51,855 - BPMN.logger - BPMN_Engine.py - INFO - Element of type bpmn:task : OrderedDict([('@id', 'Activity_0l7vq3x'), ('@name', 'Kostenstelle = "unknown"'), ('bpmn:incoming', 'Flow_1i1xefj'), ('bpmn:outgoing', {'@id': 'Flow_08zaqhs', '@name': 'no_name', '@targetRef': 'Gateway_0md6k1f'})]) created and added to the queue
+2022-04-20 14:19:51,856 - BPMN.logger - BPMN_Engine.py - INFO - Next Element in queue is Task: Activity_0l7vq3x(Kostenstelle = "unknown") with the priority of 1
+2022-04-20 14:19:51,856 - BPMN.logger - Task.py - INFO - Token:bbb5560e-466a-4cef-89c6-9908b5f13f5c
+Path taken:20-04-2022 12:19:51 : StartEvent: StartEvent_1--0.0-->20-04-2022 12:19:51 : Task: Activity_11dvq8c(loadExcel("beispiel.xlsx"; sheetname = "Tabelle1"))--0.007-->20-04-2022 12:19:51 : Task: Activity_0l7vq3x(Kostenstelle = "unknown")
+Data:   Belegnummer Belegdatum Lieferant Profitcenter
+0            1     05.Jan         A           P1
+1            2     06.Jan         B           P3
+2            3     07.Jan         A           P1
+3            5     09.Jan         B           P2
+4            6     10.Jan         A           P3
+None
+2022-04-20 14:19:51,891 - BPMN.logger - StrategyFactory.py - INFO - parsed function string : {'name': 'eval', 'parameters': [{'parameter': 'Kostenstelle = "unknown"', 'type': 'code'}]}
+2022-04-20 14:19:51,891 - BPMN.logger - Token.py - INFO - Token bbb5560e-466a-4cef-89c6-9908b5f13f5c is executing evalStrategy
+2022-04-20 14:19:51,898 - BPMN.logger - TransformationStrategy.py - WARNING - {} didn't work on eval Kostenstelle = "unknown" trying next engine
+2022-04-20 14:19:51,913 - BPMN.logger - BPMN_Engine.py - INFO -  Hi test{'id': 'Gateway_0md6k1f', 'token': Token:bbb5560e-466a-4cef-89c6-9908b5f13f5c
+Path taken:20-04-2022 12:19:51 : StartEvent: StartEvent_1--0.0-->20-04-2022 12:19:51 : Task: Activity_11dvq8c(loadExcel("beispiel.xlsx"; sheetname = "Tabelle1"))--0.007-->20-04-2022 12:19:51 : Task: Activity_0l7vq3x(Kostenstelle = "unknown")
+Data:   Belegnummer Belegdatum Lieferant Profitcenter Kostenstelle
+0            1     05.Jan         A           P1      unknown
+1            2     06.Jan         B           P3      unknown
+2            3     07.Jan         A           P1      unknown
+3            5     09.Jan         B           P2      unknown
+4            6     10.Jan         A           P3      unknown
+None}
+2022-04-20 14:19:51,915 - BPMN.logger - BPMN_Engine.py - INFO - {'type': 'bpmn:inclusiveGateway', 'information': OrderedDict([('@id', 'Gateway_0md6k1f'), ('bpmn:incoming', 'Flow_08zaqhs'), ('bpmn:outgoing', [{'@id': 'Flow_17cerxv', '@name': 'Profitcenter == "P1"', '@targetRef': 'Activity_0ayr9uj'}, {'@id': 'Flow_08uffka', '@name': 'Profitcenter == "P2"', '@targetRef': 'Activity_0rbm5kl'}, {'@id': 'Flow_0zztvg0', '@name': 'Profitcenter != "P1" and Profitcenter != "P2"', '@targetRef': 'Gateway_1g1v4b2'}]), ('@opening', True)])}
+2022-04-20 14:19:51,916 - BPMN.logger - BPMN_Engine.py - INFO - test lol
+2022-04-20 14:19:51,916 - BPMN.logger - BPMN_Engine.py - INFO - Element of type bpmn:inclusiveGateway : OrderedDict([('@id', 'Gateway_0md6k1f'), ('bpmn:incoming', 'Flow_08zaqhs'), ('bpmn:outgoing', [{'@id': 'Flow_17cerxv', '@name': 'Profitcenter == "P1"', '@targetRef': 'Activity_0ayr9uj'}, {'@id': 'Flow_08uffka', '@name': 'Profitcenter == "P2"', '@targetRef': 'Activity_0rbm5kl'}, {'@id': 'Flow_0zztvg0', '@name': 'Profitcenter != "P1" and Profitcenter != "P2"', '@targetRef': 'Gateway_1g1v4b2'}]), ('@opening', True)]) created and added to the queue
+2022-04-20 14:19:51,917 - BPMN.logger - BPMN_Engine.py - INFO - Next Element in queue is InclusiveGateway: Gateway_0md6k1f with the priority of 5
+2022-04-20 14:19:51,918 - BPMN.logger - InclusiveGateway.py - INFO - Token:bbb5560e-466a-4cef-89c6-9908b5f13f5c
+Path taken:20-04-2022 12:19:51 : StartEvent: StartEvent_1--0.0-->20-04-2022 12:19:51 : Task: Activity_11dvq8c(loadExcel("beispiel.xlsx"; sheetname = "Tabelle1"))--0.007-->20-04-2022 12:19:51 : Task: Activity_0l7vq3x(Kostenstelle = "unknown")--0.001-->20-04-2022 12:19:51 : InclusiveGateway: Gateway_0md6k1f
+Data:   Belegnummer Belegdatum Lieferant Profitcenter Kostenstelle
+0            1     05.Jan         A           P1      unknown
+1            2     06.Jan         B           P3      unknown
+2            3     07.Jan         A           P1      unknown
+3            5     09.Jan         B           P2      unknown
+4            6     10.Jan         A           P3      unknown
+None
+2022-04-20 14:19:51,955 - BPMN.logger - InclusiveGateway.py - INFO - here
+2022-04-20 14:19:51,965 - BPMN.logger - InclusiveGateway.py - INFO - []
+2022-04-20 14:22:16,040 - BPMN.logger - BPMN_Parser.py - INFO - started parsing file:inkltest.bpmn
+2022-04-20 14:22:16,042 - BPMN.logger - BPMN_Parser.py - INFO - Parsing completed starting with checks
+2022-04-20 14:22:16,043 - BPMN.logger - BPMN_Parser.py - INFO - Checking startevent
+2022-04-20 14:22:16,043 - BPMN.logger - BPMN_Parser.py - DEBUG - Transforming outgoing flows :Flow_0sz71nl
+2022-04-20 14:22:16,043 - BPMN.logger - BPMN_Parser.py - INFO - Checking startevent finished sucessfully
+2022-04-20 14:22:16,044 - BPMN.logger - BPMN_Parser.py - INFO - Checking endevent/s
+2022-04-20 14:22:16,044 - BPMN.logger - BPMN_Parser.py - INFO - Checking Endevent/s finished sucessfully
+2022-04-20 14:22:16,044 - BPMN.logger - BPMN_Parser.py - INFO - Checking task/s
+2022-04-20 14:22:16,045 - BPMN.logger - BPMN_Parser.py - DEBUG - Transforming outgoing flows :Flow_1i1xefj
+2022-04-20 14:22:16,045 - BPMN.logger - BPMN_Parser.py - DEBUG - Transforming outgoing flows :Flow_1xu7i9f
+2022-04-20 14:22:16,045 - BPMN.logger - BPMN_Parser.py - DEBUG - Transforming outgoing flows :Flow_188wp25
+2022-04-20 14:22:16,045 - BPMN.logger - BPMN_Parser.py - DEBUG - Transforming outgoing flows :Flow_08zaqhs
+2022-04-20 14:22:16,045 - BPMN.logger - BPMN_Parser.py - DEBUG - Transforming outgoing flows :Flow_0q477rq
+2022-04-20 14:22:16,045 - BPMN.logger - BPMN_Parser.py - INFO - Checking task/s finished successfully
+2022-04-20 14:22:16,046 - BPMN.logger - BPMN_Parser.py - INFO - Checking bpmn:exclusiveGateway/s
+2022-04-20 14:22:16,046 - BPMN.logger - BPMN_Parser.py - INFO - no bpmn:exclusiveGateway found checking successfully
+2022-04-20 14:22:16,047 - BPMN.logger - BPMN_Parser.py - INFO - Checking bpmn:inclusiveGateway/s
+2022-04-20 14:22:16,048 - BPMN.logger - BPMN_Parser.py - DEBUG - Transforming outgoing flows :['Flow_17cerxv', 'Flow_08uffka', 'Flow_0zztvg0']
+2022-04-20 14:22:16,048 - BPMN.logger - BPMN_Parser.py - DEBUG - Transforming outgoing flows :Flow_086x82t
+2022-04-20 14:22:16,048 - BPMN.logger - BPMN_Parser.py - INFO - Checking bpmn:inclusiveGateway/s finished successfully
+2022-04-20 14:22:16,048 - BPMN.logger - BPMN_Parser.py - INFO - Checking bpmn:parallelGateway/s
+2022-04-20 14:22:16,049 - BPMN.logger - BPMN_Parser.py - INFO - no bpmn:parallelGateway found checking successfully
+2022-04-20 14:22:16,049 - BPMN.logger - BPMN_Parser.py - INFO - checking complete inkltest.bpmn was sucessfully parsed
+2022-04-20 14:22:16,052 - BPMN.logger - BPMN_Engine.py - INFO - Found startevent and added it to the queue
+2022-04-20 14:22:16,053 - BPMN.logger - BPMN_Engine.py - INFO - starting process from inkltest.bpmn
+2022-04-20 14:22:16,055 - BPMN.logger - BPMN_Engine.py - INFO - Next Element in queue is StartEvent: StartEvent_1 with the priority of 1
+2022-04-20 14:22:16,056 - BPMN.logger - StartEvent.py - INFO - Token:ae33510e-b383-4453-b0bc-28bde4457707
+Path taken:20-04-2022 12:22:16 : StartEvent: StartEvent_1
+Data:Empty DataFrame
+Columns: []
+Index: []
+None
+2022-04-20 14:22:16,067 - BPMN.logger - BPMN_Engine.py - INFO -  Hi test{'id': 'Activity_11dvq8c', 'token': Token:ae33510e-b383-4453-b0bc-28bde4457707
+Path taken:20-04-2022 12:22:16 : StartEvent: StartEvent_1
+Data:Empty DataFrame
+Columns: []
+Index: []
+None}
+2022-04-20 14:22:16,068 - BPMN.logger - BPMN_Engine.py - INFO - {'type': 'bpmn:task', 'information': OrderedDict([('@id', 'Activity_11dvq8c'), ('@name', 'loadExcel("beispiel.xlsx"; sheetname = "Tabelle1")'), ('bpmn:incoming', 'Flow_0sz71nl'), ('bpmn:outgoing', {'@id': 'Flow_1i1xefj', '@name': 'no_name', '@targetRef': 'Activity_0l7vq3x'})])}
+2022-04-20 14:22:16,069 - BPMN.logger - BPMN_Engine.py - INFO - Element of type bpmn:task : OrderedDict([('@id', 'Activity_11dvq8c'), ('@name', 'loadExcel("beispiel.xlsx"; sheetname = "Tabelle1")'), ('bpmn:incoming', 'Flow_0sz71nl'), ('bpmn:outgoing', {'@id': 'Flow_1i1xefj', '@name': 'no_name', '@targetRef': 'Activity_0l7vq3x'})]) created and added to the queue
+2022-04-20 14:22:16,070 - BPMN.logger - BPMN_Engine.py - INFO - Next Element in queue is Task: Activity_11dvq8c(loadExcel("beispiel.xlsx"; sheetname = "Tabelle1")) with the priority of 1
+2022-04-20 14:22:16,070 - BPMN.logger - Task.py - INFO - Token:ae33510e-b383-4453-b0bc-28bde4457707
+Path taken:20-04-2022 12:22:16 : StartEvent: StartEvent_1--0.0-->20-04-2022 12:22:16 : Task: Activity_11dvq8c(loadExcel("beispiel.xlsx"; sheetname = "Tabelle1"))
+Data:Empty DataFrame
+Columns: []
+Index: []
+None
+2022-04-20 14:22:16,075 - BPMN.logger - StrategyFactory.py - INFO - parsed function string : {'name': 'loadExcel', 'parameters': [{'parameter': 'beispiel.xlsx', 'type': 'str', 'string': '"beispiel.xlsx"'}, {'parameter': 'Tabelle1', 'type': 'str', 'string': '"Tabelle1"', 'optional': True, 'opt_name': 'sheetname'}]}
+2022-04-20 14:22:16,076 - BPMN.logger - Token.py - INFO - Token ae33510e-b383-4453-b0bc-28bde4457707 is executing LoadExcelStrategy
+2022-04-20 14:22:16,522 - BPMN.logger - BPMN_Engine.py - INFO -  Hi test{'id': 'Activity_0l7vq3x', 'token': Token:ae33510e-b383-4453-b0bc-28bde4457707
+Path taken:20-04-2022 12:22:16 : StartEvent: StartEvent_1--0.0-->20-04-2022 12:22:16 : Task: Activity_11dvq8c(loadExcel("beispiel.xlsx"; sheetname = "Tabelle1"))
+Data:   Belegnummer Belegdatum Lieferant Profitcenter
+0            1     05.Jan         A           P1
+1            2     06.Jan         B           P3
+2            3     07.Jan         A           P1
+3            5     09.Jan         B           P2
+4            6     10.Jan         A           P3
+None}
+2022-04-20 14:22:16,524 - BPMN.logger - BPMN_Engine.py - INFO - {'type': 'bpmn:task', 'information': OrderedDict([('@id', 'Activity_0l7vq3x'), ('@name', 'Kostenstelle = "unknown"'), ('bpmn:incoming', 'Flow_1i1xefj'), ('bpmn:outgoing', {'@id': 'Flow_08zaqhs', '@name': 'no_name', '@targetRef': 'Gateway_0md6k1f'})])}
+2022-04-20 14:22:16,524 - BPMN.logger - BPMN_Engine.py - INFO - Element of type bpmn:task : OrderedDict([('@id', 'Activity_0l7vq3x'), ('@name', 'Kostenstelle = "unknown"'), ('bpmn:incoming', 'Flow_1i1xefj'), ('bpmn:outgoing', {'@id': 'Flow_08zaqhs', '@name': 'no_name', '@targetRef': 'Gateway_0md6k1f'})]) created and added to the queue
+2022-04-20 14:22:16,525 - BPMN.logger - BPMN_Engine.py - INFO - Next Element in queue is Task: Activity_0l7vq3x(Kostenstelle = "unknown") with the priority of 1
+2022-04-20 14:22:16,526 - BPMN.logger - Task.py - INFO - Token:ae33510e-b383-4453-b0bc-28bde4457707
+Path taken:20-04-2022 12:22:16 : StartEvent: StartEvent_1--0.0-->20-04-2022 12:22:16 : Task: Activity_11dvq8c(loadExcel("beispiel.xlsx"; sheetname = "Tabelle1"))--0.008-->20-04-2022 12:22:16 : Task: Activity_0l7vq3x(Kostenstelle = "unknown")
+Data:   Belegnummer Belegdatum Lieferant Profitcenter
+0            1     05.Jan         A           P1
+1            2     06.Jan         B           P3
+2            3     07.Jan         A           P1
+3            5     09.Jan         B           P2
+4            6     10.Jan         A           P3
+None
+2022-04-20 14:22:16,566 - BPMN.logger - StrategyFactory.py - INFO - parsed function string : {'name': 'eval', 'parameters': [{'parameter': 'Kostenstelle = "unknown"', 'type': 'code'}]}
+2022-04-20 14:22:16,567 - BPMN.logger - Token.py - INFO - Token ae33510e-b383-4453-b0bc-28bde4457707 is executing evalStrategy
+2022-04-20 14:22:16,574 - BPMN.logger - TransformationStrategy.py - WARNING - {} didn't work on eval Kostenstelle = "unknown" trying next engine
+2022-04-20 14:22:16,603 - BPMN.logger - BPMN_Engine.py - INFO -  Hi test{'id': 'Gateway_0md6k1f', 'token': Token:ae33510e-b383-4453-b0bc-28bde4457707
+Path taken:20-04-2022 12:22:16 : StartEvent: StartEvent_1--0.0-->20-04-2022 12:22:16 : Task: Activity_11dvq8c(loadExcel("beispiel.xlsx"; sheetname = "Tabelle1"))--0.008-->20-04-2022 12:22:16 : Task: Activity_0l7vq3x(Kostenstelle = "unknown")
+Data:   Belegnummer Belegdatum Lieferant Profitcenter Kostenstelle
+0            1     05.Jan         A           P1      unknown
+1            2     06.Jan         B           P3      unknown
+2            3     07.Jan         A           P1      unknown
+3            5     09.Jan         B           P2      unknown
+4            6     10.Jan         A           P3      unknown
+None}
+2022-04-20 14:22:16,605 - BPMN.logger - BPMN_Engine.py - INFO - {'type': 'bpmn:inclusiveGateway', 'information': OrderedDict([('@id', 'Gateway_0md6k1f'), ('bpmn:incoming', 'Flow_08zaqhs'), ('bpmn:outgoing', [{'@id': 'Flow_17cerxv', '@name': 'Profitcenter == "P1"', '@targetRef': 'Activity_0ayr9uj'}, {'@id': 'Flow_08uffka', '@name': 'Profitcenter == "P2"', '@targetRef': 'Activity_0rbm5kl'}, {'@id': 'Flow_0zztvg0', '@name': 'Profitcenter != "P1" and Profitcenter != "P2"', '@targetRef': 'Gateway_1g1v4b2'}]), ('@opening', True)])}
+2022-04-20 14:22:16,606 - BPMN.logger - BPMN_Engine.py - INFO - test lol
+2022-04-20 14:22:16,606 - BPMN.logger - BPMN_Engine.py - INFO - Element of type bpmn:inclusiveGateway : OrderedDict([('@id', 'Gateway_0md6k1f'), ('bpmn:incoming', 'Flow_08zaqhs'), ('bpmn:outgoing', [{'@id': 'Flow_17cerxv', '@name': 'Profitcenter == "P1"', '@targetRef': 'Activity_0ayr9uj'}, {'@id': 'Flow_08uffka', '@name': 'Profitcenter == "P2"', '@targetRef': 'Activity_0rbm5kl'}, {'@id': 'Flow_0zztvg0', '@name': 'Profitcenter != "P1" and Profitcenter != "P2"', '@targetRef': 'Gateway_1g1v4b2'}]), ('@opening', True)]) created and added to the queue
+2022-04-20 14:22:16,608 - BPMN.logger - BPMN_Engine.py - INFO - Next Element in queue is InclusiveGateway: Gateway_0md6k1f with the priority of 5
+2022-04-20 14:22:16,608 - BPMN.logger - InclusiveGateway.py - INFO - Token:ae33510e-b383-4453-b0bc-28bde4457707
+Path taken:20-04-2022 12:22:16 : StartEvent: StartEvent_1--0.0-->20-04-2022 12:22:16 : Task: Activity_11dvq8c(loadExcel("beispiel.xlsx"; sheetname = "Tabelle1"))--0.008-->20-04-2022 12:22:16 : Task: Activity_0l7vq3x(Kostenstelle = "unknown")--0.001-->20-04-2022 12:22:16 : InclusiveGateway: Gateway_0md6k1f
+Data:   Belegnummer Belegdatum Lieferant Profitcenter Kostenstelle
+0            1     05.Jan         A           P1      unknown
+1            2     06.Jan         B           P3      unknown
+2            3     07.Jan         A           P1      unknown
+3            5     09.Jan         B           P2      unknown
+4            6     10.Jan         A           P3      unknown
+None
+2022-04-20 14:22:16,651 - BPMN.logger - InclusiveGateway.py - INFO - here
+2022-04-20 14:22:16,653 - BPMN.logger - Token.py - INFO - Token d7921e53-13b5-48f4-9305-77d05b4179ce is executing FilterStrategy
+2022-04-20 14:22:16,658 - BPMN.logger - Token.py - INFO - Token c6084caf-37c8-4750-b861-c94933fd6689 is executing FilterStrategy
+2022-04-20 14:22:16,673 - BPMN.logger - Token.py - INFO - Token 3a1c23b8-69c0-49c6-879b-8b07cf8ea988 is executing FilterStrategy
+2022-04-20 14:22:16,678 - BPMN.logger - InclusiveGateway.py - INFO - [{'id': 'Flow_17cerxv', 'token': Token:d7921e53-13b5-48f4-9305-77d05b4179ce
+Path taken:20-04-2022 12:22:16 : 20-04-2022 12:22:16 : StartEvent: StartEvent_1--0.0-->20-04-2022 12:22:16 : Task: Activity_11dvq8c(loadExcel("beispiel.xlsx"; sheetname = "Tabelle1"))--0.008-->20-04-2022 12:22:16 : Task: Activity_0l7vq3x(Kostenstelle = "unknown")--0.001-->20-04-2022 12:22:16 : InclusiveGateway: Gateway_0md6k1f
+Data:   Belegnummer Belegdatum Lieferant Profitcenter Kostenstelle
+0            1     05.Jan         A           P1      unknown
+2            3     07.Jan         A           P1      unknown
+None}, {'id': 'Flow_08uffka', 'token': Token:c6084caf-37c8-4750-b861-c94933fd6689
+Path taken:20-04-2022 12:22:16 : 20-04-2022 12:22:16 : StartEvent: StartEvent_1--0.0-->20-04-2022 12:22:16 : Task: Activity_11dvq8c(loadExcel("beispiel.xlsx"; sheetname = "Tabelle1"))--0.008-->20-04-2022 12:22:16 : Task: Activity_0l7vq3x(Kostenstelle = "unknown")--0.001-->20-04-2022 12:22:16 : InclusiveGateway: Gateway_0md6k1f
+Data:   Belegnummer Belegdatum Lieferant Profitcenter Kostenstelle
+3            5     09.Jan         B           P2      unknown
+5            7     11.Jan         A           P2      unknown
+None}, {'id': 'Flow_0zztvg0', 'token': Token:3a1c23b8-69c0-49c6-879b-8b07cf8ea988
+Path taken:20-04-2022 12:22:16 : 20-04-2022 12:22:16 : StartEvent: StartEvent_1--0.0-->20-04-2022 12:22:16 : Task: Activity_11dvq8c(loadExcel("beispiel.xlsx"; sheetname = "Tabelle1"))--0.008-->20-04-2022 12:22:16 : Task: Activity_0l7vq3x(Kostenstelle = "unknown")--0.001-->20-04-2022 12:22:16 : InclusiveGateway: Gateway_0md6k1f
+Data:   Belegnummer Belegdatum Lieferant Profitcenter Kostenstelle
+1            2     06.Jan         B           P3      unknown
+4            6     10.Jan         A           P3      unknown
+None}]
+2022-04-20 14:22:16,794 - BPMN.logger - BPMN_Engine.py - INFO -  Hi test{'id': 'Flow_17cerxv', 'token': Token:d7921e53-13b5-48f4-9305-77d05b4179ce
+Path taken:20-04-2022 12:22:16 : 20-04-2022 12:22:16 : StartEvent: StartEvent_1--0.0-->20-04-2022 12:22:16 : Task: Activity_11dvq8c(loadExcel("beispiel.xlsx"; sheetname = "Tabelle1"))--0.008-->20-04-2022 12:22:16 : Task: Activity_0l7vq3x(Kostenstelle = "unknown")--0.001-->20-04-2022 12:22:16 : InclusiveGateway: Gateway_0md6k1f
+Data:   Belegnummer Belegdatum Lieferant Profitcenter Kostenstelle
+0            1     05.Jan         A           P1      unknown
+2            3     07.Jan         A           P1      unknown
+None}
+2022-04-20 14:22:16,795 - BPMN.logger - BPMN_Engine.py - INFO - None
+2022-04-20 14:23:44,033 - BPMN.logger - BPMN_Parser.py - INFO - started parsing file:inkltest.bpmn
+2022-04-20 14:23:44,036 - BPMN.logger - BPMN_Parser.py - INFO - Parsing completed starting with checks
+2022-04-20 14:23:44,036 - BPMN.logger - BPMN_Parser.py - INFO - Checking startevent
+2022-04-20 14:23:44,037 - BPMN.logger - BPMN_Parser.py - DEBUG - Transforming outgoing flows :Flow_0sz71nl
+2022-04-20 14:23:44,037 - BPMN.logger - BPMN_Parser.py - INFO - Checking startevent finished sucessfully
+2022-04-20 14:23:44,038 - BPMN.logger - BPMN_Parser.py - INFO - Checking endevent/s
+2022-04-20 14:23:44,038 - BPMN.logger - BPMN_Parser.py - INFO - Checking Endevent/s finished sucessfully
+2022-04-20 14:23:44,040 - BPMN.logger - BPMN_Parser.py - INFO - Checking task/s
+2022-04-20 14:23:44,041 - BPMN.logger - BPMN_Parser.py - DEBUG - Transforming outgoing flows :Flow_1i1xefj
+2022-04-20 14:23:44,041 - BPMN.logger - BPMN_Parser.py - DEBUG - Transforming outgoing flows :Flow_1xu7i9f
+2022-04-20 14:23:44,041 - BPMN.logger - BPMN_Parser.py - DEBUG - Transforming outgoing flows :Flow_188wp25
+2022-04-20 14:23:44,041 - BPMN.logger - BPMN_Parser.py - DEBUG - Transforming outgoing flows :Flow_08zaqhs
+2022-04-20 14:23:44,041 - BPMN.logger - BPMN_Parser.py - DEBUG - Transforming outgoing flows :Flow_0q477rq
+2022-04-20 14:23:44,042 - BPMN.logger - BPMN_Parser.py - INFO - Checking task/s finished successfully
+2022-04-20 14:23:44,042 - BPMN.logger - BPMN_Parser.py - INFO - Checking bpmn:exclusiveGateway/s
+2022-04-20 14:23:44,042 - BPMN.logger - BPMN_Parser.py - INFO - no bpmn:exclusiveGateway found checking successfully
+2022-04-20 14:23:44,043 - BPMN.logger - BPMN_Parser.py - INFO - Checking bpmn:inclusiveGateway/s
+2022-04-20 14:23:44,043 - BPMN.logger - BPMN_Parser.py - DEBUG - Transforming outgoing flows :['Flow_17cerxv', 'Flow_08uffka', 'Flow_0zztvg0']
+2022-04-20 14:23:44,043 - BPMN.logger - BPMN_Parser.py - DEBUG - Transforming outgoing flows :Flow_086x82t
+2022-04-20 14:23:44,043 - BPMN.logger - BPMN_Parser.py - INFO - Checking bpmn:inclusiveGateway/s finished successfully
+2022-04-20 14:23:44,043 - BPMN.logger - BPMN_Parser.py - INFO - Checking bpmn:parallelGateway/s
+2022-04-20 14:23:44,044 - BPMN.logger - BPMN_Parser.py - INFO - no bpmn:parallelGateway found checking successfully
+2022-04-20 14:23:44,044 - BPMN.logger - BPMN_Parser.py - INFO - checking complete inkltest.bpmn was sucessfully parsed
+2022-04-20 14:23:44,046 - BPMN.logger - BPMN_Engine.py - INFO - Found startevent and added it to the queue
+2022-04-20 14:23:44,046 - BPMN.logger - BPMN_Engine.py - INFO - starting process from inkltest.bpmn
+2022-04-20 14:23:44,046 - BPMN.logger - BPMN_Engine.py - INFO - Next Element in queue is StartEvent: StartEvent_1 with the priority of 1
+2022-04-20 14:23:44,048 - BPMN.logger - StartEvent.py - INFO - Token:8b5494ed-d487-45f9-9aad-e0c960d05f2d
+Path taken:20-04-2022 12:23:44 : StartEvent: StartEvent_1
+Data:Empty DataFrame
+Columns: []
+Index: []
+None
+2022-04-20 14:23:44,057 - BPMN.logger - BPMN_Engine.py - INFO -  Hi test{'id': 'Activity_11dvq8c', 'token': Token:8b5494ed-d487-45f9-9aad-e0c960d05f2d
+Path taken:20-04-2022 12:23:44 : StartEvent: StartEvent_1
+Data:Empty DataFrame
+Columns: []
+Index: []
+None}
+2022-04-20 14:23:44,058 - BPMN.logger - BPMN_Engine.py - INFO - {'type': 'bpmn:task', 'information': OrderedDict([('@id', 'Activity_11dvq8c'), ('@name', 'loadExcel("beispiel.xlsx"; sheetname = "Tabelle1")'), ('bpmn:incoming', 'Flow_0sz71nl'), ('bpmn:outgoing', {'@id': 'Flow_1i1xefj', '@name': 'no_name', '@targetRef': 'Activity_0l7vq3x'})])}
+2022-04-20 14:23:44,059 - BPMN.logger - BPMN_Engine.py - INFO - Element of type bpmn:task : OrderedDict([('@id', 'Activity_11dvq8c'), ('@name', 'loadExcel("beispiel.xlsx"; sheetname = "Tabelle1")'), ('bpmn:incoming', 'Flow_0sz71nl'), ('bpmn:outgoing', {'@id': 'Flow_1i1xefj', '@name': 'no_name', '@targetRef': 'Activity_0l7vq3x'})]) created and added to the queue
+2022-04-20 14:23:44,060 - BPMN.logger - BPMN_Engine.py - INFO - Next Element in queue is Task: Activity_11dvq8c(loadExcel("beispiel.xlsx"; sheetname = "Tabelle1")) with the priority of 1
+2022-04-20 14:23:44,060 - BPMN.logger - Task.py - INFO - Token:8b5494ed-d487-45f9-9aad-e0c960d05f2d
+Path taken:20-04-2022 12:23:44 : StartEvent: StartEvent_1--0.0-->20-04-2022 12:23:44 : Task: Activity_11dvq8c(loadExcel("beispiel.xlsx"; sheetname = "Tabelle1"))
+Data:Empty DataFrame
+Columns: []
+Index: []
+None
+2022-04-20 14:23:44,065 - BPMN.logger - StrategyFactory.py - INFO - parsed function string : {'name': 'loadExcel', 'parameters': [{'parameter': 'beispiel.xlsx', 'type': 'str', 'string': '"beispiel.xlsx"'}, {'parameter': 'Tabelle1', 'type': 'str', 'string': '"Tabelle1"', 'optional': True, 'opt_name': 'sheetname'}]}
+2022-04-20 14:23:44,065 - BPMN.logger - Token.py - INFO - Token 8b5494ed-d487-45f9-9aad-e0c960d05f2d is executing LoadExcelStrategy
+2022-04-20 14:23:44,488 - BPMN.logger - BPMN_Engine.py - INFO -  Hi test{'id': 'Activity_0l7vq3x', 'token': Token:8b5494ed-d487-45f9-9aad-e0c960d05f2d
+Path taken:20-04-2022 12:23:44 : StartEvent: StartEvent_1--0.0-->20-04-2022 12:23:44 : Task: Activity_11dvq8c(loadExcel("beispiel.xlsx"; sheetname = "Tabelle1"))
+Data:   Belegnummer Belegdatum Lieferant Profitcenter
+0            1     05.Jan         A           P1
+1            2     06.Jan         B           P3
+2            3     07.Jan         A           P1
+3            5     09.Jan         B           P2
+4            6     10.Jan         A           P3
+None}
+2022-04-20 14:23:44,491 - BPMN.logger - BPMN_Engine.py - INFO - {'type': 'bpmn:task', 'information': OrderedDict([('@id', 'Activity_0l7vq3x'), ('@name', 'Kostenstelle = "unknown"'), ('bpmn:incoming', 'Flow_1i1xefj'), ('bpmn:outgoing', {'@id': 'Flow_08zaqhs', '@name': 'no_name', '@targetRef': 'Gateway_0md6k1f'})])}
+2022-04-20 14:23:44,491 - BPMN.logger - BPMN_Engine.py - INFO - Element of type bpmn:task : OrderedDict([('@id', 'Activity_0l7vq3x'), ('@name', 'Kostenstelle = "unknown"'), ('bpmn:incoming', 'Flow_1i1xefj'), ('bpmn:outgoing', {'@id': 'Flow_08zaqhs', '@name': 'no_name', '@targetRef': 'Gateway_0md6k1f'})]) created and added to the queue
+2022-04-20 14:23:44,492 - BPMN.logger - BPMN_Engine.py - INFO - Next Element in queue is Task: Activity_0l7vq3x(Kostenstelle = "unknown") with the priority of 1
+2022-04-20 14:23:44,492 - BPMN.logger - Task.py - INFO - Token:8b5494ed-d487-45f9-9aad-e0c960d05f2d
+Path taken:20-04-2022 12:23:44 : StartEvent: StartEvent_1--0.0-->20-04-2022 12:23:44 : Task: Activity_11dvq8c(loadExcel("beispiel.xlsx"; sheetname = "Tabelle1"))--0.007-->20-04-2022 12:23:44 : Task: Activity_0l7vq3x(Kostenstelle = "unknown")
+Data:   Belegnummer Belegdatum Lieferant Profitcenter
+0            1     05.Jan         A           P1
+1            2     06.Jan         B           P3
+2            3     07.Jan         A           P1
+3            5     09.Jan         B           P2
+4            6     10.Jan         A           P3
+None
+2022-04-20 14:23:44,524 - BPMN.logger - StrategyFactory.py - INFO - parsed function string : {'name': 'eval', 'parameters': [{'parameter': 'Kostenstelle = "unknown"', 'type': 'code'}]}
+2022-04-20 14:23:44,525 - BPMN.logger - Token.py - INFO - Token 8b5494ed-d487-45f9-9aad-e0c960d05f2d is executing evalStrategy
+2022-04-20 14:23:44,533 - BPMN.logger - TransformationStrategy.py - WARNING - {} didn't work on eval Kostenstelle = "unknown" trying next engine
+2022-04-20 14:23:44,553 - BPMN.logger - BPMN_Engine.py - INFO -  Hi test{'id': 'Gateway_0md6k1f', 'token': Token:8b5494ed-d487-45f9-9aad-e0c960d05f2d
+Path taken:20-04-2022 12:23:44 : StartEvent: StartEvent_1--0.0-->20-04-2022 12:23:44 : Task: Activity_11dvq8c(loadExcel("beispiel.xlsx"; sheetname = "Tabelle1"))--0.007-->20-04-2022 12:23:44 : Task: Activity_0l7vq3x(Kostenstelle = "unknown")
+Data:   Belegnummer Belegdatum Lieferant Profitcenter Kostenstelle
+0            1     05.Jan         A           P1      unknown
+1            2     06.Jan         B           P3      unknown
+2            3     07.Jan         A           P1      unknown
+3            5     09.Jan         B           P2      unknown
+4            6     10.Jan         A           P3      unknown
+None}
+2022-04-20 14:23:44,557 - BPMN.logger - BPMN_Engine.py - INFO - {'type': 'bpmn:inclusiveGateway', 'information': OrderedDict([('@id', 'Gateway_0md6k1f'), ('bpmn:incoming', 'Flow_08zaqhs'), ('bpmn:outgoing', [{'@id': 'Flow_17cerxv', '@name': 'Profitcenter == "P1"', '@targetRef': 'Activity_0ayr9uj'}, {'@id': 'Flow_08uffka', '@name': 'Profitcenter == "P2"', '@targetRef': 'Activity_0rbm5kl'}, {'@id': 'Flow_0zztvg0', '@name': 'Profitcenter != "P1" and Profitcenter != "P2"', '@targetRef': 'Gateway_1g1v4b2'}]), ('@opening', True)])}
+2022-04-20 14:23:44,558 - BPMN.logger - BPMN_Engine.py - INFO - test lol
+2022-04-20 14:23:44,559 - BPMN.logger - BPMN_Engine.py - INFO - Element of type bpmn:inclusiveGateway : OrderedDict([('@id', 'Gateway_0md6k1f'), ('bpmn:incoming', 'Flow_08zaqhs'), ('bpmn:outgoing', [{'@id': 'Flow_17cerxv', '@name': 'Profitcenter == "P1"', '@targetRef': 'Activity_0ayr9uj'}, {'@id': 'Flow_08uffka', '@name': 'Profitcenter == "P2"', '@targetRef': 'Activity_0rbm5kl'}, {'@id': 'Flow_0zztvg0', '@name': 'Profitcenter != "P1" and Profitcenter != "P2"', '@targetRef': 'Gateway_1g1v4b2'}]), ('@opening', True)]) created and added to the queue
+2022-04-20 14:23:44,559 - BPMN.logger - BPMN_Engine.py - INFO - Next Element in queue is InclusiveGateway: Gateway_0md6k1f with the priority of 5
+2022-04-20 14:23:44,560 - BPMN.logger - InclusiveGateway.py - INFO - Token:8b5494ed-d487-45f9-9aad-e0c960d05f2d
+Path taken:20-04-2022 12:23:44 : StartEvent: StartEvent_1--0.0-->20-04-2022 12:23:44 : Task: Activity_11dvq8c(loadExcel("beispiel.xlsx"; sheetname = "Tabelle1"))--0.007-->20-04-2022 12:23:44 : Task: Activity_0l7vq3x(Kostenstelle = "unknown")--0.001-->20-04-2022 12:23:44 : InclusiveGateway: Gateway_0md6k1f
+Data:   Belegnummer Belegdatum Lieferant Profitcenter Kostenstelle
+0            1     05.Jan         A           P1      unknown
+1            2     06.Jan         B           P3      unknown
+2            3     07.Jan         A           P1      unknown
+3            5     09.Jan         B           P2      unknown
+4            6     10.Jan         A           P3      unknown
+None
+2022-04-20 14:23:44,599 - BPMN.logger - InclusiveGateway.py - INFO - here
+2022-04-20 14:23:44,603 - BPMN.logger - Token.py - INFO - Token 3496ce75-97e0-4eb7-aedb-caf2ff394bb4 is executing FilterStrategy
+2022-04-20 14:23:44,613 - BPMN.logger - Token.py - INFO - Token a3d6cdbf-d9fc-435f-bf38-563c56e88569 is executing FilterStrategy
+2022-04-20 14:23:44,624 - BPMN.logger - Token.py - INFO - Token 8ba587b4-5bba-4a66-815e-fcdc8ba58e4b is executing FilterStrategy
+2022-04-20 14:23:44,629 - BPMN.logger - InclusiveGateway.py - INFO - [{'id': 'Activity_0ayr9uj', 'token': Token:3496ce75-97e0-4eb7-aedb-caf2ff394bb4
+Path taken:20-04-2022 12:23:44 : 20-04-2022 12:23:44 : StartEvent: StartEvent_1--0.0-->20-04-2022 12:23:44 : Task: Activity_11dvq8c(loadExcel("beispiel.xlsx"; sheetname = "Tabelle1"))--0.007-->20-04-2022 12:23:44 : Task: Activity_0l7vq3x(Kostenstelle = "unknown")--0.001-->20-04-2022 12:23:44 : InclusiveGateway: Gateway_0md6k1f
+Data:   Belegnummer Belegdatum Lieferant Profitcenter Kostenstelle
+0            1     05.Jan         A           P1      unknown
+2            3     07.Jan         A           P1      unknown
+None}, {'id': 'Activity_0rbm5kl', 'token': Token:a3d6cdbf-d9fc-435f-bf38-563c56e88569
+Path taken:20-04-2022 12:23:44 : 20-04-2022 12:23:44 : StartEvent: StartEvent_1--0.0-->20-04-2022 12:23:44 : Task: Activity_11dvq8c(loadExcel("beispiel.xlsx"; sheetname = "Tabelle1"))--0.007-->20-04-2022 12:23:44 : Task: Activity_0l7vq3x(Kostenstelle = "unknown")--0.001-->20-04-2022 12:23:44 : InclusiveGateway: Gateway_0md6k1f
+Data:   Belegnummer Belegdatum Lieferant Profitcenter Kostenstelle
+3            5     09.Jan         B           P2      unknown
+5            7     11.Jan         A           P2      unknown
+None}, {'id': 'Gateway_1g1v4b2', 'token': Token:8ba587b4-5bba-4a66-815e-fcdc8ba58e4b
+Path taken:20-04-2022 12:23:44 : 20-04-2022 12:23:44 : StartEvent: StartEvent_1--0.0-->20-04-2022 12:23:44 : Task: Activity_11dvq8c(loadExcel("beispiel.xlsx"; sheetname = "Tabelle1"))--0.007-->20-04-2022 12:23:44 : Task: Activity_0l7vq3x(Kostenstelle = "unknown")--0.001-->20-04-2022 12:23:44 : InclusiveGateway: Gateway_0md6k1f
+Data:   Belegnummer Belegdatum Lieferant Profitcenter Kostenstelle
+1            2     06.Jan         B           P3      unknown
+4            6     10.Jan         A           P3      unknown
+None}]
+2022-04-20 14:23:44,766 - BPMN.logger - BPMN_Engine.py - INFO -  Hi test{'id': 'Activity_0ayr9uj', 'token': Token:3496ce75-97e0-4eb7-aedb-caf2ff394bb4
+Path taken:20-04-2022 12:23:44 : 20-04-2022 12:23:44 : StartEvent: StartEvent_1--0.0-->20-04-2022 12:23:44 : Task: Activity_11dvq8c(loadExcel("beispiel.xlsx"; sheetname = "Tabelle1"))--0.007-->20-04-2022 12:23:44 : Task: Activity_0l7vq3x(Kostenstelle = "unknown")--0.001-->20-04-2022 12:23:44 : InclusiveGateway: Gateway_0md6k1f
+Data:   Belegnummer Belegdatum Lieferant Profitcenter Kostenstelle
+0            1     05.Jan         A           P1      unknown
+2            3     07.Jan         A           P1      unknown
+None}
+2022-04-20 14:23:44,767 - BPMN.logger - BPMN_Engine.py - INFO - {'type': 'bpmn:task', 'information': OrderedDict([('@id', 'Activity_0ayr9uj'), ('@name', 'Kostenstelle = "K2"'), ('bpmn:incoming', 'Flow_17cerxv'), ('bpmn:outgoing', {'@id': 'Flow_1xu7i9f', '@name': 'no_name', '@targetRef': 'Gateway_1g1v4b2'})])}
+2022-04-20 14:23:44,769 - BPMN.logger - BPMN_Engine.py - INFO - Element of type bpmn:task : OrderedDict([('@id', 'Activity_0ayr9uj'), ('@name', 'Kostenstelle = "K2"'), ('bpmn:incoming', 'Flow_17cerxv'), ('bpmn:outgoing', {'@id': 'Flow_1xu7i9f', '@name': 'no_name', '@targetRef': 'Gateway_1g1v4b2'})]) created and added to the queue
+2022-04-20 14:23:44,787 - BPMN.logger - BPMN_Engine.py - INFO -  Hi test{'id': 'Activity_0rbm5kl', 'token': Token:a3d6cdbf-d9fc-435f-bf38-563c56e88569
+Path taken:20-04-2022 12:23:44 : 20-04-2022 12:23:44 : StartEvent: StartEvent_1--0.0-->20-04-2022 12:23:44 : Task: Activity_11dvq8c(loadExcel("beispiel.xlsx"; sheetname = "Tabelle1"))--0.007-->20-04-2022 12:23:44 : Task: Activity_0l7vq3x(Kostenstelle = "unknown")--0.001-->20-04-2022 12:23:44 : InclusiveGateway: Gateway_0md6k1f
+Data:   Belegnummer Belegdatum Lieferant Profitcenter Kostenstelle
+3            5     09.Jan         B           P2      unknown
+5            7     11.Jan         A           P2      unknown
+None}
+2022-04-20 14:23:44,788 - BPMN.logger - BPMN_Engine.py - INFO - {'type': 'bpmn:task', 'information': OrderedDict([('@id', 'Activity_0rbm5kl'), ('@name', 'Kostenstelle = "K1"'), ('bpmn:incoming', 'Flow_08uffka'), ('bpmn:outgoing', {'@id': 'Flow_188wp25', '@name': 'no_name', '@targetRef': 'Gateway_1g1v4b2'})])}
+2022-04-20 14:23:44,790 - BPMN.logger - BPMN_Engine.py - INFO - Element of type bpmn:task : OrderedDict([('@id', 'Activity_0rbm5kl'), ('@name', 'Kostenstelle = "K1"'), ('bpmn:incoming', 'Flow_08uffka'), ('bpmn:outgoing', {'@id': 'Flow_188wp25', '@name': 'no_name', '@targetRef': 'Gateway_1g1v4b2'})]) created and added to the queue
+2022-04-20 14:23:44,810 - BPMN.logger - BPMN_Engine.py - INFO -  Hi test{'id': 'Gateway_1g1v4b2', 'token': Token:8ba587b4-5bba-4a66-815e-fcdc8ba58e4b
+Path taken:20-04-2022 12:23:44 : 20-04-2022 12:23:44 : StartEvent: StartEvent_1--0.0-->20-04-2022 12:23:44 : Task: Activity_11dvq8c(loadExcel("beispiel.xlsx"; sheetname = "Tabelle1"))--0.007-->20-04-2022 12:23:44 : Task: Activity_0l7vq3x(Kostenstelle = "unknown")--0.001-->20-04-2022 12:23:44 : InclusiveGateway: Gateway_0md6k1f
+Data:   Belegnummer Belegdatum Lieferant Profitcenter Kostenstelle
+1            2     06.Jan         B           P3      unknown
+4            6     10.Jan         A           P3      unknown
+None}
+2022-04-20 14:23:44,811 - BPMN.logger - BPMN_Engine.py - INFO - {'type': 'bpmn:inclusiveGateway', 'information': OrderedDict([('@id', 'Gateway_1g1v4b2'), ('bpmn:incoming', ['Flow_1xu7i9f', 'Flow_188wp25', 'Flow_0zztvg0']), ('bpmn:outgoing', {'@id': 'Flow_086x82t', '@name': 'no_name', '@targetRef': 'Activity_1ai96gr'}), ('@opening', False), ('@name', 'concat')])}
+2022-04-20 14:23:44,811 - BPMN.logger - BPMN_Engine.py - INFO - test lol
+2022-04-20 14:23:44,812 - BPMN.logger - BPMN_Engine.py - INFO - Element of type bpmn:inclusiveGateway : OrderedDict([('@id', 'Gateway_1g1v4b2'), ('bpmn:incoming', ['Flow_1xu7i9f', 'Flow_188wp25', 'Flow_0zztvg0']), ('bpmn:outgoing', {'@id': 'Flow_086x82t', '@name': 'no_name', '@targetRef': 'Activity_1ai96gr'}), ('@opening', False), ('@name', 'concat')]) created and added to the queue
+2022-04-20 14:23:44,812 - BPMN.logger - BPMN_Engine.py - INFO - Next Element in queue is Task: Activity_0rbm5kl(Kostenstelle = "K1") with the priority of 1
+2022-04-20 14:23:44,812 - BPMN.logger - Task.py - INFO - Token:a3d6cdbf-d9fc-435f-bf38-563c56e88569
+Path taken:20-04-2022 12:23:44 : 20-04-2022 12:23:44 : StartEvent: StartEvent_1--0.0-->20-04-2022 12:23:44 : Task: Activity_11dvq8c(loadExcel("beispiel.xlsx"; sheetname = "Tabelle1"))--0.007-->20-04-2022 12:23:44 : Task: Activity_0l7vq3x(Kostenstelle = "unknown")--0.001-->20-04-2022 12:23:44 : InclusiveGateway: Gateway_0md6k1f--0.003-->20-04-2022 12:23:44 : Task: Activity_0rbm5kl(Kostenstelle = "K1")
+Data:   Belegnummer Belegdatum Lieferant Profitcenter Kostenstelle
+3            5     09.Jan         B           P2      unknown
+5            7     11.Jan         A           P2      unknown
+None
+2022-04-20 14:23:44,844 - BPMN.logger - StrategyFactory.py - INFO - parsed function string : {'name': 'eval', 'parameters': [{'parameter': 'Kostenstelle = "K1"', 'type': 'code'}]}
+2022-04-20 14:23:44,845 - BPMN.logger - Token.py - INFO - Token a3d6cdbf-d9fc-435f-bf38-563c56e88569 is executing evalStrategy
+2022-04-20 14:23:44,847 - BPMN.logger - TransformationStrategy.py - WARNING - {} didn't work on eval Kostenstelle = "K1" trying next engine
+2022-04-20 14:23:44,865 - BPMN.logger - BPMN_Engine.py - INFO -  Hi test{'id': 'Gateway_1g1v4b2', 'token': Token:a3d6cdbf-d9fc-435f-bf38-563c56e88569
+Path taken:20-04-2022 12:23:44 : 20-04-2022 12:23:44 : StartEvent: StartEvent_1--0.0-->20-04-2022 12:23:44 : Task: Activity_11dvq8c(loadExcel("beispiel.xlsx"; sheetname = "Tabelle1"))--0.007-->20-04-2022 12:23:44 : Task: Activity_0l7vq3x(Kostenstelle = "unknown")--0.001-->20-04-2022 12:23:44 : InclusiveGateway: Gateway_0md6k1f--0.003-->20-04-2022 12:23:44 : Task: Activity_0rbm5kl(Kostenstelle = "K1")
+Data:   Belegnummer Belegdatum Lieferant Profitcenter Kostenstelle
+3            5     09.Jan         B           P2           K1
+5            7     11.Jan         A           P2           K1
+None}
+2022-04-20 14:23:44,866 - BPMN.logger - BPMN_Engine.py - INFO - InclusiveGateway: Gateway_1g1v4b2(concat) already in queue token added to it
+2022-04-20 14:23:44,867 - BPMN.logger - BPMN_Engine.py - INFO - Next Element in queue is Task: Activity_0ayr9uj(Kostenstelle = "K2") with the priority of 1
+2022-04-20 14:23:44,868 - BPMN.logger - Task.py - INFO - Token:3496ce75-97e0-4eb7-aedb-caf2ff394bb4
+Path taken:20-04-2022 12:23:44 : 20-04-2022 12:23:44 : StartEvent: StartEvent_1--0.0-->20-04-2022 12:23:44 : Task: Activity_11dvq8c(loadExcel("beispiel.xlsx"; sheetname = "Tabelle1"))--0.007-->20-04-2022 12:23:44 : Task: Activity_0l7vq3x(Kostenstelle = "unknown")--0.001-->20-04-2022 12:23:44 : InclusiveGateway: Gateway_0md6k1f--0.004-->20-04-2022 12:23:44 : Task: Activity_0ayr9uj(Kostenstelle = "K2")
+Data:   Belegnummer Belegdatum Lieferant Profitcenter Kostenstelle
+0            1     05.Jan         A           P1      unknown
+2            3     07.Jan         A           P1      unknown
+None
+2022-04-20 14:23:44,902 - BPMN.logger - StrategyFactory.py - INFO - parsed function string : {'name': 'eval', 'parameters': [{'parameter': 'Kostenstelle = "K2"', 'type': 'code'}]}
+2022-04-20 14:23:44,902 - BPMN.logger - Token.py - INFO - Token 3496ce75-97e0-4eb7-aedb-caf2ff394bb4 is executing evalStrategy
+2022-04-20 14:23:44,904 - BPMN.logger - TransformationStrategy.py - WARNING - {} didn't work on eval Kostenstelle = "K2" trying next engine
+2022-04-20 14:23:44,927 - BPMN.logger - BPMN_Engine.py - INFO -  Hi test{'id': 'Gateway_1g1v4b2', 'token': Token:3496ce75-97e0-4eb7-aedb-caf2ff394bb4
+Path taken:20-04-2022 12:23:44 : 20-04-2022 12:23:44 : StartEvent: StartEvent_1--0.0-->20-04-2022 12:23:44 : Task: Activity_11dvq8c(loadExcel("beispiel.xlsx"; sheetname = "Tabelle1"))--0.007-->20-04-2022 12:23:44 : Task: Activity_0l7vq3x(Kostenstelle = "unknown")--0.001-->20-04-2022 12:23:44 : InclusiveGateway: Gateway_0md6k1f--0.004-->20-04-2022 12:23:44 : Task: Activity_0ayr9uj(Kostenstelle = "K2")
+Data:   Belegnummer Belegdatum Lieferant Profitcenter Kostenstelle
+0            1     05.Jan         A           P1           K2
+2            3     07.Jan         A           P1           K2
+None}
+2022-04-20 14:23:44,929 - BPMN.logger - BPMN_Engine.py - INFO - InclusiveGateway: Gateway_1g1v4b2(concat) already in queue token added to it
+2022-04-20 14:23:44,930 - BPMN.logger - BPMN_Engine.py - INFO - Next Element in queue is InclusiveGateway: Gateway_1g1v4b2(concat) with the priority of 5
+2022-04-20 14:23:44,931 - BPMN.logger - InclusiveGateway.py - INFO - Token:8ba587b4-5bba-4a66-815e-fcdc8ba58e4b
+Path taken:20-04-2022 12:23:44 : 20-04-2022 12:23:44 : StartEvent: StartEvent_1--0.0-->20-04-2022 12:23:44 : Task: Activity_11dvq8c(loadExcel("beispiel.xlsx"; sheetname = "Tabelle1"))--0.007-->20-04-2022 12:23:44 : Task: Activity_0l7vq3x(Kostenstelle = "unknown")--0.001-->20-04-2022 12:23:44 : InclusiveGateway: Gateway_0md6k1f--0.005-->20-04-2022 12:23:44 : InclusiveGateway: Gateway_1g1v4b2(concat)
+Data:   Belegnummer Belegdatum Lieferant Profitcenter Kostenstelle
+1            2     06.Jan         B           P3      unknown
+4            6     10.Jan         A           P3      unknown
+None
+2022-04-20 14:23:44,967 - BPMN.logger - InclusiveGateway.py - INFO - Token:a3d6cdbf-d9fc-435f-bf38-563c56e88569
+Path taken:20-04-2022 12:23:44 : 20-04-2022 12:23:44 : StartEvent: StartEvent_1--0.0-->20-04-2022 12:23:44 : Task: Activity_11dvq8c(loadExcel("beispiel.xlsx"; sheetname = "Tabelle1"))--0.007-->20-04-2022 12:23:44 : Task: Activity_0l7vq3x(Kostenstelle = "unknown")--0.001-->20-04-2022 12:23:44 : InclusiveGateway: Gateway_0md6k1f--0.003-->20-04-2022 12:23:44 : Task: Activity_0rbm5kl(Kostenstelle = "K1")--0.003-->20-04-2022 12:23:44 : InclusiveGateway: Gateway_1g1v4b2(concat)
+Data:   Belegnummer Belegdatum Lieferant Profitcenter Kostenstelle
+3            5     09.Jan         B           P2           K1
+5            7     11.Jan         A           P2           K1
+None
+2022-04-20 14:23:45,035 - BPMN.logger - InclusiveGateway.py - INFO - Token:3496ce75-97e0-4eb7-aedb-caf2ff394bb4
+Path taken:20-04-2022 12:23:44 : 20-04-2022 12:23:44 : StartEvent: StartEvent_1--0.0-->20-04-2022 12:23:44 : Task: Activity_11dvq8c(loadExcel("beispiel.xlsx"; sheetname = "Tabelle1"))--0.007-->20-04-2022 12:23:44 : Task: Activity_0l7vq3x(Kostenstelle = "unknown")--0.001-->20-04-2022 12:23:44 : InclusiveGateway: Gateway_0md6k1f--0.004-->20-04-2022 12:23:44 : Task: Activity_0ayr9uj(Kostenstelle = "K2")--0.003-->20-04-2022 12:23:45 : InclusiveGateway: Gateway_1g1v4b2(concat)
+Data:   Belegnummer Belegdatum Lieferant Profitcenter Kostenstelle
+0            1     05.Jan         A           P1           K2
+2            3     07.Jan         A           P1           K2
+None
+2022-04-20 14:23:45,085 - BPMN.logger - Token.py - INFO - Token 8ba587b4-5bba-4a66-815e-fcdc8ba58e4b is executing <BPMN.CombineStrategy.ConcatStrategy object at 0x00000256FCFAB8B0>
+2022-04-20 14:23:45,087 - BPMN.logger - Token.py - INFO - Token 8ba587b4-5bba-4a66-815e-fcdc8ba58e4b is executing <BPMN.CombineStrategy.ConcatStrategy object at 0x00000256FCFAB8B0>
+2022-04-20 14:23:45,114 - BPMN.logger - BPMN_Engine.py - INFO -  Hi test{'id': 'Activity_1ai96gr', 'token': Token:8ba587b4-5bba-4a66-815e-fcdc8ba58e4b
+Path taken:20-04-2022 12:23:44 : 20-04-2022 12:23:44 : StartEvent: StartEvent_1--0.0-->20-04-2022 12:23:44 : Task: Activity_11dvq8c(loadExcel("beispiel.xlsx"; sheetname = "Tabelle1"))--0.007-->20-04-2022 12:23:44 : Task: Activity_0l7vq3x(Kostenstelle = "unknown")--0.001-->20-04-2022 12:23:44 : InclusiveGateway: Gateway_0md6k1f--0.005-->20-04-2022 12:23:44 : InclusiveGateway: Gateway_1g1v4b2(concat)
+Data:   Belegnummer Belegdatum Lieferant Profitcenter Kostenstelle
+1            2     06.Jan         B           P3      unknown
+4            6     10.Jan         A           P3      unknown
+3            5     09.Jan         B           P2           K1
+5            7     11.Jan         A           P2           K1
+0            1     05.Jan         A           P1           K2
+None}
+2022-04-20 14:23:45,124 - BPMN.logger - BPMN_Engine.py - INFO - {'type': 'bpmn:task', 'information': OrderedDict([('@id', 'Activity_1ai96gr'), ('@name', 'saveExcel("inktest.xlsx")'), ('bpmn:incoming', 'Flow_086x82t'), ('bpmn:outgoing', {'@id': 'Flow_0q477rq', '@name': 'no_name', '@targetRef': 'Event_1nyj1qg'})])}
+2022-04-20 14:23:45,126 - BPMN.logger - BPMN_Engine.py - INFO - Element of type bpmn:task : OrderedDict([('@id', 'Activity_1ai96gr'), ('@name', 'saveExcel("inktest.xlsx")'), ('bpmn:incoming', 'Flow_086x82t'), ('bpmn:outgoing', {'@id': 'Flow_0q477rq', '@name': 'no_name', '@targetRef': 'Event_1nyj1qg'})]) created and added to the queue
+2022-04-20 14:23:45,126 - BPMN.logger - BPMN_Engine.py - INFO - Next Element in queue is Task: Activity_1ai96gr(saveExcel("inktest.xlsx")) with the priority of 1
+2022-04-20 14:23:45,127 - BPMN.logger - Task.py - INFO - Token:8ba587b4-5bba-4a66-815e-fcdc8ba58e4b
+Path taken:20-04-2022 12:23:44 : 20-04-2022 12:23:44 : StartEvent: StartEvent_1--0.0-->20-04-2022 12:23:44 : Task: Activity_11dvq8c(loadExcel("beispiel.xlsx"; sheetname = "Tabelle1"))--0.007-->20-04-2022 12:23:44 : Task: Activity_0l7vq3x(Kostenstelle = "unknown")--0.001-->20-04-2022 12:23:44 : InclusiveGateway: Gateway_0md6k1f--0.005-->20-04-2022 12:23:44 : InclusiveGateway: Gateway_1g1v4b2(concat)--0.003-->20-04-2022 12:23:45 : Task: Activity_1ai96gr(saveExcel("inktest.xlsx"))
+Data:   Belegnummer Belegdatum Lieferant Profitcenter Kostenstelle
+1            2     06.Jan         B           P3      unknown
+4            6     10.Jan         A           P3      unknown
+3            5     09.Jan         B           P2           K1
+5            7     11.Jan         A           P2           K1
+0            1     05.Jan         A           P1           K2
+None
+2022-04-20 14:23:45,177 - BPMN.logger - StrategyFactory.py - INFO - parsed function string : {'name': 'saveExcel', 'parameters': [{'parameter': 'inktest.xlsx', 'type': 'str', 'string': '"inktest.xlsx"'}]}
+2022-04-20 14:23:45,179 - BPMN.logger - Token.py - INFO - Token 8ba587b4-5bba-4a66-815e-fcdc8ba58e4b is executing SaveExcelStrategy
+2022-04-20 14:23:45,273 - BPMN.logger - BPMN_Engine.py - INFO -  Hi test{'id': 'Event_1nyj1qg', 'token': Token:8ba587b4-5bba-4a66-815e-fcdc8ba58e4b
+Path taken:20-04-2022 12:23:44 : 20-04-2022 12:23:44 : StartEvent: StartEvent_1--0.0-->20-04-2022 12:23:44 : Task: Activity_11dvq8c(loadExcel("beispiel.xlsx"; sheetname = "Tabelle1"))--0.007-->20-04-2022 12:23:44 : Task: Activity_0l7vq3x(Kostenstelle = "unknown")--0.001-->20-04-2022 12:23:44 : InclusiveGateway: Gateway_0md6k1f--0.005-->20-04-2022 12:23:44 : InclusiveGateway: Gateway_1g1v4b2(concat)--0.003-->20-04-2022 12:23:45 : Task: Activity_1ai96gr(saveExcel("inktest.xlsx"))
+Data:   Belegnummer Belegdatum Lieferant Profitcenter Kostenstelle
+1            2     06.Jan         B           P3      unknown
+4            6     10.Jan         A           P3      unknown
+3            5     09.Jan         B           P2           K1
+5            7     11.Jan         A           P2           K1
+0            1     05.Jan         A           P1           K2
+None}
+2022-04-20 14:23:45,276 - BPMN.logger - BPMN_Engine.py - INFO - {'type': 'bpmn:endEvent', 'information': OrderedDict([('@id', 'Event_1nyj1qg'), ('bpmn:incoming', 'Flow_0q477rq')])}
+2022-04-20 14:23:45,276 - BPMN.logger - BPMN_Engine.py - INFO - Element of type bpmn:endEvent : OrderedDict([('@id', 'Event_1nyj1qg'), ('bpmn:incoming', 'Flow_0q477rq')]) created and added to the queue
+2022-04-20 14:23:45,279 - BPMN.logger - BPMN_Engine.py - INFO - Next Element in queue is EndEvent: Event_1nyj1qg with the priority of 10
+2022-04-20 14:23:45,279 - BPMN.logger - Endevent.py - INFO - Token:8ba587b4-5bba-4a66-815e-fcdc8ba58e4b
+Path taken:20-04-2022 12:23:44 : 20-04-2022 12:23:44 : StartEvent: StartEvent_1--0.0-->20-04-2022 12:23:44 : Task: Activity_11dvq8c(loadExcel("beispiel.xlsx"; sheetname = "Tabelle1"))--0.007-->20-04-2022 12:23:44 : Task: Activity_0l7vq3x(Kostenstelle = "unknown")--0.001-->20-04-2022 12:23:44 : InclusiveGateway: Gateway_0md6k1f--0.005-->20-04-2022 12:23:44 : InclusiveGateway: Gateway_1g1v4b2(concat)--0.003-->20-04-2022 12:23:45 : Task: Activity_1ai96gr(saveExcel("inktest.xlsx"))--0.003-->20-04-2022 12:23:45 : EndEvent: Event_1nyj1qg
+Data:   Belegnummer Belegdatum Lieferant Profitcenter Kostenstelle
+1            2     06.Jan         B           P3      unknown
+4            6     10.Jan         A           P3      unknown
+3            5     09.Jan         B           P2           K1
+5            7     11.Jan         A           P2           K1
+0            1     05.Jan         A           P1           K2
+None
+2022-04-20 14:23:45,353 - BPMN.logger - BPMN_Engine.py - INFO - Process ended successfully no more elements in the queue
+2022-04-20 17:21:11,091 - BPMN.logger - BPMN_Parser.py - INFO - started parsing file:inkltest.bpmn
+2022-04-20 17:21:11,101 - BPMN.logger - BPMN_Parser.py - INFO - Parsing completed starting with checks
+2022-04-20 17:21:11,101 - BPMN.logger - BPMN_Parser.py - INFO - Checking startevent
+2022-04-20 17:21:11,101 - BPMN.logger - BPMN_Parser.py - DEBUG - Transforming outgoing flows :Flow_0sz71nl
+2022-04-20 17:21:11,101 - BPMN.logger - BPMN_Parser.py - INFO - Checking startevent finished sucessfully
+2022-04-20 17:21:11,101 - BPMN.logger - BPMN_Parser.py - INFO - Checking endevent/s
+2022-04-20 17:21:11,102 - BPMN.logger - BPMN_Parser.py - INFO - Checking Endevent/s finished sucessfully
+2022-04-20 17:21:11,102 - BPMN.logger - BPMN_Parser.py - INFO - Checking task/s
+2022-04-20 17:21:11,102 - BPMN.logger - BPMN_Parser.py - DEBUG - Transforming outgoing flows :Flow_1i1xefj
+2022-04-20 17:21:11,102 - BPMN.logger - BPMN_Parser.py - DEBUG - Transforming outgoing flows :Flow_1xu7i9f
+2022-04-20 17:21:11,102 - BPMN.logger - BPMN_Parser.py - DEBUG - Transforming outgoing flows :Flow_188wp25
+2022-04-20 17:21:11,103 - BPMN.logger - BPMN_Parser.py - DEBUG - Transforming outgoing flows :Flow_08zaqhs
+2022-04-20 17:21:11,103 - BPMN.logger - BPMN_Parser.py - DEBUG - Transforming outgoing flows :Flow_0q477rq
+2022-04-20 17:21:11,103 - BPMN.logger - BPMN_Parser.py - INFO - Checking task/s finished successfully
+2022-04-20 17:21:11,103 - BPMN.logger - BPMN_Parser.py - INFO - Checking bpmn:exclusiveGateway/s
+2022-04-20 17:21:11,103 - BPMN.logger - BPMN_Parser.py - INFO - no bpmn:exclusiveGateway found checking successfully
+2022-04-20 17:21:11,103 - BPMN.logger - BPMN_Parser.py - INFO - Checking bpmn:inclusiveGateway/s
+2022-04-20 17:21:11,104 - BPMN.logger - BPMN_Parser.py - DEBUG - Transforming outgoing flows :['Flow_17cerxv', 'Flow_08uffka', 'Flow_0zztvg0']
+2022-04-20 17:21:11,104 - BPMN.logger - BPMN_Parser.py - DEBUG - Transforming outgoing flows :Flow_086x82t
+2022-04-20 17:21:11,104 - BPMN.logger - BPMN_Parser.py - INFO - Checking bpmn:inclusiveGateway/s finished successfully
+2022-04-20 17:21:11,104 - BPMN.logger - BPMN_Parser.py - INFO - Checking bpmn:parallelGateway/s
+2022-04-20 17:21:11,104 - BPMN.logger - BPMN_Parser.py - INFO - no bpmn:parallelGateway found checking successfully
+2022-04-20 17:21:11,105 - BPMN.logger - BPMN_Parser.py - INFO - checking complete inkltest.bpmn was sucessfully parsed
+2022-04-20 17:21:11,107 - BPMN.logger - BPMN_Engine.py - INFO - Found startevent and added it to the queue
+2022-04-20 17:21:11,107 - BPMN.logger - BPMN_Engine.py - INFO - starting process from inkltest.bpmn
+2022-04-20 17:21:11,108 - BPMN.logger - BPMN_Engine.py - INFO - Next Element in queue is StartEvent: StartEvent_1 with the priority of 1
+2022-04-20 17:21:11,109 - BPMN.logger - StartEvent.py - INFO - Token:ab6dab89-5d1e-4d8c-9c03-2b31e7b18c20
+Path taken:20-04-2022 15:21:11 : StartEvent: StartEvent_1
+Data:Empty DataFrame
+Columns: []
+Index: []
+None
+2022-04-20 17:21:11,115 - BPMN.logger - BPMN_Engine.py - INFO - Element of type bpmn:task : OrderedDict([('@id', 'Activity_11dvq8c'), ('@name', 'loadExcel("beispiel.xlsx"; sheetname = "Tabelle1")'), ('bpmn:incoming', 'Flow_0sz71nl'), ('bpmn:outgoing', {'@id': 'Flow_1i1xefj', '@name': 'no_name', '@targetRef': 'Activity_0l7vq3x'})]) created and added to the queue
+2022-04-20 17:21:11,117 - BPMN.logger - BPMN_Engine.py - INFO - Next Element in queue is Task: Activity_11dvq8c(loadExcel("beispiel.xlsx"; sheetname = "Tabelle1")) with the priority of 1
+2022-04-20 17:21:11,117 - BPMN.logger - Task.py - INFO - Token:ab6dab89-5d1e-4d8c-9c03-2b31e7b18c20
+Path taken:20-04-2022 15:21:11 : StartEvent: StartEvent_1--0.0-->20-04-2022 15:21:11 : Task: Activity_11dvq8c(loadExcel("beispiel.xlsx"; sheetname = "Tabelle1"))
+Data:Empty DataFrame
+Columns: []
+Index: []
+None
+2022-04-20 17:21:11,122 - BPMN.logger - StrategyFactory.py - INFO - parsed function string : {'name': 'loadExcel', 'parameters': [{'parameter': 'beispiel.xlsx', 'type': 'str', 'string': '"beispiel.xlsx"'}, {'parameter': 'Tabelle1', 'type': 'str', 'string': '"Tabelle1"', 'optional': True, 'opt_name': 'sheetname'}]}
+2022-04-20 17:21:11,123 - BPMN.logger - Token.py - INFO - Token ab6dab89-5d1e-4d8c-9c03-2b31e7b18c20 is executing LoadExcelStrategy
+2022-04-20 17:21:11,516 - BPMN.logger - BPMN_Engine.py - INFO - Element of type bpmn:task : OrderedDict([('@id', 'Activity_0l7vq3x'), ('@name', 'Kostenstelle = "unknown"'), ('bpmn:incoming', 'Flow_1i1xefj'), ('bpmn:outgoing', {'@id': 'Flow_08zaqhs', '@name': 'no_name', '@targetRef': 'Gateway_0md6k1f'})]) created and added to the queue
+2022-04-20 17:21:11,518 - BPMN.logger - BPMN_Engine.py - INFO - Next Element in queue is Task: Activity_0l7vq3x(Kostenstelle = "unknown") with the priority of 1
+2022-04-20 17:21:11,519 - BPMN.logger - Task.py - INFO - Token:ab6dab89-5d1e-4d8c-9c03-2b31e7b18c20
+Path taken:20-04-2022 15:21:11 : StartEvent: StartEvent_1--0.0-->20-04-2022 15:21:11 : Task: Activity_11dvq8c(loadExcel("beispiel.xlsx"; sheetname = "Tabelle1"))--0.007-->20-04-2022 15:21:11 : Task: Activity_0l7vq3x(Kostenstelle = "unknown")
+Data:   Belegnummer Belegdatum Lieferant Profitcenter
+0            1     05.Jan         A           P1
+1            2     06.Jan         B           P3
+2            3     07.Jan         A           P1
+3            5     09.Jan         B           P2
+4            6     10.Jan         A           P3
+None
+2022-04-20 17:21:11,547 - BPMN.logger - StrategyFactory.py - INFO - parsed function string : {'name': 'eval', 'parameters': [{'parameter': 'Kostenstelle = "unknown"', 'type': 'code'}]}
+2022-04-20 17:21:11,547 - BPMN.logger - Token.py - INFO - Token ab6dab89-5d1e-4d8c-9c03-2b31e7b18c20 is executing evalStrategy
+2022-04-20 17:21:11,557 - BPMN.logger - TransformationStrategy.py - WARNING - {} didn't work on eval Kostenstelle = "unknown" trying next engine
+2022-04-20 17:21:11,559 - BPMN.logger - BPMN_Engine.py - INFO - test lol
+2022-04-20 17:21:11,559 - BPMN.logger - BPMN_Engine.py - INFO - Element of type bpmn:inclusiveGateway : OrderedDict([('@id', 'Gateway_0md6k1f'), ('bpmn:incoming', 'Flow_08zaqhs'), ('bpmn:outgoing', [{'@id': 'Flow_17cerxv', '@name': 'Profitcenter == "P1"', '@targetRef': 'Activity_0ayr9uj'}, {'@id': 'Flow_08uffka', '@name': 'Profitcenter == "P2"', '@targetRef': 'Activity_0rbm5kl'}, {'@id': 'Flow_0zztvg0', '@name': 'Profitcenter != "P1" and Profitcenter != "P2"', '@targetRef': 'Gateway_1g1v4b2'}]), ('@opening', True)]) created and added to the queue
+2022-04-20 17:21:11,560 - BPMN.logger - BPMN_Engine.py - INFO - Next Element in queue is InclusiveGateway: Gateway_0md6k1f with the priority of 5
+2022-04-20 17:21:11,561 - BPMN.logger - InclusiveGateway.py - INFO - Token:ab6dab89-5d1e-4d8c-9c03-2b31e7b18c20
+Path taken:20-04-2022 15:21:11 : StartEvent: StartEvent_1--0.0-->20-04-2022 15:21:11 : Task: Activity_11dvq8c(loadExcel("beispiel.xlsx"; sheetname = "Tabelle1"))--0.007-->20-04-2022 15:21:11 : Task: Activity_0l7vq3x(Kostenstelle = "unknown")--0.001-->20-04-2022 15:21:11 : InclusiveGateway: Gateway_0md6k1f
+Data:   Belegnummer Belegdatum Lieferant Profitcenter Kostenstelle
+0            1     05.Jan         A           P1      unknown
+1            2     06.Jan         B           P3      unknown
+2            3     07.Jan         A           P1      unknown
+3            5     09.Jan         B           P2      unknown
+4            6     10.Jan         A           P3      unknown
+None
+2022-04-20 17:21:11,600 - BPMN.logger - InclusiveGateway.py - INFO - here
+2022-04-20 17:21:11,604 - BPMN.logger - Token.py - INFO - Token 29b7051f-95f9-43b5-a0e2-c97ad65b6e49 is executing FilterStrategy
+2022-04-20 17:21:11,608 - BPMN.logger - Token.py - INFO - Token 08c2f287-a5e8-485d-b61f-5f95dc593037 is executing FilterStrategy
+2022-04-20 17:21:11,614 - BPMN.logger - Token.py - INFO - Token 9562d3bb-3810-4886-b227-9caa0050b946 is executing FilterStrategy
+2022-04-20 17:21:11,620 - BPMN.logger - InclusiveGateway.py - INFO - [{'id': 'Activity_0ayr9uj', 'token': Token:29b7051f-95f9-43b5-a0e2-c97ad65b6e49
+Path taken:20-04-2022 15:21:11 : 20-04-2022 15:21:11 : StartEvent: StartEvent_1--0.0-->20-04-2022 15:21:11 : Task: Activity_11dvq8c(loadExcel("beispiel.xlsx"; sheetname = "Tabelle1"))--0.007-->20-04-2022 15:21:11 : Task: Activity_0l7vq3x(Kostenstelle = "unknown")--0.001-->20-04-2022 15:21:11 : InclusiveGateway: Gateway_0md6k1f
+Data:   Belegnummer Belegdatum Lieferant Profitcenter Kostenstelle
+0            1     05.Jan         A           P1      unknown
+2            3     07.Jan         A           P1      unknown
+None}, {'id': 'Activity_0rbm5kl', 'token': Token:08c2f287-a5e8-485d-b61f-5f95dc593037
+Path taken:20-04-2022 15:21:11 : 20-04-2022 15:21:11 : StartEvent: StartEvent_1--0.0-->20-04-2022 15:21:11 : Task: Activity_11dvq8c(loadExcel("beispiel.xlsx"; sheetname = "Tabelle1"))--0.007-->20-04-2022 15:21:11 : Task: Activity_0l7vq3x(Kostenstelle = "unknown")--0.001-->20-04-2022 15:21:11 : InclusiveGateway: Gateway_0md6k1f
+Data:   Belegnummer Belegdatum Lieferant Profitcenter Kostenstelle
+3            5     09.Jan         B           P2      unknown
+5            7     11.Jan         A           P2      unknown
+None}, {'id': 'Gateway_1g1v4b2', 'token': Token:9562d3bb-3810-4886-b227-9caa0050b946
+Path taken:20-04-2022 15:21:11 : 20-04-2022 15:21:11 : StartEvent: StartEvent_1--0.0-->20-04-2022 15:21:11 : Task: Activity_11dvq8c(loadExcel("beispiel.xlsx"; sheetname = "Tabelle1"))--0.007-->20-04-2022 15:21:11 : Task: Activity_0l7vq3x(Kostenstelle = "unknown")--0.001-->20-04-2022 15:21:11 : InclusiveGateway: Gateway_0md6k1f
+Data:   Belegnummer Belegdatum Lieferant Profitcenter Kostenstelle
+1            2     06.Jan         B           P3      unknown
+4            6     10.Jan         A           P3      unknown
+None}]
+2022-04-20 17:21:11,716 - BPMN.logger - BPMN_Engine.py - INFO - Element of type bpmn:task : OrderedDict([('@id', 'Activity_0ayr9uj'), ('@name', 'Kostenstelle = "K2"'), ('bpmn:incoming', 'Flow_17cerxv'), ('bpmn:outgoing', {'@id': 'Flow_1xu7i9f', '@name': 'no_name', '@targetRef': 'Gateway_1g1v4b2'})]) created and added to the queue
+2022-04-20 17:21:11,717 - BPMN.logger - BPMN_Engine.py - INFO - Element of type bpmn:task : OrderedDict([('@id', 'Activity_0rbm5kl'), ('@name', 'Kostenstelle = "K1"'), ('bpmn:incoming', 'Flow_08uffka'), ('bpmn:outgoing', {'@id': 'Flow_188wp25', '@name': 'no_name', '@targetRef': 'Gateway_1g1v4b2'})]) created and added to the queue
+2022-04-20 17:21:11,717 - BPMN.logger - BPMN_Engine.py - INFO - test lol
+2022-04-20 17:21:11,718 - BPMN.logger - BPMN_Engine.py - INFO - Element of type bpmn:inclusiveGateway : OrderedDict([('@id', 'Gateway_1g1v4b2'), ('bpmn:incoming', ['Flow_1xu7i9f', 'Flow_188wp25', 'Flow_0zztvg0']), ('bpmn:outgoing', {'@id': 'Flow_086x82t', '@name': 'no_name', '@targetRef': 'Activity_1ai96gr'}), ('@opening', False), ('@name', 'concat')]) created and added to the queue
+2022-04-20 17:21:11,719 - BPMN.logger - BPMN_Engine.py - INFO - Next Element in queue is Task: Activity_0rbm5kl(Kostenstelle = "K1") with the priority of 1
+2022-04-20 17:21:11,720 - BPMN.logger - Task.py - INFO - Token:08c2f287-a5e8-485d-b61f-5f95dc593037
+Path taken:20-04-2022 15:21:11 : 20-04-2022 15:21:11 : StartEvent: StartEvent_1--0.0-->20-04-2022 15:21:11 : Task: Activity_11dvq8c(loadExcel("beispiel.xlsx"; sheetname = "Tabelle1"))--0.007-->20-04-2022 15:21:11 : Task: Activity_0l7vq3x(Kostenstelle = "unknown")--0.001-->20-04-2022 15:21:11 : InclusiveGateway: Gateway_0md6k1f--0.002-->20-04-2022 15:21:11 : Task: Activity_0rbm5kl(Kostenstelle = "K1")
+Data:   Belegnummer Belegdatum Lieferant Profitcenter Kostenstelle
+3            5     09.Jan         B           P2      unknown
+5            7     11.Jan         A           P2      unknown
+None
+2022-04-20 17:21:11,751 - BPMN.logger - StrategyFactory.py - INFO - parsed function string : {'name': 'eval', 'parameters': [{'parameter': 'Kostenstelle = "K1"', 'type': 'code'}]}
+2022-04-20 17:21:11,751 - BPMN.logger - Token.py - INFO - Token 08c2f287-a5e8-485d-b61f-5f95dc593037 is executing evalStrategy
+2022-04-20 17:21:11,755 - BPMN.logger - TransformationStrategy.py - WARNING - {} didn't work on eval Kostenstelle = "K1" trying next engine
+2022-04-20 17:21:11,757 - BPMN.logger - BPMN_Engine.py - INFO - InclusiveGateway: Gateway_1g1v4b2(concat) already in queue token added to it
+2022-04-20 17:21:11,757 - BPMN.logger - BPMN_Engine.py - INFO - Next Element in queue is Task: Activity_0ayr9uj(Kostenstelle = "K2") with the priority of 1
+2022-04-20 17:21:11,757 - BPMN.logger - Task.py - INFO - Token:29b7051f-95f9-43b5-a0e2-c97ad65b6e49
+Path taken:20-04-2022 15:21:11 : 20-04-2022 15:21:11 : StartEvent: StartEvent_1--0.0-->20-04-2022 15:21:11 : Task: Activity_11dvq8c(loadExcel("beispiel.xlsx"; sheetname = "Tabelle1"))--0.007-->20-04-2022 15:21:11 : Task: Activity_0l7vq3x(Kostenstelle = "unknown")--0.001-->20-04-2022 15:21:11 : InclusiveGateway: Gateway_0md6k1f--0.003-->20-04-2022 15:21:11 : Task: Activity_0ayr9uj(Kostenstelle = "K2")
+Data:   Belegnummer Belegdatum Lieferant Profitcenter Kostenstelle
+0            1     05.Jan         A           P1      unknown
+2            3     07.Jan         A           P1      unknown
+None
+2022-04-20 17:21:11,785 - BPMN.logger - StrategyFactory.py - INFO - parsed function string : {'name': 'eval', 'parameters': [{'parameter': 'Kostenstelle = "K2"', 'type': 'code'}]}
+2022-04-20 17:21:11,785 - BPMN.logger - Token.py - INFO - Token 29b7051f-95f9-43b5-a0e2-c97ad65b6e49 is executing evalStrategy
+2022-04-20 17:21:11,788 - BPMN.logger - TransformationStrategy.py - WARNING - {} didn't work on eval Kostenstelle = "K2" trying next engine
+2022-04-20 17:21:11,790 - BPMN.logger - BPMN_Engine.py - INFO - InclusiveGateway: Gateway_1g1v4b2(concat) already in queue token added to it
+2022-04-20 17:21:11,790 - BPMN.logger - BPMN_Engine.py - INFO - Next Element in queue is InclusiveGateway: Gateway_1g1v4b2(concat) with the priority of 5
+2022-04-20 17:21:11,791 - BPMN.logger - InclusiveGateway.py - INFO - Token:9562d3bb-3810-4886-b227-9caa0050b946
+Path taken:20-04-2022 15:21:11 : 20-04-2022 15:21:11 : StartEvent: StartEvent_1--0.0-->20-04-2022 15:21:11 : Task: Activity_11dvq8c(loadExcel("beispiel.xlsx"; sheetname = "Tabelle1"))--0.007-->20-04-2022 15:21:11 : Task: Activity_0l7vq3x(Kostenstelle = "unknown")--0.001-->20-04-2022 15:21:11 : InclusiveGateway: Gateway_0md6k1f--0.003-->20-04-2022 15:21:11 : InclusiveGateway: Gateway_1g1v4b2(concat)
+Data:   Belegnummer Belegdatum Lieferant Profitcenter Kostenstelle
+1            2     06.Jan         B           P3      unknown
+4            6     10.Jan         A           P3      unknown
+None
+2022-04-20 17:21:11,823 - BPMN.logger - InclusiveGateway.py - INFO - Token:08c2f287-a5e8-485d-b61f-5f95dc593037
+Path taken:20-04-2022 15:21:11 : 20-04-2022 15:21:11 : StartEvent: StartEvent_1--0.0-->20-04-2022 15:21:11 : Task: Activity_11dvq8c(loadExcel("beispiel.xlsx"; sheetname = "Tabelle1"))--0.007-->20-04-2022 15:21:11 : Task: Activity_0l7vq3x(Kostenstelle = "unknown")--0.001-->20-04-2022 15:21:11 : InclusiveGateway: Gateway_0md6k1f--0.002-->20-04-2022 15:21:11 : Task: Activity_0rbm5kl(Kostenstelle = "K1")--0.002-->20-04-2022 15:21:11 : InclusiveGateway: Gateway_1g1v4b2(concat)
+Data:   Belegnummer Belegdatum Lieferant Profitcenter Kostenstelle
+3            5     09.Jan         B           P2           K1
+5            7     11.Jan         A           P2           K1
+None
+2022-04-20 17:21:11,855 - BPMN.logger - InclusiveGateway.py - INFO - Token:29b7051f-95f9-43b5-a0e2-c97ad65b6e49
+Path taken:20-04-2022 15:21:11 : 20-04-2022 15:21:11 : StartEvent: StartEvent_1--0.0-->20-04-2022 15:21:11 : Task: Activity_11dvq8c(loadExcel("beispiel.xlsx"; sheetname = "Tabelle1"))--0.007-->20-04-2022 15:21:11 : Task: Activity_0l7vq3x(Kostenstelle = "unknown")--0.001-->20-04-2022 15:21:11 : InclusiveGateway: Gateway_0md6k1f--0.003-->20-04-2022 15:21:11 : Task: Activity_0ayr9uj(Kostenstelle = "K2")--0.002-->20-04-2022 15:21:11 : InclusiveGateway: Gateway_1g1v4b2(concat)
+Data:   Belegnummer Belegdatum Lieferant Profitcenter Kostenstelle
+0            1     05.Jan         A           P1           K2
+2            3     07.Jan         A           P1           K2
+None
+2022-04-20 17:21:11,887 - BPMN.logger - Token.py - INFO - Token 9562d3bb-3810-4886-b227-9caa0050b946 is executing <BPMN.CombineStrategy.ConcatStrategy object at 0x000002391EDEB580>
+2022-04-20 17:21:11,889 - BPMN.logger - Token.py - INFO - Token 9562d3bb-3810-4886-b227-9caa0050b946 is executing <BPMN.CombineStrategy.ConcatStrategy object at 0x000002391EDEB580>
+2022-04-20 17:21:11,890 - BPMN.logger - BPMN_Engine.py - INFO - Element of type bpmn:task : OrderedDict([('@id', 'Activity_1ai96gr'), ('@name', 'saveExcel("inktest.xlsx")'), ('bpmn:incoming', 'Flow_086x82t'), ('bpmn:outgoing', {'@id': 'Flow_0q477rq', '@name': 'no_name', '@targetRef': 'Event_1nyj1qg'})]) created and added to the queue
+2022-04-20 17:21:11,891 - BPMN.logger - BPMN_Engine.py - INFO - Next Element in queue is Task: Activity_1ai96gr(saveExcel("inktest.xlsx")) with the priority of 1
+2022-04-20 17:21:11,891 - BPMN.logger - Task.py - INFO - Token:9562d3bb-3810-4886-b227-9caa0050b946
+Path taken:20-04-2022 15:21:11 : 20-04-2022 15:21:11 : StartEvent: StartEvent_1--0.0-->20-04-2022 15:21:11 : Task: Activity_11dvq8c(loadExcel("beispiel.xlsx"; sheetname = "Tabelle1"))--0.007-->20-04-2022 15:21:11 : Task: Activity_0l7vq3x(Kostenstelle = "unknown")--0.001-->20-04-2022 15:21:11 : InclusiveGateway: Gateway_0md6k1f--0.003-->20-04-2022 15:21:11 : InclusiveGateway: Gateway_1g1v4b2(concat)--0.002-->20-04-2022 15:21:11 : Task: Activity_1ai96gr(saveExcel("inktest.xlsx"))
+Data:   Belegnummer Belegdatum Lieferant Profitcenter Kostenstelle
+1            2     06.Jan         B           P3      unknown
+4            6     10.Jan         A           P3      unknown
+3            5     09.Jan         B           P2           K1
+5            7     11.Jan         A           P2           K1
+0            1     05.Jan         A           P1           K2
+None
+2022-04-20 17:21:11,924 - BPMN.logger - StrategyFactory.py - INFO - parsed function string : {'name': 'saveExcel', 'parameters': [{'parameter': 'inktest.xlsx', 'type': 'str', 'string': '"inktest.xlsx"'}]}
+2022-04-20 17:21:11,925 - BPMN.logger - Token.py - INFO - Token 9562d3bb-3810-4886-b227-9caa0050b946 is executing SaveExcelStrategy
+2022-04-20 17:21:11,952 - BPMN.logger - BPMN_Engine.py - INFO - Element of type bpmn:endEvent : OrderedDict([('@id', 'Event_1nyj1qg'), ('bpmn:incoming', 'Flow_0q477rq')]) created and added to the queue
+2022-04-20 17:21:11,952 - BPMN.logger - BPMN_Engine.py - INFO - Next Element in queue is EndEvent: Event_1nyj1qg with the priority of 10
+2022-04-20 17:21:11,953 - BPMN.logger - Endevent.py - INFO - Token:9562d3bb-3810-4886-b227-9caa0050b946
+Path taken:20-04-2022 15:21:11 : 20-04-2022 15:21:11 : StartEvent: StartEvent_1--0.0-->20-04-2022 15:21:11 : Task: Activity_11dvq8c(loadExcel("beispiel.xlsx"; sheetname = "Tabelle1"))--0.007-->20-04-2022 15:21:11 : Task: Activity_0l7vq3x(Kostenstelle = "unknown")--0.001-->20-04-2022 15:21:11 : InclusiveGateway: Gateway_0md6k1f--0.003-->20-04-2022 15:21:11 : InclusiveGateway: Gateway_1g1v4b2(concat)--0.002-->20-04-2022 15:21:11 : Task: Activity_1ai96gr(saveExcel("inktest.xlsx"))--0.001-->20-04-2022 15:21:11 : EndEvent: Event_1nyj1qg
+Data:   Belegnummer Belegdatum Lieferant Profitcenter Kostenstelle
+1            2     06.Jan         B           P3      unknown
+4            6     10.Jan         A           P3      unknown
+3            5     09.Jan         B           P2           K1
+5            7     11.Jan         A           P2           K1
+0            1     05.Jan         A           P1           K2
+None
+2022-04-20 17:21:11,984 - BPMN.logger - BPMN_Engine.py - INFO - Process ended successfully no more elements in the queue
+2022-04-20 17:25:40,521 - BPMN.logger - BPMN_Parser.py - INFO - started parsing file:inkltest.bpmn
+2022-04-20 17:25:40,524 - BPMN.logger - BPMN_Parser.py - INFO - Parsing completed starting with checks
+2022-04-20 17:25:40,524 - BPMN.logger - BPMN_Parser.py - INFO - Checking startevent
+2022-04-20 17:25:40,525 - BPMN.logger - BPMN_Parser.py - DEBUG - Transforming outgoing flows :Flow_0sz71nl
+2022-04-20 17:25:40,525 - BPMN.logger - BPMN_Parser.py - INFO - Checking startevent finished sucessfully
+2022-04-20 17:25:40,526 - BPMN.logger - BPMN_Parser.py - INFO - Checking endevent/s
+2022-04-20 17:25:40,526 - BPMN.logger - BPMN_Parser.py - INFO - Checking Endevent/s finished sucessfully
+2022-04-20 17:25:40,527 - BPMN.logger - BPMN_Parser.py - INFO - Checking task/s
+2022-04-20 17:25:40,527 - BPMN.logger - BPMN_Parser.py - DEBUG - Transforming outgoing flows :Flow_1i1xefj
+2022-04-20 17:25:40,527 - BPMN.logger - BPMN_Parser.py - DEBUG - Transforming outgoing flows :Flow_1xu7i9f
+2022-04-20 17:25:40,527 - BPMN.logger - BPMN_Parser.py - DEBUG - Transforming outgoing flows :Flow_188wp25
+2022-04-20 17:25:40,527 - BPMN.logger - BPMN_Parser.py - DEBUG - Transforming outgoing flows :Flow_08zaqhs
+2022-04-20 17:25:40,528 - BPMN.logger - BPMN_Parser.py - DEBUG - Transforming outgoing flows :Flow_0q477rq
+2022-04-20 17:25:40,528 - BPMN.logger - BPMN_Parser.py - INFO - Checking task/s finished successfully
+2022-04-20 17:25:40,528 - BPMN.logger - BPMN_Parser.py - INFO - Checking bpmn:exclusiveGateway/s
+2022-04-20 17:25:40,528 - BPMN.logger - BPMN_Parser.py - INFO - no bpmn:exclusiveGateway found checking successfully
+2022-04-20 17:25:40,529 - BPMN.logger - BPMN_Parser.py - INFO - Checking bpmn:inclusiveGateway/s
+2022-04-20 17:25:40,529 - BPMN.logger - BPMN_Parser.py - DEBUG - Transforming outgoing flows :['Flow_17cerxv', 'Flow_08uffka', 'Flow_0zztvg0']
+2022-04-20 17:25:40,530 - BPMN.logger - BPMN_Parser.py - DEBUG - Transforming outgoing flows :Flow_086x82t
+2022-04-20 17:25:40,530 - BPMN.logger - BPMN_Parser.py - INFO - Checking bpmn:inclusiveGateway/s finished successfully
+2022-04-20 17:25:40,530 - BPMN.logger - BPMN_Parser.py - INFO - Checking bpmn:parallelGateway/s
+2022-04-20 17:25:40,531 - BPMN.logger - BPMN_Parser.py - INFO - no bpmn:parallelGateway found checking successfully
+2022-04-20 17:25:40,531 - BPMN.logger - BPMN_Parser.py - INFO - checking complete inkltest.bpmn was sucessfully parsed
+2022-04-20 17:25:40,533 - BPMN.logger - BPMN_Engine.py - INFO - Found startevent and added it to the queue
+2022-04-20 17:25:40,534 - BPMN.logger - BPMN_Engine.py - INFO - starting process from inkltest.bpmn
+2022-04-20 17:25:40,534 - BPMN.logger - BPMN_Engine.py - INFO - Next Element in queue is StartEvent: StartEvent_1 with the priority of 1
+2022-04-20 17:25:40,535 - BPMN.logger - StartEvent.py - INFO - Token:a61ac895-3e92-496d-b269-e05b748179b7
+Path taken:20-04-2022 15:25:40 : StartEvent: StartEvent_1
+Data:Empty DataFrame
+Columns: []
+Index: []
+<bound method DataFrame.info of Empty DataFrame
+Columns: []
+Index: []>
+2022-04-20 17:25:40,543 - BPMN.logger - BPMN_Engine.py - INFO - Element of type bpmn:task : OrderedDict([('@id', 'Activity_11dvq8c'), ('@name', 'loadExcel("beispiel.xlsx"; sheetname = "Tabelle1")'), ('bpmn:incoming', 'Flow_0sz71nl'), ('bpmn:outgoing', {'@id': 'Flow_1i1xefj', '@name': 'no_name', '@targetRef': 'Activity_0l7vq3x'})]) created and added to the queue
+2022-04-20 17:25:40,544 - BPMN.logger - BPMN_Engine.py - INFO - Next Element in queue is Task: Activity_11dvq8c(loadExcel("beispiel.xlsx"; sheetname = "Tabelle1")) with the priority of 1
+2022-04-20 17:25:40,545 - BPMN.logger - Task.py - INFO - Token:a61ac895-3e92-496d-b269-e05b748179b7
+Path taken:20-04-2022 15:25:40 : StartEvent: StartEvent_1--0.0-->20-04-2022 15:25:40 : Task: Activity_11dvq8c(loadExcel("beispiel.xlsx"; sheetname = "Tabelle1"))
+Data:Empty DataFrame
+Columns: []
+Index: []
+<bound method DataFrame.info of Empty DataFrame
+Columns: []
+Index: []>
+2022-04-20 17:25:40,549 - BPMN.logger - StrategyFactory.py - INFO - parsed function string : {'name': 'loadExcel', 'parameters': [{'parameter': 'beispiel.xlsx', 'type': 'str', 'string': '"beispiel.xlsx"'}, {'parameter': 'Tabelle1', 'type': 'str', 'string': '"Tabelle1"', 'optional': True, 'opt_name': 'sheetname'}]}
+2022-04-20 17:25:40,550 - BPMN.logger - Token.py - INFO - Token a61ac895-3e92-496d-b269-e05b748179b7 is executing LoadExcelStrategy
+2022-04-20 17:25:40,896 - BPMN.logger - BPMN_Engine.py - INFO - Element of type bpmn:task : OrderedDict([('@id', 'Activity_0l7vq3x'), ('@name', 'Kostenstelle = "unknown"'), ('bpmn:incoming', 'Flow_1i1xefj'), ('bpmn:outgoing', {'@id': 'Flow_08zaqhs', '@name': 'no_name', '@targetRef': 'Gateway_0md6k1f'})]) created and added to the queue
+2022-04-20 17:25:40,896 - BPMN.logger - BPMN_Engine.py - INFO - Next Element in queue is Task: Activity_0l7vq3x(Kostenstelle = "unknown") with the priority of 1
+2022-04-20 17:25:40,897 - BPMN.logger - Task.py - INFO - Token:a61ac895-3e92-496d-b269-e05b748179b7
+Path taken:20-04-2022 15:25:40 : StartEvent: StartEvent_1--0.0-->20-04-2022 15:25:40 : Task: Activity_11dvq8c(loadExcel("beispiel.xlsx"; sheetname = "Tabelle1"))--0.006-->20-04-2022 15:25:40 : Task: Activity_0l7vq3x(Kostenstelle = "unknown")
+Data:   Belegnummer Belegdatum Lieferant Profitcenter
+0            1     05.Jan         A           P1
+1            2     06.Jan         B           P3
+2            3     07.Jan         A           P1
+3            5     09.Jan         B           P2
+4            6     10.Jan         A           P3
+<bound method DataFrame.info of    Belegnummer Belegdatum Lieferant Profitcenter
+0            1     05.Jan         A           P1
+1            2     06.Jan         B           P3
+2            3     07.Jan         A           P1
+3            5     09.Jan         B           P2
+4            6     10.Jan         A           P3
+5            7     11.Jan         A           P2>
+2022-04-20 17:25:40,924 - BPMN.logger - StrategyFactory.py - INFO - parsed function string : {'name': 'eval', 'parameters': [{'parameter': 'Kostenstelle = "unknown"', 'type': 'code'}]}
+2022-04-20 17:25:40,925 - BPMN.logger - Token.py - INFO - Token a61ac895-3e92-496d-b269-e05b748179b7 is executing evalStrategy
+2022-04-20 17:25:40,931 - BPMN.logger - TransformationStrategy.py - WARNING - {} didn't work on eval Kostenstelle = "unknown" trying next engine
+2022-04-20 17:25:40,933 - BPMN.logger - BPMN_Engine.py - INFO - test lol
+2022-04-20 17:25:40,934 - BPMN.logger - BPMN_Engine.py - INFO - Element of type bpmn:inclusiveGateway : OrderedDict([('@id', 'Gateway_0md6k1f'), ('bpmn:incoming', 'Flow_08zaqhs'), ('bpmn:outgoing', [{'@id': 'Flow_17cerxv', '@name': 'Profitcenter == "P1"', '@targetRef': 'Activity_0ayr9uj'}, {'@id': 'Flow_08uffka', '@name': 'Profitcenter == "P2"', '@targetRef': 'Activity_0rbm5kl'}, {'@id': 'Flow_0zztvg0', '@name': 'Profitcenter != "P1" and Profitcenter != "P2"', '@targetRef': 'Gateway_1g1v4b2'}]), ('@opening', True)]) created and added to the queue
+2022-04-20 17:25:40,935 - BPMN.logger - BPMN_Engine.py - INFO - Next Element in queue is InclusiveGateway: Gateway_0md6k1f with the priority of 5
+2022-04-20 17:25:40,935 - BPMN.logger - InclusiveGateway.py - INFO - Token:a61ac895-3e92-496d-b269-e05b748179b7
+Path taken:20-04-2022 15:25:40 : StartEvent: StartEvent_1--0.0-->20-04-2022 15:25:40 : Task: Activity_11dvq8c(loadExcel("beispiel.xlsx"; sheetname = "Tabelle1"))--0.006-->20-04-2022 15:25:40 : Task: Activity_0l7vq3x(Kostenstelle = "unknown")--0.001-->20-04-2022 15:25:40 : InclusiveGateway: Gateway_0md6k1f
+Data:   Belegnummer Belegdatum Lieferant Profitcenter Kostenstelle
+0            1     05.Jan         A           P1      unknown
+1            2     06.Jan         B           P3      unknown
+2            3     07.Jan         A           P1      unknown
+3            5     09.Jan         B           P2      unknown
+4            6     10.Jan         A           P3      unknown
+<bound method DataFrame.info of    Belegnummer Belegdatum Lieferant Profitcenter Kostenstelle
+0            1     05.Jan         A           P1      unknown
+1            2     06.Jan         B           P3      unknown
+2            3     07.Jan         A           P1      unknown
+3            5     09.Jan         B           P2      unknown
+4            6     10.Jan         A           P3      unknown
+5            7     11.Jan         A           P2      unknown>
+2022-04-20 17:25:40,966 - BPMN.logger - InclusiveGateway.py - INFO - here
+2022-04-20 17:25:40,971 - BPMN.logger - Token.py - INFO - Token d2cea438-411f-4e07-b504-c968384eaa4f is executing FilterStrategy
+2022-04-20 17:25:40,977 - BPMN.logger - Token.py - INFO - Token b0179d06-cdd7-41ac-a8d5-f0ca8d0c5909 is executing FilterStrategy
+2022-04-20 17:25:40,982 - BPMN.logger - Token.py - INFO - Token 6c870c93-be9b-49e7-ac5b-cbd9bb3d4d0a is executing FilterStrategy
+2022-04-20 17:25:40,986 - BPMN.logger - InclusiveGateway.py - INFO - [{'id': 'Activity_0ayr9uj', 'token': Token:d2cea438-411f-4e07-b504-c968384eaa4f
+Path taken:20-04-2022 15:25:40 : 20-04-2022 15:25:40 : StartEvent: StartEvent_1--0.0-->20-04-2022 15:25:40 : Task: Activity_11dvq8c(loadExcel("beispiel.xlsx"; sheetname = "Tabelle1"))--0.006-->20-04-2022 15:25:40 : Task: Activity_0l7vq3x(Kostenstelle = "unknown")--0.001-->20-04-2022 15:25:40 : InclusiveGateway: Gateway_0md6k1f
+Data:   Belegnummer Belegdatum Lieferant Profitcenter Kostenstelle
+0            1     05.Jan         A           P1      unknown
+2            3     07.Jan         A           P1      unknown
+<bound method DataFrame.info of    Belegnummer Belegdatum Lieferant Profitcenter Kostenstelle
+0            1     05.Jan         A           P1      unknown
+2            3     07.Jan         A           P1      unknown>}, {'id': 'Activity_0rbm5kl', 'token': Token:b0179d06-cdd7-41ac-a8d5-f0ca8d0c5909
+Path taken:20-04-2022 15:25:40 : 20-04-2022 15:25:40 : StartEvent: StartEvent_1--0.0-->20-04-2022 15:25:40 : Task: Activity_11dvq8c(loadExcel("beispiel.xlsx"; sheetname = "Tabelle1"))--0.006-->20-04-2022 15:25:40 : Task: Activity_0l7vq3x(Kostenstelle = "unknown")--0.001-->20-04-2022 15:25:40 : InclusiveGateway: Gateway_0md6k1f
+Data:   Belegnummer Belegdatum Lieferant Profitcenter Kostenstelle
+3            5     09.Jan         B           P2      unknown
+5            7     11.Jan         A           P2      unknown
+<bound method DataFrame.info of    Belegnummer Belegdatum Lieferant Profitcenter Kostenstelle
+3            5     09.Jan         B           P2      unknown
+5            7     11.Jan         A           P2      unknown>}, {'id': 'Gateway_1g1v4b2', 'token': Token:6c870c93-be9b-49e7-ac5b-cbd9bb3d4d0a
+Path taken:20-04-2022 15:25:40 : 20-04-2022 15:25:40 : StartEvent: StartEvent_1--0.0-->20-04-2022 15:25:40 : Task: Activity_11dvq8c(loadExcel("beispiel.xlsx"; sheetname = "Tabelle1"))--0.006-->20-04-2022 15:25:40 : Task: Activity_0l7vq3x(Kostenstelle = "unknown")--0.001-->20-04-2022 15:25:40 : InclusiveGateway: Gateway_0md6k1f
+Data:   Belegnummer Belegdatum Lieferant Profitcenter Kostenstelle
+1            2     06.Jan         B           P3      unknown
+4            6     10.Jan         A           P3      unknown
+<bound method DataFrame.info of    Belegnummer Belegdatum Lieferant Profitcenter Kostenstelle
+1            2     06.Jan         B           P3      unknown
+4            6     10.Jan         A           P3      unknown>}]
+2022-04-20 17:25:41,065 - BPMN.logger - BPMN_Engine.py - INFO - Element of type bpmn:task : OrderedDict([('@id', 'Activity_0ayr9uj'), ('@name', 'Kostenstelle = "K2"'), ('bpmn:incoming', 'Flow_17cerxv'), ('bpmn:outgoing', {'@id': 'Flow_1xu7i9f', '@name': 'no_name', '@targetRef': 'Gateway_1g1v4b2'})]) created and added to the queue
+2022-04-20 17:25:41,066 - BPMN.logger - BPMN_Engine.py - INFO - Element of type bpmn:task : OrderedDict([('@id', 'Activity_0rbm5kl'), ('@name', 'Kostenstelle = "K1"'), ('bpmn:incoming', 'Flow_08uffka'), ('bpmn:outgoing', {'@id': 'Flow_188wp25', '@name': 'no_name', '@targetRef': 'Gateway_1g1v4b2'})]) created and added to the queue
+2022-04-20 17:25:41,067 - BPMN.logger - BPMN_Engine.py - INFO - test lol
+2022-04-20 17:25:41,067 - BPMN.logger - BPMN_Engine.py - INFO - Element of type bpmn:inclusiveGateway : OrderedDict([('@id', 'Gateway_1g1v4b2'), ('bpmn:incoming', ['Flow_1xu7i9f', 'Flow_188wp25', 'Flow_0zztvg0']), ('bpmn:outgoing', {'@id': 'Flow_086x82t', '@name': 'no_name', '@targetRef': 'Activity_1ai96gr'}), ('@opening', False), ('@name', 'concat')]) created and added to the queue
+2022-04-20 17:25:41,068 - BPMN.logger - BPMN_Engine.py - INFO - Next Element in queue is Task: Activity_0rbm5kl(Kostenstelle = "K1") with the priority of 1
+2022-04-20 17:25:41,068 - BPMN.logger - Task.py - INFO - Token:b0179d06-cdd7-41ac-a8d5-f0ca8d0c5909
+Path taken:20-04-2022 15:25:40 : 20-04-2022 15:25:40 : StartEvent: StartEvent_1--0.0-->20-04-2022 15:25:40 : Task: Activity_11dvq8c(loadExcel("beispiel.xlsx"; sheetname = "Tabelle1"))--0.006-->20-04-2022 15:25:40 : Task: Activity_0l7vq3x(Kostenstelle = "unknown")--0.001-->20-04-2022 15:25:40 : InclusiveGateway: Gateway_0md6k1f--0.002-->20-04-2022 15:25:41 : Task: Activity_0rbm5kl(Kostenstelle = "K1")
+Data:   Belegnummer Belegdatum Lieferant Profitcenter Kostenstelle
+3            5     09.Jan         B           P2      unknown
+5            7     11.Jan         A           P2      unknown
+<bound method DataFrame.info of    Belegnummer Belegdatum Lieferant Profitcenter Kostenstelle
+3            5     09.Jan         B           P2      unknown
+5            7     11.Jan         A           P2      unknown>
+2022-04-20 17:25:41,098 - BPMN.logger - StrategyFactory.py - INFO - parsed function string : {'name': 'eval', 'parameters': [{'parameter': 'Kostenstelle = "K1"', 'type': 'code'}]}
+2022-04-20 17:25:41,098 - BPMN.logger - Token.py - INFO - Token b0179d06-cdd7-41ac-a8d5-f0ca8d0c5909 is executing evalStrategy
+2022-04-20 17:25:41,125 - BPMN.logger - TransformationStrategy.py - WARNING - {} didn't work on eval Kostenstelle = "K1" trying next engine
+2022-04-20 17:25:41,138 - BPMN.logger - BPMN_Engine.py - INFO - InclusiveGateway: Gateway_1g1v4b2(concat) already in queue token added to it
+2022-04-20 17:25:41,147 - BPMN.logger - BPMN_Engine.py - INFO - Next Element in queue is Task: Activity_0ayr9uj(Kostenstelle = "K2") with the priority of 1
+2022-04-20 17:25:41,148 - BPMN.logger - Task.py - INFO - Token:d2cea438-411f-4e07-b504-c968384eaa4f
+Path taken:20-04-2022 15:25:40 : 20-04-2022 15:25:40 : StartEvent: StartEvent_1--0.0-->20-04-2022 15:25:40 : Task: Activity_11dvq8c(loadExcel("beispiel.xlsx"; sheetname = "Tabelle1"))--0.006-->20-04-2022 15:25:40 : Task: Activity_0l7vq3x(Kostenstelle = "unknown")--0.001-->20-04-2022 15:25:40 : InclusiveGateway: Gateway_0md6k1f--0.003-->20-04-2022 15:25:41 : Task: Activity_0ayr9uj(Kostenstelle = "K2")
+Data:   Belegnummer Belegdatum Lieferant Profitcenter Kostenstelle
+0            1     05.Jan         A           P1      unknown
+2            3     07.Jan         A           P1      unknown
+<bound method DataFrame.info of    Belegnummer Belegdatum Lieferant Profitcenter Kostenstelle
+0            1     05.Jan         A           P1      unknown
+2            3     07.Jan         A           P1      unknown>
+2022-04-20 17:25:41,186 - BPMN.logger - StrategyFactory.py - INFO - parsed function string : {'name': 'eval', 'parameters': [{'parameter': 'Kostenstelle = "K2"', 'type': 'code'}]}
+2022-04-20 17:25:41,187 - BPMN.logger - Token.py - INFO - Token d2cea438-411f-4e07-b504-c968384eaa4f is executing evalStrategy
+2022-04-20 17:25:41,190 - BPMN.logger - TransformationStrategy.py - WARNING - {} didn't work on eval Kostenstelle = "K2" trying next engine
+2022-04-20 17:25:41,192 - BPMN.logger - BPMN_Engine.py - INFO - InclusiveGateway: Gateway_1g1v4b2(concat) already in queue token added to it
+2022-04-20 17:25:41,193 - BPMN.logger - BPMN_Engine.py - INFO - Next Element in queue is InclusiveGateway: Gateway_1g1v4b2(concat) with the priority of 5
+2022-04-20 17:25:41,193 - BPMN.logger - InclusiveGateway.py - INFO - Token:6c870c93-be9b-49e7-ac5b-cbd9bb3d4d0a
+Path taken:20-04-2022 15:25:40 : 20-04-2022 15:25:40 : StartEvent: StartEvent_1--0.0-->20-04-2022 15:25:40 : Task: Activity_11dvq8c(loadExcel("beispiel.xlsx"; sheetname = "Tabelle1"))--0.006-->20-04-2022 15:25:40 : Task: Activity_0l7vq3x(Kostenstelle = "unknown")--0.001-->20-04-2022 15:25:40 : InclusiveGateway: Gateway_0md6k1f--0.004-->20-04-2022 15:25:41 : InclusiveGateway: Gateway_1g1v4b2(concat)
+Data:   Belegnummer Belegdatum Lieferant Profitcenter Kostenstelle
+1            2     06.Jan         B           P3      unknown
+4            6     10.Jan         A           P3      unknown
+<bound method DataFrame.info of    Belegnummer Belegdatum Lieferant Profitcenter Kostenstelle
+1            2     06.Jan         B           P3      unknown
+4            6     10.Jan         A           P3      unknown>
+2022-04-20 17:25:41,230 - BPMN.logger - InclusiveGateway.py - INFO - Token:b0179d06-cdd7-41ac-a8d5-f0ca8d0c5909
+Path taken:20-04-2022 15:25:40 : 20-04-2022 15:25:40 : StartEvent: StartEvent_1--0.0-->20-04-2022 15:25:40 : Task: Activity_11dvq8c(loadExcel("beispiel.xlsx"; sheetname = "Tabelle1"))--0.006-->20-04-2022 15:25:40 : Task: Activity_0l7vq3x(Kostenstelle = "unknown")--0.001-->20-04-2022 15:25:40 : InclusiveGateway: Gateway_0md6k1f--0.002-->20-04-2022 15:25:41 : Task: Activity_0rbm5kl(Kostenstelle = "K1")--0.003-->20-04-2022 15:25:41 : InclusiveGateway: Gateway_1g1v4b2(concat)
+Data:   Belegnummer Belegdatum Lieferant Profitcenter Kostenstelle
+3            5     09.Jan         B           P2           K1
+5            7     11.Jan         A           P2           K1
+<bound method DataFrame.info of    Belegnummer Belegdatum Lieferant Profitcenter Kostenstelle
+3            5     09.Jan         B           P2           K1
+5            7     11.Jan         A           P2           K1>
+2022-04-20 17:25:41,265 - BPMN.logger - InclusiveGateway.py - INFO - Token:d2cea438-411f-4e07-b504-c968384eaa4f
+Path taken:20-04-2022 15:25:40 : 20-04-2022 15:25:40 : StartEvent: StartEvent_1--0.0-->20-04-2022 15:25:40 : Task: Activity_11dvq8c(loadExcel("beispiel.xlsx"; sheetname = "Tabelle1"))--0.006-->20-04-2022 15:25:40 : Task: Activity_0l7vq3x(Kostenstelle = "unknown")--0.001-->20-04-2022 15:25:40 : InclusiveGateway: Gateway_0md6k1f--0.003-->20-04-2022 15:25:41 : Task: Activity_0ayr9uj(Kostenstelle = "K2")--0.002-->20-04-2022 15:25:41 : InclusiveGateway: Gateway_1g1v4b2(concat)
+Data:   Belegnummer Belegdatum Lieferant Profitcenter Kostenstelle
+0            1     05.Jan         A           P1           K2
+2            3     07.Jan         A           P1           K2
+<bound method DataFrame.info of    Belegnummer Belegdatum Lieferant Profitcenter Kostenstelle
+0            1     05.Jan         A           P1           K2
+2            3     07.Jan         A           P1           K2>
+2022-04-20 17:25:41,300 - BPMN.logger - Token.py - INFO - Token 6c870c93-be9b-49e7-ac5b-cbd9bb3d4d0a is executing <BPMN.CombineStrategy.ConcatStrategy object at 0x000002B5D2AFB9A0>
+2022-04-20 17:25:41,301 - BPMN.logger - Token.py - INFO - Token 6c870c93-be9b-49e7-ac5b-cbd9bb3d4d0a is executing <BPMN.CombineStrategy.ConcatStrategy object at 0x000002B5D2AFB9A0>
+2022-04-20 17:25:41,303 - BPMN.logger - BPMN_Engine.py - INFO - Element of type bpmn:task : OrderedDict([('@id', 'Activity_1ai96gr'), ('@name', 'saveExcel("inktest.xlsx")'), ('bpmn:incoming', 'Flow_086x82t'), ('bpmn:outgoing', {'@id': 'Flow_0q477rq', '@name': 'no_name', '@targetRef': 'Event_1nyj1qg'})]) created and added to the queue
+2022-04-20 17:25:41,304 - BPMN.logger - BPMN_Engine.py - INFO - Next Element in queue is Task: Activity_1ai96gr(saveExcel("inktest.xlsx")) with the priority of 1
+2022-04-20 17:25:41,304 - BPMN.logger - Task.py - INFO - Token:6c870c93-be9b-49e7-ac5b-cbd9bb3d4d0a
+Path taken:20-04-2022 15:25:40 : 20-04-2022 15:25:40 : StartEvent: StartEvent_1--0.0-->20-04-2022 15:25:40 : Task: Activity_11dvq8c(loadExcel("beispiel.xlsx"; sheetname = "Tabelle1"))--0.006-->20-04-2022 15:25:40 : Task: Activity_0l7vq3x(Kostenstelle = "unknown")--0.001-->20-04-2022 15:25:40 : InclusiveGateway: Gateway_0md6k1f--0.004-->20-04-2022 15:25:41 : InclusiveGateway: Gateway_1g1v4b2(concat)--0.002-->20-04-2022 15:25:41 : Task: Activity_1ai96gr(saveExcel("inktest.xlsx"))
+Data:   Belegnummer Belegdatum Lieferant Profitcenter Kostenstelle
+1            2     06.Jan         B           P3      unknown
+4            6     10.Jan         A           P3      unknown
+3            5     09.Jan         B           P2           K1
+5            7     11.Jan         A           P2           K1
+0            1     05.Jan         A           P1           K2
+<bound method DataFrame.info of    Belegnummer Belegdatum Lieferant Profitcenter Kostenstelle
+1            2     06.Jan         B           P3      unknown
+4            6     10.Jan         A           P3      unknown
+3            5     09.Jan         B           P2           K1
+5            7     11.Jan         A           P2           K1
+0            1     05.Jan         A           P1           K2
+2            3     07.Jan         A           P1           K2>
+2022-04-20 17:25:41,345 - BPMN.logger - StrategyFactory.py - INFO - parsed function string : {'name': 'saveExcel', 'parameters': [{'parameter': 'inktest.xlsx', 'type': 'str', 'string': '"inktest.xlsx"'}]}
+2022-04-20 17:25:41,345 - BPMN.logger - Token.py - INFO - Token 6c870c93-be9b-49e7-ac5b-cbd9bb3d4d0a is executing SaveExcelStrategy
+2022-04-20 17:25:41,364 - BPMN.logger - BPMN_Engine.py - INFO - Element of type bpmn:endEvent : OrderedDict([('@id', 'Event_1nyj1qg'), ('bpmn:incoming', 'Flow_0q477rq')]) created and added to the queue
+2022-04-20 17:25:41,365 - BPMN.logger - BPMN_Engine.py - INFO - Next Element in queue is EndEvent: Event_1nyj1qg with the priority of 10
+2022-04-20 17:25:41,365 - BPMN.logger - Endevent.py - INFO - Token:6c870c93-be9b-49e7-ac5b-cbd9bb3d4d0a
+Path taken:20-04-2022 15:25:40 : 20-04-2022 15:25:40 : StartEvent: StartEvent_1--0.0-->20-04-2022 15:25:40 : Task: Activity_11dvq8c(loadExcel("beispiel.xlsx"; sheetname = "Tabelle1"))--0.006-->20-04-2022 15:25:40 : Task: Activity_0l7vq3x(Kostenstelle = "unknown")--0.001-->20-04-2022 15:25:40 : InclusiveGateway: Gateway_0md6k1f--0.004-->20-04-2022 15:25:41 : InclusiveGateway: Gateway_1g1v4b2(concat)--0.002-->20-04-2022 15:25:41 : Task: Activity_1ai96gr(saveExcel("inktest.xlsx"))--0.001-->20-04-2022 15:25:41 : EndEvent: Event_1nyj1qg
+Data:   Belegnummer Belegdatum Lieferant Profitcenter Kostenstelle
+1            2     06.Jan         B           P3      unknown
+4            6     10.Jan         A           P3      unknown
+3            5     09.Jan         B           P2           K1
+5            7     11.Jan         A           P2           K1
+0            1     05.Jan         A           P1           K2
+<bound method DataFrame.info of    Belegnummer Belegdatum Lieferant Profitcenter Kostenstelle
+1            2     06.Jan         B           P3      unknown
+4            6     10.Jan         A           P3      unknown
+3            5     09.Jan         B           P2           K1
+5            7     11.Jan         A           P2           K1
+0            1     05.Jan         A           P1           K2
+2            3     07.Jan         A           P1           K2>
+2022-04-20 17:25:41,398 - BPMN.logger - BPMN_Engine.py - INFO - Process ended successfully no more elements in the queue

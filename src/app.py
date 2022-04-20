@@ -5,7 +5,7 @@ from BPMN import BPMNEngine
 
 def main():
     os.chdir("./Notebooks")
-    engine = BPMNEngine("loadingandsavingtest.bpmn")
+    engine = BPMNEngine("inkltest.bpmn")
     engine.run()
 
 
