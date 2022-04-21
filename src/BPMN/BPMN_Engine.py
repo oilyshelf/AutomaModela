@@ -2,6 +2,7 @@ from BPMN.BPMN_Parser import BPMNParser
 import heapq  # priorityque lol
 from typing import List
 from BPMN.BPMN_Component import BPMNComponent
+from BPMN.CodeWriter import CodeWriter
 from BPMN.ExclusiveGateway import ExclusiveGateway
 from BPMN.InclusiveGateway import InclusiveGateway
 from BPMN.ParallelGateway import ParallelGateway
@@ -13,7 +14,7 @@ from BPMN.logger import logger
 
 
 class BPMNEngine():
-    def __init__(self, file_name: str, parser=None, transform_factory=None, combine_factory=None):
+    def __init__(self, file_name: str, parser=None, transform_factory=None, combine_factory=None, code_writer = None):
         self.parser = BPMNParser() if parser is None else parser
         self.name = file_name
         try:
@@ -23,12 +24,14 @@ class BPMNEngine():
 
         self.ts_fact = TSF() if transform_factory is None else transform_factory
         self.cs_fact = CSF() if combine_factory is None else combine_factory
+        self.code_writer = CodeWriter(self.name.replace(".","_")) if code_writer is None else code_writer
+        self.code_writer.init_file()
         self.elements: List[BPMNComponent] = []
         self.find_start()
 
     def find_start(self):
         start = self.process.get("bpmn:startEvent")
-        heapq.heappush(self.elements, (1, StartEvent(start)))
+        heapq.heappush(self.elements, (1, StartEvent(start, self.code_writer)))
         logger.info("Found startevent and added it to the queue")
 
     def run(self):

@@ -11,6 +11,8 @@ class FunctionParser():
         self.regex_float = re.compile(r'(\d*\.\d*)')
         self.regex_eval = re.compile(r"(.*=.*)")
         self.regex_opt = re.compile(r'([\w\d]+[\s]*)=([\s]*[\w\d".]+)')
+        self.regex_plain = re.compile(r'(?!;+)(?!\s)[\w\d .,!?()""]+')
+        
 
     def determine_par_type(self, parameter: str) -> dict:
         if self.regex_string.fullmatch(parameter) is not None:
@@ -22,6 +24,8 @@ class FunctionParser():
         elif self.regex_opt.fullmatch(parameter) is not None:
             parts = [s.strip() for s in parameter.split("=")]
             return {**self.determine_par_type(parts[-1]), "optional": True, "opt_name": parts[0]}
+        elif self.regex_plain.fullmatch(parameter) is not None:
+            return {"parameter":parameter, "type":"plain_text", "string":parameter}
         else:
             return {"parameter": None, "type": "not supported Datatype", "string": parameter}
 
@@ -55,4 +59,11 @@ class FunctionParser():
         for entry in list_of:
             if entry.get("optional", False):
                 res[entry.get("opt_name")] = entry.get("parameter")
+        return res
+
+    def parameterlist_mapper(self, parameters:List[dict], ensure_type:str = None):
+        res = []
+        for par in parameters:
+            assert ensure_type is None or par.get("type") == ensure_type, f"Given Parameters are not matchin function call {par} is not an {ensure_type}"
+            res.append(par.get("parameter"))
         return res

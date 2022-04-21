@@ -1,6 +1,6 @@
 from BPMN.CombineStrategy import ConcatStrategy, CombineStrategy
 from .Functionparser import FunctionParser
-from .TransformationStrategy import TransformationStrategy, DoNothingStrategy, LoadExcelStrategy, SaveExcelStrategy, dotStrategy, evalStrategy
+from .TransformationStrategy import FilterStrategy, SelectStrategy, TransformationStrategy, DoNothingStrategy, LoadExcelStrategy, SaveExcelStrategy, dotStrategy, evalStrategy
 from BPMN.logger import logger
 import re
 
@@ -26,6 +26,11 @@ class TSF():
                 return dotStrategy(x)
             case {"name": "eval", "parameters": [{"parameter": x, "type": "code"}]}:
                 return evalStrategy(x)
+            case {"name":"filter", "parameters":[{"parameter":x, "type":"plain_text"}]}:
+                return FilterStrategy(x)
+            case {"name":"select", "parameters":[*pars]}:
+                p = self.parser.parameterlist_mapper(pars, ensure_type="plain_text")
+                return SelectStrategy(p)
 
             case _:
                 return None
