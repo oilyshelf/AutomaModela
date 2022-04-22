@@ -59,10 +59,13 @@ class CSF():
             case _:
 
                 if x := self.regex_equi.fullmatch(gateway_string) is not None:
+                    logger.info(x)
                     return "EquiStrat"
                 elif x := self.regex_theta.fullmatch(gateway_string) is not None:
+                    logger.info(x)
                     return "thetaStrat"
                 elif x := self.regex_singlexol.fullmatch(gateway_string) is not None:
+                    logger.info(x)
                     return "SimpleJoinStrat"
                 else:
                     return None
