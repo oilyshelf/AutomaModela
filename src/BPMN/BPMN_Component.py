@@ -3,6 +3,7 @@ import abc
 from typing import OrderedDict
 from time import time
 
+
 class BPMNComponent:
 
     def __init__(self, process_definition: OrderedDict):
@@ -22,6 +23,6 @@ class BPMNComponent:
     def __str__(self):
         return f"{self.__class__.__name__}: {self.id}{'('+self.name+')' if self.name != 'no_name' else ''}"
 
-    def __lt__(self, other:BPMNComponent) -> bool:
-        # Component which was created first is prioritised 
+    def __lt__(self, other: BPMNComponent) -> bool:
+        # Component which was created first is prioritised
         return self.creation_time < other.creation_time

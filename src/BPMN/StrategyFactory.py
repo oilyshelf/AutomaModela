@@ -5,7 +5,6 @@ from BPMN.logger import logger
 import re
 
 
-
 class TSF():
     def __init__(self):
         self.parser = FunctionParser()
@@ -26,9 +25,9 @@ class TSF():
                 return dotStrategy(x)
             case {"name": "eval", "parameters": [{"parameter": x, "type": "code"}]}:
                 return evalStrategy(x)
-            case {"name":"filter", "parameters":[{"parameter":x, "type":"plain_text"}]}:
+            case {"name": "filter", "parameters": [{"parameter": x, "type": "plain_text"}]}:
                 return FilterStrategy(x)
-            case {"name":"select", "parameters":[*pars]}:
+            case {"name": "select", "parameters": [*pars]}:
                 p = self.parser.parameterlist_mapper(pars, ensure_type="plain_text")
                 return SelectStrategy(p)
 
@@ -37,15 +36,15 @@ class TSF():
 
 
 class CSF():
-    
+
     def __init__(self) -> None:
-        #(left |right |outer |) for the diffrent types
+        # (left |right |outer |) for the diffrent types
         self.regex_equi = re.compile(r'(join on)(.+)(==)(.+)')
         self.regex_theta = re.compile(r"(join on)(.+)(!=|>=|<=|<|>)(.+)")
         self.regex_singlexol = re.compile(r"(join on)([\w\s\d]+[^=!><])")
 
-    def get_strategy(self, gateway_string:str) -> CombineStrategy|None:
-        
+    def get_strategy(self, gateway_string: str) -> CombineStrategy | None:
+
         match gateway_string:
             case "join":
                 return "naturaljoinstrategy"
@@ -67,4 +66,3 @@ class CSF():
                     return "SimpleJoinStrat"
                 else:
                     return None
-

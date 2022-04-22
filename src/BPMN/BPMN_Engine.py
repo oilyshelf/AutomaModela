@@ -14,7 +14,7 @@ from BPMN.logger import logger
 
 
 class BPMNEngine():
-    def __init__(self, file_name: str, parser=None, transform_factory=None, combine_factory=None, code_writer = None):
+    def __init__(self, file_name: str, parser=None, transform_factory=None, combine_factory=None, code_writer=None):
         self.parser = BPMNParser() if parser is None else parser
         self.name = file_name
         try:
@@ -24,7 +24,7 @@ class BPMNEngine():
 
         self.ts_fact = TSF() if transform_factory is None else transform_factory
         self.cs_fact = CSF() if combine_factory is None else combine_factory
-        self.code_writer = CodeWriter(self.name.replace(".","_")) if code_writer is None else code_writer
+        self.code_writer = CodeWriter(self.name.replace(".", "_")) if code_writer is None else code_writer
         self.code_writer.init_file()
         self.elements: List[BPMNComponent] = []
         self.find_start()

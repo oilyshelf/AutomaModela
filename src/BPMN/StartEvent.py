@@ -7,7 +7,7 @@ from.BPMN_Component import BPMNComponent
 
 class StartEvent(BPMNComponent):
 
-    def __init__(self, process_definition: OrderedDict, code_writer:CodeWriter):
+    def __init__(self, process_definition: OrderedDict, code_writer: CodeWriter):
         super().__init__(process_definition)
         self.code_writer = code_writer
 

@@ -21,11 +21,12 @@ class ExclusiveGateway(BPMNComponent):
             def_flow = None
             b_token = self.token[0]
             for key, el in enumerate(self.outgoing):
-                
-                if el.get("@id", None) == self.default: def_flow = key
+
+                if el.get("@id", None) == self.default:
+                    def_flow = key
 
                 if b_token.query(el.get("@name")):
-                    token_cp =  deepcopy(b_token)
+                    token_cp = deepcopy(b_token)
                     token_cp.transform(FilterStrategy(el.get("@name")))
                     return {
                         "operation": "add",
@@ -36,10 +37,10 @@ class ExclusiveGateway(BPMNComponent):
                 if query_string := self.outgoing[def_flow].get("@name", "no_name") != "no_name":
                     b_token.transform(FilterStrategy(query_string))
                 return {
-                        "operation": "add",
-                        "elements": [{"id": self.outgoing[def_flow]["@targetRef"], "token":b_token}]
-                    }
-                     
+                    "operation": "add",
+                    "elements": [{"id": self.outgoing[def_flow]["@targetRef"], "token":b_token}]
+                }
+
         else:
             # here you could customize the behaviour with some keywords
             new_token = self.token[0]

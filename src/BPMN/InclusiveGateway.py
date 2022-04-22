@@ -8,7 +8,7 @@ from BPMN.BPMN_Component import BPMNComponent
 
 
 class InclusiveGateway(BPMNComponent):
-    def __init__(self, process_definition: OrderedDict, token: Token, factory:CSF):
+    def __init__(self, process_definition: OrderedDict, token: Token, factory: CSF):
         self.token = [token]
         self.opening = process_definition.get("@opening", False)
         self.default = process_definition.get("@default", None)
@@ -20,22 +20,21 @@ class InclusiveGateway(BPMNComponent):
             token.add_context(str(self))
             logger.info(token)
         if self.opening:
-            logger.info("here")
             tba = []
             b_token = self.token[0]
             for el in self.outgoing:
-                if not b_token.query(el.get("@name")) or  el.get('@id') == self.default:
+                if not b_token.query(el.get("@name")) or el.get('@id') == self.default:
                     token_cp = copy.deepcopy(b_token)
                     token_cp.transform(FilterStrategy(el.get("@name")))
                     tba.append({
-                        "id":el.get("@targetRef"),
-                        "token":token_cp
+                        "id": el.get("@targetRef"),
+                        "token": token_cp
                     })
 
             token_count = len(tba)
             logger.info(tba)
             for key, obj in enumerate(tba):
-                tba[key]["token"].taken_paths = token_count 
+                tba[key]["token"].taken_paths = token_count
             return {"operation": "add", "elements": tba}
         else:
             token_len = len(self.token)

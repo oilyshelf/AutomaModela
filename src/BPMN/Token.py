@@ -10,7 +10,7 @@ from BPMN.logger import logger
 
 class Token():
 
-    def __init__(self, context: str, code_writer:CodeWriter):
+    def __init__(self, context: str, code_writer: CodeWriter):
         self.data = DataFrame()
         self.taken_paths = 1
         self.id = f"Token_{secrets.token_urlsafe(16)}".replace("-", "_")
