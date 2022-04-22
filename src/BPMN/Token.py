@@ -46,7 +46,7 @@ class Token():
                 # print(df.head(), f"this engine was useed {e}")
             except Exception:
                 logger.info(f"{e} didn't work to quering {query_string} trying next engine")
-        return False
+        return True
 
     def combine(self, other: Token, strategy: CombineStrategy) -> None:
         logger.info(f"Token {self.id} is executing {str(strategy)}")

@@ -22,14 +22,48 @@ class InclusiveGateway(BPMNComponent):
         if self.opening:
             tba = []
             b_token = self.token[0]
+            defa = None
+            suc_querys = []
             for el in self.outgoing:
-                if not b_token.query(el.get("@name")) or el.get('@id') == self.default:
+                if not b_token.query(el.get("@name")):
                     token_cp = copy.deepcopy(b_token)
                     token_cp.transform(FilterStrategy(el.get("@name")))
+                    suc_querys.append(el.get("@name"))
+                    token_cp.add_context(f"took path: {el.get('@id')} with query: {el.get('@name')}")
                     tba.append({
                         "id": el.get("@targetRef"),
                         "token": token_cp
                     })
+                elif el.get("@id") == self.default:
+                    n = el.get("@name")
+                    if n == "no_name":
+                        b_token.add_context(f"took default path: {el.get('@id')} with no query")
+                        tba.append({
+                            "id": el.get("@targetRef"),
+                            "token": b_token
+                        })
+                    elif n == "rest":
+                        defa = el.get("@id")
+                    else:
+                        token_cp = copy.deepcopy(b_token)
+                        token_cp.transform(FilterStrategy(el.get("@name")))
+                        token_cp.add_context(f"took path: {el.get('@id')} with query: {el.get('@name')}")
+                        suc_querys.append(el.get("@name"))
+                        tba.append({
+                            "id": el.get("@targetRef"),
+                            "token": token_cp
+                        })
+
+            if defa is not None:
+                token_cp = copy.deepcopy(b_token)
+
+                query = " & ".join([f"~({s})" for s in suc_querys])
+                token_cp.transform(FilterStrategy(query))
+                token_cp.add_context(f"took default rest path: {defa} with query: {query}")
+                tba.append({
+                    "id": el.get("@targetRef"),
+                    "token": token_cp
+                })
 
             token_count = len(tba)
             logger.info(tba)
