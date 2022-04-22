@@ -2,13 +2,15 @@ import copy
 from typing import OrderedDict
 from BPMN import Token
 from BPMN.BPMN_Component import BPMNComponent
+from BPMN.StrategyFactory import CSF
 from BPMN.logger import logger
 
 
 class ParallelGateway(BPMNComponent):
-    def __init__(self, process_definition: OrderedDict, token: Token):
+    def __init__(self, process_definition: OrderedDict, token: Token, factory: CSF):
         self.token = [token]
         self.opening = process_definition.get("@opening", False)
+        self.factory = factory
         super().__init__(process_definition)
 
     def execute(self):
@@ -25,8 +27,9 @@ class ParallelGateway(BPMNComponent):
         else:
             token_len = len(self.token)
             if token_len == self.token[0].taken_paths:
-                # do stuff
                 new_token = self.token[0]
+                for t in self.token[1:]:
+                    new_token.combine(t, self.factory.get_strategy(self.name))
                 new_token.taken_paths = 1
                 return {
                     "operation": "add",
