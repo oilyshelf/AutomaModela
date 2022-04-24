@@ -135,3 +135,15 @@ class SelectStrategy(TransformationStrategy):
 
     def get_code(self, df_name: str) -> str:
         return f"#we get a subset of the dataframe with these columns {self.cols}\n{df_name} = {df_name}[{self.cols}]\n"
+
+
+class RenameStrategy(TransformationStrategy):
+
+    def __init__(self, from_col: str, to_col: str) -> None:
+        self.mapper = {from_col: to_col}
+
+    def transform(self, df: pd.DataFrame) -> pd.DataFrame:
+        return df.rename(columns=self.mapper)
+
+    def get_code(self, df_name: str) -> str:
+        return f'#rename column from-> to {self.mapper}\n{df_name}={df_name}.rename(columns={self.mapper})\n'
