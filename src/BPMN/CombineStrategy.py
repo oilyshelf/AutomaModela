@@ -1,4 +1,3 @@
-from operator import index
 import pandas as pd
 import abc
 from BPMN.logger import logger
