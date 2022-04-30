@@ -40,9 +40,9 @@ class CSF():
 
     def __init__(self) -> None:
         # (left |right |outer |) for the diffrent types
-        self.regex_equi = re.compile(r'(join on)(.+)(==)(.+)')
-        self.regex_theta = re.compile(r"(join on)(.+)(!=|>=|<=|<|>)(.+)")
-        self.regex_singlexol = re.compile(r"(join on)([\w\s\d]+[^=!><])")
+        self.regex_equi = re.compile(r'(left |right |outer |)(join on)(.+)(==)(.+)')
+        self.regex_theta = re.compile(r"(left |right |outer |)(join on)((.+)(!=|>=|<=|<|>)(.+))")
+        self.regex_singlexol = re.compile(r"(left |right |outer |)(join on)([\w\s\d]+[^=!><])")
 
     def get_strategy(self, gateway_string: str) -> CombineStrategy | None:
 

@@ -18,21 +18,21 @@ class CombineStrategy():
 class ConcatStrategy(CombineStrategy):
 
     def combine(self, df_1: pd.DataFrame, df_2: pd.DataFrame) -> pd.DataFrame:
-        df_c = pd.concat([df_1, df_2])
+        df_c = pd.concat([df_1, df_2]).drop_duplicates(keep=True)
         return df_c
 
     def get_code(self, df_1: str, df_2: str) -> str:
-        return f"#Here we concate two Dataframes\n{df_1} = pd.concat([{df_1},{df_2}])\n"
+        return f"#Here we concate two Dataframes\n{df_1} = pd.concat([{df_1},{df_2}]).drop_duplicates(keep=True)\n"
 
 
 class DiffrenceStrategy(CombineStrategy):
-    # todo
+
     def combine(self, df_1: pd.DataFrame, df_2: pd.DataFrame) -> pd.DataFrame:
-        df_c = pd.concat([df_1, df_2])
+        df_c = pd.concat([df_1, df_2]).drop_duplicates(keep=False)
         return df_c
 
     def get_code(self, df_1: str, df_2: str) -> str:
-        return f"#Here we concate two Dataframes\n{df_1} = pd.concat([{df_1},{df_2}])\n"
+        return f"#Here we concate two Dataframes\n{df_1} = pd.concat([{df_1},{df_2}]).drop_duplicates(keep=False)\n"
 
 
 class CrossStrategy(CombineStrategy):
