@@ -4,14 +4,14 @@ import re
 
 class FunctionParser():
     def __init__(self):
-        self.regex_base = re.compile(r'(\w+)(\([$a-zA-Z0-9_:\[\]=, "".;<>`!?()]*\))')
+        self.regex_base = re.compile(r'(\w+)(\([$a-zA-Z0-9_:\[\]=, ".;<>`!?()@]*\))')
         self.regex_empty_brackets = re.compile(r"(\(\s*\))")
-        self.regex_string = re.compile(r'("[\w\d\s.?!,]*")+')
-        self.regex_int = re.compile(r"(\d*)")
-        self.regex_float = re.compile(r'(\d*\.\d*)')
-        self.regex_eval = re.compile(r"(.*=.*)")
+        self.regex_string = re.compile(r'("[\w\d\s.?!,]*")')
+        self.regex_int = re.compile(r"(\d+)")
+        self.regex_float = re.compile(r'(\d+\.\d+)')
+        self.regex_eval = re.compile(r"(.+=.+)")
         self.regex_opt = re.compile(r'([\w\d]+[\s]*)=([\s]*[\w\d".]+)')
-        self.regex_plain = re.compile(r'(?!;+)(?!\s)[\w\d .,!?()""]+')
+        self.regex_plain = re.compile(r'(?!;+)(?!\s)[\w\d .,!?()"`=<>&|@]+')
 
     def determine_par_type(self, parameter: str) -> dict:
         if self.regex_string.fullmatch(parameter) is not None:
