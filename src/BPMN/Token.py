@@ -17,6 +17,7 @@ class Token():
         self.cur_time = time()
         self.context: str = f"{strftime('%d-%m-%Y %H:%M:%S', gmtime())} : {context}"
         self.code_writer = code_writer
+        self.priority = 20
 
     def add_context(self, element: str) -> None:
         t = time()
@@ -52,3 +53,6 @@ class Token():
         logger.info(f"Token {self.id} is executing {str(strategy)}")
         self.code_writer.write_code(strategy.get_code(self.id, other.id))
         self.data = strategy.combine(self.data, other.data)
+
+    def setPrio(self, prio: int) -> None:
+        self.priority = prio

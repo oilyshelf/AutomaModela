@@ -1,9 +1,13 @@
 import xmltodict
 from collections import OrderedDict
 from BPMN.logger import logger
+import re
 
 
 class BPMNParser():
+
+    def __init__(self) -> None:
+        self.priortyfinder = re.compile(r'#(\d+)(.+)')
 
     def simple_load(self, file_name: str) -> OrderedDict:
         with open(file_name, "r") as file:
@@ -25,11 +29,19 @@ class BPMNParser():
         logger.debug(f"Transforming outgoing flows :{outgoing}")
         if type(outgoing) == str:
             flow = self.find_flow(process, outgoing)
-            return {"@id": outgoing, "@name": flow.get("@name", "no_name"), "@targetRef": flow.get("@targetRef", None)}
+            name = flow.get("@name", "no_name")
+            prio = 20
+            if m := self.priortyfinder.fullmatch(name):
+                prio = int(m.group(1))
+            return {"@id": outgoing, "@name": name, "@targetRef": flow.get("@targetRef", None), "@priority": prio}
         else:
             for key, flow_id in enumerate(outgoing):
                 flow = self.find_flow(process, flow_id)
-                outgoing[key] = {"@id": flow_id, "@name": flow.get("@name", "no_name"), "@targetRef": flow.get("@targetRef", None)}
+                name = flow.get("@name", "no_name")
+                prio = 20
+                if m := self.priortyfinder.fullmatch(name):
+                    prio = int(m.group(1))
+                outgoing[key] = {"@id": flow_id, "@name": name, "@targetRef": flow.get("@targetRef", None), "@priority": prio}
         return outgoing
 
     def _check_start(self, process: OrderedDict) -> OrderedDict:

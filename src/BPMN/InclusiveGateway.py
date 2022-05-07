@@ -9,25 +9,28 @@ from BPMN.BPMN_Component import BPMNComponent
 
 class InclusiveGateway(BPMNComponent):
     def __init__(self, process_definition: OrderedDict, token: Token, factory: CSF):
+        super().__init__(process_definition)
         self.token = [token]
         self.opening = process_definition.get("@opening", False)
         self.default = process_definition.get("@default", None)
         self.factory = factory
-        super().__init__(process_definition)
 
     def execute(self):
-        for token in self.token:
-            token.add_context(str(self))
-            logger.info(token)
         if self.opening:
+            # logging
+            for token in self.token:
+                token.add_context(str(self))
+                logger.info(token)
+
             tba = []
             b_token = self.token[0]
             defa = None
             suc_querys = []
-            for el in self.outgoing:
+            for el in sorted(self.outgoing, key=lambda d: d["@priority"]):
                 if not b_token.query(el.get("@name")):
                     token_cp = copy.deepcopy(b_token)
                     token_cp.transform(FilterStrategy(el.get("@name")))
+                    token_cp.setPrio(el.get("@priority"))
                     suc_querys.append(el.get("@name"))
                     token_cp.add_context(f"took path: {el.get('@id')} with query: {el.get('@name')}")
                     tba.append({
@@ -71,12 +74,19 @@ class InclusiveGateway(BPMNComponent):
                 tba[key]["token"].taken_paths = token_count
             return {"operation": "add", "elements": tba}
         else:
+            # sorting
+            self.token = sorted(self.token, key=lambda t: t.priority)
             token_len = len(self.token)
             if token_len == self.token[0].taken_paths:
+                # logging
+                for token in self.token:
+                    token.add_context(str(self))
+                    logger.info(token)
                 new_token = self.token[0]
                 for t in self.token[1:]:
                     new_token.combine(t, self.factory.get_strategy(self.name))
                 new_token.taken_paths = 1
+                new_token.setPrio(self.outgoing.get("@priority"))
                 return {
                     "operation": "add",
                     "elements": [{"id": self.outgoing["@targetRef"], "token":new_token}]

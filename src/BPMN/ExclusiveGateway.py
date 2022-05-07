@@ -8,10 +8,10 @@ from BPMN.logger import logger
 
 class ExclusiveGateway(BPMNComponent):
     def __init__(self, process_definition: OrderedDict, token: Token):
+        super().__init__(process_definition)
         self.token = [token]
         self.opening = process_definition.get("@opening", False)
         self.default = process_definition.get("@default", None)
-        super().__init__(process_definition)
 
     def execute(self):
         for token in self.token:
@@ -20,7 +20,7 @@ class ExclusiveGateway(BPMNComponent):
         if self.opening:
             def_flow = None
             b_token = self.token[0]
-            for key, el in enumerate(self.outgoing):
+            for key, el in enumerate(sorted(self.outgoing, key=lambda d: d["@priority"])):
 
                 if el.get("@id", None) == self.default:
                     def_flow = key
