@@ -33,6 +33,7 @@ class BPMNParser():
             prio = 20
             if m := self.priortyfinder.fullmatch(name):
                 prio = int(m.group(1))
+                name = m.group(2)
             return {"@id": outgoing, "@name": name, "@targetRef": flow.get("@targetRef", None), "@priority": prio}
         else:
             for key, flow_id in enumerate(outgoing):
@@ -41,6 +42,7 @@ class BPMNParser():
                 prio = 20
                 if m := self.priortyfinder.fullmatch(name):
                     prio = int(m.group(1))
+                    name = m.group(2)
                 outgoing[key] = {"@id": flow_id, "@name": name, "@targetRef": flow.get("@targetRef", None), "@priority": prio}
         return outgoing
 
