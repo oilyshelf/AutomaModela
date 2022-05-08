@@ -9,9 +9,12 @@ class FunctionParser():
         self.regex_string = re.compile(r'("[\w\d\s.?!,]*")')
         self.regex_int = re.compile(r"(\d+)")
         self.regex_float = re.compile(r'(\d+\.\d+)')
-        self.regex_eval = re.compile(r"(.+=.+)")
+        self.regex_eval = re.compile(r'([\w\d.,!?_]+|`[ \w\d.,!?_]+`)( *)=(?!;+)([\w\d .,!?()"`=<>&|@_]+)')
         self.regex_opt = re.compile(r'([\w\d]+[\s]*)=([\s]*[\w\d".]+)')
-        self.regex_plain = re.compile(r'(?!;+)(?!\s)[\w\d .,!?()"`=<>&|@]+')
+        self.regex_plain = re.compile(r'(?!;+)(?!\s)[\w\d .,!?()"`=<>&|@_]+')
+        self.regex_attribute = re.compile(r'([\w\d.,!?_]+|`[ \w\d.,!?_]+`)')
+        self.regex_bool = re.compile(r"(True|False)")
+        self.regex_none = re.compile(r"(None)")
 
     def determine_par_type(self, parameter: str) -> dict:
         if self.regex_string.fullmatch(parameter) is not None:
@@ -20,11 +23,17 @@ class FunctionParser():
             return {"parameter": float(parameter), "type": "float", "string": parameter}
         elif self.regex_int.fullmatch(parameter) is not None:
             return {"parameter": int(parameter), "type": "int", "string": parameter}
+        elif self.regex_bool.fullmatch(parameter) is not None:
+            return {"parameter": parameter == "True", "type": "int", "string": parameter}
+        elif self.regex_none.fullmatch(parameter) is not None:
+            return {"parameter": None, "type": "int", "string": parameter}
+        elif self.regex_attribute.fullmatch(parameter) is not None:
+            return {"parameter": parameter.strip("`"), "type": "attribute", "string": parameter}
         elif self.regex_opt.fullmatch(parameter) is not None:
             parts = [s.strip() for s in parameter.split("=")]
             return {**self.determine_par_type(parts[-1]), "optional": True, "opt_name": parts[0]}
         elif self.regex_plain.fullmatch(parameter) is not None:
-            return {"parameter": parameter, "type": "plain_text", "string": parameter}
+            return {"parameter": parameter, "type": "expr", "string": parameter}
         else:
             return {"parameter": None, "type": "not supported Datatype", "string": parameter}
 
