@@ -2,7 +2,6 @@ from typing import OrderedDict
 from BPMN.BPMN_Component import BPMNComponent
 from BPMN.StrategyFactory import TSF
 from BPMN.Token import Token
-from BPMN.logger import logger
 
 
 class Task(BPMNComponent):
@@ -13,11 +12,13 @@ class Task(BPMNComponent):
         self.factory = factory
 
     def execute(self):
-        self.token.add_context(str(self))
-        logger.info(self.token)
+        # transform
         self.token.transform(self.factory.get_strategy(self.name))
+        # prep return
         target = self.outgoing
         self.token.setPrio(target.get("@priority"))
+        # logging
+        self._add_info(self.token)
         return {
             "operation": "add",
             "elements": [{"id": target["@targetRef"], "token":self.token}]

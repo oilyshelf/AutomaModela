@@ -3,6 +3,7 @@ import abc
 from BPMN.Token import Token
 from typing import OrderedDict
 from time import time
+from BPMN.logger import logger
 
 
 class BPMNComponent:
@@ -14,6 +15,10 @@ class BPMNComponent:
         self.outgoing = process_definition.get("bpmn:outgoing", None)
         self.creation_time = time()
         self.token: Token = None
+
+    def _add_info(self, token: Token, additional_msg: str = "") -> None:
+        token.add_context(str(self) + additional_msg)
+        logger.info(token)
 
     @abc.abstractclassmethod
     def execute(self):
@@ -27,8 +32,8 @@ class BPMNComponent:
 
     def __lt__(self, other: BPMNComponent) -> bool:
         # Component which was created first is prioritised
-        t1 = self.token.priority if type(self.token) is not list else sorted(self.token, key=lambda t: t.priority)
-        t2 = other.token.priority if type(other.token) is not list else sorted(other.token, key=lambda t: t.priority)
+        t1 = self.token.priority if type(self.token) is not list else sorted(self.token)[0]
+        t2 = other.token.priority if type(other.token) is not list else sorted(other.token)[0]
         if t1 == t2:
             return self.creation_time < other.creation_time
         return t1 < t2

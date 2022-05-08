@@ -30,7 +30,7 @@ class BPMNParser():
         if type(outgoing) == str:
             flow = self.find_flow(process, outgoing)
             name = flow.get("@name", "no_name")
-            prio = 20
+            prio = None
             if m := self.priortyfinder.fullmatch(name):
                 prio = int(m.group(1))
                 name = m.group(2)
@@ -39,7 +39,7 @@ class BPMNParser():
             for key, flow_id in enumerate(outgoing):
                 flow = self.find_flow(process, flow_id)
                 name = flow.get("@name", "no_name")
-                prio = 20
+                prio = None
                 if m := self.priortyfinder.fullmatch(name):
                     prio = int(m.group(1))
                     name = m.group(2)

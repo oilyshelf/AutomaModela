@@ -1,7 +1,6 @@
 from .Token import Token
 from .BPMN_Component import BPMNComponent
 from typing import OrderedDict
-from BPMN.logger import logger
 
 
 class EndEvent(BPMNComponent):
@@ -11,8 +10,7 @@ class EndEvent(BPMNComponent):
         self.token = token
 
     def execute(self):
-        self.token.add_context(str(self))
-        logger.info(self.token)
+        self._add_info(self.token)
         return {
             "operation": "end"
         }

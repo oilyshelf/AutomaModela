@@ -3,7 +3,6 @@ from typing import OrderedDict
 from BPMN import Token
 from BPMN.BPMN_Component import BPMNComponent
 from BPMN.StrategyFactory import CSF
-from BPMN.logger import logger
 
 
 class ParallelGateway(BPMNComponent):
@@ -14,38 +13,48 @@ class ParallelGateway(BPMNComponent):
         self.factory = factory
 
     def execute(self):
-
         if self.opening:
-            # logging
-            for token in self.token:
-                token.add_context(str(self))
-                logger.info(token)
-            new_paths = len(self.outgoing)
-            tba = list()
-            for el in self.outgoing:
-                new_token = copy.deepcopy(self.token[0])
-                new_token.taken_paths = new_paths
-                new_token.setPrio(el.get("@priority"))
-                tba.append({"id": el["@targetRef"], "token": new_token})
-            return {"operation": "add", "elements": tba}
+            return self._opening()
         else:
-            token_len = len(self.token)
-            # sorting
-            self.token = sorted(self.token, key=lambda t: t.priority)
-            if token_len == self.token[0].taken_paths:
-                # logging
-                for token in self.token:
-                    token.add_context(str(self))
-                    logger.info(token)
+            return self._closing()
 
-                new_token = self.token[0]
-                for t in self.token[1:]:
-                    new_token.combine(t, self.factory.get_strategy(self.name))
-                new_token.taken_paths = 1
-                new_token.setPrio(self.outgoing.get("@priorty"))
-                return {
-                    "operation": "add",
-                    "elements": [{"id": self.outgoing["@targetRef"], "token":new_token}]
-                }
-            else:
-                return {"operation": "repush"}
+    def _opening(self):
+        # calculating taken paths
+        new_paths = len(self.outgoing)
+        tba = list()
+        # for every path
+        for el in self.outgoing:
+            # copy token and prep it
+            new_token = copy.deepcopy(self.token[0])
+            new_token.taken_paths = new_paths
+            new_token.setPrio(el.get("@priority"))
+            tba.append({"id": el["@targetRef"], "token": new_token})
+            # logging
+            self._add_info(new_token)
+        # return
+        return {"operation": "add", "elements": tba}
+
+    def _closing(self):
+        # check if all tokens are arrived
+        token_len = len(self.token)
+        if token_len != self.token[0].taken_paths:
+            return {"operation": "repush"}
+        # sorting
+        self.token = sorted(self.token)
+        # choose basis token
+        new_token = self.token[0]
+        # combine tokens
+        strategy = self.factory.get_strategy(self.name)
+        for t in self.token[1:]:
+            new_token.combine(t, strategy)
+        # prep return
+        new_token.taken_paths = 1
+        new_token.setPrio(20)
+        new_token.setPrio(self.outgoing.get("@priorty"))
+        # logging
+        self._add_info(new_token)
+        # return
+        return {
+            "operation": "add",
+            "elements": [{"id": self.outgoing["@targetRef"], "token":new_token}]
+        }
