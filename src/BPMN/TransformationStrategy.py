@@ -1,7 +1,7 @@
-from typing import List
-from BPMN.logger import logger
-import pandas as pd
 import abc
+from typing import List
+import numpy as np
+import pandas as pd
 
 
 # abstract base class
@@ -19,54 +19,33 @@ class TransformationStrategy():
         return f"{self.__class__.__name__}"
 
 
-# special functions
-class DoNothingStrategy(TransformationStrategy):
+# load and save
+class LoadExcelStrategy(TransformationStrategy):
+
+    def __init__(self, file_name: str, sheet_name: str | int = 0, index: str | None = None):
+        self.file_name = file_name
+        self.sheet_name = sheet_name
+        self.index = index
+
     def transform(self, df: pd.DataFrame) -> pd.DataFrame:
+        df = pd.read_excel(self.file_name, sheet_name=self.sheet_name, index_col=self.index)
+        df = df.replace({np.nan: None})
         return df
 
     def get_code(self, df_name: str) -> str:
-        return f"# fyi here was called a Do Nothing call on {df_name}\n"
-
-
-class dotStrategy(TransformationStrategy):
-    def __init__(self, func_string: str):
-        self.func_string = func_string
-
-    def transform(self, df: pd.DataFrame) -> pd.DataFrame:
-        exec_string = f'edf = df{self.func_string}'
-        loc = {}
-        exec(exec_string, locals(), loc)
-        return loc["edf"]
-
-    def get_code(self, df_name: str) -> str:
-        return f"#Here is a call Happing using the dotStrategy aka pure python code beaware\n{df_name} = {df_name}{self.func_string}\n"
-
-# load and save
-
-
-class LoadExcelStrategy(TransformationStrategy):
-
-    def __init__(self, file_name: str, **kwargs):
-        self.file_name = file_name
-        self.sheet_name = kwargs.get("sheetname", 0)
-        self.index = kwargs.get("index", None)
-
-    def transform(self, df: pd.DataFrame) -> pd.DataFrame:
-        return pd.read_excel(self.file_name, sheet_name=self.sheet_name, index_col=self.index)
-
-    def get_code(self, df_name: str) -> str:
         return f"""
-#here we read the data provided by the {self.file_name} from the sheet {self.sheet_name if type(self.sheet_name) != int else "number"+str(self.sheet_name)} and set the index to {self.index}
+#here we read the data provided by the {self.file_name} from the sheet {self.sheet_name if type(self.sheet_name) != int else "number "+str(self.sheet_name)} and set the index to {self.index}
 {df_name} = pd.read_excel("{self.file_name}", sheet_name = {self.sheet_name if type(self.sheet_name) == int else "'"+self.sheet_name+"'"}{f', index_col = "'+self.index+'"' if self.index is not None else ""})
+{df_name} = {df_name}.replace({{np.nan:None}})
 """
 
 
 class SaveExcelStrategy(TransformationStrategy):
 
-    def __init__(self, file_name: str, **kwargs):
+    def __init__(self, file_name: str, sheet_name: str = "Sheet1", impl_bool_3: bool = False):
         self.file_name = file_name
-        self.sheet_name = kwargs.get("sheetname", "Sheet1")
-        self.index = True if kwargs.get("index", False) == "True" else False
+        self.sheet_name = sheet_name
+        self.index = impl_bool_3
 
     def transform(self, df: pd.DataFrame) -> pd.DataFrame:
         df.to_excel(self.file_name, index=self.index, sheet_name=self.sheet_name)
@@ -78,10 +57,9 @@ class SaveExcelStrategy(TransformationStrategy):
 {df_name}.to_excel("{self.file_name}", sheet_name = "{self.sheet_name}", index = {self.index})
 """
 
+
 # views
-
-
-class FilterStrategy(TransformationStrategy):
+class SelectRowsStrategy(TransformationStrategy):
 
     def __init__(self, query: str):
         self.query = query
@@ -93,7 +71,7 @@ class FilterStrategy(TransformationStrategy):
                 df = df.query(self.query, **e)
                 return df
             except Exception:
-                logger.warning(f"{e} didn't work on quering {self.eval_string} trying next engine")
+                print(f"{e} didn't work on quering {self.eval_string} trying next engine")
         return pd.DataFrame(columns=df.columns)
 
     def get_code(self, df_name: str) -> str:
@@ -106,10 +84,10 @@ for engine in {self.engines}:
 """
 
 
-class SelectStrategy(TransformationStrategy):
+class SelectColumnStrategy(TransformationStrategy):
 
-    def __init__(self, cols: List[str]) -> None:
-        self.cols = cols
+    def __init__(self, column: List[str]) -> None:
+        self.cols = column
 
     def transform(self, df: pd.DataFrame) -> pd.DataFrame:
         return df[self.cols]
@@ -130,10 +108,10 @@ class RenameStrategy(TransformationStrategy):
         return f'#rename column from-> to {self.mapper}\n{df_name}={df_name}.rename(columns={self.mapper})\n'
 
 
-class deleteData(TransformationStrategy):
+class deleteDataStrategy(TransformationStrategy):
 
-    def __init__(self, **kwargs) -> None:
-        self.keep = kwargs.get("keepCols", False)
+    def __init__(self, impl_bool_1: bool = False) -> None:
+        self.keep = impl_bool_1
 
     def transform(self, df: pd.DataFrame) -> pd.DataFrame:
         if self.keep:
@@ -145,15 +123,15 @@ class deleteData(TransformationStrategy):
 
 
 # updates row based
-class addRow(TransformationStrategy):
+class addRowStrategy(TransformationStrategy):
 
-    def __init__(self, *args, **kwargs) -> None:
-        if args:
-            self.order = True
-            self.tba = args
-        elif kwargs:
+    def __init__(self, values: List) -> None:
+        if type(values[0]) == dict:
             self.order = False
-            self.tba = {key: [entry] for key, entry in kwargs.items()}
+            self.tba = {k: [v] for d in values for k, v in d.items()}
+        else:
+            self.order = True
+            self.tba = values
 
     def transform(self, df: pd.DataFrame) -> pd.DataFrame:
         if self.order:
@@ -169,47 +147,45 @@ class addRow(TransformationStrategy):
         return f"#add row based on keywords by creating a temp df\ntemp_df = pd.DataFrame(data = {self.tba})\n{df_name} = {df_name}.append(temp_df, ignore_index = True)"
 
 
-class deleteRow(TransformationStrategy):
+class deleteRowStrategy(TransformationStrategy):
 
-    def __init__(self, *args, **kwargs) -> None:
-        self.engines = [{"engine": "numexpr"}, {"engine": "python"}]
-        if args:
-            self.order = True
-            self.tbd = args
-        elif kwargs:
+    def __init__(self, values: List) -> None:
+        self.engines = [{"engine": "numexpr"}, {"engine": "python"}]   
+        if type(values[0]) == dict:
             self.order = False
-            self.tbd = " and ".join([f"""({key} == {entry if type(entry) is not str else '"'+entry+'"' })""" for key, entry in kwargs.items()])
+            delist = {k: v for d in values for k, v in d.items()}
+            self.tbd = " and ".join([f"""(`{key}` == {entry if type(entry) is not str else '"'+entry+'"' })""" for key, entry in delist.items()])
+        else:
+            self.order = True
+            self.tbd = values
 
     def transform(self, df: pd.DataFrame) -> pd.DataFrame:
         if self.order:
-            self.tbd = " and ".join(f"""({key} == {entry if type(entry) is not str else '"'+entry+'"' })""" for key, entry in dict(zip(df.columns, self.tbd)).items())
-        return FilterStrategy(f" not ({self.tbd})").transform(df)
+            self.tbd = " and ".join(f"""(`{key}` == {entry if type(entry) is not str else '"'+entry+'"' })""" for key, entry in dict(zip(df.columns, self.tbd)).items())
+        return SelectRowsStrategy(f" not ({self.tbd})").transform(df)
 
     def get_code(self, df_name: str) -> str:
-        return f"""#delete row by filtering the invers
-if {self.order}:
-    del = '"'
-    filter = " and ".join(f"({{key}} == {{entry if type(entry) is not str else del+entry+del}})" for key, entry in dict(zip(df.columns, {self.tba})).items())
-else:
-    filter = {self.tba}
-# filter 
-for engine in {self.engines}:
+        comment = "# delete row by filtering the inverse of the provided values\n"
+        if self.order:
+            filter_part = f"""deli = '"'
+filter = " and ".join(f"(`{{key}}` == {{entry if type(entry) is not str else deli+entry+deli}})" for key, entry in dict(zip({df_name}.columns, {self.tbd})).items())
+"""
+        else:
+            filter_part = f"filter = '{self.tbd}'\n"
+        query_part = f"""for engine in {self.engines}:
     try:
         {df_name} = {df_name}.query(f'not ({{filter}})', **engine)
     except Exception:
         print(engine, "failed to query", f'not ({{filter}})', "trying next")
 """
+        return comment + filter_part + query_part
 
 
-class changeRow(TransformationStrategy):
+class changeRowStrategy(TransformationStrategy):
 
-    def __init__(self, cur: List | dict, new_v: List | dict) -> None:
-        if type(cur) == dict:
-            self.cur = deleteRow(**cur)
-            self.new_v = addRow(**new_v)
-        else:
-            self.cur = deleteRow(*cur)
-            self.new_v = addRow(*new_v)
+    def __init__(self, org_value: List, new_value: List) -> None:
+        self.cur = deleteRowStrategy(org_value)
+        self.new_v = addRowStrategy(new_value)
 
     def transform(self, df: pd.DataFrame) -> pd.DataFrame:
         df = self.cur.transform(df)
@@ -225,10 +201,10 @@ class changeRow(TransformationStrategy):
 
 
 # updates on cols
-class deleteColumn(TransformationStrategy):
+class deleteColumnStrategy(TransformationStrategy):
 
-    def __init__(self, col: str) -> None:
-        self.tbd = col
+    def __init__(self, column: str) -> None:
+        self.tbd = column
 
     def transform(self, df: pd.DataFrame) -> pd.DataFrame:
         return df.drop(self.tbd, axis=1)
@@ -237,39 +213,103 @@ class deleteColumn(TransformationStrategy):
         return f"#delete column\n{df_name} = {df_name}.drop('{self.tbd}', axis = 1)"
 
 
-class evalStrategy(TransformationStrategy):
-    def __init__(self, eval_string: str):
-        self.eval_string = eval_string
+class setColumnStrategy(TransformationStrategy):
+
+    def __init__(self, column: str, value: str) -> None:
+        self.expr = f"`{column}` = {value}"
         self.engines = [{}, {"engine": "python"}]
 
     def transform(self, df: pd.DataFrame) -> pd.DataFrame:
-
         for engine in self.engines:
             try:
-                df = df.eval(self.eval_string, **engine)
+                df = df.eval(self.expr, **engine)
                 return df
             except Exception:
-                logger.warning(f"{engine} didn't work on eval {self.eval_string} trying next engine")
-        return df
+                # prop logging of some sort 
+                pass
+        raise Exception("Transformation failed: not a valid value provided")
 
     def get_code(self, df_name: str) -> str:
-        return f"""#Here we try to evaluate the Expression {self.eval_string} with diffrent engines
+        return f"""#Here we try to evaluate the Expression {self.expr} with diffrent engines
 for engine in {self.engines}:
     try:
-        {df_name} = {df_name}.eval('{self.eval_string}', **engine)
+        {df_name} = {df_name}.eval('{self.expr}', **engine)
     except Exception:
-        print(engine, "failed to evaluate", '{self.eval_string}', "trying next")
+        print(engine, "failed to evaluate", '{self.expr}', "trying next")
 """
 
 
-class addOrChangeColumn(TransformationStrategy):
-
-    def __init__(self, col: str, value, _isString: bool = False) -> None:
-        self.query = f"""`{col}` = {'"'+value+'"' if _isString else value}"""
-        self.eval = evalStrategy(self.query)
+class addColumnStrategy(TransformationStrategy):
+    def __init__(self, column: str, value: str) -> None:
+        self.setter = setColumnStrategy(column, value)
+        self.column = column
 
     def transform(self, df: pd.DataFrame) -> pd.DataFrame:
-        return self.eval.transform(df)
+        if self.column in df.columns:
+            raise Exception(f"Transformation failed: Column {self.column} already in dataframe")
+        return self.setter.transform(df)
 
     def get_code(self, df_name: str) -> str:
-        return self.eval.get_code(df_name)
+        return self.setter.get_code(df_name)
+
+
+class changeColumnStrategy(TransformationStrategy):
+    def __init__(self, column: str, value: str) -> None:
+        self.setter = setColumnStrategy(column, value)
+        self.column = column
+
+    def transform(self, df: pd.DataFrame) -> pd.DataFrame:
+        if self.column not in df.columns:
+            raise Exception(f"Transformation failed: Column {self.column} not in dataframe")
+        return self.setter.transform(df)
+
+    def get_code(self, df_name: str) -> str:
+        return self.setter.get_code(df_name)
+
+
+# special functions
+class DoNothingStrategy(TransformationStrategy):
+    def transform(self, df: pd.DataFrame) -> pd.DataFrame:
+        return df
+
+    def get_code(self, df_name: str) -> str:
+        return f"# fyi here was called a Do Nothing call on {df_name}\n"
+
+
+class SetIndexStrategy(TransformationStrategy):
+
+    def __init__(self, column: str):
+        self.column = column
+
+    def transform(self, df: pd.DataFrame) -> pd.DataFrame:
+        return df.set_index(self.column)
+
+    def get_code(self, df_name: str) -> str:
+        return f"# set index to {self.column} in {df_name}\n{df_name}.set_index('{self.column}', inplace = True)"
+
+
+class ResetIndexStrategy(TransformationStrategy):
+
+    def __init__(self, impl_bool_1: bool = False):
+        self.drop = not impl_bool_1
+
+    def transform(self, df: pd.DataFrame) -> pd.DataFrame:
+        return df.reset_index(drop=self.drop)
+
+    def get_code(self, df_name: str) -> str:
+        return f"# rest index to in {df_name}\n{df_name}.reset_index(drop = {self.drop}, inplace = True)"
+
+
+# special special functions
+class dotStrategy(TransformationStrategy):
+    def __init__(self, func_string: str):
+        self.func_string = func_string
+
+    def transform(self, df: pd.DataFrame) -> pd.DataFrame:
+        exec_string = f'edf = df{self.func_string}'
+        loc = {}
+        exec(exec_string, locals(), loc)
+        return loc["edf"]
+
+    def get_code(self, df_name: str) -> str:
+        return f"#Here is a call Happing using the dotStrategy aka pure python code beaware\n{df_name} = {df_name}{self.func_string}\n"

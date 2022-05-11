@@ -1,6 +1,6 @@
 import pandas as pd
 import abc
-from BPMN.TransformationStrategy import FilterStrategy
+from BPMN.TransformationStrategy import SelectRowsStrategy
 
 # abstract base class
 
@@ -68,7 +68,7 @@ class ThetaStrategy(CombineStrategy):
     def __init__(self, query: str) -> None:
         super().__init__()
         self.query = query
-        self.filter = FilterStrategy(query)
+        self.filter = SelectRowsStrategy(query)
 
     def combine(self, df_1: pd.DataFrame, df_2: pd.DataFrame) -> pd.DataFrame:
         df_1 = df_1.merge(df_2, how="cross")

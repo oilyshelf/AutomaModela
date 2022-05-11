@@ -2,7 +2,7 @@ from copy import deepcopy
 from typing import OrderedDict
 from BPMN import Token
 from BPMN.BPMN_Component import BPMNComponent
-from BPMN.TransformationStrategy import FilterStrategy
+from BPMN.TransformationStrategy import SelectRowsStrategy
 
 
 class ExclusiveGateway(BPMNComponent):
@@ -31,7 +31,7 @@ class ExclusiveGateway(BPMNComponent):
                 # copy
                 token_cp = deepcopy(b_token)
                 # transform
-                token_cp.transform(FilterStrategy(el.get("@name")))
+                token_cp.transform(SelectRowsStrategy(el.get("@name")))
                 # prep return
                 token_cp.setPrio(el.get("@priorty"))
                 # logging
@@ -45,7 +45,7 @@ class ExclusiveGateway(BPMNComponent):
         if def_flow is not None:
             # if default flow has a query performe it
             if query_string := self.outgoing[def_flow].get("@name", "no_name") != "no_name":
-                b_token.transform(FilterStrategy(query_string))
+                b_token.transform(SelectRowsStrategy(query_string))
                 # prep
             b_token.setPrio(el.get("@priorty"))
             # logging

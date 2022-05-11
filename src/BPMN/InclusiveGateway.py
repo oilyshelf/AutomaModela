@@ -2,7 +2,7 @@ import copy
 from typing import OrderedDict
 from BPMN import Token
 from BPMN.StrategyFactory import CSF
-from BPMN.TransformationStrategy import FilterStrategy
+from BPMN.TransformationStrategy import SelectRowsStrategy
 from BPMN.BPMN_Component import BPMNComponent
 
 
@@ -35,7 +35,7 @@ class InclusiveGateway(BPMNComponent):
                 # copy
                 token_cp = copy.deepcopy(b_token)
                 # transform
-                token_cp.transform(FilterStrategy(el.get("@name")))
+                token_cp.transform(SelectRowsStrategy(el.get("@name")))
                 # prep
                 token_cp.setPrio(el.get("@priority"))
                 # keeping track of successful queries
@@ -56,7 +56,7 @@ class InclusiveGateway(BPMNComponent):
                 token_cp = copy.deepcopy(b_token)
                 # perform transformation if query is provided
                 if name != "no_name":
-                    token_cp.transform(FilterStrategy(name))
+                    token_cp.transform(SelectRowsStrategy(name))
                 # prep
                 token_cp.setPrio(el.get("@priority"))
                 # logging
@@ -73,7 +73,7 @@ class InclusiveGateway(BPMNComponent):
             # calculate inverse query
             query = " & ".join([f"~({s})" for s in suc_querys])
             # transform
-            token_cp.transform(FilterStrategy(query))
+            token_cp.transform(SelectRowsStrategy(query))
             # prep
             token_cp.setPrio(el.get("@priority"))
             # logging

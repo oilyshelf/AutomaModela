@@ -1,39 +1,31 @@
-from BPMN.CombineStrategy import ConcatStrategy, CombineStrategy
-from .Functionparser import FunctionParser
-from .TransformationStrategy import FilterStrategy, RenameStrategy, SelectStrategy, TransformationStrategy, DoNothingStrategy, LoadExcelStrategy, SaveExcelStrategy, dotStrategy, evalStrategy
+from BPMN.CombineStrategy import CombineStrategy, ConcatStrategy
+from BPMN.TransformationStrategy import TransformationStrategy, dotStrategy
 from BPMN.logger import logger
+from BPMN.ParameterHandler import ParameterHandler
+from BPMN.FunctionBuilder import StrategyFunction
+from typing import List
+from BPMN.TaskFunctionsDefinitions import compiled_base_funcs
 import re
 
 
 class TSF():
-    def __init__(self):
-        self.parser = FunctionParser()
+    def __init__(self, additional_funcs: List[StrategyFunction] | None = None) -> None:
+        self.parameter_handler: ParameterHandler = ParameterHandler()
 
-    def get_strategy(self, function_string: str) -> TransformationStrategy | None:
-        function_def = self.parser.parse(function_string)
-        logger.info(f'parsed function string : {function_def}')
-        match function_def:
-            case {"name": "doNothing", "parameters": None}:
-                return DoNothingStrategy()
-            case {"name": "loadExcel", "parameters": [{"parameter": x, "type": "str"}, *rest]}:
-                opt_par = self.parser.optional_mapper(rest)
-                return LoadExcelStrategy(x, **opt_par)
-            case {"name": "saveExcel", "parameters": [{"parameter": x, "type": "str"}, *rest]}:
-                opt_par = self.parser.optional_mapper(rest)
-                return SaveExcelStrategy(x, **opt_par)
-            case {"name": "dotOperation", "parameters": [{"parameter": x, "type": "code"}]}:
-                return dotStrategy(x)
-            case {"name": "eval", "parameters": [{"parameter": x, "type": "code"}]}:
-                return evalStrategy(x)
-            case {"name": "filter", "parameters": [{"parameter": x, "type": "plain_text"}]}:
-                return FilterStrategy(x)
-            case {"name": "filter", "parameters": [{"parameter": x, "type": "str"}, {"parameter": y, "type": "str"}]}:
-                return RenameStrategy(x, y)
-            case {"name": "select", "parameters": [*pars]}:
-                p = self.parser.parameterlist_mapper(pars, ensure_type="plain_text")
-                return SelectStrategy(p)
-            case _:
-                return None
+        self.functions: List[StrategyFunction] = compiled_base_funcs
+
+        if additional_funcs:
+            self.functions.extend(additional_funcs)
+
+    def get_strategy(self, prov_string: str) -> TransformationStrategy:
+        for taskfunc in self.functions:
+            if m := re.fullmatch(taskfunc.definition, prov_string):
+                parameter = self.parameter_handler.handleInputs(m, taskfunc.groups)
+                needed_parameter = parameter.pop("needed", list())
+                return taskfunc.strategy(*needed_parameter, **parameter)
+        if prov_string.startswith("."):
+            return dotStrategy(prov_string)
+        return None
 
 
 class CSF():
