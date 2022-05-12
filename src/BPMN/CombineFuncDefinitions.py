@@ -11,7 +11,7 @@ from BPMN.CombineStrategy import (ConcatStrategy, CrossStrategy,
 from BPMN.DataTypes import DataTypes
 from BPMN.FunctionBuilder import FunctionBuilder
 
-gateFunctionDefinitions = [
+combineFunctionDefinitions = [
     (
         NaturalJoinStrategy,
         {
@@ -174,4 +174,4 @@ gateFunctionDefinitions = [
 
 ]
 
-compiled_gate_funcs = [FunctionBuilder().build_function(*definition) for definition in gateFunctionDefinitions]
+compiled_combine_funcs = [FunctionBuilder().build_function(*definition) for definition in combineFunctionDefinitions]

@@ -1,24 +1,15 @@
-from BPMN.TransformationStrategy import TransformationStrategy
-from BPMN.CombineStrategy import CombineStrategy
-from dataclasses import dataclass
+
 from BPMN.DataTypes import DataTypes
-from typing import List
-
-
-@dataclass(frozen=True)
-class StrategyFunction():
-    strategy: type[TransformationStrategy]
-    definition: str
-    groups: List
+from BPMN.Strategy import Strategy, StrategyFunction
 
 
 class FunctionBuilder():
 
-    def build_function(self, strategy: type[TransformationStrategy | CombineStrategy], needed: dict, *args) -> StrategyFunction:
+    def build_function(self, strategy: type[Strategy], needed: dict, *args) -> StrategyFunction:
         """providing a strategy , and definition of a function , build a text based function with a regex to find it 
             and an instruction set to filter the string for parameters (look at needed for more info)
         Args:
-            strategy (type[TransformationStrategy]): definition of strategy on which this func should be used on
+            strategy (type[Strategy]): definition of strategy on which this func should be used on
             needed (dict): {
                 text:str --> a text with or without marked spots to place regex for parameter finding e.g. "this is a function {parameter}" -- required
                 types:dict a dictonary that maps paramter(defined in text) to the enum DataTypes which the parameter should have -- optional

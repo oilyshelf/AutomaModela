@@ -2,10 +2,13 @@ import abc
 from typing import List
 import numpy as np
 import pandas as pd
+from BPMN.logger import logger
+from BPMN.ExprFuncDefinitions import expr_locals
+from BPMN.Strategy import Strategy
 
 
 # abstract base class
-class TransformationStrategy():
+class TransformationStrategy(Strategy):
 
     @abc.abstractclassmethod
     def transform(self, df: pd.DataFrame) -> pd.DataFrame:
@@ -66,12 +69,12 @@ class SelectRowsStrategy(TransformationStrategy):
         self.engines = [{"engine": "numexpr"}, {"engine": "python"}]
 
     def transform(self, df: pd.DataFrame) -> pd.DataFrame:
-        for e in self.engines:
+        for engine in self.engines:
             try:
-                df = df.query(self.query, **e)
+                df = df.query(self.query, local_dict=expr_locals, **engine)
                 return df
-            except Exception:
-                print(f"{e} didn't work on quering {self.eval_string} trying next engine")
+            except Exception as e:
+                logger.warning(f"{e}: {engine} didn't work on querying {self.query} trying next engine")
         return pd.DataFrame(columns=df.columns)
 
     def get_code(self, df_name: str) -> str:
@@ -222,10 +225,10 @@ class setColumnStrategy(TransformationStrategy):
     def transform(self, df: pd.DataFrame) -> pd.DataFrame:
         for engine in self.engines:
             try:
-                df = df.eval(self.expr, **engine)
+                df = df.eval(self.expr, local_dict=expr_locals, **engine)
                 return df
             except Exception:
-                # prop logging of some sort 
+                logger.warning(f"{engine} didn't work on evaluating {self.expr} trying next engine")
                 pass
         raise Exception("Transformation failed: not a valid value provided")
 

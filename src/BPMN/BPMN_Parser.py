@@ -7,7 +7,7 @@ import re
 class BPMNParser():
 
     def __init__(self) -> None:
-        self.priortyfinder = re.compile(r'#(\d+)(.+)')
+        self.priortyfinder = re.compile(r'#(\d+)(.+)?')
 
     def simple_load(self, file_name: str) -> OrderedDict:
         with open(file_name, "r") as file:
@@ -33,7 +33,8 @@ class BPMNParser():
             prio = None
             if m := self.priortyfinder.fullmatch(name):
                 prio = int(m.group(1))
-                name = m.group(2)
+                group_2 = m.group(2)
+                name = group_2 if group_2 is not None else "no_name"
             return {"@id": outgoing, "@name": name, "@targetRef": flow.get("@targetRef", None), "@priority": prio}
         else:
             for key, flow_id in enumerate(outgoing):
@@ -42,7 +43,8 @@ class BPMNParser():
                 prio = None
                 if m := self.priortyfinder.fullmatch(name):
                     prio = int(m.group(1))
-                    name = m.group(2)
+                    group_2 = m.group(2)
+                    name = group_2 if group_2 is not None else "no_name"
                 outgoing[key] = {"@id": flow_id, "@name": name, "@targetRef": flow.get("@targetRef", None), "@priority": prio}
         return outgoing
 
@@ -91,7 +93,7 @@ class BPMNParser():
         logger.info(f"Checking task/s finished successfully")
         return process
 
-    def _check_Gateways(self, process: OrderedDict, gate_type: str, default_op: str, check: bool) -> OrderedDict:
+    def _check_Gateways(self, process: OrderedDict, gate_type: str, default_op_closed: str, default_op_open: str, check: bool) -> OrderedDict:
         logger.info(f"Checking {gate_type}/s")
         gateways = process.get(gate_type, None)
         if gateways is None:
@@ -108,11 +110,15 @@ class BPMNParser():
                     process[gate_type][key]["bpmn:outgoing"] = self._transform_outgoing(out, process)
                     # set default operation
                     if gateway.get("@name", None) is None:
-                        process[gate_type][key]["@name"] = default_op
+                        process[gate_type][key]["@name"] = default_op_closed
                 else:
                     assert type(inc) == str, "Opening Gate can't be also a Closing Gate"
                     process[gate_type][key]["@opening"] = True
                     process[gate_type][key]["bpmn:outgoing"] = self._transform_outgoing(out, process)
+                    # set default operation
+                    if gateway.get("@name", None) is None:
+                        process[gate_type][key]["@name"] = default_op_open
+
                     if check:
                         default = gateway.get("@default", None)
                         for o in out:
@@ -129,11 +135,14 @@ class BPMNParser():
                 process[gate_type]["bpmn:outgoing"] = self._transform_outgoing(out, process)
                 # set default operation
                 if gateways.get("@name", None) is None:
-                    process[gate_type]["@name"] = default_op
+                    process[gate_type]["@name"] = default_op_closed
             else:
                 assert type(inc) == str, "Opening Gate can't be also a Closing Gate"
                 process[gate_type]["@opening"] = True
                 process[gate_type]["bpmn:outgoing"] = self._transform_outgoing(out, process)
+                # set default operation
+                if gateways.get("@name", None) is None:
+                    process[gate_type]["@name"] = default_op_open
 
                 if check:
                     default = gateways.get("@default", None)
@@ -143,13 +152,13 @@ class BPMNParser():
         return process
 
     def _check_exclusiveGateways(self, process):
-        return self._check_Gateways(process, "bpmn:exclusiveGateway", "passtrough", True)
+        return self._check_Gateways(process, "bpmn:exclusiveGateway", "passtrough", "check", True)
 
     def _check_inclusiveGateways(self, process):
-        return self._check_Gateways(process, "bpmn:inclusiveGateway", "concat", True)
+        return self._check_Gateways(process, "bpmn:inclusiveGateway", "concat", "splice", True)
 
     def _check_parallelGateways(self, process):
-        return self._check_Gateways(process, "bpmn:parallelGateway", "join", False)
+        return self._check_Gateways(process, "bpmn:parallelGateway", "join", "copy", False)
 
     def find_flow(self, process, flow_id):
         for flow in process.get("bpmn:sequenceFlow"):

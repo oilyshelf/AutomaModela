@@ -2,11 +2,11 @@ import pandas as pd
 import abc
 import numpy as np
 from BPMN.TransformationStrategy import SelectRowsStrategy
-
+from BPMN.Strategy import Strategy
 # abstract base class
 
 
-class CombineStrategy():
+class CombineStrategy(Strategy):
 
     @abc.abstractclassmethod
     def combine(self, df_1: pd.DataFrame, df_2: pd.DataFrame) -> pd.DataFrame:
