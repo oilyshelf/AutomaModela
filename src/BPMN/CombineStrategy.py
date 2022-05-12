@@ -1,5 +1,6 @@
 import pandas as pd
 import abc
+import numpy as np
 from BPMN.TransformationStrategy import SelectRowsStrategy
 
 # abstract base class
@@ -15,14 +16,13 @@ class CombineStrategy():
     def get_code(self, df_1: str, df_2: str) -> str:
         pass
 
+
 # joins
-
-
-class NaturaljoinStrategy(CombineStrategy):
-    def __init__(self, _index: bool = False, how: str = "inner") -> None:
+class NaturalJoinStrategy(CombineStrategy):
+    def __init__(self, impl_bool_1: bool = False) -> None:
         super().__init__(self)
-        self.index = _index
-        self.how = how
+        self.index = impl_bool_1
+        self.how = "inner"
 
     def combine(self, df_1: pd.DataFrame, df_2: pd.DataFrame) -> pd.DataFrame:
         if self._index:
@@ -35,12 +35,54 @@ class NaturaljoinStrategy(CombineStrategy):
         return f"#natural join on columns \n{df_1}.merge({df_2}, how = '{self.how}')"
 
 
+class LeftNaturalJoinStrategy(NaturalJoinStrategy):
+
+    def __init__(self, impl_bool_1: bool = False) -> None:
+        super().__init__(impl_bool_1)
+        self.how = "left"
+
+    def combine(self, df_1: pd.DataFrame, df_2: pd.DataFrame) -> pd.DataFrame:
+        df_1 = super().combine(df_1, df_2)
+        df_1.replace({np.nan: None})
+
+    def get_code(self, df_1: str, df_2: str) -> str:
+        return super().get_code(df_1, df_2) + f"\n{df_1}.replace({{np.nan: None}})"
+
+
+class RightNaturalJoinStrategy(NaturalJoinStrategy):
+
+    def __init__(self, impl_bool_1: bool = False) -> None:
+        super().__init__(impl_bool_1)
+        self.how = "right"
+
+    def combine(self, df_1: pd.DataFrame, df_2: pd.DataFrame) -> pd.DataFrame:
+        df_1 = super().combine(df_1, df_2)
+        df_1.replace({np.nan: None})
+
+    def get_code(self, df_1: str, df_2: str) -> str:
+        return super().get_code(df_1, df_2) + f"\n{df_1}.replace({{np.nan: None}})"
+
+
+class OuterNaturalJoinStrategy(NaturalJoinStrategy):
+
+    def __init__(self, impl_bool_1: bool = False) -> None:
+        super().__init__(impl_bool_1)
+        self.how = "outer"
+
+    def combine(self, df_1: pd.DataFrame, df_2: pd.DataFrame) -> pd.DataFrame:
+        df_1 = super().combine(df_1, df_2)
+        df_1.replace({np.nan: None})
+
+    def get_code(self, df_1: str, df_2: str) -> str:
+        return super().get_code(df_1, df_2) + f"\n{df_1}.replace({{np.nan: None}})"
+
+
 class JoinOnStrategy(CombineStrategy):
 
-    def __init__(self, on: str, how: str = "inner") -> None:
+    def __init__(self, column: str) -> None:
         super().__init__()
-        self.on = on
-        self.how = how
+        self.on = column
+        self.how = "inner"
 
     def combine(self, df_1: pd.DataFrame, df_2: pd.DataFrame) -> pd.DataFrame:
         return df_1.merge(df_2, on=self.on, how=self.how)
@@ -49,18 +91,101 @@ class JoinOnStrategy(CombineStrategy):
         return f"""#Here we {self.how }join on {self.on} two Dataframes\n{df_1} = {df_1}.merge({df_2}, on = "{self.on}",  how="{self.how}")\n"""
 
 
-class EquijoinStrategy(CombineStrategy):
-    def __init__(self, right: str, left: str, how: str = "inner") -> None:
-        super().__init__()
-        self.how = how
-        self.right = right
-        self.left = left
+class LeftJoinOnStrategy(JoinOnStrategy):
+
+    def __init__(self, column: str) -> None:
+        super().__init__(column)
+        self.how = "left"
+
+    def combine(self, df_1: pd.DataFrame, df_2: pd.DataFrame) -> pd.DataFrame:
+        df_1 = super().combine(df_1, df_2)
+        df_1.replace({np.nan: None})
+
+    def get_code(self, df_1: str, df_2: str) -> str:
+        return super().get_code(df_1, df_2) + f"\n{df_1}.replace({{np.nan: None}})"
+
+
+class RightJoinOnStrategy(JoinOnStrategy):
+
+    def __init__(self, column: str) -> None:
+        super().__init__(column)
+        self.how = "right"
+
+    def combine(self, df_1: pd.DataFrame, df_2: pd.DataFrame) -> pd.DataFrame:
+        df_1 = super().combine(df_1, df_2)
+        df_1.replace({np.nan: None})
+
+    def get_code(self, df_1: str, df_2: str) -> str:
+        return super().get_code(df_1, df_2) + f"\n{df_1}.replace({{np.nan: None}})"
+
+
+class OuterJoinOnStrategy(JoinOnStrategy):
+
+    def __init__(self, column: str) -> None:
+        super().__init__(column)
+        self.how = "outer"
+
+    def combine(self, df_1: pd.DataFrame, df_2: pd.DataFrame) -> pd.DataFrame:
+        df_1 = super().combine(df_1, df_2)
+        df_1.replace({np.nan: None})
+
+    def get_code(self, df_1: str, df_2: str) -> str:
+        return super().get_code(df_1, df_2) + f"\n{df_1}.replace({{np.nan: None}})"
+
+
+class EquiJoinStrategy(CombineStrategy):
+    def __init__(self, left_col: str, right_col: str) -> None:
+        self.how = "inner"
+        self.right = right_col
+        self.left = left_col
 
     def combine(self, df_1: pd.DataFrame, df_2: pd.DataFrame) -> pd.DataFrame:
         return df_1.merge(df_2, left_on=self.left, right_on=self.right, how=self.how)
 
     def get_code(self, df_1: str, df_2: str) -> str:
         return f"""#Here we make an equi join two Dataframes\n{df_1} = {df_1}.merge({df_2},left_on="{self.left}", right_on="{self.right}", how="{self.how}")\n"""
+
+
+class LeftEquiJoinStrategy(EquiJoinStrategy):
+
+    def __init__(self, left_col: str, right_col: str) -> None:
+        super().__init__(left_col, right_col)
+        self.how = "left"
+
+    def combine(self, df_1: pd.DataFrame, df_2: pd.DataFrame) -> pd.DataFrame:
+        df_1 = super().combine(df_1, df_2)
+        df_1.replace({np.nan: None})
+
+    def get_code(self, df_1: str, df_2: str) -> str:
+        return super().get_code(df_1, df_2) + f"\n{df_1}.replace({{np.nan: None}})"
+
+
+class RightEquiJoinStrategy(EquiJoinStrategy):
+
+    def __init__(self, left_col: str, right_col: str) -> None:
+        super().__init__(left_col, right_col)
+        self.how = "right"
+
+    def combine(self, df_1: pd.DataFrame, df_2: pd.DataFrame) -> pd.DataFrame:
+        df_1 = super().combine(df_1, df_2)
+        df_1.replace({np.nan: None})
+
+    def get_code(self, df_1: str, df_2: str) -> str:
+        return super().get_code(df_1, df_2) + f"\n{df_1}.replace({{np.nan: None}})"
+
+
+class OuterEquiJoinStrategy(EquiJoinStrategy):
+
+    def __init__(self, left_col: str, right_col: str) -> None:
+        super().__init__(left_col, right_col)
+        self.how = "outer"
+
+    def combine(self, df_1: pd.DataFrame, df_2: pd.DataFrame) -> pd.DataFrame:
+        df_1 = super().combine(df_1, df_2)
+        df_1.replace({np.nan: None})
+
+    def get_code(self, df_1: str, df_2: str) -> str:
+        return super().get_code(df_1, df_2) + f"\n{df_1}.replace({{np.nan: None}})"
 
 
 class ThetaStrategy(CombineStrategy):
@@ -79,16 +204,6 @@ class ThetaStrategy(CombineStrategy):
 
 
 # set things
-class UnionStrategy(CombineStrategy):
-
-    def combine(self, df_1: pd.DataFrame, df_2: pd.DataFrame) -> pd.DataFrame:
-        df_c = pd.concat([df_1, df_2]).drop_duplicates(keep="first")
-        return df_c
-
-    def get_code(self, df_1: str, df_2: str) -> str:
-        return f"#Here we concate two Dataframes\n{df_1} = pd.concat([{df_1},{df_2}]).drop_duplicates(keep='first')\n"
-
-
 class ConcatStrategy(CombineStrategy):
 
     def combine(self, df_1: pd.DataFrame, df_2: pd.DataFrame) -> pd.DataFrame:
@@ -97,6 +212,16 @@ class ConcatStrategy(CombineStrategy):
 
     def get_code(self, df_1: str, df_2: str) -> str:
         return f"#Here we concate two Dataframes\n{df_1} = pd.concat([{df_1},{df_2}])\n"
+
+
+class UnionStrategy(CombineStrategy):
+
+    def combine(self, df_1: pd.DataFrame, df_2: pd.DataFrame) -> pd.DataFrame:
+        df_c = pd.concat([df_1, df_2]).drop_duplicates(keep="first")
+        return df_c
+
+    def get_code(self, df_1: str, df_2: str) -> str:
+        return f"#Here we concate two Dataframes\n{df_1} = pd.concat([{df_1},{df_2}]).drop_duplicates(keep='first')\n"
 
 
 class Intersecttrategy(CombineStrategy):

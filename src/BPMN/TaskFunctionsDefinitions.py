@@ -12,7 +12,7 @@ from BPMN.TransformationStrategy import (DoNothingStrategy, LoadExcelStrategy,
                                          deleteDataStrategy, deleteRowStrategy,
                                          setColumnStrategy)
 
-baseFunctionDefinitions = [
+taskFunctionDefinitions = [
     (
         LoadExcelStrategy,
         {
@@ -207,4 +207,4 @@ baseFunctionDefinitions = [
     ),
 ]
 
-compiled_base_funcs = [FunctionBuilder().build_function(*definition) for definition in baseFunctionDefinitions]
+compiled_task_funcs = [FunctionBuilder().build_function(*definition) for definition in taskFunctionDefinitions]

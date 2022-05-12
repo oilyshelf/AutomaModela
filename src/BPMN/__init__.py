@@ -1,6 +1,6 @@
 __all__ = [
     "BPMNComponent", "BPMNEngine", "BPMNParser", "EndEvent", "ExclusiveGateway", "InclusiveGateway", "ParallelGateway", "StartEvent", "TSF", "ParameterHandler",
-    "Task", "Token", "logger", "CombineStrategy", "CSF", "DataTypes", "FunctionBuilder", "compiled_base_funcs", "StrategyFunction",
+    "Task", "Token", "logger", "CombineStrategy", "CSF", "DataTypes", "FunctionBuilder", "compiled_task_funcs", "StrategyFunction", "compiled_gate_funcs",
 ]
 
 
@@ -19,6 +19,7 @@ from .CombineStrategy import CombineStrategy
 from .DataTypes import DataTypes
 from .FunctionBuilder import FunctionBuilder, StrategyFunction
 from .ParameterHandler import ParameterHandler
-from .TaskFunctionsDefinitions import compiled_base_funcs
+from .TaskFunctionsDefinitions import compiled_task_funcs
+from .GatewayFuncDefinitions import compiled_gate_funcs
 
 from .logger import logger

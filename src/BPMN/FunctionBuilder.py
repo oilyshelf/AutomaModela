@@ -1,4 +1,5 @@
 from BPMN.TransformationStrategy import TransformationStrategy
+from BPMN.CombineStrategy import CombineStrategy
 from dataclasses import dataclass
 from BPMN.DataTypes import DataTypes
 from typing import List
@@ -13,7 +14,7 @@ class StrategyFunction():
 
 class FunctionBuilder():
 
-    def build_function(self, strategy: type[TransformationStrategy], needed: dict, *args) -> StrategyFunction:
+    def build_function(self, strategy: type[TransformationStrategy | CombineStrategy], needed: dict, *args) -> StrategyFunction:
         """providing a strategy , and definition of a function , build a text based function with a regex to find it 
             and an instruction set to filter the string for parameters (look at needed for more info)
         Args:

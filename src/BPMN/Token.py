@@ -36,8 +36,8 @@ class Token():
 
     def transform(self, strategy: TransformationStrategy) -> None:
         logger.info(f"Token {self.id} is executing {str(strategy)}")
-        self.code_writer.write_code(strategy.get_code(self.id))
         self.data = strategy.transform(self.data)
+        self.code_writer.write_code(strategy.get_code(self.id))
 
     def query(self, query_string: str) -> bool:
         engines = [{"engine": "numexpr"}, {"engine": "python"}]
