@@ -1,4 +1,3 @@
-from re import L
 from typing import List, OrderedDict
 
 from BPMN import Token
