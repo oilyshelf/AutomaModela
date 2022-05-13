@@ -26,7 +26,8 @@ class InclusiveGateway(BPMNComponent):
         # handle default
         if tba is None:
             if self.default is not None:
-                tba = [{"id": self.outgoing["@targetRef"], "token":self.token[0], "info":"default"}]
+                default = list(filter(lambda x: x["@id"] == self.default, self.outgoing))[0]
+                tba = [{"id": default["@targetRef"], "token":self.token[0], "info":"default"}]
             else:
                 raise Exception("Gateway Error no flow was taken and no default flow specified")
         # calculating taken paths

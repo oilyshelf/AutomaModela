@@ -9,9 +9,10 @@ class StartEvent(BPMNComponent):
     def __init__(self, process_definition: OrderedDict, code_writer: CodeWriter):
         super().__init__(process_definition)
         self.code_writer = code_writer
-        self.token = Token(self.code_writer)
 
     def execute(self):
+        self.token = Token(self.code_writer)
+
         # execute
         target = self.outgoing
         self.token.setPrio(target.get("@priority"))
