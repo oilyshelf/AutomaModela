@@ -32,8 +32,8 @@ class BPMNComponent:
 
     def __lt__(self, other: BPMNComponent) -> bool:
         # Component which was created first is prioritised
-        t1 = self.token.priority if type(self.token) is not list else sorted(self.token)[0]
-        t2 = other.token.priority if type(other.token) is not list else sorted(other.token)[0]
+        t1 = self.token
+        t2 = other.token
         if t1 == t2:
             return self.creation_time < other.creation_time
         return t1 < t2

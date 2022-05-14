@@ -110,160 +110,160 @@ def starts_with(a:str, c_str:str)->str:
     return a.startswith(c_str)
 
 #Tokencreation
-Token_9Q0oA5Zw9aeXmc3CkDbmVw = None
+Token_cyBo0Z81er1FgVsPOrKc1g = None
 #Tokencreation
-Token_xMDbrfttRc6eGwT4VD1_iA = None
+Token_uikX4IWkPnDkUHfICTaSqg = None
 #Tokencreation
-Token_1c61rf332_lGSXpnyLxF3w = None
+Token_DIiSl0hYrFIp9J1WrIdSPQ = None
 
 #here we read the data provided by the ICREV_EXample.xlsx from the sheet SAP and set the index to None
-Token_xMDbrfttRc6eGwT4VD1_iA = pd.read_excel("ICREV_EXample.xlsx", sheet_name = 'SAP')
-Token_xMDbrfttRc6eGwT4VD1_iA = Token_xMDbrfttRc6eGwT4VD1_iA.replace({np.nan:None})
+Token_uikX4IWkPnDkUHfICTaSqg = pd.read_excel("ICREV_EXample.xlsx", sheet_name = 'SAP')
+Token_uikX4IWkPnDkUHfICTaSqg = Token_uikX4IWkPnDkUHfICTaSqg.replace({np.nan:None})
 
 #Here we try to query the Expression not @is_empty(`Profitcenter`) with diffrent engines
 for engine in [{'engine': 'numexpr'}, {'engine': 'python'}]:
     try:
-        Token_xMDbrfttRc6eGwT4VD1_iA = Token_xMDbrfttRc6eGwT4VD1_iA.query('not @is_empty(`Profitcenter`)', **engine)
+        Token_uikX4IWkPnDkUHfICTaSqg = Token_uikX4IWkPnDkUHfICTaSqg.query('not @is_empty(`Profitcenter`)', **engine)
     except Exception:
         print(engine, "failed to query", 'not @is_empty(`Profitcenter`)', "trying next")
 
 #Here we try to evaluate the Expression `Kostenstelle` = "CC_Unknown" with diffrent engines
 for engine in [{}, {'engine': 'python'}]:
     try:
-        Token_xMDbrfttRc6eGwT4VD1_iA = Token_xMDbrfttRc6eGwT4VD1_iA.eval('`Kostenstelle` = "CC_Unknown"', **engine)
+        Token_uikX4IWkPnDkUHfICTaSqg = Token_uikX4IWkPnDkUHfICTaSqg.eval('`Kostenstelle` = "CC_Unknown"', **engine)
     except Exception:
         print(engine, "failed to evaluate", '`Kostenstelle` = "CC_Unknown"', "trying next")
 
 
 #here we read the data provided by the ICREV_EXample.xlsx from the sheet Mapping and set the index to None
-Token_1c61rf332_lGSXpnyLxF3w = pd.read_excel("ICREV_EXample.xlsx", sheet_name = 'Mapping')
-Token_1c61rf332_lGSXpnyLxF3w = Token_1c61rf332_lGSXpnyLxF3w.replace({np.nan:None})
+Token_DIiSl0hYrFIp9J1WrIdSPQ = pd.read_excel("ICREV_EXample.xlsx", sheet_name = 'Mapping')
+Token_DIiSl0hYrFIp9J1WrIdSPQ = Token_DIiSl0hYrFIp9J1WrIdSPQ.replace({np.nan:None})
 
 #we get a subset of the dataframe with these columns ['Cost Center', 'Department Description']
-Token_1c61rf332_lGSXpnyLxF3w = Token_1c61rf332_lGSXpnyLxF3w[['Cost Center', 'Department Description']]
+Token_DIiSl0hYrFIp9J1WrIdSPQ = Token_DIiSl0hYrFIp9J1WrIdSPQ[['Cost Center', 'Department Description']]
 
 #rename column from-> to {'Cost Center': 'Kostenstelle'}
-Token_1c61rf332_lGSXpnyLxF3w=Token_1c61rf332_lGSXpnyLxF3w.rename(columns={'Cost Center': 'Kostenstelle'})
+Token_DIiSl0hYrFIp9J1WrIdSPQ=Token_DIiSl0hYrFIp9J1WrIdSPQ.rename(columns={'Cost Center': 'Kostenstelle'})
 
 #rename column from-> to {'Department Description': 'GF-Bereich'}
-Token_1c61rf332_lGSXpnyLxF3w=Token_1c61rf332_lGSXpnyLxF3w.rename(columns={'Department Description': 'GF-Bereich'})
+Token_DIiSl0hYrFIp9J1WrIdSPQ=Token_DIiSl0hYrFIp9J1WrIdSPQ.rename(columns={'Department Description': 'GF-Bereich'})
 
-#Creating new Dataframe based on Token_xMDbrfttRc6eGwT4VD1_iA
-Token_xd84ega9ofy__fZaManGLw = Token_xMDbrfttRc6eGwT4VD1_iA.copy(True)
+#Creating new Dataframe based on Token_uikX4IWkPnDkUHfICTaSqg
+Token_89YWxknVmnJxleNZijqivQ = Token_uikX4IWkPnDkUHfICTaSqg.copy(True)
 
 #Here we try to query the Expression  `Profitcenter` == "DE21DUMMY" or `Profitcenter` == "DE21ADMIN" with diffrent engines
 for engine in [{'engine': 'numexpr'}, {'engine': 'python'}]:
     try:
-        Token_xd84ega9ofy__fZaManGLw = Token_xd84ega9ofy__fZaManGLw.query(' `Profitcenter` == "DE21DUMMY" or `Profitcenter` == "DE21ADMIN"', **engine)
+        Token_89YWxknVmnJxleNZijqivQ = Token_89YWxknVmnJxleNZijqivQ.query(' `Profitcenter` == "DE21DUMMY" or `Profitcenter` == "DE21ADMIN"', **engine)
     except Exception:
         print(engine, "failed to query", ' `Profitcenter` == "DE21DUMMY" or `Profitcenter` == "DE21ADMIN"', "trying next")
 
 #Here we concate two Dataframes
-Token_xMDbrfttRc6eGwT4VD1_iA = Token_xMDbrfttRc6eGwT4VD1_iA[~Token_xMDbrfttRc6eGwT4VD1_iA.apply(tuple, 1).isin(Token_xd84ega9ofy__fZaManGLw.apply(tuple, 1))]
+Token_uikX4IWkPnDkUHfICTaSqg = Token_uikX4IWkPnDkUHfICTaSqg[~Token_uikX4IWkPnDkUHfICTaSqg.apply(tuple, 1).isin(Token_89YWxknVmnJxleNZijqivQ.apply(tuple, 1))]
 
-#Creating new Dataframe based on Token_xMDbrfttRc6eGwT4VD1_iA
-Token_SzK0qwQO4d3R_1YF4w08Mg = Token_xMDbrfttRc6eGwT4VD1_iA.copy(True)
+#Creating new Dataframe based on Token_uikX4IWkPnDkUHfICTaSqg
+Token_XIi_9WVqa5GYmOmUtuLeTg = Token_uikX4IWkPnDkUHfICTaSqg.copy(True)
 
 #Here we try to query the Expression  `Profitcenter` == "DE04DUMMY" or `Profitcenter` == "DE04ADMIN" with diffrent engines
 for engine in [{'engine': 'numexpr'}, {'engine': 'python'}]:
     try:
-        Token_SzK0qwQO4d3R_1YF4w08Mg = Token_SzK0qwQO4d3R_1YF4w08Mg.query(' `Profitcenter` == "DE04DUMMY" or `Profitcenter` == "DE04ADMIN"', **engine)
+        Token_XIi_9WVqa5GYmOmUtuLeTg = Token_XIi_9WVqa5GYmOmUtuLeTg.query(' `Profitcenter` == "DE04DUMMY" or `Profitcenter` == "DE04ADMIN"', **engine)
     except Exception:
         print(engine, "failed to query", ' `Profitcenter` == "DE04DUMMY" or `Profitcenter` == "DE04ADMIN"', "trying next")
 
 #Here we concate two Dataframes
-Token_xMDbrfttRc6eGwT4VD1_iA = Token_xMDbrfttRc6eGwT4VD1_iA[~Token_xMDbrfttRc6eGwT4VD1_iA.apply(tuple, 1).isin(Token_SzK0qwQO4d3R_1YF4w08Mg.apply(tuple, 1))]
+Token_uikX4IWkPnDkUHfICTaSqg = Token_uikX4IWkPnDkUHfICTaSqg[~Token_uikX4IWkPnDkUHfICTaSqg.apply(tuple, 1).isin(Token_XIi_9WVqa5GYmOmUtuLeTg.apply(tuple, 1))]
 
-#Creating new Dataframe based on Token_xMDbrfttRc6eGwT4VD1_iA
-Token__JHkSLHnNh8I1BK5ZLFDXg = Token_xMDbrfttRc6eGwT4VD1_iA.copy(True)
+#Creating new Dataframe based on Token_uikX4IWkPnDkUHfICTaSqg
+Token_fVJRxWVMKNrzHXGv4yD0Ew = Token_uikX4IWkPnDkUHfICTaSqg.copy(True)
 
 #Here we try to query the Expression  @contains(`Profitcenter`, "P", 5) with diffrent engines
 for engine in [{'engine': 'numexpr'}, {'engine': 'python'}]:
     try:
-        Token__JHkSLHnNh8I1BK5ZLFDXg = Token__JHkSLHnNh8I1BK5ZLFDXg.query(' @contains(`Profitcenter`, "P", 5)', **engine)
+        Token_fVJRxWVMKNrzHXGv4yD0Ew = Token_fVJRxWVMKNrzHXGv4yD0Ew.query(' @contains(`Profitcenter`, "P", 5)', **engine)
     except Exception:
         print(engine, "failed to query", ' @contains(`Profitcenter`, "P", 5)', "trying next")
 
 #Here we concate two Dataframes
-Token_xMDbrfttRc6eGwT4VD1_iA = Token_xMDbrfttRc6eGwT4VD1_iA[~Token_xMDbrfttRc6eGwT4VD1_iA.apply(tuple, 1).isin(Token__JHkSLHnNh8I1BK5ZLFDXg.apply(tuple, 1))]
+Token_uikX4IWkPnDkUHfICTaSqg = Token_uikX4IWkPnDkUHfICTaSqg[~Token_uikX4IWkPnDkUHfICTaSqg.apply(tuple, 1).isin(Token_fVJRxWVMKNrzHXGv4yD0Ew.apply(tuple, 1))]
 
-#Creating new Dataframe based on Token_xMDbrfttRc6eGwT4VD1_iA
-Token_LhUmurnWuhbbhr_s1Wzn6Q = Token_xMDbrfttRc6eGwT4VD1_iA.copy(True)
+#Creating new Dataframe based on Token_uikX4IWkPnDkUHfICTaSqg
+Token_15SJ8Gqa2FKfINLK889X6Q = Token_uikX4IWkPnDkUHfICTaSqg.copy(True)
 
 #Here we try to query the Expression  @starts_with(`Profitcenter`, "DE37") with diffrent engines
 for engine in [{'engine': 'numexpr'}, {'engine': 'python'}]:
     try:
-        Token_LhUmurnWuhbbhr_s1Wzn6Q = Token_LhUmurnWuhbbhr_s1Wzn6Q.query(' @starts_with(`Profitcenter`, "DE37")', **engine)
+        Token_15SJ8Gqa2FKfINLK889X6Q = Token_15SJ8Gqa2FKfINLK889X6Q.query(' @starts_with(`Profitcenter`, "DE37")', **engine)
     except Exception:
         print(engine, "failed to query", ' @starts_with(`Profitcenter`, "DE37")', "trying next")
 
 #Here we concate two Dataframes
-Token_xMDbrfttRc6eGwT4VD1_iA = Token_xMDbrfttRc6eGwT4VD1_iA[~Token_xMDbrfttRc6eGwT4VD1_iA.apply(tuple, 1).isin(Token_LhUmurnWuhbbhr_s1Wzn6Q.apply(tuple, 1))]
+Token_uikX4IWkPnDkUHfICTaSqg = Token_uikX4IWkPnDkUHfICTaSqg[~Token_uikX4IWkPnDkUHfICTaSqg.apply(tuple, 1).isin(Token_15SJ8Gqa2FKfINLK889X6Q.apply(tuple, 1))]
 
-#Creating new Dataframe based on Token_xMDbrfttRc6eGwT4VD1_iA
-Token_qalxYqoNq75SN0ze5TPwUg = Token_xMDbrfttRc6eGwT4VD1_iA.copy(True)
+#Creating new Dataframe based on Token_uikX4IWkPnDkUHfICTaSqg
+Token__9bZLvnPxStAAlHTLAgFzg = Token_uikX4IWkPnDkUHfICTaSqg.copy(True)
 
 #Here we try to query the Expression  not @contains(`Profitcenter`, "P", 5) and not @contains(`Profitcenter`, "R", 4) with diffrent engines
 for engine in [{'engine': 'numexpr'}, {'engine': 'python'}]:
     try:
-        Token_qalxYqoNq75SN0ze5TPwUg = Token_qalxYqoNq75SN0ze5TPwUg.query(' not @contains(`Profitcenter`, "P", 5) and not @contains(`Profitcenter`, "R", 4)', **engine)
+        Token__9bZLvnPxStAAlHTLAgFzg = Token__9bZLvnPxStAAlHTLAgFzg.query(' not @contains(`Profitcenter`, "P", 5) and not @contains(`Profitcenter`, "R", 4)', **engine)
     except Exception:
         print(engine, "failed to query", ' not @contains(`Profitcenter`, "P", 5) and not @contains(`Profitcenter`, "R", 4)', "trying next")
 
 #Here we concate two Dataframes
-Token_xMDbrfttRc6eGwT4VD1_iA = Token_xMDbrfttRc6eGwT4VD1_iA[~Token_xMDbrfttRc6eGwT4VD1_iA.apply(tuple, 1).isin(Token_qalxYqoNq75SN0ze5TPwUg.apply(tuple, 1))]
+Token_uikX4IWkPnDkUHfICTaSqg = Token_uikX4IWkPnDkUHfICTaSqg[~Token_uikX4IWkPnDkUHfICTaSqg.apply(tuple, 1).isin(Token__9bZLvnPxStAAlHTLAgFzg.apply(tuple, 1))]
 
 #Here we try to evaluate the Expression `Kostenstelle` = "DE21101110" with diffrent engines
 for engine in [{}, {'engine': 'python'}]:
     try:
-        Token_xd84ega9ofy__fZaManGLw = Token_xd84ega9ofy__fZaManGLw.eval('`Kostenstelle` = "DE21101110"', **engine)
+        Token_89YWxknVmnJxleNZijqivQ = Token_89YWxknVmnJxleNZijqivQ.eval('`Kostenstelle` = "DE21101110"', **engine)
     except Exception:
         print(engine, "failed to evaluate", '`Kostenstelle` = "DE21101110"', "trying next")
 
 #Here we try to evaluate the Expression `Kostenstelle` = "DE04109819" with diffrent engines
 for engine in [{}, {'engine': 'python'}]:
     try:
-        Token_SzK0qwQO4d3R_1YF4w08Mg = Token_SzK0qwQO4d3R_1YF4w08Mg.eval('`Kostenstelle` = "DE04109819"', **engine)
+        Token_XIi_9WVqa5GYmOmUtuLeTg = Token_XIi_9WVqa5GYmOmUtuLeTg.eval('`Kostenstelle` = "DE04109819"', **engine)
     except Exception:
         print(engine, "failed to evaluate", '`Kostenstelle` = "DE04109819"', "trying next")
 
 #Here we try to evaluate the Expression `Kostenstelle` = @replace_all(`Profitcenter`, "P", "0") with diffrent engines
 for engine in [{}, {'engine': 'python'}]:
     try:
-        Token__JHkSLHnNh8I1BK5ZLFDXg = Token__JHkSLHnNh8I1BK5ZLFDXg.eval('`Kostenstelle` = @replace_all(`Profitcenter`, "P", "0")', **engine)
+        Token_fVJRxWVMKNrzHXGv4yD0Ew = Token_fVJRxWVMKNrzHXGv4yD0Ew.eval('`Kostenstelle` = @replace_all(`Profitcenter`, "P", "0")', **engine)
     except Exception:
         print(engine, "failed to evaluate", '`Kostenstelle` = @replace_all(`Profitcenter`, "P", "0")', "trying next")
 
 #Here we try to evaluate the Expression `Kostenstelle` = `Profitcenter` with diffrent engines
 for engine in [{}, {'engine': 'python'}]:
     try:
-        Token_LhUmurnWuhbbhr_s1Wzn6Q = Token_LhUmurnWuhbbhr_s1Wzn6Q.eval('`Kostenstelle` = `Profitcenter`', **engine)
+        Token_15SJ8Gqa2FKfINLK889X6Q = Token_15SJ8Gqa2FKfINLK889X6Q.eval('`Kostenstelle` = `Profitcenter`', **engine)
     except Exception:
         print(engine, "failed to evaluate", '`Kostenstelle` = `Profitcenter`', "trying next")
 
 #Here we try to evaluate the Expression `Kostenstelle` = `Profitcenter` with diffrent engines
 for engine in [{}, {'engine': 'python'}]:
     try:
-        Token_qalxYqoNq75SN0ze5TPwUg = Token_qalxYqoNq75SN0ze5TPwUg.eval('`Kostenstelle` = `Profitcenter`', **engine)
+        Token__9bZLvnPxStAAlHTLAgFzg = Token__9bZLvnPxStAAlHTLAgFzg.eval('`Kostenstelle` = `Profitcenter`', **engine)
     except Exception:
         print(engine, "failed to evaluate", '`Kostenstelle` = `Profitcenter`', "trying next")
 
 #Here we concate two Dataframes
-Token_xd84ega9ofy__fZaManGLw = pd.concat([Token_xd84ega9ofy__fZaManGLw,Token_SzK0qwQO4d3R_1YF4w08Mg])
+Token_89YWxknVmnJxleNZijqivQ = pd.concat([Token_89YWxknVmnJxleNZijqivQ,Token_XIi_9WVqa5GYmOmUtuLeTg])
 
 #Here we concate two Dataframes
-Token_xd84ega9ofy__fZaManGLw = pd.concat([Token_xd84ega9ofy__fZaManGLw,Token__JHkSLHnNh8I1BK5ZLFDXg])
+Token_89YWxknVmnJxleNZijqivQ = pd.concat([Token_89YWxknVmnJxleNZijqivQ,Token_fVJRxWVMKNrzHXGv4yD0Ew])
 
 #Here we concate two Dataframes
-Token_xd84ega9ofy__fZaManGLw = pd.concat([Token_xd84ega9ofy__fZaManGLw,Token_LhUmurnWuhbbhr_s1Wzn6Q])
+Token_89YWxknVmnJxleNZijqivQ = pd.concat([Token_89YWxknVmnJxleNZijqivQ,Token_15SJ8Gqa2FKfINLK889X6Q])
 
 #Here we concate two Dataframes
-Token_xd84ega9ofy__fZaManGLw = pd.concat([Token_xd84ega9ofy__fZaManGLw,Token_qalxYqoNq75SN0ze5TPwUg])
+Token_89YWxknVmnJxleNZijqivQ = pd.concat([Token_89YWxknVmnJxleNZijqivQ,Token__9bZLvnPxStAAlHTLAgFzg])
 
 #Here we innerjoin on Kostenstelle two Dataframes
-Token_1c61rf332_lGSXpnyLxF3w = Token_1c61rf332_lGSXpnyLxF3w.merge(Token_xd84ega9ofy__fZaManGLw, on = "Kostenstelle",  how="inner")
+Token_DIiSl0hYrFIp9J1WrIdSPQ = Token_DIiSl0hYrFIp9J1WrIdSPQ.merge(Token_89YWxknVmnJxleNZijqivQ, on = "Kostenstelle",  how="inner")
 
 
-#here we save the data from Token_1c61rf332_lGSXpnyLxF3w to the the output_icrev.xlsx into the  sheet Sheet1 and dont use the index
-Token_1c61rf332_lGSXpnyLxF3w.to_excel("output_icrev.xlsx", sheet_name = "Sheet1", index = False)
+#here we save the data from Token_DIiSl0hYrFIp9J1WrIdSPQ to the the output_icrev.xlsx into the  sheet Sheet1 and dont use the index
+Token_DIiSl0hYrFIp9J1WrIdSPQ.to_excel("output_icrev.xlsx", sheet_name = "Sheet1", index = False)
 

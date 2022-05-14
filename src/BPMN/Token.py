@@ -20,7 +20,7 @@ class Token():
             context = ""
             self.code_writer.write_code(f"#Tokencreation\n{self.id} = None")
         self.context: str = context
-        self.priority = None
+        self.prio = None
 
     def add_context(self, element: str) -> None:
         t = time()
@@ -43,7 +43,7 @@ class Token():
 
     def setPrio(self, prio: int | None) -> None:
         if prio:
-            self.priority = prio
+            self.prio = prio
 
     def resetPrio(self):
         self.prio = None
