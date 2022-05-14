@@ -68,7 +68,7 @@ class CheckStartegy(OpeningStrategy):
 
     def determine(self, token: Token, flows: List[dict], default: str | None = None) -> List[dict] | None:
 
-        for el in sorted(flows, key=lambda d: d["@priority"] if d["@priority"] else 20):
+        for el in sorted(flows, key=lambda d: d["@priority"] if d["@priority"] else 100):
             # if a outgoing flow is default skip if it has no name (Datatype is expr with .+ no value for regexing lol )
             if el.get("@id", None) == default and el.get("@name") == "no_name":
                 continue
@@ -98,7 +98,7 @@ class EmptyStrategy(OpeningStrategy):
 
     def determine(self, token: Token, flows: List[dict], default: str | None = None) -> List[dict] | None:
         is_empty = token.data.empty
-        for el in sorted(flows, key=lambda d: d["@priority"] if d["@priority"] else 20):
+        for el in sorted(flows, key=lambda d: d["@priority"] if d["@priority"] else 100):
             # if a outgoing flow is skip
             if el.get("@id", None) == default and re.fullmatch(self.fp, el.get("@name")) is None:
                 continue
@@ -118,7 +118,7 @@ class SpliceStartegy(OpeningStrategy):
 
     def determine(self, token: Token, flows: List[dict], default: str | None = None) -> List[dict] | None:
         tba = list()
-        for el in sorted(flows, key=lambda d: d["@priority"] if d["@priority"] else 20):
+        for el in sorted(flows, key=lambda d: d["@priority"] if d["@priority"] else 100):
             # if a outgoing flow is default skip if it has no name (Datatype is expr with .+ no value for regexing lol )
             if el.get("@id", None) == default and el.get("@name") == "no_name":
                 continue
@@ -147,7 +147,7 @@ class ResetStartegy(OpeningStrategy):
 
     def determine(self, token: Token, flows: List[dict], default: str | None = None) -> List[dict] | None:
         tba = list()
-        for el in sorted(flows, key=lambda d: d["@priority"] if d["@priority"] else 20):
+        for el in sorted(flows, key=lambda d: d["@priority"] if d["@priority"] else 100):
             # if a outgoing flow is default skip if it has no name (Datatype is expr with .+ no value for regexing lol )
             if el.get("@id", None) == default and el.get("@name") == "no_name":
                 continue

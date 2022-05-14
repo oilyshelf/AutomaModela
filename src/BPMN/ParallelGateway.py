@@ -48,7 +48,7 @@ class ParallelGateway(BPMNComponent):
             new_token.combine(t, strategy)
         # prep return
         new_token.rmTakenPath()
-        new_token.setPrio(20)
+        new_token.resetPrio()
         new_token.setPrio(self.outgoing.get("@priorty"))
         # logging
         self._add_info(new_token)

@@ -20,7 +20,7 @@ class Token():
             context = ""
             self.code_writer.write_code(f"#Tokencreation\n{self.id} = None")
         self.context: str = context
-        self.priority = 20
+        self.priority = None
 
     def add_context(self, element: str) -> None:
         t = time()
@@ -45,6 +45,9 @@ class Token():
         if prio:
             self.priority = prio
 
+    def resetPrio(self):
+        self.prio = None
+
     def addTakenPath(self, num: int):
         self.taken_paths.append(num)
 
@@ -57,9 +60,15 @@ class Token():
 
     def __lt__(self, other: Token) -> bool:
 
-        if self.priority == other.priority:
+        if self.prio is None and other.prio is None:
             return self.cur_time < other.cur_time
-        return self.priority < other.priority
+        elif self.prio is None and other.prio is not None:
+            return False
+        elif self.prio is not None and other.prio is None:
+            return True
+        elif self.prio is other.prio:
+            return self.cur_time > other.cur_time
+        return self.prio < other.prio
 
     def __repr__(self):
         return f"Token:{self.id}\nPath taken:{self.context}\nData:{self.data.head()}\n"

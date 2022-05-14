@@ -55,7 +55,7 @@ class InclusiveGateway(BPMNComponent):
             new_token.combine(t, strategy)
         # prep
         new_token.rmTakenPath()
-        new_token.setPrio(20)
+        new_token.resetPrio()
         new_token.setPrio(self.outgoing.get("@priority"))
         # logging
         self._add_info(new_token, "combined")
