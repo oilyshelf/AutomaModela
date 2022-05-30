@@ -38,9 +38,11 @@ def concat(a: str, b: str) -> str:
             return a + b
 
 
-def substr(a: str, start: int, end: int) -> str:
+def substr(a: str, start: int, end: int | None = None) -> str:
     if type(a) == pd.Series:
         return a.str.slice(start=start, stop=end)
+    if end is None:
+        end = -1
     return a[start:end]
 
 

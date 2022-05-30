@@ -20,8 +20,8 @@ class CombineStrategy(Strategy):
 # joins
 class NaturalJoinStrategy(CombineStrategy):
     def __init__(self, impl_bool_1: bool = False) -> None:
-        super().__init__(self)
-        self.index = impl_bool_1
+        # super().__init__(self)
+        self._index = impl_bool_1
         self.how = "inner"
 
     def combine(self, df_1: pd.DataFrame, df_2: pd.DataFrame) -> pd.DataFrame:
@@ -30,7 +30,7 @@ class NaturalJoinStrategy(CombineStrategy):
         return df_1.merge(df_2, how=self.how)
 
     def get_code(self, df_1: str, df_2: str) -> str:
-        if self.index:
+        if self._index:
             return f"#join on indcies\n{df_1}.join({df_2}, how = '{self.how}')"
         return f"#natural join on columns \n{df_1}.merge({df_2}, how = '{self.how}')"
 

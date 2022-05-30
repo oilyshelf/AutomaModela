@@ -226,14 +226,15 @@ class deleteColumnStrategy(TransformationStrategy):
 class setColumnStrategy(TransformationStrategy):
 
     def __init__(self, column: str, value: str) -> None:
-        self.expr = f"`{column}` = {value}"
+        self.expr = value
+        self.col = column
         self.engines = [{}, {"engine": "python"}]
         # logger.warning(f"____________________________________________|{self.expr}|____________________________")
 
     def transform(self, df: pd.DataFrame) -> pd.DataFrame:
         for engine in self.engines:
             try:
-                df = df.eval(self.expr, local_dict=expr_locals, **engine)
+                df[self.col] = df.eval(self.expr, local_dict=expr_locals, **engine)
                 return df
             except Exception:
                 logger.warning(f"{engine} didn't work on evaluating {self.expr} trying next engine")
@@ -244,7 +245,7 @@ class setColumnStrategy(TransformationStrategy):
         return f"""#Here we try to evaluate the Expression {self.expr} with diffrent engines
 for engine in {self.engines}:
     try:
-        {df_name} = {df_name}.eval('{self.expr}', **engine)
+        {df_name}["{self.col}"] = {df_name}.eval('{self.expr}', **engine)
     except Exception:
         print(engine, "failed to evaluate", '{self.expr}', "trying next")
 """

@@ -11,6 +11,7 @@ from BPMN.StartEvent import StartEvent
 from BPMN.Task import Task
 from BPMN.Endevent import EndEvent
 from BPMN.logger import logger
+import traceback
 
 
 class BPMNEngine():
@@ -56,7 +57,7 @@ class BPMNEngine():
                 else:
                     pass
             except Exception as e:
-                logger.error(f"Process canceled due to {e}")
+                logger.error(f"Process canceled due to {e} {traceback.format_exc()}")
                 break
         logger.info("Process execution ended")
 
