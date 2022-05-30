@@ -40,20 +40,25 @@ class BPMNEngine():
     def run(self):
         logger.info(f"starting process from {self.name}")
         while self.elements:
-            prio, cur = heapq.heappop(self.elements)
-            logger.info(f"Next Element in queue is {cur} with the priority of {prio}")
-            next_step = cur.execute()
-            if next_step["operation"] == "add":
-                for element in next_step["elements"]:
-                    self.add(element)
-            elif next_step["operation"] == "repush":
-                logger.info(f"{cur} was repushed with prio: {prio + 1}")
-                heapq.heappush(self.elements, (prio + 1, cur))
-            elif next_step["operation"] == "end":
-                if len(self.elements) == 0:
-                    logger.info(f"Process ended successfully no more elements in the queue")
-            else:
-                pass
+            try:
+                prio, cur = heapq.heappop(self.elements)
+                logger.info(f"Next Element in queue is {cur} with the priority of {prio}")
+                next_step = cur.execute()
+                if next_step["operation"] == "add":
+                    for element in next_step["elements"]:
+                        self.add(element)
+                elif next_step["operation"] == "repush":
+                    logger.info(f"{cur} was repushed with prio: {prio + 1}")
+                    heapq.heappush(self.elements, (prio + 1, cur))
+                elif next_step["operation"] == "end":
+                    if len(self.elements) == 0:
+                        logger.info(f"Process ended successfully no more elements in the queue")
+                else:
+                    pass
+            except Exception as e:
+                logger.error(f"Process canceled due to {e}")
+                break
+        logger.info("Process execution ended")
 
     def add(self, next_element):
         # check if element is already in queue

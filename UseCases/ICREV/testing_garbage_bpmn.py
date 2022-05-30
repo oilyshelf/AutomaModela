@@ -110,104 +110,104 @@ def starts_with(a:str, c_str:str)->str:
     return a.startswith(c_str)
 
 #Tokencreation
-Token_vyxUcLVmkqsaeBI59NZI3w = None
+Token_XgcH6tTPW_9B8fOX0mXj5A = None
 #Here we try to evaluate the Expression `counter` = None with diffrent engines
 for engine in [{}, {'engine': 'python'}]:
     try:
-        Token_vyxUcLVmkqsaeBI59NZI3w = Token_vyxUcLVmkqsaeBI59NZI3w.eval('`counter` = None', **engine)
+        Token_XgcH6tTPW_9B8fOX0mXj5A = Token_XgcH6tTPW_9B8fOX0mXj5A.eval('`counter` = None', **engine)
     except Exception:
         print(engine, "failed to evaluate", '`counter` = None', "trying next")
 
 #Here we try to evaluate the Expression `other` = None with diffrent engines
 for engine in [{}, {'engine': 'python'}]:
     try:
-        Token_vyxUcLVmkqsaeBI59NZI3w = Token_vyxUcLVmkqsaeBI59NZI3w.eval('`other` = None', **engine)
+        Token_XgcH6tTPW_9B8fOX0mXj5A = Token_XgcH6tTPW_9B8fOX0mXj5A.eval('`other` = None', **engine)
     except Exception:
         print(engine, "failed to evaluate", '`other` = None', "trying next")
 
 #add row based on args order
-Token_vyxUcLVmkqsaeBI59NZI3w.loc[len(Token_vyxUcLVmkqsaeBI59NZI3w.index)] = [1, 'test']
+Token_XgcH6tTPW_9B8fOX0mXj5A.loc[len(Token_XgcH6tTPW_9B8fOX0mXj5A.index)] = [1, 'test']
 #Here we try to evaluate the Expression `counter` = `counter`+1 with diffrent engines
 for engine in [{}, {'engine': 'python'}]:
     try:
-        Token_vyxUcLVmkqsaeBI59NZI3w = Token_vyxUcLVmkqsaeBI59NZI3w.eval('`counter` = `counter`+1', **engine)
+        Token_XgcH6tTPW_9B8fOX0mXj5A = Token_XgcH6tTPW_9B8fOX0mXj5A.eval('`counter` = `counter`+1', **engine)
     except Exception:
         print(engine, "failed to evaluate", '`counter` = `counter`+1', "trying next")
 
 #Here we try to evaluate the Expression `counter` = `counter`+1 with diffrent engines
 for engine in [{}, {'engine': 'python'}]:
     try:
-        Token_vyxUcLVmkqsaeBI59NZI3w = Token_vyxUcLVmkqsaeBI59NZI3w.eval('`counter` = `counter`+1', **engine)
+        Token_XgcH6tTPW_9B8fOX0mXj5A = Token_XgcH6tTPW_9B8fOX0mXj5A.eval('`counter` = `counter`+1', **engine)
     except Exception:
         print(engine, "failed to evaluate", '`counter` = `counter`+1', "trying next")
 
 #Here we try to evaluate the Expression `counter` = `counter`+1 with diffrent engines
 for engine in [{}, {'engine': 'python'}]:
     try:
-        Token_vyxUcLVmkqsaeBI59NZI3w = Token_vyxUcLVmkqsaeBI59NZI3w.eval('`counter` = `counter`+1', **engine)
+        Token_XgcH6tTPW_9B8fOX0mXj5A = Token_XgcH6tTPW_9B8fOX0mXj5A.eval('`counter` = `counter`+1', **engine)
     except Exception:
         print(engine, "failed to evaluate", '`counter` = `counter`+1', "trying next")
 
 #Here we try to evaluate the Expression `counter` = `counter`+1 with diffrent engines
 for engine in [{}, {'engine': 'python'}]:
     try:
-        Token_vyxUcLVmkqsaeBI59NZI3w = Token_vyxUcLVmkqsaeBI59NZI3w.eval('`counter` = `counter`+1', **engine)
+        Token_XgcH6tTPW_9B8fOX0mXj5A = Token_XgcH6tTPW_9B8fOX0mXj5A.eval('`counter` = `counter`+1', **engine)
     except Exception:
         print(engine, "failed to evaluate", '`counter` = `counter`+1', "trying next")
 
 #Here we try to evaluate the Expression `counter` = `counter`+1 with diffrent engines
 for engine in [{}, {'engine': 'python'}]:
     try:
-        Token_vyxUcLVmkqsaeBI59NZI3w = Token_vyxUcLVmkqsaeBI59NZI3w.eval('`counter` = `counter`+1', **engine)
+        Token_XgcH6tTPW_9B8fOX0mXj5A = Token_XgcH6tTPW_9B8fOX0mXj5A.eval('`counter` = `counter`+1', **engine)
     except Exception:
         print(engine, "failed to evaluate", '`counter` = `counter`+1', "trying next")
 
 #Here we try to evaluate the Expression `counter` = `counter`+1 with diffrent engines
 for engine in [{}, {'engine': 'python'}]:
     try:
-        Token_vyxUcLVmkqsaeBI59NZI3w = Token_vyxUcLVmkqsaeBI59NZI3w.eval('`counter` = `counter`+1', **engine)
+        Token_XgcH6tTPW_9B8fOX0mXj5A = Token_XgcH6tTPW_9B8fOX0mXj5A.eval('`counter` = `counter`+1', **engine)
     except Exception:
         print(engine, "failed to evaluate", '`counter` = `counter`+1', "trying next")
 
 #Here we try to evaluate the Expression `counter` = `counter`+1 with diffrent engines
 for engine in [{}, {'engine': 'python'}]:
     try:
-        Token_vyxUcLVmkqsaeBI59NZI3w = Token_vyxUcLVmkqsaeBI59NZI3w.eval('`counter` = `counter`+1', **engine)
+        Token_XgcH6tTPW_9B8fOX0mXj5A = Token_XgcH6tTPW_9B8fOX0mXj5A.eval('`counter` = `counter`+1', **engine)
     except Exception:
         print(engine, "failed to evaluate", '`counter` = `counter`+1', "trying next")
 
 #Here we try to evaluate the Expression `counter` = `counter`+1 with diffrent engines
 for engine in [{}, {'engine': 'python'}]:
     try:
-        Token_vyxUcLVmkqsaeBI59NZI3w = Token_vyxUcLVmkqsaeBI59NZI3w.eval('`counter` = `counter`+1', **engine)
+        Token_XgcH6tTPW_9B8fOX0mXj5A = Token_XgcH6tTPW_9B8fOX0mXj5A.eval('`counter` = `counter`+1', **engine)
     except Exception:
         print(engine, "failed to evaluate", '`counter` = `counter`+1', "trying next")
 
 #Here we try to evaluate the Expression `counter` = `counter`+1 with diffrent engines
 for engine in [{}, {'engine': 'python'}]:
     try:
-        Token_vyxUcLVmkqsaeBI59NZI3w = Token_vyxUcLVmkqsaeBI59NZI3w.eval('`counter` = `counter`+1', **engine)
+        Token_XgcH6tTPW_9B8fOX0mXj5A = Token_XgcH6tTPW_9B8fOX0mXj5A.eval('`counter` = `counter`+1', **engine)
     except Exception:
         print(engine, "failed to evaluate", '`counter` = `counter`+1', "trying next")
 
-#Creating new Dataframe based on Token_vyxUcLVmkqsaeBI59NZI3w
-Token_YzkBH_2SI_hQc5EyKrBvnQ = Token_vyxUcLVmkqsaeBI59NZI3w.copy(True)
+#Creating new Dataframe based on Token_XgcH6tTPW_9B8fOX0mXj5A
+Token_KmXiCZoi6Z8RBBmhaytY5A = Token_XgcH6tTPW_9B8fOX0mXj5A.copy(True)
 
 #Here we try to query the Expression `counter` == 10 with diffrent engines
 for engine in [{'engine': 'numexpr'}, {'engine': 'python'}]:
     try:
-        Token_YzkBH_2SI_hQc5EyKrBvnQ = Token_YzkBH_2SI_hQc5EyKrBvnQ.query('`counter` == 10', **engine)
+        Token_KmXiCZoi6Z8RBBmhaytY5A = Token_KmXiCZoi6Z8RBBmhaytY5A.query('`counter` == 10', **engine)
     except Exception:
         print(engine, "failed to query", '`counter` == 10', "trying next")
 
 #Here we try to evaluate the Expression `other` = @replace_all(`other`, "t","T") with diffrent engines
 for engine in [{}, {'engine': 'python'}]:
     try:
-        Token_YzkBH_2SI_hQc5EyKrBvnQ = Token_YzkBH_2SI_hQc5EyKrBvnQ.eval('`other` = @replace_all(`other`, "t","T")', **engine)
+        Token_KmXiCZoi6Z8RBBmhaytY5A = Token_KmXiCZoi6Z8RBBmhaytY5A.eval('`other` = @replace_all(`other`, "t","T")', **engine)
     except Exception:
         print(engine, "failed to evaluate", '`other` = @replace_all(`other`, "t","T")', "trying next")
 
 
-#here we save the data from Token_YzkBH_2SI_hQc5EyKrBvnQ to the the counter.xlsx into the  sheet Sheet1 and dont use the index
-Token_YzkBH_2SI_hQc5EyKrBvnQ.to_excel("counter.xlsx", sheet_name = "Sheet1", index = False)
+#here we save the data from Token_KmXiCZoi6Z8RBBmhaytY5A to the the counter.xlsx into the  sheet Sheet1 and dont use the index
+Token_KmXiCZoi6Z8RBBmhaytY5A.to_excel("counter.xlsx", sheet_name = "Sheet1", index = False)
 

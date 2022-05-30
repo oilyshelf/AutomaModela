@@ -66,7 +66,7 @@ class Token():
             return False
         elif self.prio is not None and other.prio is None:
             return True
-        elif self.prio is other.prio:
+        elif self.prio == other.prio:
             return self.cur_time > other.cur_time
         return self.prio < other.prio
 
