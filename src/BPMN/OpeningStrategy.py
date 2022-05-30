@@ -46,6 +46,7 @@ class NewStrategy(OpeningStrategy):
     def determine(self, token: Token, flows: List[dict], default: str | None = None) -> List[dict] | None:
         tba = list()
         for el in flows:
+            # print(f"----------------------------------------------|{el.get('@name')}|--------------------------")
             if self.keep and el.get("@name", "False") == "True": 
                 new_token = copy.deepcopy(token)
             else:

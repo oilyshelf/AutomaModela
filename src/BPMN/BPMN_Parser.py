@@ -35,6 +35,7 @@ class BPMNParser():
                 prio = int(m.group(1))
                 group_2 = m.group(2)
                 name = group_2 if group_2 is not None else "no_name"
+                name = name.strip()
             return {"@id": outgoing, "@name": name, "@targetRef": flow.get("@targetRef", None), "@priority": prio}
         else:
             for key, flow_id in enumerate(outgoing):
@@ -45,6 +46,7 @@ class BPMNParser():
                     prio = int(m.group(1))
                     group_2 = m.group(2)
                     name = group_2 if group_2 is not None else "no_name"
+                    name = name.strip()
                 outgoing[key] = {"@id": flow_id, "@name": name, "@targetRef": flow.get("@targetRef", None), "@priority": prio}
         return outgoing
 

@@ -6,8 +6,8 @@ from time import perf_counter
 
 def main():
     start = perf_counter()
-    os.chdir("./UseCases/ICREV")
-    engine = BPMNEngine("testing_garbage.bpmn")
+    os.chdir("./UseCases/ICR")
+    engine = BPMNEngine("icr.bpmn")
     end_1 = perf_counter()
     engine.run()
     end_2 = perf_counter()

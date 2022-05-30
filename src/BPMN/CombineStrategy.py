@@ -1,7 +1,7 @@
 import pandas as pd
 import abc
 import numpy as np
-from BPMN.TransformationStrategy import SelectRowsStrategy
+from BPMN.TransformationStrategy import SelectRowsStrategy, RenameStrategy
 from BPMN.Strategy import Strategy
 # abstract base class
 
@@ -100,6 +100,7 @@ class LeftJoinOnStrategy(JoinOnStrategy):
     def combine(self, df_1: pd.DataFrame, df_2: pd.DataFrame) -> pd.DataFrame:
         df_1 = super().combine(df_1, df_2)
         df_1.replace({np.nan: None})
+        return df_1
 
     def get_code(self, df_1: str, df_2: str) -> str:
         return super().get_code(df_1, df_2) + f"\n{df_1}.replace({{np.nan: None}})"
@@ -114,6 +115,7 @@ class RightJoinOnStrategy(JoinOnStrategy):
     def combine(self, df_1: pd.DataFrame, df_2: pd.DataFrame) -> pd.DataFrame:
         df_1 = super().combine(df_1, df_2)
         df_1.replace({np.nan: None})
+        return df_1
 
     def get_code(self, df_1: str, df_2: str) -> str:
         return super().get_code(df_1, df_2) + f"\n{df_1}.replace({{np.nan: None}})"
@@ -128,6 +130,7 @@ class OuterJoinOnStrategy(JoinOnStrategy):
     def combine(self, df_1: pd.DataFrame, df_2: pd.DataFrame) -> pd.DataFrame:
         df_1 = super().combine(df_1, df_2)
         df_1.replace({np.nan: None})
+        return df_1
 
     def get_code(self, df_1: str, df_2: str) -> str:
         return super().get_code(df_1, df_2) + f"\n{df_1}.replace({{np.nan: None}})"
@@ -138,12 +141,14 @@ class EquiJoinStrategy(CombineStrategy):
         self.how = "inner"
         self.right = right_col
         self.left = left_col
+        self.rename = RenameStrategy(right_col, left_col)
 
     def combine(self, df_1: pd.DataFrame, df_2: pd.DataFrame) -> pd.DataFrame:
-        return df_1.merge(df_2, left_on=self.left, right_on=self.right, how=self.how)
+        df_2 = self.rename.transform(df_2)
+        return df_1.merge(df_2, on=self.left, how=self.how)
 
     def get_code(self, df_1: str, df_2: str) -> str:
-        return f"""#Here we make an equi join two Dataframes\n{df_1} = {df_1}.merge({df_2},left_on="{self.left}", right_on="{self.right}", how="{self.how}")\n"""
+        return f"""#Here we make an equi join two Dataframes\n{self.rename.get_code(df_2)}\n{df_1} = {df_1}.merge({df_2},on="{self.left}", how="{self.how}")\n"""
 
 
 class LeftEquiJoinStrategy(EquiJoinStrategy):
@@ -155,6 +160,7 @@ class LeftEquiJoinStrategy(EquiJoinStrategy):
     def combine(self, df_1: pd.DataFrame, df_2: pd.DataFrame) -> pd.DataFrame:
         df_1 = super().combine(df_1, df_2)
         df_1.replace({np.nan: None})
+        return df_1
 
     def get_code(self, df_1: str, df_2: str) -> str:
         return super().get_code(df_1, df_2) + f"\n{df_1}.replace({{np.nan: None}})"
@@ -169,6 +175,7 @@ class RightEquiJoinStrategy(EquiJoinStrategy):
     def combine(self, df_1: pd.DataFrame, df_2: pd.DataFrame) -> pd.DataFrame:
         df_1 = super().combine(df_1, df_2)
         df_1.replace({np.nan: None})
+        return df_1
 
     def get_code(self, df_1: str, df_2: str) -> str:
         return super().get_code(df_1, df_2) + f"\n{df_1}.replace({{np.nan: None}})"
@@ -183,6 +190,7 @@ class OuterEquiJoinStrategy(EquiJoinStrategy):
     def combine(self, df_1: pd.DataFrame, df_2: pd.DataFrame) -> pd.DataFrame:
         df_1 = super().combine(df_1, df_2)
         df_1.replace({np.nan: None})
+        return df_1
 
     def get_code(self, df_1: str, df_2: str) -> str:
         return super().get_code(df_1, df_2) + f"\n{df_1}.replace({{np.nan: None}})"

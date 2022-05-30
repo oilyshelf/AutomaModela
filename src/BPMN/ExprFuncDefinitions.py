@@ -39,20 +39,22 @@ def concat(a: str, b: str) -> str:
 
 
 def substr(a: str, start: int, end: int) -> str:
-    if type(a) == str:
+    if type(a) == pd.Series:
         return a.str.slice(start=start, stop=end)
     return a[start:end]
 
 
 def strip(a: str, special_char: str | None = None) -> str:
-    if type(a) == str:
+    if type(a) == pd.Series:
         return a.str.strip(special_char)
     return a.strip(special_char)
 
 
 def split(a: str, on_what: str, keep: int = 0) -> str:
-    if type(a) == str:
-        return a.str.split(on_what)[keep]
+    if type(a) == pd.Series:
+        a = a.str.split(on_what, expand=True)
+        print(a)
+        return a[keep]
     return a.split(on_what)[keep]
 
 

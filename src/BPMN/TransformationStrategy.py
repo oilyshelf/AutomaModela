@@ -51,12 +51,19 @@ class SaveExcelStrategy(TransformationStrategy):
         self.index = impl_bool_3
 
     def transform(self, df: pd.DataFrame) -> pd.DataFrame:
+        ret_df = df.copy()
+        for col in df.columns:
+            if col.startswith("BACKTICK_QUOTED_STRING_"):
+                df.rename(columns={col: col[23:].replace("_", " ")}, inplace=True)
+
         df.to_excel(self.file_name, index=self.index, sheet_name=self.sheet_name)
-        return df
+        return ret_df
 
     def get_code(self, df_name: str) -> str:
-        return f"""
-#here we save the data from {df_name} to the the {self.file_name} into the  sheet {self.sheet_name} and {"use" if self.index else "dont use"} the index
+        return f"""#here we save the data from {df_name} to the the {self.file_name} into the  sheet {self.sheet_name} and {"use" if self.index else "dont use"} the index
+for col in {df_name}.columns:
+    if col.startswith("BACKTICK_QUOTED_STRING_"):
+        {df_name}.rename(columns={{col:col[23:].replace("_", " ")}}, inplace=True)
 {df_name}.to_excel("{self.file_name}", sheet_name = "{self.sheet_name}", index = {self.index})
 """
 
@@ -221,6 +228,7 @@ class setColumnStrategy(TransformationStrategy):
     def __init__(self, column: str, value: str) -> None:
         self.expr = f"`{column}` = {value}"
         self.engines = [{}, {"engine": "python"}]
+        # logger.warning(f"____________________________________________|{self.expr}|____________________________")
 
     def transform(self, df: pd.DataFrame) -> pd.DataFrame:
         for engine in self.engines:
@@ -230,7 +238,7 @@ class setColumnStrategy(TransformationStrategy):
             except Exception:
                 logger.warning(f"{engine} didn't work on evaluating {self.expr} trying next engine")
                 pass
-        raise Exception("Transformation failed: not a valid value provided")
+        raise Exception(f"Transformation failed: not a valid value ({self.expr}) provided")
 
     def get_code(self, df_name: str) -> str:
         return f"""#Here we try to evaluate the Expression {self.expr} with diffrent engines
