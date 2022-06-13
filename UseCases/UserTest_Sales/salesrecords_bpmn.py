@@ -110,194 +110,194 @@ def starts_with(a:str, c_str:str)->str:
     return a.startswith(c_str)
 
 #Tokencreation
-Token_ZjrPfoOMjq8THFmtB5ZiHg = None
+Token__DfThK6dK9CmFvZhecVm_Q = None
 
 #here we read the data provided by the SalesRecords.xlsx from the sheet Sales and set the index to None
-Token_ZjrPfoOMjq8THFmtB5ZiHg = pd.read_excel("SalesRecords.xlsx", sheet_name = 'Sales')
-Token_ZjrPfoOMjq8THFmtB5ZiHg = Token_ZjrPfoOMjq8THFmtB5ZiHg.replace({np.nan:None})
+Token__DfThK6dK9CmFvZhecVm_Q = pd.read_excel("SalesRecords.xlsx", sheet_name = 'Sales')
+Token__DfThK6dK9CmFvZhecVm_Q = Token__DfThK6dK9CmFvZhecVm_Q.replace({np.nan:None})
 
 #Here we try to evaluate the Expression `Amount`-`Returns` with diffrent engines
 for engine in [{}, {'engine': 'python'}]:
     try:
-        Token_ZjrPfoOMjq8THFmtB5ZiHg[Amount of Actual Sales] = Token_ZjrPfoOMjq8THFmtB5ZiHg.eval('`Amount`-`Returns`', **engine)
+        Token__DfThK6dK9CmFvZhecVm_Q["Amount of Actual Sales"] = Token__DfThK6dK9CmFvZhecVm_Q.eval('`Amount`-`Returns`', **engine)
     except Exception:
         print(engine, "failed to evaluate", '`Amount`-`Returns`', "trying next")
 
 #Tokencreation
-Token_6UzFDGscEAh3mDtYCpqSPw = None
-#Creating new Dataframe based on Token_ZjrPfoOMjq8THFmtB5ZiHg
-Token_rM3KaAIDx9GuQtT5kqUOjw = Token_ZjrPfoOMjq8THFmtB5ZiHg.copy(True)
+Token_zx8khJyb7JXot4aVgqEDmA = None
+#Creating new Dataframe based on Token__DfThK6dK9CmFvZhecVm_Q
+Token_mjxqiDpEXQ_DCpcuzcpBMQ = Token__DfThK6dK9CmFvZhecVm_Q.copy(True)
 
 
 #here we read the data provided by the SalesRecords.xlsx from the sheet Products and set the index to None
-Token_6UzFDGscEAh3mDtYCpqSPw = pd.read_excel("SalesRecords.xlsx", sheet_name = 'Products')
-Token_6UzFDGscEAh3mDtYCpqSPw = Token_6UzFDGscEAh3mDtYCpqSPw.replace({np.nan:None})
+Token_zx8khJyb7JXot4aVgqEDmA = pd.read_excel("SalesRecords.xlsx", sheet_name = 'Products')
+Token_zx8khJyb7JXot4aVgqEDmA = Token_zx8khJyb7JXot4aVgqEDmA.replace({np.nan:None})
 
 #rename column from-> to {'Name': 'Product Name'}
-Token_6UzFDGscEAh3mDtYCpqSPw=Token_6UzFDGscEAh3mDtYCpqSPw.rename(columns={'Name': 'Product Name'})
+Token_zx8khJyb7JXot4aVgqEDmA=Token_zx8khJyb7JXot4aVgqEDmA.rename(columns={'Name': 'Product Name'})
 
 #rename column from-> to {'Selling Price in Dollar': 'Selling Price'}
-Token_6UzFDGscEAh3mDtYCpqSPw=Token_6UzFDGscEAh3mDtYCpqSPw.rename(columns={'Selling Price in Dollar': 'Selling Price'})
+Token_zx8khJyb7JXot4aVgqEDmA=Token_zx8khJyb7JXot4aVgqEDmA.rename(columns={'Selling Price in Dollar': 'Selling Price'})
 
 #natural join on columns 
-Token_rM3KaAIDx9GuQtT5kqUOjw.merge(Token_6UzFDGscEAh3mDtYCpqSPw, how = 'inner')
+Token_mjxqiDpEXQ_DCpcuzcpBMQ.merge(Token_zx8khJyb7JXot4aVgqEDmA, how = 'inner')
 #Here we try to evaluate the Expression `Selling Price` * `Amount of Actual Sales` with diffrent engines
 for engine in [{}, {'engine': 'python'}]:
     try:
-        Token_rM3KaAIDx9GuQtT5kqUOjw[Revenue] = Token_rM3KaAIDx9GuQtT5kqUOjw.eval('`Selling Price` * `Amount of Actual Sales`', **engine)
+        Token_mjxqiDpEXQ_DCpcuzcpBMQ["Revenue"] = Token_mjxqiDpEXQ_DCpcuzcpBMQ.eval('`Selling Price` * `Amount of Actual Sales`', **engine)
     except Exception:
         print(engine, "failed to evaluate", '`Selling Price` * `Amount of Actual Sales`', "trying next")
 
 #Tokencreation
-Token_9eqm0SsC1eloREYFpCmCCA = None
-#Creating new Dataframe based on Token_rM3KaAIDx9GuQtT5kqUOjw
-Token_uScFajcg67OAvq8C2VG0pQ = Token_rM3KaAIDx9GuQtT5kqUOjw.copy(True)
+Token_YoI_uyRN5Amrxvvamps_xA = None
+#Creating new Dataframe based on Token_mjxqiDpEXQ_DCpcuzcpBMQ
+Token_a_2DcBXTwnTVVwHqpTsaDw = Token_mjxqiDpEXQ_DCpcuzcpBMQ.copy(True)
 
 
 #here we read the data provided by the SalesRecords.xlsx from the sheet Stores and set the index to None
-Token_9eqm0SsC1eloREYFpCmCCA = pd.read_excel("SalesRecords.xlsx", sheet_name = 'Stores')
-Token_9eqm0SsC1eloREYFpCmCCA = Token_9eqm0SsC1eloREYFpCmCCA.replace({np.nan:None})
+Token_YoI_uyRN5Amrxvvamps_xA = pd.read_excel("SalesRecords.xlsx", sheet_name = 'Stores')
+Token_YoI_uyRN5Amrxvvamps_xA = Token_YoI_uyRN5Amrxvvamps_xA.replace({np.nan:None})
 
 #Here we try to evaluate the Expression @split(`Store Information`, " ") with diffrent engines
 for engine in [{}, {'engine': 'python'}]:
     try:
-        Token_9eqm0SsC1eloREYFpCmCCA[Store ID] = Token_9eqm0SsC1eloREYFpCmCCA.eval('@split(`Store Information`, " ")', **engine)
+        Token_YoI_uyRN5Amrxvvamps_xA["Store ID"] = Token_YoI_uyRN5Amrxvvamps_xA.eval('@split(`Store Information`, " ")', **engine)
     except Exception:
         print(engine, "failed to evaluate", '@split(`Store Information`, " ")', "trying next")
 
 #Here we try to evaluate the Expression @substr(`Store Information`,8) with diffrent engines
 for engine in [{}, {'engine': 'python'}]:
     try:
-        Token_9eqm0SsC1eloREYFpCmCCA[Store Name] = Token_9eqm0SsC1eloREYFpCmCCA.eval('@substr(`Store Information`,8)', **engine)
+        Token_YoI_uyRN5Amrxvvamps_xA["Store Name"] = Token_YoI_uyRN5Amrxvvamps_xA.eval('@substr(`Store Information`,8)', **engine)
     except Exception:
         print(engine, "failed to evaluate", '@substr(`Store Information`,8)', "trying next")
 
 #delete column
-Token_9eqm0SsC1eloREYFpCmCCA = Token_9eqm0SsC1eloREYFpCmCCA.drop('Store Information', axis = 1)
+Token_YoI_uyRN5Amrxvvamps_xA = Token_YoI_uyRN5Amrxvvamps_xA.drop('Store Information', axis = 1)
 #natural join on columns 
-Token_uScFajcg67OAvq8C2VG0pQ.merge(Token_9eqm0SsC1eloREYFpCmCCA, how = 'inner')
-#Creating new Dataframe based on Token_uScFajcg67OAvq8C2VG0pQ
-Token_wJciW0wXFcYdkaIZX6uqAg = Token_uScFajcg67OAvq8C2VG0pQ.copy(True)
+Token_a_2DcBXTwnTVVwHqpTsaDw.merge(Token_YoI_uyRN5Amrxvvamps_xA, how = 'inner')
+#Creating new Dataframe based on Token_a_2DcBXTwnTVVwHqpTsaDw
+Token_I8szL5PxNOfwu4B39g8N7w = Token_a_2DcBXTwnTVVwHqpTsaDw.copy(True)
 
 #Tokencreation
-Token_FEJIbbTAme_h8AdNOeajaA = None
+Token_irswc3UV23Y1jwh_ZQ2K1A = None
 
 #here we read the data provided by the SalesRecords.xlsx from the sheet Taxes and set the index to None
-Token_FEJIbbTAme_h8AdNOeajaA = pd.read_excel("SalesRecords.xlsx", sheet_name = 'Taxes')
-Token_FEJIbbTAme_h8AdNOeajaA = Token_FEJIbbTAme_h8AdNOeajaA.replace({np.nan:None})
+Token_irswc3UV23Y1jwh_ZQ2K1A = pd.read_excel("SalesRecords.xlsx", sheet_name = 'Taxes')
+Token_irswc3UV23Y1jwh_ZQ2K1A = Token_irswc3UV23Y1jwh_ZQ2K1A.replace({np.nan:None})
 
 #delete column
-Token_FEJIbbTAme_h8AdNOeajaA = Token_FEJIbbTAme_h8AdNOeajaA.drop('Country', axis = 1)
+Token_irswc3UV23Y1jwh_ZQ2K1A = Token_irswc3UV23Y1jwh_ZQ2K1A.drop('Country', axis = 1)
 #Here we cross two Dataframes
-Token_wJciW0wXFcYdkaIZX6uqAg = Token_wJciW0wXFcYdkaIZX6uqAg.merge(Token_FEJIbbTAme_h8AdNOeajaA, how = "cross")
+Token_I8szL5PxNOfwu4B39g8N7w = Token_I8szL5PxNOfwu4B39g8N7w.merge(Token_irswc3UV23Y1jwh_ZQ2K1A, how = "cross")
 
 #Here we try to evaluate the Expression 0 with diffrent engines
 for engine in [{}, {'engine': 'python'}]:
     try:
-        Token_wJciW0wXFcYdkaIZX6uqAg[Taxesrate] = Token_wJciW0wXFcYdkaIZX6uqAg.eval('0', **engine)
+        Token_I8szL5PxNOfwu4B39g8N7w["Taxesrate"] = Token_I8szL5PxNOfwu4B39g8N7w.eval('0', **engine)
     except Exception:
         print(engine, "failed to evaluate", '0', "trying next")
 
-#Creating new Dataframe based on Token_wJciW0wXFcYdkaIZX6uqAg
-Token_VXVkd7y0txn2s0UDy0jUTw = Token_wJciW0wXFcYdkaIZX6uqAg.copy(True)
+#Creating new Dataframe based on Token_I8szL5PxNOfwu4B39g8N7w
+Token__3Iard0HjUEPSdegTyPEOw = Token_I8szL5PxNOfwu4B39g8N7w.copy(True)
 
 #Here we try to query the Expression `Country` == "Germany" with diffrent engines
 for engine in [{'engine': 'numexpr'}, {'engine': 'python'}]:
     try:
-        Token_VXVkd7y0txn2s0UDy0jUTw = Token_VXVkd7y0txn2s0UDy0jUTw.query('`Country` == "Germany"', **engine)
+        Token__3Iard0HjUEPSdegTyPEOw = Token__3Iard0HjUEPSdegTyPEOw.query('`Country` == "Germany"', **engine)
     except Exception:
         print(engine, "failed to query", '`Country` == "Germany"', "trying next")
 
 #Here we concate two Dataframes
-Token_wJciW0wXFcYdkaIZX6uqAg = Token_wJciW0wXFcYdkaIZX6uqAg[~Token_wJciW0wXFcYdkaIZX6uqAg.apply(tuple, 1).isin(Token_VXVkd7y0txn2s0UDy0jUTw.apply(tuple, 1))]
+Token_I8szL5PxNOfwu4B39g8N7w = Token_I8szL5PxNOfwu4B39g8N7w[~Token_I8szL5PxNOfwu4B39g8N7w.apply(tuple, 1).isin(Token__3Iard0HjUEPSdegTyPEOw.apply(tuple, 1))]
 
-#Creating new Dataframe based on Token_wJciW0wXFcYdkaIZX6uqAg
-Token_3_k_II7wrFVAKl998Z5PgQ = Token_wJciW0wXFcYdkaIZX6uqAg.copy(True)
+#Creating new Dataframe based on Token_I8szL5PxNOfwu4B39g8N7w
+Token_urOAOgDjBPGXURABZCt43A = Token_I8szL5PxNOfwu4B39g8N7w.copy(True)
 
 #Here we try to query the Expression `Country` == "USA" with diffrent engines
 for engine in [{'engine': 'numexpr'}, {'engine': 'python'}]:
     try:
-        Token_3_k_II7wrFVAKl998Z5PgQ = Token_3_k_II7wrFVAKl998Z5PgQ.query('`Country` == "USA"', **engine)
+        Token_urOAOgDjBPGXURABZCt43A = Token_urOAOgDjBPGXURABZCt43A.query('`Country` == "USA"', **engine)
     except Exception:
         print(engine, "failed to query", '`Country` == "USA"', "trying next")
 
 #Here we concate two Dataframes
-Token_wJciW0wXFcYdkaIZX6uqAg = Token_wJciW0wXFcYdkaIZX6uqAg[~Token_wJciW0wXFcYdkaIZX6uqAg.apply(tuple, 1).isin(Token_3_k_II7wrFVAKl998Z5PgQ.apply(tuple, 1))]
+Token_I8szL5PxNOfwu4B39g8N7w = Token_I8szL5PxNOfwu4B39g8N7w[~Token_I8szL5PxNOfwu4B39g8N7w.apply(tuple, 1).isin(Token_urOAOgDjBPGXURABZCt43A.apply(tuple, 1))]
 
-#Creating new Dataframe based on Token_wJciW0wXFcYdkaIZX6uqAg
-Token_iVAayOZFCoEfUgXwlzqerA = Token_wJciW0wXFcYdkaIZX6uqAg.copy(True)
+#Creating new Dataframe based on Token_I8szL5PxNOfwu4B39g8N7w
+Token_EyQ76eBn1iNj0XkzIDH1SQ = Token_I8szL5PxNOfwu4B39g8N7w.copy(True)
 
 #Here we try to query the Expression `Country` == "France" with diffrent engines
 for engine in [{'engine': 'numexpr'}, {'engine': 'python'}]:
     try:
-        Token_iVAayOZFCoEfUgXwlzqerA = Token_iVAayOZFCoEfUgXwlzqerA.query('`Country` == "France"', **engine)
+        Token_EyQ76eBn1iNj0XkzIDH1SQ = Token_EyQ76eBn1iNj0XkzIDH1SQ.query('`Country` == "France"', **engine)
     except Exception:
         print(engine, "failed to query", '`Country` == "France"', "trying next")
 
 #Here we concate two Dataframes
-Token_wJciW0wXFcYdkaIZX6uqAg = Token_wJciW0wXFcYdkaIZX6uqAg[~Token_wJciW0wXFcYdkaIZX6uqAg.apply(tuple, 1).isin(Token_iVAayOZFCoEfUgXwlzqerA.apply(tuple, 1))]
+Token_I8szL5PxNOfwu4B39g8N7w = Token_I8szL5PxNOfwu4B39g8N7w[~Token_I8szL5PxNOfwu4B39g8N7w.apply(tuple, 1).isin(Token_EyQ76eBn1iNj0XkzIDH1SQ.apply(tuple, 1))]
 
 #Here we try to evaluate the Expression `Germany` with diffrent engines
 for engine in [{}, {'engine': 'python'}]:
     try:
-        Token_VXVkd7y0txn2s0UDy0jUTw[Taxesrate] = Token_VXVkd7y0txn2s0UDy0jUTw.eval('`Germany`', **engine)
+        Token__3Iard0HjUEPSdegTyPEOw["Taxesrate"] = Token__3Iard0HjUEPSdegTyPEOw.eval('`Germany`', **engine)
     except Exception:
         print(engine, "failed to evaluate", '`Germany`', "trying next")
 
 #Here we try to evaluate the Expression `USA` with diffrent engines
 for engine in [{}, {'engine': 'python'}]:
     try:
-        Token_3_k_II7wrFVAKl998Z5PgQ[Taxesrate] = Token_3_k_II7wrFVAKl998Z5PgQ.eval('`USA`', **engine)
+        Token_urOAOgDjBPGXURABZCt43A["Taxesrate"] = Token_urOAOgDjBPGXURABZCt43A.eval('`USA`', **engine)
     except Exception:
         print(engine, "failed to evaluate", '`USA`', "trying next")
 
 #Here we try to evaluate the Expression `France` with diffrent engines
 for engine in [{}, {'engine': 'python'}]:
     try:
-        Token_iVAayOZFCoEfUgXwlzqerA[Taxesrate] = Token_iVAayOZFCoEfUgXwlzqerA.eval('`France`', **engine)
+        Token_EyQ76eBn1iNj0XkzIDH1SQ["Taxesrate"] = Token_EyQ76eBn1iNj0XkzIDH1SQ.eval('`France`', **engine)
     except Exception:
         print(engine, "failed to evaluate", '`France`', "trying next")
 
 #Here we concate two Dataframes
-Token_VXVkd7y0txn2s0UDy0jUTw = pd.concat([Token_VXVkd7y0txn2s0UDy0jUTw,Token_3_k_II7wrFVAKl998Z5PgQ])
+Token__3Iard0HjUEPSdegTyPEOw = pd.concat([Token__3Iard0HjUEPSdegTyPEOw,Token_urOAOgDjBPGXURABZCt43A])
 
 #Here we concate two Dataframes
-Token_VXVkd7y0txn2s0UDy0jUTw = pd.concat([Token_VXVkd7y0txn2s0UDy0jUTw,Token_iVAayOZFCoEfUgXwlzqerA])
+Token__3Iard0HjUEPSdegTyPEOw = pd.concat([Token__3Iard0HjUEPSdegTyPEOw,Token_EyQ76eBn1iNj0XkzIDH1SQ])
 
 #Here we try to evaluate the Expression `Taxesrate`/100 with diffrent engines
 for engine in [{}, {'engine': 'python'}]:
     try:
-        Token_VXVkd7y0txn2s0UDy0jUTw[Taxesrate] = Token_VXVkd7y0txn2s0UDy0jUTw.eval('`Taxesrate`/100', **engine)
+        Token__3Iard0HjUEPSdegTyPEOw["Taxesrate"] = Token__3Iard0HjUEPSdegTyPEOw.eval('`Taxesrate`/100', **engine)
     except Exception:
         print(engine, "failed to evaluate", '`Taxesrate`/100', "trying next")
 
 #Here we try to evaluate the Expression `Revenue` * (1-`Taxesrate`) with diffrent engines
 for engine in [{}, {'engine': 'python'}]:
     try:
-        Token_VXVkd7y0txn2s0UDy0jUTw[Revenue after Taxes] = Token_VXVkd7y0txn2s0UDy0jUTw.eval('`Revenue` * (1-`Taxesrate`)', **engine)
+        Token__3Iard0HjUEPSdegTyPEOw["Revenue after Taxes"] = Token__3Iard0HjUEPSdegTyPEOw.eval('`Revenue` * (1-`Taxesrate`)', **engine)
     except Exception:
         print(engine, "failed to evaluate", '`Revenue` * (1-`Taxesrate`)', "trying next")
 
 #Here we try to evaluate the Expression `Amount of Actual Sales` * `Production Cost in Dollar` with diffrent engines
 for engine in [{}, {'engine': 'python'}]:
     try:
-        Token_VXVkd7y0txn2s0UDy0jUTw[Production Cost Total] = Token_VXVkd7y0txn2s0UDy0jUTw.eval('`Amount of Actual Sales` * `Production Cost in Dollar`', **engine)
+        Token__3Iard0HjUEPSdegTyPEOw["Production Cost Total"] = Token__3Iard0HjUEPSdegTyPEOw.eval('`Amount of Actual Sales` * `Production Cost in Dollar`', **engine)
     except Exception:
         print(engine, "failed to evaluate", '`Amount of Actual Sales` * `Production Cost in Dollar`', "trying next")
 
 #Here we try to evaluate the Expression `Revenue after Taxes` - `Production Cost Total` with diffrent engines
 for engine in [{}, {'engine': 'python'}]:
     try:
-        Token_VXVkd7y0txn2s0UDy0jUTw[Profit] = Token_VXVkd7y0txn2s0UDy0jUTw.eval('`Revenue after Taxes` - `Production Cost Total`', **engine)
+        Token__3Iard0HjUEPSdegTyPEOw["Profit"] = Token__3Iard0HjUEPSdegTyPEOw.eval('`Revenue after Taxes` - `Production Cost Total`', **engine)
     except Exception:
         print(engine, "failed to evaluate", '`Revenue after Taxes` - `Production Cost Total`', "trying next")
 
 #we get a subset of the dataframe with these columns ['Store Name', 'Product Name', 'Selling Price', 'Amount of Actual Sales', 'Revenue', 'Revenue after Taxes', 'Profit']
-Token_VXVkd7y0txn2s0UDy0jUTw = Token_VXVkd7y0txn2s0UDy0jUTw[['Store Name', 'Product Name', 'Selling Price', 'Amount of Actual Sales', 'Revenue', 'Revenue after Taxes', 'Profit']]
+Token__3Iard0HjUEPSdegTyPEOw = Token__3Iard0HjUEPSdegTyPEOw[['Store Name', 'Product Name', 'Selling Price', 'Amount of Actual Sales', 'Revenue', 'Revenue after Taxes', 'Profit']]
 
-#here we save the data from Token_VXVkd7y0txn2s0UDy0jUTw to the the Store_Performance_2022.xlsx into the  sheet Sheet1 and dont use the index
-for col in Token_VXVkd7y0txn2s0UDy0jUTw.columns:
+#here we save the data from Token__3Iard0HjUEPSdegTyPEOw to the the Store_Performance_2022.xlsx into the  sheet Sheet1 and dont use the index
+for col in Token__3Iard0HjUEPSdegTyPEOw.columns:
     if col.startswith("BACKTICK_QUOTED_STRING_"):
-        Token_VXVkd7y0txn2s0UDy0jUTw.rename(columns={col:col[23:].replace("_", " ")}, inplace=True)
-Token_VXVkd7y0txn2s0UDy0jUTw.to_excel("Store_Performance_2022.xlsx", sheet_name = "Sheet1", index = False)
+        Token__3Iard0HjUEPSdegTyPEOw.rename(columns={col:col[23:].replace("_", " ")}, inplace=True)
+Token__3Iard0HjUEPSdegTyPEOw.to_excel("Store_Performance_2022.xlsx", sheet_name = "Sheet1", index = False)
 
