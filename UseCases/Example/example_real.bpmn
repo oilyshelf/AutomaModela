@@ -1,0 +1,284 @@
+<?xml version="1.0" encoding="UTF-8"?><bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:camunda="http://camunda.org/schema/1.0/bpmn" id="Definitions_1" targetNamespace="http://bpmn.io/schema/bpmn" camunda:diagramRelationId="7dda99a8-82bd-4a55-98d0-ba61a5df7c9b">
+  <bpmn:process id="Process_69d97465-2777-4e53-98c0-5609c5aaa73a" isExecutable="true">
+    <bpmn:startEvent id="StartEvent_1">
+      <bpmn:outgoing>Flow_046oqy3</bpmn:outgoing>
+    </bpmn:startEvent>
+    <bpmn:parallelGateway id="Gateway_0g13siz">
+      <bpmn:incoming>Flow_046oqy3</bpmn:incoming>
+      <bpmn:outgoing>Flow_164wbls</bpmn:outgoing>
+      <bpmn:outgoing>Flow_18f69g4</bpmn:outgoing>
+    </bpmn:parallelGateway>
+    <bpmn:task id="Activity_1whyozc" name="load data from excel file &quot;Beispiel.xlsx&quot; from the sheet &quot;Tabelle1&quot;">
+      <bpmn:incoming>Flow_164wbls</bpmn:incoming>
+      <bpmn:outgoing>Flow_0qrdhoi</bpmn:outgoing>
+    </bpmn:task>
+    <bpmn:task id="Activity_0kwkkiu" name="load data from excel file &quot;Beispiel.xlsx&quot; from the sheet &quot;Tabelle2&quot;">
+      <bpmn:incoming>Flow_18f69g4</bpmn:incoming>
+      <bpmn:outgoing>Flow_1nmpal9</bpmn:outgoing>
+    </bpmn:task>
+    <bpmn:exclusiveGateway id="Gateway_02tv1qh" name="check but do not transform" default="Flow_0ne6r5s">
+      <bpmn:incoming>Flow_0qrdhoi</bpmn:incoming>
+      <bpmn:outgoing>Flow_0ne6r5s</bpmn:outgoing>
+      <bpmn:outgoing>Flow_120yqhw</bpmn:outgoing>
+    </bpmn:exclusiveGateway>
+    <bpmn:task id="Activity_12u9veu" name="select the rows where not @is_empty(`Profitcenter`)">
+      <bpmn:incoming>Flow_120yqhw</bpmn:incoming>
+      <bpmn:outgoing>Flow_1eaguq0</bpmn:outgoing>
+    </bpmn:task>
+    <bpmn:exclusiveGateway id="Gateway_11bbwmz">
+      <bpmn:incoming>Flow_0ne6r5s</bpmn:incoming>
+      <bpmn:incoming>Flow_1eaguq0</bpmn:incoming>
+      <bpmn:outgoing>Flow_1y7dn53</bpmn:outgoing>
+    </bpmn:exclusiveGateway>
+    <bpmn:inclusiveGateway id="Gateway_0md6k1f">
+      <bpmn:incoming>Flow_1y7dn53</bpmn:incoming>
+      <bpmn:outgoing>Flow_17cerxv</bpmn:outgoing>
+      <bpmn:outgoing>Flow_08uffka</bpmn:outgoing>
+      <bpmn:outgoing>Flow_1asaasf</bpmn:outgoing>
+    </bpmn:inclusiveGateway>
+    <bpmn:task id="Activity_0ayr9uj" name="set column `Kostenstelle` to the value &quot;K2&quot;">
+      <bpmn:incoming>Flow_17cerxv</bpmn:incoming>
+      <bpmn:outgoing>Flow_1xu7i9f</bpmn:outgoing>
+    </bpmn:task>
+    <bpmn:task id="Activity_0rbm5kl" name="set column `Kostenstelle` to the value &quot;K1&quot;">
+      <bpmn:incoming>Flow_08uffka</bpmn:incoming>
+      <bpmn:outgoing>Flow_188wp25</bpmn:outgoing>
+    </bpmn:task>
+    <bpmn:inclusiveGateway id="Gateway_1g1v4b2">
+      <bpmn:incoming>Flow_1xu7i9f</bpmn:incoming>
+      <bpmn:incoming>Flow_188wp25</bpmn:incoming>
+      <bpmn:incoming>Flow_12olxyh</bpmn:incoming>
+      <bpmn:outgoing>Flow_1wgtnks</bpmn:outgoing>
+    </bpmn:inclusiveGateway>
+    <bpmn:task id="Activity_1isvzkz" name="set column `Kostenstelle` to the value &quot;K2&quot;">
+      <bpmn:incoming>Flow_1asaasf</bpmn:incoming>
+      <bpmn:outgoing>Flow_12olxyh</bpmn:outgoing>
+    </bpmn:task>
+    <bpmn:task id="Activity_0u57itb" name="delete column `NGC Cost Center`">
+      <bpmn:incoming>Flow_1nmpal9</bpmn:incoming>
+      <bpmn:outgoing>Flow_1tdoxvf</bpmn:outgoing>
+    </bpmn:task>
+    <bpmn:task id="Activity_03us4z2" name="rename column from `Cost Center` to `Kostenstelle`">
+      <bpmn:incoming>Flow_0qdpvg1</bpmn:incoming>
+      <bpmn:outgoing>Flow_1bwpxyp</bpmn:outgoing>
+    </bpmn:task>
+    <bpmn:task id="Activity_0eftz2v" name="rename column from `Department Description` to `GF-Bereich`">
+      <bpmn:incoming>Flow_1bwpxyp</bpmn:incoming>
+      <bpmn:outgoing>Flow_0jmz7qk</bpmn:outgoing>
+    </bpmn:task>
+    <bpmn:parallelGateway id="Gateway_1o7od0i">
+      <bpmn:incoming>Flow_1wgtnks</bpmn:incoming>
+      <bpmn:incoming>Flow_0jmz7qk</bpmn:incoming>
+      <bpmn:outgoing>Flow_0nakpt8</bpmn:outgoing>
+    </bpmn:parallelGateway>
+    <bpmn:endEvent id="Event_1qz5j1i">
+      <bpmn:incoming>Flow_1t7w5x4</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:sequenceFlow id="Flow_046oqy3" sourceRef="StartEvent_1" targetRef="Gateway_0g13siz"/>
+    <bpmn:sequenceFlow id="Flow_164wbls" sourceRef="Gateway_0g13siz" targetRef="Activity_1whyozc"/>
+    <bpmn:sequenceFlow id="Flow_18f69g4" sourceRef="Gateway_0g13siz" targetRef="Activity_0kwkkiu"/>
+    <bpmn:sequenceFlow id="Flow_0qrdhoi" sourceRef="Activity_1whyozc" targetRef="Gateway_02tv1qh"/>
+    <bpmn:sequenceFlow id="Flow_1nmpal9" sourceRef="Activity_0kwkkiu" targetRef="Activity_0u57itb"/>
+    <bpmn:sequenceFlow id="Flow_0ne6r5s" sourceRef="Gateway_02tv1qh" targetRef="Gateway_11bbwmz"/>
+    <bpmn:sequenceFlow id="Flow_120yqhw" name="@is_empty(`Profitcenter`)" sourceRef="Gateway_02tv1qh" targetRef="Activity_12u9veu"/>
+    <bpmn:sequenceFlow id="Flow_1eaguq0" sourceRef="Activity_12u9veu" targetRef="Gateway_11bbwmz"/>
+    <bpmn:sequenceFlow id="Flow_1y7dn53" sourceRef="Gateway_11bbwmz" targetRef="Gateway_0md6k1f"/>
+    <bpmn:sequenceFlow id="Flow_17cerxv" name="`Profitcenter` == &quot;P1&quot;" sourceRef="Gateway_0md6k1f" targetRef="Activity_0ayr9uj"/>
+    <bpmn:sequenceFlow id="Flow_08uffka" name="`Profitcenter` == &quot;P2&quot;" sourceRef="Gateway_0md6k1f" targetRef="Activity_0rbm5kl"/>
+    <bpmn:sequenceFlow id="Flow_1asaasf" name="`Profitcenter` == &quot;P3&quot;" sourceRef="Gateway_0md6k1f" targetRef="Activity_1isvzkz"/>
+    <bpmn:sequenceFlow id="Flow_1xu7i9f" sourceRef="Activity_0ayr9uj" targetRef="Gateway_1g1v4b2"/>
+    <bpmn:sequenceFlow id="Flow_188wp25" sourceRef="Activity_0rbm5kl" targetRef="Gateway_1g1v4b2"/>
+    <bpmn:sequenceFlow id="Flow_12olxyh" sourceRef="Activity_1isvzkz" targetRef="Gateway_1g1v4b2"/>
+    <bpmn:sequenceFlow id="Flow_1wgtnks" sourceRef="Gateway_1g1v4b2" targetRef="Gateway_1o7od0i"/>
+    <bpmn:sequenceFlow id="Flow_1bwpxyp" sourceRef="Activity_03us4z2" targetRef="Activity_0eftz2v"/>
+    <bpmn:sequenceFlow id="Flow_0jmz7qk" sourceRef="Activity_0eftz2v" targetRef="Gateway_1o7od0i"/>
+    <bpmn:task id="Activity_01b5yr4" name="delete column `Department`">
+      <bpmn:incoming>Flow_1tdoxvf</bpmn:incoming>
+      <bpmn:outgoing>Flow_0qdpvg1</bpmn:outgoing>
+    </bpmn:task>
+    <bpmn:sequenceFlow id="Flow_1tdoxvf" sourceRef="Activity_0u57itb" targetRef="Activity_01b5yr4"/>
+    <bpmn:sequenceFlow id="Flow_0qdpvg1" sourceRef="Activity_01b5yr4" targetRef="Activity_03us4z2"/>
+    <bpmn:task id="Activity_0svigry" name="save data to excel file &quot;eine_sehr_gute_note.xlsx&quot;">
+      <bpmn:incoming>Flow_0nakpt8</bpmn:incoming>
+      <bpmn:outgoing>Flow_1t7w5x4</bpmn:outgoing>
+    </bpmn:task>
+    <bpmn:sequenceFlow id="Flow_0nakpt8" sourceRef="Gateway_1o7od0i" targetRef="Activity_0svigry"/>
+    <bpmn:sequenceFlow id="Flow_1t7w5x4" sourceRef="Activity_0svigry" targetRef="Event_1qz5j1i"/>
+  </bpmn:process>
+  <bpmndi:BPMNDiagram id="BPMNDiagram_1">
+    <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="Process_69d97465-2777-4e53-98c0-5609c5aaa73a">
+      <bpmndi:BPMNEdge id="Flow_046oqy3_di" bpmnElement="Flow_046oqy3">
+        <di:waypoint x="368" y="430"/>
+        <di:waypoint x="415" y="430"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_164wbls_di" bpmnElement="Flow_164wbls">
+        <di:waypoint x="440" y="405"/>
+        <di:waypoint x="440" y="240"/>
+        <di:waypoint x="520" y="240"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_18f69g4_di" bpmnElement="Flow_18f69g4">
+        <di:waypoint x="440" y="455"/>
+        <di:waypoint x="440" y="620"/>
+        <di:waypoint x="560" y="620"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0qrdhoi_di" bpmnElement="Flow_0qrdhoi">
+        <di:waypoint x="620" y="240"/>
+        <di:waypoint x="695" y="240"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1nmpal9_di" bpmnElement="Flow_1nmpal9">
+        <di:waypoint x="660" y="620"/>
+        <di:waypoint x="730" y="620"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0ne6r5s_di" bpmnElement="Flow_0ne6r5s">
+        <di:waypoint x="745" y="240"/>
+        <di:waypoint x="975" y="240"/>
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="809" y="223" width="21" height="14"/>
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_120yqhw_di" bpmnElement="Flow_120yqhw">
+        <di:waypoint x="720" y="265"/>
+        <di:waypoint x="720" y="350"/>
+        <di:waypoint x="800" y="350"/>
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="685" y="356" width="90" height="27"/>
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1eaguq0_di" bpmnElement="Flow_1eaguq0">
+        <di:waypoint x="900" y="350"/>
+        <di:waypoint x="1000" y="350"/>
+        <di:waypoint x="1000" y="265"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1y7dn53_di" bpmnElement="Flow_1y7dn53">
+        <di:waypoint x="1025" y="240"/>
+        <di:waypoint x="1065" y="240"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_17cerxv_di" bpmnElement="Flow_17cerxv">
+        <di:waypoint x="1090" y="215"/>
+        <di:waypoint x="1090" y="90"/>
+        <di:waypoint x="1250" y="90"/>
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="1109" y="56" width="81" height="27"/>
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_08uffka_di" bpmnElement="Flow_08uffka">
+        <di:waypoint x="1115" y="240"/>
+        <di:waypoint x="1250" y="240"/>
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="1142" y="206" width="81" height="27"/>
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1asaasf_di" bpmnElement="Flow_1asaasf">
+        <di:waypoint x="1090" y="265"/>
+        <di:waypoint x="1090" y="370"/>
+        <di:waypoint x="1250" y="370"/>
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="1129" y="336" width="81" height="27"/>
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1xu7i9f_di" bpmnElement="Flow_1xu7i9f">
+        <di:waypoint x="1350" y="90"/>
+        <di:waypoint x="1450" y="90"/>
+        <di:waypoint x="1450" y="215"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_188wp25_di" bpmnElement="Flow_188wp25">
+        <di:waypoint x="1350" y="240"/>
+        <di:waypoint x="1425" y="240"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_12olxyh_di" bpmnElement="Flow_12olxyh">
+        <di:waypoint x="1350" y="370"/>
+        <di:waypoint x="1450" y="370"/>
+        <di:waypoint x="1450" y="265"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1wgtnks_di" bpmnElement="Flow_1wgtnks">
+        <di:waypoint x="1475" y="240"/>
+        <di:waypoint x="1545" y="240"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1bwpxyp_di" bpmnElement="Flow_1bwpxyp">
+        <di:waypoint x="1170" y="620"/>
+        <di:waypoint x="1260" y="620"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0jmz7qk_di" bpmnElement="Flow_0jmz7qk">
+        <di:waypoint x="1360" y="620"/>
+        <di:waypoint x="1570" y="620"/>
+        <di:waypoint x="1570" y="265"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1tdoxvf_di" bpmnElement="Flow_1tdoxvf">
+        <di:waypoint x="830" y="620"/>
+        <di:waypoint x="890" y="620"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0qdpvg1_di" bpmnElement="Flow_0qdpvg1">
+        <di:waypoint x="990" y="620"/>
+        <di:waypoint x="1070" y="620"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0nakpt8_di" bpmnElement="Flow_0nakpt8">
+        <di:waypoint x="1595" y="240"/>
+        <di:waypoint x="1670" y="240"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1t7w5x4_di" bpmnElement="Flow_1t7w5x4">
+        <di:waypoint x="1770" y="240"/>
+        <di:waypoint x="1822" y="240"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="StartEvent_1_di" bpmnElement="StartEvent_1">
+        <dc:Bounds x="332" y="412" width="36" height="36"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Gateway_0g13siz_di" bpmnElement="Gateway_0g13siz">
+        <dc:Bounds x="415" y="405" width="50" height="50"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_1whyozc_di" bpmnElement="Activity_1whyozc">
+        <dc:Bounds x="520" y="200" width="100" height="80"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Gateway_02tv1qh_di" bpmnElement="Gateway_02tv1qh" isMarkerVisible="true">
+        <dc:Bounds x="695" y="215" width="50" height="50"/>
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="679" y="176" width="82" height="27"/>
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_12u9veu_di" bpmnElement="Activity_12u9veu">
+        <dc:Bounds x="800" y="310" width="100" height="80"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Gateway_11bbwmz_di" bpmnElement="Gateway_11bbwmz" isMarkerVisible="true">
+        <dc:Bounds x="975" y="215" width="50" height="50"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Gateway_0md6k1f_di" bpmnElement="Gateway_0md6k1f">
+        <dc:Bounds x="1065" y="215" width="50" height="50"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_0ayr9uj_di" bpmnElement="Activity_0ayr9uj">
+        <dc:Bounds x="1250" y="50" width="100" height="80"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_0rbm5kl_di" bpmnElement="Activity_0rbm5kl">
+        <dc:Bounds x="1250" y="200" width="100" height="80"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Gateway_1g1v4b2_di" bpmnElement="Gateway_1g1v4b2">
+        <dc:Bounds x="1425" y="215" width="50" height="50"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_1isvzkz_di" bpmnElement="Activity_1isvzkz">
+        <dc:Bounds x="1250" y="330" width="100" height="80"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Gateway_1o7od0i_di" bpmnElement="Gateway_1o7od0i">
+        <dc:Bounds x="1545" y="215" width="50" height="50"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_0kwkkiu_di" bpmnElement="Activity_0kwkkiu">
+        <dc:Bounds x="560" y="580" width="100" height="80"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_0u57itb_di" bpmnElement="Activity_0u57itb">
+        <dc:Bounds x="730" y="580" width="100" height="80"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_01b5yr4_di" bpmnElement="Activity_01b5yr4">
+        <dc:Bounds x="890" y="580" width="100" height="80"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_03us4z2_di" bpmnElement="Activity_03us4z2">
+        <dc:Bounds x="1070" y="580" width="100" height="80"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_0eftz2v_di" bpmnElement="Activity_0eftz2v">
+        <dc:Bounds x="1260" y="580" width="100" height="80"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_0svigry_di" bpmnElement="Activity_0svigry">
+        <dc:Bounds x="1670" y="200" width="100" height="80"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_1qz5j1i_di" bpmnElement="Event_1qz5j1i">
+        <dc:Bounds x="1822" y="222" width="36" height="36"/>
+      </bpmndi:BPMNShape>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</bpmn:definitions>
