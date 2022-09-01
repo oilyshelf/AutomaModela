@@ -110,291 +110,291 @@ def starts_with(a:str, c_str:str)->str:
     return a.startswith(c_str)
 
 #Tokencreation
-Token_eysO78esAVJ6dJ6e1VfXPw = None
+Token_lPPjwaXjJ9DNaV3v00S8jg = None
 
 #here we read the data provided by the ICR_Example.xlsx from the sheet Cats and set the index to None
-Token_eysO78esAVJ6dJ6e1VfXPw = pd.read_excel("ICR_Example.xlsx", sheet_name = 'Cats')
-Token_eysO78esAVJ6dJ6e1VfXPw = Token_eysO78esAVJ6dJ6e1VfXPw.replace({np.nan:None})
+Token_lPPjwaXjJ9DNaV3v00S8jg = pd.read_excel("ICR_Example.xlsx", sheet_name = 'Cats')
+Token_lPPjwaXjJ9DNaV3v00S8jg = Token_lPPjwaXjJ9DNaV3v00S8jg.replace({np.nan:None})
 
 #we get a subset of the dataframe with these columns ['Empfaenger', 'Object Abbreviation', 'Object Description', 'LeistArt', 'EmpfStelle', 'KKrs', 'Datum', 'Anzahl', 'ME', 'Erstellt am', 'GenehmDatum', 'Kontierungstext', 'Erfassungssystem']
-Token_eysO78esAVJ6dJ6e1VfXPw = Token_eysO78esAVJ6dJ6e1VfXPw[['Empfaenger', 'Object Abbreviation', 'Object Description', 'LeistArt', 'EmpfStelle', 'KKrs', 'Datum', 'Anzahl', 'ME', 'Erstellt am', 'GenehmDatum', 'Kontierungstext', 'Erfassungssystem']]
+Token_lPPjwaXjJ9DNaV3v00S8jg = Token_lPPjwaXjJ9DNaV3v00S8jg[['Empfaenger', 'Object Abbreviation', 'Object Description', 'LeistArt', 'EmpfStelle', 'KKrs', 'Datum', 'Anzahl', 'ME', 'Erstellt am', 'GenehmDatum', 'Kontierungstext', 'Erfassungssystem']]
 
 #rename column from-> to {'EmpfStelle': 'Invoicing CC'}
-Token_eysO78esAVJ6dJ6e1VfXPw=Token_eysO78esAVJ6dJ6e1VfXPw.rename(columns={'EmpfStelle': 'Invoicing CC'})
+Token_lPPjwaXjJ9DNaV3v00S8jg=Token_lPPjwaXjJ9DNaV3v00S8jg.rename(columns={'EmpfStelle': 'Invoicing CC'})
 
-#Creating new Dataframe based on Token_eysO78esAVJ6dJ6e1VfXPw
-Token_augkBIIMuh0YhU_P40SZ6w = Token_eysO78esAVJ6dJ6e1VfXPw.copy(True)
+#Creating new Dataframe based on Token_lPPjwaXjJ9DNaV3v00S8jg
+Token_sJ9_Obavim75gpuSCuzlXQ = Token_lPPjwaXjJ9DNaV3v00S8jg.copy(True)
 
 #Tokencreation
-Token_JLUulantn8EoaSHmC1Y0rA = None
+Token_LrHm6m4LXrO1A0pTrqJcnw = None
 #Here we try to evaluate the Expression @substr(`Kontierungstext`,1,7 ) with diffrent engines
 for engine in [{}, {'engine': 'python'}]:
     try:
-        Token_augkBIIMuh0YhU_P40SZ6w["PPM_ID"] = Token_augkBIIMuh0YhU_P40SZ6w.eval('@substr(`Kontierungstext`,1,7 )', **engine)
+        Token_sJ9_Obavim75gpuSCuzlXQ["PPM_ID"] = Token_sJ9_Obavim75gpuSCuzlXQ.eval('@substr(`Kontierungstext`,1,7 )', **engine)
     except Exception:
         print(engine, "failed to evaluate", '@substr(`Kontierungstext`,1,7 )', "trying next")
 
 
 #here we read the data provided by the ICR_Example.xlsx from the sheet Ppm and set the index to None
-Token_JLUulantn8EoaSHmC1Y0rA = pd.read_excel("ICR_Example.xlsx", sheet_name = 'Ppm')
-Token_JLUulantn8EoaSHmC1Y0rA = Token_JLUulantn8EoaSHmC1Y0rA.replace({np.nan:None})
+Token_LrHm6m4LXrO1A0pTrqJcnw = pd.read_excel("ICR_Example.xlsx", sheet_name = 'Ppm')
+Token_LrHm6m4LXrO1A0pTrqJcnw = Token_LrHm6m4LXrO1A0pTrqJcnw.replace({np.nan:None})
 
 #delete column
-Token_augkBIIMuh0YhU_P40SZ6w = Token_augkBIIMuh0YhU_P40SZ6w.drop('Kontierungstext', axis = 1)
+Token_sJ9_Obavim75gpuSCuzlXQ = Token_sJ9_Obavim75gpuSCuzlXQ.drop('Kontierungstext', axis = 1)
 #we get a subset of the dataframe with these columns ['PPM_ID Zahl', 'geschlossen am', 'Gate', 'Status']
-Token_JLUulantn8EoaSHmC1Y0rA = Token_JLUulantn8EoaSHmC1Y0rA[['PPM_ID Zahl', 'geschlossen am', 'Gate', 'Status']]
+Token_LrHm6m4LXrO1A0pTrqJcnw = Token_LrHm6m4LXrO1A0pTrqJcnw[['PPM_ID Zahl', 'geschlossen am', 'Gate', 'Status']]
 
 #Here we try to evaluate the Expression @to_int(`PPM_ID`) with diffrent engines
 for engine in [{}, {'engine': 'python'}]:
     try:
-        Token_augkBIIMuh0YhU_P40SZ6w["PPM_ID"] = Token_augkBIIMuh0YhU_P40SZ6w.eval('@to_int(`PPM_ID`)', **engine)
+        Token_sJ9_Obavim75gpuSCuzlXQ["PPM_ID"] = Token_sJ9_Obavim75gpuSCuzlXQ.eval('@to_int(`PPM_ID`)', **engine)
     except Exception:
         print(engine, "failed to evaluate", '@to_int(`PPM_ID`)', "trying next")
 
 #Here we try to query the Expression not @is_empty(`PPM_ID Zahl`) with diffrent engines
 for engine in [{'engine': 'numexpr'}, {'engine': 'python'}]:
     try:
-        Token_JLUulantn8EoaSHmC1Y0rA = Token_JLUulantn8EoaSHmC1Y0rA.query('not @is_empty(`PPM_ID Zahl`)', **engine)
+        Token_LrHm6m4LXrO1A0pTrqJcnw = Token_LrHm6m4LXrO1A0pTrqJcnw.query('not @is_empty(`PPM_ID Zahl`)', **engine)
     except Exception:
         print(engine, "failed to query", 'not @is_empty(`PPM_ID Zahl`)', "trying next")
 
 #Here we make an equi join two Dataframes
 #rename column from-> to {'PPM_ID Zahl': 'PPM_ID'}
-Token_JLUulantn8EoaSHmC1Y0rA=Token_JLUulantn8EoaSHmC1Y0rA.rename(columns={'PPM_ID Zahl': 'PPM_ID'})
+Token_LrHm6m4LXrO1A0pTrqJcnw=Token_LrHm6m4LXrO1A0pTrqJcnw.rename(columns={'PPM_ID Zahl': 'PPM_ID'})
 
-Token_augkBIIMuh0YhU_P40SZ6w = Token_augkBIIMuh0YhU_P40SZ6w.merge(Token_JLUulantn8EoaSHmC1Y0rA,on="PPM_ID", how="left")
+Token_sJ9_Obavim75gpuSCuzlXQ = Token_sJ9_Obavim75gpuSCuzlXQ.merge(Token_LrHm6m4LXrO1A0pTrqJcnw,on="PPM_ID", how="left")
 
-Token_augkBIIMuh0YhU_P40SZ6w.replace({np.nan: None})
-#Creating new Dataframe based on Token_augkBIIMuh0YhU_P40SZ6w
-Token_bunim4BrQN2m2us_rbbC0g = Token_augkBIIMuh0YhU_P40SZ6w.copy(True)
+Token_sJ9_Obavim75gpuSCuzlXQ.replace({np.nan: None})
+#Creating new Dataframe based on Token_sJ9_Obavim75gpuSCuzlXQ
+Token_K0Wqci8nCcDyXN_FbF5ZOA = Token_sJ9_Obavim75gpuSCuzlXQ.copy(True)
 
 #Tokencreation
-Token_Dz_ZZL_LQHncBFrF31DJSA = None
+Token_0Y02NUgfLITXwfKYTSZMPw = None
 
 #here we read the data provided by the ICR_Example.xlsx from the sheet wbs and set the index to None
-Token_Dz_ZZL_LQHncBFrF31DJSA = pd.read_excel("ICR_Example.xlsx", sheet_name = 'wbs')
-Token_Dz_ZZL_LQHncBFrF31DJSA = Token_Dz_ZZL_LQHncBFrF31DJSA.replace({np.nan:None})
+Token_0Y02NUgfLITXwfKYTSZMPw = pd.read_excel("ICR_Example.xlsx", sheet_name = 'wbs')
+Token_0Y02NUgfLITXwfKYTSZMPw = Token_0Y02NUgfLITXwfKYTSZMPw.replace({np.nan:None})
 
 #Here we make an equi join two Dataframes
 #rename column from-> to {'Stat. WBS Element': 'Empfaenger'}
-Token_Dz_ZZL_LQHncBFrF31DJSA=Token_Dz_ZZL_LQHncBFrF31DJSA.rename(columns={'Stat. WBS Element': 'Empfaenger'})
+Token_0Y02NUgfLITXwfKYTSZMPw=Token_0Y02NUgfLITXwfKYTSZMPw.rename(columns={'Stat. WBS Element': 'Empfaenger'})
 
-Token_bunim4BrQN2m2us_rbbC0g = Token_bunim4BrQN2m2us_rbbC0g.merge(Token_Dz_ZZL_LQHncBFrF31DJSA,on="Empfaenger", how="left")
+Token_K0Wqci8nCcDyXN_FbF5ZOA = Token_K0Wqci8nCcDyXN_FbF5ZOA.merge(Token_0Y02NUgfLITXwfKYTSZMPw,on="Empfaenger", how="left")
 
-Token_bunim4BrQN2m2us_rbbC0g.replace({np.nan: None})
-#Creating new Dataframe based on Token_bunim4BrQN2m2us_rbbC0g
-Token_AcZRFfI6gaRqrmxPKcL8zg = Token_bunim4BrQN2m2us_rbbC0g.copy(True)
+Token_K0Wqci8nCcDyXN_FbF5ZOA.replace({np.nan: None})
+#Creating new Dataframe based on Token_K0Wqci8nCcDyXN_FbF5ZOA
+Token_uQK8tC47HNF9sFy6HPe_mA = Token_K0Wqci8nCcDyXN_FbF5ZOA.copy(True)
 
 #Tokencreation
-Token_hDOkaOkrWwOiH_Y8Ia6Z0A = None
+Token_qPyxhG5WSOcLyaYl328TpQ = None
 
 #here we read the data provided by the ICR_Example.xlsx from the sheet Ngc and set the index to None
-Token_hDOkaOkrWwOiH_Y8Ia6Z0A = pd.read_excel("ICR_Example.xlsx", sheet_name = 'Ngc')
-Token_hDOkaOkrWwOiH_Y8Ia6Z0A = Token_hDOkaOkrWwOiH_Y8Ia6Z0A.replace({np.nan:None})
+Token_qPyxhG5WSOcLyaYl328TpQ = pd.read_excel("ICR_Example.xlsx", sheet_name = 'Ngc')
+Token_qPyxhG5WSOcLyaYl328TpQ = Token_qPyxhG5WSOcLyaYl328TpQ.replace({np.nan:None})
 
 #Here we try to evaluate the Expression @strip(`NGC`) with diffrent engines
 for engine in [{}, {'engine': 'python'}]:
     try:
-        Token_hDOkaOkrWwOiH_Y8Ia6Z0A["NGC"] = Token_hDOkaOkrWwOiH_Y8Ia6Z0A.eval('@strip(`NGC`)', **engine)
+        Token_qPyxhG5WSOcLyaYl328TpQ["NGC"] = Token_qPyxhG5WSOcLyaYl328TpQ.eval('@strip(`NGC`)', **engine)
     except Exception:
         print(engine, "failed to evaluate", '@strip(`NGC`)', "trying next")
 
 #Here we try to evaluate the Expression @split(`NGC`, " ") with diffrent engines
 for engine in [{}, {'engine': 'python'}]:
     try:
-        Token_hDOkaOkrWwOiH_Y8Ia6Z0A["Kostenstelle"] = Token_hDOkaOkrWwOiH_Y8Ia6Z0A.eval('@split(`NGC`, " ")', **engine)
+        Token_qPyxhG5WSOcLyaYl328TpQ["Kostenstelle"] = Token_qPyxhG5WSOcLyaYl328TpQ.eval('@split(`NGC`, " ")', **engine)
     except Exception:
         print(engine, "failed to evaluate", '@split(`NGC`, " ")', "trying next")
 
 #delete column
-Token_hDOkaOkrWwOiH_Y8Ia6Z0A = Token_hDOkaOkrWwOiH_Y8Ia6Z0A.drop('NGC', axis = 1)
+Token_qPyxhG5WSOcLyaYl328TpQ = Token_qPyxhG5WSOcLyaYl328TpQ.drop('NGC', axis = 1)
 #Here we make an equi join two Dataframes
 #rename column from-> to {'Kostenstelle': 'Invoicing CC'}
-Token_hDOkaOkrWwOiH_Y8Ia6Z0A=Token_hDOkaOkrWwOiH_Y8Ia6Z0A.rename(columns={'Kostenstelle': 'Invoicing CC'})
+Token_qPyxhG5WSOcLyaYl328TpQ=Token_qPyxhG5WSOcLyaYl328TpQ.rename(columns={'Kostenstelle': 'Invoicing CC'})
 
-Token_AcZRFfI6gaRqrmxPKcL8zg = Token_AcZRFfI6gaRqrmxPKcL8zg.merge(Token_hDOkaOkrWwOiH_Y8Ia6Z0A,on="Invoicing CC", how="left")
+Token_uQK8tC47HNF9sFy6HPe_mA = Token_uQK8tC47HNF9sFy6HPe_mA.merge(Token_qPyxhG5WSOcLyaYl328TpQ,on="Invoicing CC", how="left")
 
-Token_AcZRFfI6gaRqrmxPKcL8zg.replace({np.nan: None})
+Token_uQK8tC47HNF9sFy6HPe_mA.replace({np.nan: None})
 #rename column from-> to {'abbr': 'Hauptabteilung'}
-Token_AcZRFfI6gaRqrmxPKcL8zg=Token_AcZRFfI6gaRqrmxPKcL8zg.rename(columns={'abbr': 'Hauptabteilung'})
+Token_uQK8tC47HNF9sFy6HPe_mA=Token_uQK8tC47HNF9sFy6HPe_mA.rename(columns={'abbr': 'Hauptabteilung'})
 
-#Creating new Dataframe based on Token_AcZRFfI6gaRqrmxPKcL8zg
-Token_T_L4haCaBRy2I7hKoyBhCQ = Token_AcZRFfI6gaRqrmxPKcL8zg.copy(True)
+#Creating new Dataframe based on Token_uQK8tC47HNF9sFy6HPe_mA
+Token_zXx3oBkpKGkaV65_weaLAA = Token_uQK8tC47HNF9sFy6HPe_mA.copy(True)
 
 #Tokencreation
-Token_tqaF6kf4IGW4qnFedIUd7Q = None
+Token_dhYRlS8wyQg7W2J3REAVDg = None
 
 #here we read the data provided by the ICR_Example.xlsx from the sheet stundensatz and set the index to None
-Token_tqaF6kf4IGW4qnFedIUd7Q = pd.read_excel("ICR_Example.xlsx", sheet_name = 'stundensatz')
-Token_tqaF6kf4IGW4qnFedIUd7Q = Token_tqaF6kf4IGW4qnFedIUd7Q.replace({np.nan:None})
+Token_dhYRlS8wyQg7W2J3REAVDg = pd.read_excel("ICR_Example.xlsx", sheet_name = 'stundensatz')
+Token_dhYRlS8wyQg7W2J3REAVDg = Token_dhYRlS8wyQg7W2J3REAVDg.replace({np.nan:None})
 
 #Here we make an equi join two Dataframes
 #rename column from-> to {'abt.': 'Hauptabteilung'}
-Token_tqaF6kf4IGW4qnFedIUd7Q=Token_tqaF6kf4IGW4qnFedIUd7Q.rename(columns={'abt.': 'Hauptabteilung'})
+Token_dhYRlS8wyQg7W2J3REAVDg=Token_dhYRlS8wyQg7W2J3REAVDg.rename(columns={'abt.': 'Hauptabteilung'})
 
-Token_T_L4haCaBRy2I7hKoyBhCQ = Token_T_L4haCaBRy2I7hKoyBhCQ.merge(Token_tqaF6kf4IGW4qnFedIUd7Q,on="Hauptabteilung", how="left")
+Token_zXx3oBkpKGkaV65_weaLAA = Token_zXx3oBkpKGkaV65_weaLAA.merge(Token_dhYRlS8wyQg7W2J3REAVDg,on="Hauptabteilung", how="left")
 
-Token_T_L4haCaBRy2I7hKoyBhCQ.replace({np.nan: None})
+Token_zXx3oBkpKGkaV65_weaLAA.replace({np.nan: None})
 #Here we try to evaluate the Expression 0.0 with diffrent engines
 for engine in [{}, {'engine': 'python'}]:
     try:
-        Token_T_L4haCaBRy2I7hKoyBhCQ["Stundensatz"] = Token_T_L4haCaBRy2I7hKoyBhCQ.eval('0.0', **engine)
+        Token_zXx3oBkpKGkaV65_weaLAA["Stundensatz"] = Token_zXx3oBkpKGkaV65_weaLAA.eval('0.0', **engine)
     except Exception:
         print(engine, "failed to evaluate", '0.0', "trying next")
 
-#Creating new Dataframe based on Token_T_L4haCaBRy2I7hKoyBhCQ
-Token_DcrMZ98h2vQIyxXBzVbdwg = Token_T_L4haCaBRy2I7hKoyBhCQ.copy(True)
+#Creating new Dataframe based on Token_zXx3oBkpKGkaV65_weaLAA
+Token_tisNbd7q6JBp1z_pp1QO9g = Token_zXx3oBkpKGkaV65_weaLAA.copy(True)
 
 #Here we try to query the Expression `KKrs` == "DE04" with diffrent engines
 for engine in [{'engine': 'numexpr'}, {'engine': 'python'}]:
     try:
-        Token_DcrMZ98h2vQIyxXBzVbdwg = Token_DcrMZ98h2vQIyxXBzVbdwg.query('`KKrs` == "DE04"', **engine)
+        Token_tisNbd7q6JBp1z_pp1QO9g = Token_tisNbd7q6JBp1z_pp1QO9g.query('`KKrs` == "DE04"', **engine)
     except Exception:
         print(engine, "failed to query", '`KKrs` == "DE04"', "trying next")
 
 #Here we concate two Dataframes
-Token_T_L4haCaBRy2I7hKoyBhCQ = Token_T_L4haCaBRy2I7hKoyBhCQ[~Token_T_L4haCaBRy2I7hKoyBhCQ.apply(tuple, 1).isin(Token_DcrMZ98h2vQIyxXBzVbdwg.apply(tuple, 1))]
+Token_zXx3oBkpKGkaV65_weaLAA = Token_zXx3oBkpKGkaV65_weaLAA[~Token_zXx3oBkpKGkaV65_weaLAA.apply(tuple, 1).isin(Token_tisNbd7q6JBp1z_pp1QO9g.apply(tuple, 1))]
 
 #Here we try to evaluate the Expression `DE04` with diffrent engines
 for engine in [{}, {'engine': 'python'}]:
     try:
-        Token_DcrMZ98h2vQIyxXBzVbdwg["Stundensatz"] = Token_DcrMZ98h2vQIyxXBzVbdwg.eval('`DE04`', **engine)
+        Token_tisNbd7q6JBp1z_pp1QO9g["Stundensatz"] = Token_tisNbd7q6JBp1z_pp1QO9g.eval('`DE04`', **engine)
     except Exception:
         print(engine, "failed to evaluate", '`DE04`', "trying next")
 
 #delete column
-Token_DcrMZ98h2vQIyxXBzVbdwg = Token_DcrMZ98h2vQIyxXBzVbdwg.drop('DE37', axis = 1)
+Token_tisNbd7q6JBp1z_pp1QO9g = Token_tisNbd7q6JBp1z_pp1QO9g.drop('DE37', axis = 1)
 #delete column
-Token_DcrMZ98h2vQIyxXBzVbdwg = Token_DcrMZ98h2vQIyxXBzVbdwg.drop('DE04', axis = 1)
+Token_tisNbd7q6JBp1z_pp1QO9g = Token_tisNbd7q6JBp1z_pp1QO9g.drop('DE04', axis = 1)
 #delete column
-Token_DcrMZ98h2vQIyxXBzVbdwg = Token_DcrMZ98h2vQIyxXBzVbdwg.drop('DE41', axis = 1)
-#Creating new Dataframe based on Token_DcrMZ98h2vQIyxXBzVbdwg
-Token_dJMQlhyA6pNaj0HXn9HLUg = Token_DcrMZ98h2vQIyxXBzVbdwg.copy(True)
+Token_tisNbd7q6JBp1z_pp1QO9g = Token_tisNbd7q6JBp1z_pp1QO9g.drop('DE41', axis = 1)
+#Creating new Dataframe based on Token_tisNbd7q6JBp1z_pp1QO9g
+Token_X1wSWx4xIl72E6BFWaE8Qg = Token_tisNbd7q6JBp1z_pp1QO9g.copy(True)
 
 #Tokencreation
-Token_5JTMYJsanQLkKWm8JpQEfw = None
+Token_YpZ6B4dfYaKhJih2D9zdjQ = None
 
 #here we read the data provided by the ICR_Example.xlsx from the sheet cc_mapping and set the index to None
-Token_5JTMYJsanQLkKWm8JpQEfw = pd.read_excel("ICR_Example.xlsx", sheet_name = 'cc_mapping')
-Token_5JTMYJsanQLkKWm8JpQEfw = Token_5JTMYJsanQLkKWm8JpQEfw.replace({np.nan:None})
+Token_YpZ6B4dfYaKhJih2D9zdjQ = pd.read_excel("ICR_Example.xlsx", sheet_name = 'cc_mapping')
+Token_YpZ6B4dfYaKhJih2D9zdjQ = Token_YpZ6B4dfYaKhJih2D9zdjQ.replace({np.nan:None})
 
 #Here we make an equi join two Dataframes
 #rename column from-> to {'From': 'KKrs'}
-Token_5JTMYJsanQLkKWm8JpQEfw=Token_5JTMYJsanQLkKWm8JpQEfw.rename(columns={'From': 'KKrs'})
+Token_YpZ6B4dfYaKhJih2D9zdjQ=Token_YpZ6B4dfYaKhJih2D9zdjQ.rename(columns={'From': 'KKrs'})
 
-Token_dJMQlhyA6pNaj0HXn9HLUg = Token_dJMQlhyA6pNaj0HXn9HLUg.merge(Token_5JTMYJsanQLkKWm8JpQEfw,on="KKrs", how="left")
+Token_X1wSWx4xIl72E6BFWaE8Qg = Token_X1wSWx4xIl72E6BFWaE8Qg.merge(Token_YpZ6B4dfYaKhJih2D9zdjQ,on="KKrs", how="left")
 
-Token_dJMQlhyA6pNaj0HXn9HLUg.replace({np.nan: None})
-#Creating new Dataframe based on Token_dJMQlhyA6pNaj0HXn9HLUg
-Token_GwCuyXczAnveMSTpnJQV1w = Token_dJMQlhyA6pNaj0HXn9HLUg.copy(True)
+Token_X1wSWx4xIl72E6BFWaE8Qg.replace({np.nan: None})
+#Creating new Dataframe based on Token_X1wSWx4xIl72E6BFWaE8Qg
+Token_SVK5oHk2rmBePOfCE6MU2g = Token_X1wSWx4xIl72E6BFWaE8Qg.copy(True)
 
 #Tokencreation
-Token_2N5wnMJ7vNqpHtJ1ci5Fzg = None
+Token_SeDlaCyueLYMkWBXnPJX_w = None
 
 #here we read the data provided by the ICR_Example.xlsx from the sheet cc and set the index to None
-Token_2N5wnMJ7vNqpHtJ1ci5Fzg = pd.read_excel("ICR_Example.xlsx", sheet_name = 'cc')
-Token_2N5wnMJ7vNqpHtJ1ci5Fzg = Token_2N5wnMJ7vNqpHtJ1ci5Fzg.replace({np.nan:None})
+Token_SeDlaCyueLYMkWBXnPJX_w = pd.read_excel("ICR_Example.xlsx", sheet_name = 'cc')
+Token_SeDlaCyueLYMkWBXnPJX_w = Token_SeDlaCyueLYMkWBXnPJX_w.replace({np.nan:None})
 
 #Here we make an equi join two Dataframes
 #rename column from-> to {'abt.': 'Hauptabteilung'}
-Token_2N5wnMJ7vNqpHtJ1ci5Fzg=Token_2N5wnMJ7vNqpHtJ1ci5Fzg.rename(columns={'abt.': 'Hauptabteilung'})
+Token_SeDlaCyueLYMkWBXnPJX_w=Token_SeDlaCyueLYMkWBXnPJX_w.rename(columns={'abt.': 'Hauptabteilung'})
 
-Token_GwCuyXczAnveMSTpnJQV1w = Token_GwCuyXczAnveMSTpnJQV1w.merge(Token_2N5wnMJ7vNqpHtJ1ci5Fzg,on="Hauptabteilung", how="left")
+Token_SVK5oHk2rmBePOfCE6MU2g = Token_SVK5oHk2rmBePOfCE6MU2g.merge(Token_SeDlaCyueLYMkWBXnPJX_w,on="Hauptabteilung", how="left")
 
-Token_GwCuyXczAnveMSTpnJQV1w.replace({np.nan: None})
+Token_SVK5oHk2rmBePOfCE6MU2g.replace({np.nan: None})
 #Here we try to evaluate the Expression " " with diffrent engines
 for engine in [{}, {'engine': 'python'}]:
     try:
-        Token_GwCuyXczAnveMSTpnJQV1w["Purchasing Cost Center"] = Token_GwCuyXczAnveMSTpnJQV1w.eval('" "', **engine)
+        Token_SVK5oHk2rmBePOfCE6MU2g["Purchasing Cost Center"] = Token_SVK5oHk2rmBePOfCE6MU2g.eval('" "', **engine)
     except Exception:
         print(engine, "failed to evaluate", '" "', "trying next")
 
-#Creating new Dataframe based on Token_GwCuyXczAnveMSTpnJQV1w
-Token_uCYVNJvkWtdX1_hk0GXSuQ = Token_GwCuyXczAnveMSTpnJQV1w.copy(True)
+#Creating new Dataframe based on Token_SVK5oHk2rmBePOfCE6MU2g
+Token_hneu4EHqdDporn5yoaTmfA = Token_SVK5oHk2rmBePOfCE6MU2g.copy(True)
 
 #Here we try to query the Expression `To` == "DE37" with diffrent engines
 for engine in [{'engine': 'numexpr'}, {'engine': 'python'}]:
     try:
-        Token_uCYVNJvkWtdX1_hk0GXSuQ = Token_uCYVNJvkWtdX1_hk0GXSuQ.query('`To` == "DE37"', **engine)
+        Token_hneu4EHqdDporn5yoaTmfA = Token_hneu4EHqdDporn5yoaTmfA.query('`To` == "DE37"', **engine)
     except Exception:
         print(engine, "failed to query", '`To` == "DE37"', "trying next")
 
 #Here we concate two Dataframes
-Token_GwCuyXczAnveMSTpnJQV1w = Token_GwCuyXczAnveMSTpnJQV1w[~Token_GwCuyXczAnveMSTpnJQV1w.apply(tuple, 1).isin(Token_uCYVNJvkWtdX1_hk0GXSuQ.apply(tuple, 1))]
+Token_SVK5oHk2rmBePOfCE6MU2g = Token_SVK5oHk2rmBePOfCE6MU2g[~Token_SVK5oHk2rmBePOfCE6MU2g.apply(tuple, 1).isin(Token_hneu4EHqdDporn5yoaTmfA.apply(tuple, 1))]
 
 #Here we try to evaluate the Expression `DE37` with diffrent engines
 for engine in [{}, {'engine': 'python'}]:
     try:
-        Token_uCYVNJvkWtdX1_hk0GXSuQ["Purchasing Cost Center"] = Token_uCYVNJvkWtdX1_hk0GXSuQ.eval('`DE37`', **engine)
+        Token_hneu4EHqdDporn5yoaTmfA["Purchasing Cost Center"] = Token_hneu4EHqdDporn5yoaTmfA.eval('`DE37`', **engine)
     except Exception:
         print(engine, "failed to evaluate", '`DE37`', "trying next")
 
 #delete column
-Token_uCYVNJvkWtdX1_hk0GXSuQ = Token_uCYVNJvkWtdX1_hk0GXSuQ.drop('DE37', axis = 1)
+Token_hneu4EHqdDporn5yoaTmfA = Token_hneu4EHqdDporn5yoaTmfA.drop('DE37', axis = 1)
 #delete column
-Token_uCYVNJvkWtdX1_hk0GXSuQ = Token_uCYVNJvkWtdX1_hk0GXSuQ.drop('DE04', axis = 1)
+Token_hneu4EHqdDporn5yoaTmfA = Token_hneu4EHqdDporn5yoaTmfA.drop('DE04', axis = 1)
 #delete column
-Token_uCYVNJvkWtdX1_hk0GXSuQ = Token_uCYVNJvkWtdX1_hk0GXSuQ.drop('DE41', axis = 1)
+Token_hneu4EHqdDporn5yoaTmfA = Token_hneu4EHqdDporn5yoaTmfA.drop('DE41', axis = 1)
 #delete column
-Token_uCYVNJvkWtdX1_hk0GXSuQ = Token_uCYVNJvkWtdX1_hk0GXSuQ.drop('To', axis = 1)
-#Creating new Dataframe based on Token_uCYVNJvkWtdX1_hk0GXSuQ
-Token_L6_Pe7WkREbiAfgup434og = Token_uCYVNJvkWtdX1_hk0GXSuQ.copy(True)
+Token_hneu4EHqdDporn5yoaTmfA = Token_hneu4EHqdDporn5yoaTmfA.drop('To', axis = 1)
+#Creating new Dataframe based on Token_hneu4EHqdDporn5yoaTmfA
+Token_HrfQzBL19x6GMYwJZbyTQA = Token_hneu4EHqdDporn5yoaTmfA.copy(True)
 
 #Tokencreation
-Token_hxvXyywZ3tPGrRS_36pWFw = None
+Token_JFp3ggfIGvZeuFDRc_iDSA = None
 
 #here we read the data provided by the ICR_Example.xlsx from the sheet ap and set the index to None
-Token_hxvXyywZ3tPGrRS_36pWFw = pd.read_excel("ICR_Example.xlsx", sheet_name = 'ap')
-Token_hxvXyywZ3tPGrRS_36pWFw = Token_hxvXyywZ3tPGrRS_36pWFw.replace({np.nan:None})
+Token_JFp3ggfIGvZeuFDRc_iDSA = pd.read_excel("ICR_Example.xlsx", sheet_name = 'ap')
+Token_JFp3ggfIGvZeuFDRc_iDSA = Token_JFp3ggfIGvZeuFDRc_iDSA.replace({np.nan:None})
 
 #Here we make an equi join two Dataframes
 #rename column from-> to {'abt.': 'Hauptabteilung'}
-Token_hxvXyywZ3tPGrRS_36pWFw=Token_hxvXyywZ3tPGrRS_36pWFw.rename(columns={'abt.': 'Hauptabteilung'})
+Token_JFp3ggfIGvZeuFDRc_iDSA=Token_JFp3ggfIGvZeuFDRc_iDSA.rename(columns={'abt.': 'Hauptabteilung'})
 
-Token_L6_Pe7WkREbiAfgup434og = Token_L6_Pe7WkREbiAfgup434og.merge(Token_hxvXyywZ3tPGrRS_36pWFw,on="Hauptabteilung", how="left")
+Token_HrfQzBL19x6GMYwJZbyTQA = Token_HrfQzBL19x6GMYwJZbyTQA.merge(Token_JFp3ggfIGvZeuFDRc_iDSA,on="Hauptabteilung", how="left")
 
-Token_L6_Pe7WkREbiAfgup434og.replace({np.nan: None})
+Token_HrfQzBL19x6GMYwJZbyTQA.replace({np.nan: None})
 #Here we try to evaluate the Expression 0.0 with diffrent engines
 for engine in [{}, {'engine': 'python'}]:
     try:
-        Token_L6_Pe7WkREbiAfgup434og["AP Fachbereich"] = Token_L6_Pe7WkREbiAfgup434og.eval('0.0', **engine)
+        Token_HrfQzBL19x6GMYwJZbyTQA["AP Fachbereich"] = Token_HrfQzBL19x6GMYwJZbyTQA.eval('0.0', **engine)
     except Exception:
         print(engine, "failed to evaluate", '0.0', "trying next")
 
-#Creating new Dataframe based on Token_L6_Pe7WkREbiAfgup434og
-Token_Lqu8QnxJYd7tMFBocrS8Vg = Token_L6_Pe7WkREbiAfgup434og.copy(True)
+#Creating new Dataframe based on Token_HrfQzBL19x6GMYwJZbyTQA
+Token_fbKUJQyQ4lvaaUSDhFflmQ = Token_HrfQzBL19x6GMYwJZbyTQA.copy(True)
 
 #Here we try to query the Expression `KKrs` == "DE04" with diffrent engines
 for engine in [{'engine': 'numexpr'}, {'engine': 'python'}]:
     try:
-        Token_Lqu8QnxJYd7tMFBocrS8Vg = Token_Lqu8QnxJYd7tMFBocrS8Vg.query('`KKrs` == "DE04"', **engine)
+        Token_fbKUJQyQ4lvaaUSDhFflmQ = Token_fbKUJQyQ4lvaaUSDhFflmQ.query('`KKrs` == "DE04"', **engine)
     except Exception:
         print(engine, "failed to query", '`KKrs` == "DE04"', "trying next")
 
 #Here we concate two Dataframes
-Token_L6_Pe7WkREbiAfgup434og = Token_L6_Pe7WkREbiAfgup434og[~Token_L6_Pe7WkREbiAfgup434og.apply(tuple, 1).isin(Token_Lqu8QnxJYd7tMFBocrS8Vg.apply(tuple, 1))]
+Token_HrfQzBL19x6GMYwJZbyTQA = Token_HrfQzBL19x6GMYwJZbyTQA[~Token_HrfQzBL19x6GMYwJZbyTQA.apply(tuple, 1).isin(Token_fbKUJQyQ4lvaaUSDhFflmQ.apply(tuple, 1))]
 
 #Here we try to evaluate the Expression `DE04` with diffrent engines
 for engine in [{}, {'engine': 'python'}]:
     try:
-        Token_Lqu8QnxJYd7tMFBocrS8Vg["AP Fachbereich"] = Token_Lqu8QnxJYd7tMFBocrS8Vg.eval('`DE04`', **engine)
+        Token_fbKUJQyQ4lvaaUSDhFflmQ["AP Fachbereich"] = Token_fbKUJQyQ4lvaaUSDhFflmQ.eval('`DE04`', **engine)
     except Exception:
         print(engine, "failed to evaluate", '`DE04`', "trying next")
 
 #delete column
-Token_Lqu8QnxJYd7tMFBocrS8Vg = Token_Lqu8QnxJYd7tMFBocrS8Vg.drop('DE37', axis = 1)
+Token_fbKUJQyQ4lvaaUSDhFflmQ = Token_fbKUJQyQ4lvaaUSDhFflmQ.drop('DE37', axis = 1)
 #delete column
-Token_Lqu8QnxJYd7tMFBocrS8Vg = Token_Lqu8QnxJYd7tMFBocrS8Vg.drop('DE04', axis = 1)
+Token_fbKUJQyQ4lvaaUSDhFflmQ = Token_fbKUJQyQ4lvaaUSDhFflmQ.drop('DE04', axis = 1)
 #Here we try to evaluate the Expression `Anzahl` * `Stundensatz` with diffrent engines
 for engine in [{}, {'engine': 'python'}]:
     try:
-        Token_Lqu8QnxJYd7tMFBocrS8Vg["Gesamt"] = Token_Lqu8QnxJYd7tMFBocrS8Vg.eval('`Anzahl` * `Stundensatz`', **engine)
+        Token_fbKUJQyQ4lvaaUSDhFflmQ["Gesamt"] = Token_fbKUJQyQ4lvaaUSDhFflmQ.eval('`Anzahl` * `Stundensatz`', **engine)
     except Exception:
         print(engine, "failed to evaluate", '`Anzahl` * `Stundensatz`', "trying next")
 
-#here we save the data from Token_Lqu8QnxJYd7tMFBocrS8Vg to the the icr.xlsx into the  sheet Sheet1 and dont use the index
-for col in Token_Lqu8QnxJYd7tMFBocrS8Vg.columns:
+#here we save the data from Token_fbKUJQyQ4lvaaUSDhFflmQ to the the icr.xlsx into the  sheet Sheet1 and dont use the index
+for col in Token_fbKUJQyQ4lvaaUSDhFflmQ.columns:
     if col.startswith("BACKTICK_QUOTED_STRING_"):
-        Token_Lqu8QnxJYd7tMFBocrS8Vg.rename(columns={col:col[23:].replace("_", " ")}, inplace=True)
-Token_Lqu8QnxJYd7tMFBocrS8Vg.to_excel("icr.xlsx", sheet_name = "Sheet1", index = False)
+        Token_fbKUJQyQ4lvaaUSDhFflmQ.rename(columns={col:col[23:].replace("_", " ")}, inplace=True)
+Token_fbKUJQyQ4lvaaUSDhFflmQ.to_excel("icr.xlsx", sheet_name = "Sheet1", index = False)
 
